@@ -156,7 +156,7 @@ class arbitDispatcherConfiguration implements ezcMvcDispatcherConfiguration
         arbitSession::initialize( $request );
 
         // No filters required yet.
-        arbitCoreModuleController::checkPersitentLogin( $request );
+        arbitUserController::checkPersitentLogin( $request );
     }
 
     /**

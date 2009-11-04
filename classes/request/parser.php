@@ -112,7 +112,7 @@ class arbitHttpRequestParser extends ezcMvcRequestParser
         // Try to match controller and action using a regualr expression
         if ( !preg_match( '(^
           (?# Optionally specified whitelisted controller )
-            (?:/(?P<controller>core|' . implode( '|', $projects ) . '))?
+            (?:/(?P<controller>[a-zA-Z0-9_-]+))?
           (?# Optionally specified action, falls back to "index" )
             (?:/(?P<action>[a-zA-Z0-9_-]+)?
               (?# Optionally specified action, falls back to "index" )

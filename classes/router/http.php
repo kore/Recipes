@@ -32,16 +32,6 @@
 class arbitHttpRouter extends ezcMvcRouter
 {
     /**
-     * URL base path.
-     *
-     * When arbit does not reside in the document root, this variable point to
-     * the location of the arbit directory. This is autodetected from PHP_SELF.
-     *
-     * @var string
-     */
-    protected $basePath = null;
-
-    /**
      * User implemented method that should provide all the routes.
      *
      * It should return an array of objects that implement the ezcMvcRoute
@@ -53,16 +43,9 @@ class arbitHttpRouter extends ezcMvcRouter
     public function createRoutes()
     {
         $this->routes[] = new arbitRoute( 'core', 'arbitMainController' );
+        $this->routes[] = new arbitRoute( 'user', 'arbitUserController' );
         $this->routes[] = new arbitRoute( 'error', 'arbitErrorController' );
         arbitCacheRegistry::setCache( 'core' );
-
-        // Register project controllers
-        $conf = arbitBackendIniConfigurationManager::getMainConfiguration();
-        foreach ( $conf->projects as $project )
-        {
-            $this->routes[] = new arbitRoute( $project, 'arbitProjectController' );
-            arbitCacheRegistry::setCache( $project );
-        }
 
         return $this->routes;
     }
