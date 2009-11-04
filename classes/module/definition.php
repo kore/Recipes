@@ -197,23 +197,6 @@ abstract class arbitModuleDefintion extends arbitBaseStruct
     protected $viewModels = array();
 
     /**
-     * List of command definitions of the module
-     *
-     * Array containing command names and their assiciated classes in the module 
-     * definition.
-     *
-     * <code>
-     *  array(
-     *      'mymodule.mycommand' => 'myModuleMyCommand',
-     *      ...
-     *  )
-     * </code>
-     * 
-     * @var array
-     */
-    protected $commands = array();
-
-    /**
      * Get property value
      *
      * Get property values. May be used for delayed intialisation of some
@@ -348,19 +331,6 @@ abstract class arbitModuleDefintion extends arbitBaseStruct
     }
 
     /**
-     * Initialize commands
-     *
-     * @return void
-     */
-    protected function initializeCommands()
-    {
-        foreach ( $this->commands as $command => $class )
-        {
-            periodicCommandRegistry::registerCommand( 'arbit.' . $command, $class );
-        }
-    }
-
-    /**
      * Initialize module
      *
      * Initialize the module using the values defined in the module definition
@@ -375,7 +345,6 @@ abstract class arbitModuleDefintion extends arbitBaseStruct
         $this->initializeCouchDbDocuments();
         $this->initializeCouchDbViews();
         $this->initializeViews();
-        $this->initializeCommands();
     }
 }
 

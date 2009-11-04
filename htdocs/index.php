@@ -26,14 +26,6 @@
 // false in a production environment.
 define( 'ARBIT_DEBUG', true );
 
-if ( ARBIT_DEBUG )
-{
-    // Perform envirnonmental checks if debug mode is active. Ensure we are on
-    // a correct PHP version and required settings are made in the PHP
-    // configuration
-    include './check.php';
-}
-
 if ( !defined( 'ARBIT_BASE' ) )
 {
     define( 'ARBIT_BASE', dirname( realpath( __DIR__ ) ) . '/' );

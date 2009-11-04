@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Core
- * @version $Revision: 1469 $
+ * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
@@ -101,18 +101,8 @@ return array(
     'arbitFilesystemCache'                               => 'classes/framework/cache/filesystem.php',
     'arbitCacheRegistry'                                 => 'classes/framework/cache_registry.php',
     'arbitFrameworkCliTool'                              => 'classes/framework/cli_tool.php',
-    'arbitFrameworkActionCliTool'                        => 'classes/framework/cli_tool/action.php',
-    'arbitFrameworkAdminCliTool'                         => 'classes/framework/cli_tool/admin.php',
-    'arbitFrameworkCouchdbCliTool'                       => 'classes/framework/cli_tool/couchdb.php',
-    'arbitFrameworkCronCliTool'                          => 'classes/framework/cli_tool/cron.php',
-    'arbitCliLogger'                                     => 'classes/framework/cli_tool/logger.php',
-    'arbitCliResponseWriter'                             => 'classes/framework/cli_tool/writer.php',
     'arbitScheduledTaskCommand'                          => 'classes/framework/command.php',
-    'arbitHasModuleCommand'                              => 'classes/framework/command/has_module.php',
     'arbitFrameworkDiff'                                 => 'classes/framework/diff.php',
-    'arbitFrameworkLineDiff'                             => 'classes/framework/diff/line.php',
-    'arbitFrameworkTextDiff'                             => 'classes/framework/diff/text.php',
-    'arbitFrameworkDiffToken'                            => 'classes/framework/diff/token.php',
     'arbitRuntimeException'                              => 'classes/framework/exception.php',
     'arbitPropertyException'                             => 'classes/framework/exception.php',
     'arbitPropertyValidationException'                   => 'classes/framework/exception.php',
