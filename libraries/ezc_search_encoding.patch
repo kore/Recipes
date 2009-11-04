@@ -1,0 +1,13 @@
+Index: ezc/search/handlers/zend_lucene.php
+===================================================================
+--- ezc/search/handlers/zend_lucene.php	(revision 10955)
++++ ezc/search/handlers/zend_lucene.php	(working copy)
+@@ -510,7 +510,7 @@
+                         break;
+ 
+                     default:
+-                        $doc->addField( Zend_Search_Lucene_Field::Text( $field->field, $value ) );
++                        $doc->addField( Zend_Search_Lucene_Field::Text( $field->field, $value, 'UTF-8' ) );
+                 }
+             }
+         }

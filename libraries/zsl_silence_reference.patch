@@ -1,0 +1,13 @@
+Index: trunk/src/libraries/Zend/Search/Lucene.php
+===================================================================
+--- trunk/src/libraries/Zend/Search/Lucene.php	(revision 18686)
++++ trunk/src/libraries/Zend/Search/Lucene.php	(working copy)
+@@ -1018,7 +1018,7 @@
+             $sortArgs[] = &$hits;
+ 
+             // Do sort
+-            call_user_func_array('array_multisort', $sortArgs);
++            @call_user_func_array('array_multisort', $sortArgs);
+         }
+ 
+         return $hits;

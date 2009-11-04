@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteRule images/.* $0 [L]
+RewriteRule styles/.* $0 [L]
+RewriteRule scripts/.* $0 [L]
+RewriteRule .* index.php [L,QSA]
+

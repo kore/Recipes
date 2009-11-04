@@ -1,0 +1,15 @@
+Authors of arbit
+================
+
+All arbit authors with at least one commit sorted by their commit count. You
+may regenerate this statistic with::
+
+	$ svn log svn://arbitracker.org/arbit | grep '^r' | awk '{print $3}' | sort | uniq -c | sort -n | tac
+
+- Kore Nordmann <kore@arbitracker.org>
+- Manuel Pichler <mapi@arbitracker.org>
+- Arne Nordmann <norro@arbitracker.org>
+- Jakob Westhoff <jakob@arbitracker.org>
+- Hans-Christian Otto <hco@arbitracker.org>
+- Tobias Schlitt <toby@arbitracker.org>
+
