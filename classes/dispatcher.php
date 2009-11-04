@@ -144,12 +144,6 @@ class arbitDispatcherConfiguration implements ezcMvcDispatcherConfiguration
         // Set current project / controller dependant default controller
         arbitCacheRegistry::setDefaultCache( $request->controller );
 
-        if ( ( $request->controller !== 'core' ) &&
-             ( $request->controller !== 'error' ) )
-        {
-            arbitProjectController::initialize( $request );
-        }
-
         // Start session, within currently selected project / controller
         // context
         arbitSession::setBackend( new arbitHttpSessionBackend() );

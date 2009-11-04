@@ -40,7 +40,15 @@ class arbitUserController extends arbitController
      */
     protected $authIds = array(
         'arbitCoreModuleUserPasswordAuthentification' => 'password',
-        'arbitCoreModuleUserOpenIDAuthentification'   => 'openid',
+    );
+    
+    /**
+     * Available auth mechanisms
+     * 
+     * @var array
+     */
+    protected $authMechanisms = array(
+        'password',
     );
 
     /**
@@ -55,7 +63,7 @@ class arbitUserController extends arbitController
     protected function getAuthMechanisms()
     {
         $mechanisms = array();
-        foreach( $this->conf->auth as $name => $class )
+        foreach( $this->authMechanisms as $name => $class )
         {
             if ( isset( $this->authIds[$class] ) )
             {
@@ -99,7 +107,7 @@ class arbitUserController extends arbitController
 
         $model = new arbitViewModuleModel(
             $request->action,
-            $this->getMenu(),
+            array(),
             new arbitViewCoreUserRegistrationModel(
                 $authMechanisms,
                 $selected
@@ -109,7 +117,7 @@ class arbitUserController extends arbitController
         // Check if there is submitted data and process it
         if ( arbitHttpTools::get( 'submit' ) !== null )
         {
-            $authClasses = $this->conf->auth;
+            $authClasses = $this->authMechanisms;
             $authClass = $authClasses[array_search( $selected, $authMechanisms )];
 
             // Let the current authentification class handle the registration,
@@ -159,7 +167,7 @@ class arbitUserController extends arbitController
         // Display something
         return new arbitViewModuleModel(
             $request->action,
-            $this->getMenu(),
+            array(),
             $model
         );
     }
@@ -195,7 +203,7 @@ class arbitUserController extends arbitController
         // Display something
         return new arbitViewModuleModel(
             $request->action,
-            $this->getMenu(),
+            array(),
             new arbitViewCoreUserRegisteredModel(
                 new arbitViewUserModel( $user )
             )
@@ -225,14 +233,14 @@ class arbitUserController extends arbitController
         $user = new arbitModelUser( arbitSession::get( 'login' ) );
         $model = new arbitViewModuleModel(
             $request->action,
-            $this->getMenu(),
+            array(),
             new arbitViewCoreUserAccountModel(
                 new arbitViewUserModel( $user )
             )
         );
 
         // Dispatch to auth mechanism if the respective subaction has been called.
-        $authClasses = $this->conf->auth;
+        $authClasses = $this->authMechanisms;
         $authMechanisms = $this->getAuthMechanisms();
         if ( !empty( $request->path ) &&
              ( $authClass = $authClasses[array_search( substr( $request->path, 1 ), $authMechanisms )] ) )
@@ -312,7 +320,7 @@ class arbitUserController extends arbitController
 
         $model = new arbitViewModuleModel(
             $request->action,
-            $this->getMenu(),
+            array(),
             new arbitViewCoreUserLoginModel(
                 $authMechanisms,
                 $selected
@@ -322,7 +330,7 @@ class arbitUserController extends arbitController
         // Check if there is submitted data and process it
         if ( arbitHttpTools::get( 'submit' ) !== null )
         {
-            $authClasses = $this->conf->auth;
+            $authClasses = $this->authMechanisms;
             $authClass   = $authClasses[array_search( $selected, $authMechanisms )];
 
             // Let the current authentification class handle the registration,
@@ -459,7 +467,7 @@ class arbitUserController extends arbitController
         // If dynamic call is not a known auth mechanisms just return the
         // common exception.
         if ( !( $authId = array_search( $call, $authMechanisms ) ) ||
-             !isset( $this->conf->auth[$authId] ) )
+             !isset( $this->authMechanisms[$authId] ) )
         {
             throw new arbitControllerUnknownActionException( $call );
         }
@@ -467,7 +475,7 @@ class arbitUserController extends arbitController
         // Create model for current call and pass to handler for modification
         $model =  new arbitViewModuleModel(
             'core',
-            $this->getMenu(),
+            array(),
             new arbitViewCoreUserRegistrationModel(
                 $authMechanisms,
                 $call
@@ -475,7 +483,7 @@ class arbitUserController extends arbitController
         );
 
         // Handle request in auth sub class
-        $authClass = $this->conf->auth[$authId];
+        $authClass = $this->authMechanisms[$authId];
         $auth = new $authClass( 'handleCustom', $parameters[0] );
         return $auth->handleCustom( $parameters[0], $model );
     }

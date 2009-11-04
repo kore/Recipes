@@ -46,27 +46,6 @@ class arbitMainController extends arbitController
     }
 
     /**
-     * Initialize basic project data structure
-     *
-     * Initialize basic project data with its configured settings, from the
-     * project name.
-     *
-     * @param string $project
-     * @return arbitViewDashboardProjectModel
-     */
-    protected static function initializeProject( $project )
-    {
-        $conf = arbitBackendIniConfigurationManager::getProjectConfiguration( $project );
-        $data = new arbitViewDashboardProjectModel(
-            $project,
-            $conf->name,
-            $conf->description
-        );
-
-        return $data;
-    }
-
-    /**
      * Dashboard quality subaction
      *
      * Subaction to display an image of the project quality index on the
