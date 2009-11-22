@@ -12,7 +12,7 @@
 </head>
 <body class="dashboard">
 	<h1>
-		<a href="{$root}/">Reeipt Manager</a>
+		<a href="{$root}/">Receipt Manager</a>
 	</h1>
 
 	<div class="main">
