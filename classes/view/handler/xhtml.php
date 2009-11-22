@@ -44,18 +44,14 @@ class arbitViewXHtmlHandler extends arbitTemplateViewHandler
      * @var array
      */
     protected $templates = array(
+        'showMain'                      => 'html/layout.tpl',
         'showError'                     => 'html/exception.tpl',
         'showNotFoundError'             => 'html/not_found.tpl',
-        'showDashboard'                 => 'html/dashboard.tpl',
-        'showDashboardProject'          => 'html/dashboard/project.tpl',
-        'showProject'                   => 'html/project.tpl',
-        'showModule'                    => 'html/project/module.tpl',
-        'showMessage'                   => 'html/project/message.tpl',
+        'showMessage'                   => 'html/message.tpl',
         'showCoreUserRegistrationModel' => 'html/core/user/registration.tpl',
         'showCoreUserRegisteredModel'   => 'html/core/user/registered.tpl',
         'showCoreUserLoginModel'        => 'html/core/user/login.tpl',
         'showCoreAboutModel'            => 'html/core/about.tpl',
-        'showCoreProjectModel'          => 'html/core/project.tpl',
         'showCorePermissionsModel'      => 'html/core/permissions.tpl',
         'showCoreUserModel'             => 'html/core/user.tpl',
         'showCoreUserAcceptModel'       => 'html/core/user_accept.tpl',

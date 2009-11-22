@@ -102,6 +102,10 @@ class arbitViewModelDecorationDependencyInjectionManager
                 // This just causes a runtime exception
                 'showDefaultModel',
             ),
+            'arbitViewMainModel' => array(
+                'addContextInformation',
+                'showMain',
+            ),
             'arbitViewErrorContextModel' => array(
                 'addContextInformation',
                 'showError',
@@ -109,18 +113,6 @@ class arbitViewModelDecorationDependencyInjectionManager
             'arbitViewErrorNotFoundContextModel' => array(
                 'addContextInformation',
                 'showNotFoundError',
-            ),
-            'arbitViewDashboardContextModel' => array(
-                'addContextInformation',
-                'showDashboard',
-            ),
-            'arbitViewDashboardProjectModel' => array(
-                'addContextInformation',
-                'showDashboardProject',
-            ),
-            'arbitViewProjectContextModel' => array(
-                'addContextInformation',
-                'showProject',
             ),
             'arbitViewModuleModel' => array(
                 'addContextInformation',
@@ -151,10 +143,6 @@ class arbitViewModelDecorationDependencyInjectionManager
                 'addContextInformation',
                 'showCoreAboutModel',
             ),
-            'arbitViewCoreProjectModel' => array(
-                'addContextInformation',
-                'showCoreProjectModel',
-            ),
             'arbitViewCorePermissionsModel' => array(
                 'addContextInformation',
                 'showCorePermissionsModel',
@@ -170,40 +158,6 @@ class arbitViewModelDecorationDependencyInjectionManager
             'arbitViewCoreUserAccountModel' => array(
                 'addContextInformation',
                 'showCoreUserAccountModel',
-            ),
-        ),
-
-        /**
-         * For the email handler we only need to decorate those structures,
-         * which actually send via mail, but there is no general way to format
-         * those mails, and they should all be customizeable through templates.
-         */
-        'arbitViewEmailHandler' => array(
-            // Main controller view model decorators
-            'arbitViewModel' => array(
-                // This just causes a runtime exception
-                'showDefaultModel',
-            ),
-            'arbitViewErrorContextModel' => array(
-                'addContextInformation',
-                'showError',
-            ),
-            'arbitViewCoreUserRegisteredModel' => array(
-                'addContextInformation',
-                'showCoreUserRegisteredModel',
-            ),
-            'arbitSignalSlotViewStruct' => array(
-                // The default mail for all signals which do not have an
-                // explicit decorator.
-                'showDefaultSignal',
-            ),
-            'arbitCoreProjectVersionsUpdateViewStruct' => array(
-                'addContextInformation',
-                'showVersionUpdateStruct',
-            ),
-            'arbitCoreProjectComponentsUpdateViewStruct' => array(
-                'addContextInformation',
-                'showComponentsUpdateStruct',
             ),
         ),
 
@@ -238,28 +192,6 @@ class arbitViewModelDecorationDependencyInjectionManager
             ),
             'arbitViewUserModel' => array(
                 'showUser',
-            ),
-        ),
-
-        /**
-         * The text display is mostly used for command line output and requires
-         * custom definitions for each view struct.
-         */
-        'arbitViewTextHandler' => array(
-            'arbitViewCliContextModel' => array(
-                'showCliViewModelList',
-            ),
-            'arbitViewCoreCacheListModel' => array(
-                'showCoreCacheListModel',
-            ),
-            'arbitViewCoreDummyModel' => array(
-                'showCoreDummyModel',
-            ),
-            'arbitViewModuleModel' => array(
-                'showModuleModel'
-            ),
-            'arbitViewUserMessageModel' => array(
-                'showMessageModel'
             ),
         ),
     );

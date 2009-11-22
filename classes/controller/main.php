@@ -42,7 +42,7 @@ class arbitMainController extends arbitController
      */
     public function index( arbitRequest $request )
     {
-        return $this->dashboard( $request );
+        return new arbitViewUserMessageModel( 'Hello World!' );
     }
 
     /**

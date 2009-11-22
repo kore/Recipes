@@ -19,19 +19,19 @@
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
 /**
- * Base model struct for all project views
+ * Model struct representing user errors.
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitViewCorePermissionsModel extends arbitViewCoreModel
+class arbitViewMainModel extends arbitViewModel
 {
     /**
      * Array containing the actual view data.
@@ -39,21 +39,18 @@ class arbitViewCorePermissionsModel extends arbitViewCoreModel
      * @var array
      */
     protected $properties = array(
-        'groups'      => array(),
-        'permissions' => array(),
+        'view' => null,
     );
 
     /**
-     * Construct project view model from common values
+     * Construct view model from binary content and an optional mimetype.
      *
-     * @param array $groups
-     * @param array $permissions
+     * @param arbitViewModel $view
      * @return void
      */
-    public function __construct( array $groups = array(), array $permissions = array() )
+    public function __construct( arbitViewModel $view = null )
     {
-        $this->groups      = $groups;
-        $this->permissions = $permissions;
+        $this->view = $view;
     }
 }
 

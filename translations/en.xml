@@ -569,5 +569,9 @@ Actual behavior
       <source>Indexed all issues.</source>
       <translation type="unfinished">Indexed all issues.</translation>
     </message>
+    <message>
+      <source>Hello World!</source>
+      <translation type="unfinished">Hello World!</translation>
+    </message>
   </context>
 </TS>
