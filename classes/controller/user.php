@@ -105,13 +105,9 @@ class arbitUserController extends arbitController
             $selected = reset( $authMechanisms );
         }
 
-        $model = new arbitViewModuleModel(
-            $request->action,
-            array(),
-            new arbitViewCoreUserRegistrationModel(
-                $authMechanisms,
-                $selected
-            )
+        $model = new arbitViewCoreUserRegistrationModel(
+            $authMechanisms,
+            $selected
         );
 
         // Check if there is submitted data and process it
@@ -148,7 +144,7 @@ class arbitUserController extends arbitController
      * necessary.
      *
      * @param arbitRequest $request
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function registered( arbitRequest $request )
     {
@@ -165,11 +161,7 @@ class arbitUserController extends arbitController
         }
 
         // Display something
-        return new arbitViewModuleModel(
-            $request->action,
-            array(),
-            $model
-        );
+        return $model;
     }
 
     /**
@@ -179,7 +171,7 @@ class arbitUserController extends arbitController
      * request. This action processes this confirmation requests.
      *
      * @param arbitRequest $request
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function confirm( arbitRequest $request )
     {
@@ -201,12 +193,8 @@ class arbitUserController extends arbitController
         }
 
         // Display something
-        return new arbitViewModuleModel(
-            $request->action,
-            array(),
-            new arbitViewCoreUserRegisteredModel(
-                new arbitViewUserModel( $user )
-            )
+        return new arbitViewCoreUserRegisteredModel(
+            new arbitViewUserModel( $user )
         );
     }
 
@@ -217,7 +205,7 @@ class arbitUserController extends arbitController
      * data, if modifyable.
      *
      * @param arbitRequest $request
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function account( arbitRequest $request )
     {
@@ -231,12 +219,8 @@ class arbitUserController extends arbitController
         }
 
         $user = new arbitModelUser( arbitSession::get( 'login' ) );
-        $model = new arbitViewModuleModel(
-            $request->action,
-            array(),
-            new arbitViewCoreUserAccountModel(
-                new arbitViewUserModel( $user )
-            )
+        $model = new arbitViewCoreUserAccountModel(
+            new arbitViewUserModel( $user )
         );
 
         // Dispatch to auth mechanism if the respective subaction has been called.
@@ -289,7 +273,7 @@ class arbitUserController extends arbitController
      * data is valid.
      *
      * @param arbitRequest $request
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function login( arbitRequest $request )
     {
@@ -318,13 +302,9 @@ class arbitUserController extends arbitController
             $selected = reset( $authMechanisms );
         }
 
-        $model = new arbitViewModuleModel(
-            $request->action,
-            array(),
-            new arbitViewCoreUserLoginModel(
-                $authMechanisms,
-                $selected
-            )
+        $model = new arbitViewCoreUserLoginModel(
+            $authMechanisms,
+            $selected
         );
 
         // Check if there is submitted data and process it
@@ -357,7 +337,7 @@ class arbitUserController extends arbitController
      * Log out user
      *
      * @param arbitRequest $request
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function logout( arbitRequest $request )
     {
@@ -458,7 +438,7 @@ class arbitUserController extends arbitController
      *
      * @param string $call
      * @param array $parameters
-     * @return arbitViewModuleModel
+     * @return arbitViewModel
      */
     public function __call( $call, array $parameters )
     {
@@ -473,13 +453,9 @@ class arbitUserController extends arbitController
         }
 
         // Create model for current call and pass to handler for modification
-        $model =  new arbitViewModuleModel(
-            'core',
-            array(),
-            new arbitViewCoreUserRegistrationModel(
-                $authMechanisms,
-                $call
-            )
+        $model = new arbitViewCoreUserRegistrationModel(
+            $authMechanisms,
+            $call
         );
 
         // Handle request in auth sub class
