@@ -620,5 +620,49 @@ Actual behavior
       <source>Ingredients</source>
       <translation type="unfinished">Ingredients</translation>
     </message>
+    <message>
+      <source>Title</source>
+      <translation type="unfinished">Title</translation>
+    </message>
+    <message>
+      <source>Short description of the recipe</source>
+      <translation type="unfinished">Short description of the recipe</translation>
+    </message>
+    <message>
+      <source>Main</source>
+      <translation type="unfinished">Main</translation>
+    </message>
+    <message>
+      <source>Preparation instructions</source>
+      <translation type="unfinished">Preparation instructions</translation>
+    </message>
+    <message>
+      <source>Store recipe</source>
+      <translation type="unfinished">Store recipe</translation>
+    </message>
+    <message>
+      <source>Recipe title</source>
+      <translation type="unfinished">Recipe title</translation>
+    </message>
+    <message>
+      <source>Main ingredients</source>
+      <translation type="unfinished">Main ingredients</translation>
+    </message>
+    <message>
+      <source>g</source>
+      <translation type="unfinished">g</translation>
+    </message>
+    <message>
+      <source>saffron</source>
+      <translation type="unfinished">saffron</translation>
+    </message>
+    <message>
+      <source>For</source>
+      <translation type="unfinished">For</translation>
+    </message>
+    <message>
+      <source>persons</source>
+      <translation type="unfinished">persons</translation>
+    </message>
   </context>
 </TS>

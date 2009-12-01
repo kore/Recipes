@@ -8,6 +8,8 @@
     <meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
 
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
+
+    <script src="{$root}/scripts/jquery-1.3.2.min.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
 
     <title>Recipe Manager</title>
@@ -37,7 +39,7 @@
         <div class="break"></div>
 	</div>
 
-	<div class="main">
+	<div class="content">
         {raw arbit_decorate($model->view)}
 	</div>
 

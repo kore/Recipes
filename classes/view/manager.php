@@ -42,7 +42,6 @@ class arbitViewManager extends ezcMvcView
      */
     protected $viewHandler = array(
         'text/html'             => 'arbitViewXHtmlHandler',
-        'application/xhtml+xml' => 'arbitViewXHtmlHandler',
         'text/xml'              => 'arbitViewXmlHandler',
         'text/text'             => 'arbitViewTextHandler',
         'application/json'      => 'arbitViewJsonHandler',
