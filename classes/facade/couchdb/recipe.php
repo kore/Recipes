@@ -35,6 +35,72 @@
 class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRecipeFacade
 {
     /**
+     * Get unit list
+     *
+     * Return a list of units, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public function getUnits( $string )
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'units', array(
+            'group' => true,
+            'startkey' => $string,
+            'endkey' => $string . "\xE9\xA6\x99",
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $units = array();
+        foreach ( $result->rows as $row )
+        {
+            $units[$row['key']] = (int) is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+        arsort( $units );
+
+        return array_splice( $units, 0, 10 );
+    }
+
+    /**
+     * Get ingredient list
+     *
+     * Return a list of ingredients, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public function getIngredients( $string )
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'ingredients', array(
+            'group' => true,
+            'startkey' => $string,
+            'endkey' => $string . "\xE9\xA6\x99",
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $ingredients = array();
+        foreach ( $result->rows as $row )
+        {
+            $ingredients[$row['key']] = (int) is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+        arsort( $ingredients );
+
+        return array_splice( $ingredients, 0, 10 );
+    }
+
+    /**
      * Get recipe data
      *
      * Get data for the given recipe id. The data should be returned as an array,

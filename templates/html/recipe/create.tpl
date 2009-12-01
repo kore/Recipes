@@ -25,9 +25,10 @@
 
 <script type="text/ecmascript">
 // <![CDATA[
-var group = 0;
+var root        = '{$root}';
+var group       = 0;
 var ingredients = [];
-var data = {if $model->recipe}{raw json_encode( $model->recipe->ingredients )}{else}null{/if};
+var data        = {if $model->recipe}{raw json_encode( $model->recipe->ingredients )}{else}null{/if};
 
 var groupHtml = "<li id=\"group_%group\">\
     <h4>\
@@ -97,6 +98,34 @@ $( document ).ready( function()
             } );
         } );
     }
+
+    // Enable auto-suggest for ingredient fields
+    $( 'input.ingredient' ).jsonSuggest(
+        function( text, wildCard, caseSensitive, notCharacter, callback, filter )
+        {
+            var callback = callback;
+            var filter   = filter;
+
+            $.get( root + "/recipes/ingredients/" + text + ".js", function ( data, textStatus )
+                {
+                    data = JSON.parse( data );
+                    var terms = [];
+                    $.each( data.properties.view.properties["array"], function( key, value )
+                        {
+                            terms.push( {text: key} );
+                        }
+                    );
+                    callback( terms, filter );
+                },
+                "json"
+            );
+            // From here you can put your own logic in to say what results show.
+            // For now I'm just going to return some dummy data.
+            
+        },
+        {ajaxResults:true
+        }
+    );
 } );
 {/literal} // ]]>
 </script>

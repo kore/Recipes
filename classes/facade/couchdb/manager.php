@@ -225,8 +225,9 @@ class arbitCouchDbFacadeProjectManager extends arbitCouchDbFacadeBase implements
         }
 
         $views = array(
-            'group' => 'arbitBackendCouchDbGroupView',
-            'user'  => 'arbitBackendCouchDbUserView',
+            'user'   => 'arbitBackendCouchDbUserView',
+            'group'  => 'arbitBackendCouchDbGroupView',
+            'recipe' => 'arbitBackendCouchDbRecipeView',
         );
 
         foreach ( $views as $name => $class )

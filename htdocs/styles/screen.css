@@ -79,6 +79,12 @@ div.navigation ul li a {
     color: #ffffff;
 }
 
+.content div.jsonSuggestResults div.resultItem.odd {
+    background-color: #a18266;
+    color: #2c2827;
+}
+
+.content div.jsonSuggestResults div.resultItem.hover,
 div.navigation ul li:hover,
 div.navigation ul li:hover a,
 form {
@@ -86,6 +92,7 @@ form {
     color: #ffffff;
 }
 
+.content div.jsonSuggestResults,
 label textarea, label select, label input {
     background-color: #eeeeef;
     border: 1px solid #915014;
@@ -488,6 +495,38 @@ form div.recipe ul.ingredients ul {
 form div.recipe ul.ingredients input.title,
 form div.recipe ul.ingredients ul input.ingredient {
     width: 70%;
+}
+
+.content div.jsonSuggestResults {
+    position:absolute;
+    z-index:1;
+}
+
+.content div.jsonSuggestResults div.resultItem {
+    position:relative;
+    height:auto;
+    cursor:pointer;
+}
+
+.content div.jsonSuggestResults div.resultItem img {
+    float:left;
+    margin-right:10px;
+}
+
+.content div.jsonSuggestResults div.resultItem p {
+    margin:0px;
+    padding:0px;
+}
+
+.content div.jsonSuggestResults div.resultItem p strong {
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.content div.jsonSuggestResults div.resultItem p.extra {
+    font-size: x-small !important;
+    position:absolute;
+    bottom:3px;
 }
 
 /**

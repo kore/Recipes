@@ -11,6 +11,7 @@
 
     <script src="{$root}/scripts/jquery-1.3.2.min.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/jquery.autogrow.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery.jsonSuggest-dev.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
     <script type="text/ecmascript">
     // <![CDATA[ {literal}

@@ -1,6 +1,6 @@
 <?php
 /**
- * arbit view
+ * arbit CouchDB backend
  *
  * This file is part of arbit.
  *
@@ -18,39 +18,54 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Core
- * @subpackage View
- * @version $Revision: 1480 $
+ * @subpackage CouchDbBackend
+ * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
 /**
- * Model struct representing a simple list of strings
+ * Wrapper for recipe views
  *
  * @package Core
- * @subpackage View
- * @version $Revision: 1480 $
+ * @subpackage CouchDbBackend
+ * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitViewListModel extends arbitViewModel
+class arbitBackendCouchDbRecipeView extends phpillowFileView
 {
     /**
-     * Array containing the actual view data.
+     * Construct view
      *
-     * @var array
-     */
-    protected $properties = array(
-        'array'  => array(),
-    );
-
-    /**
-     * Construct view model from an arbitrary array
+     * Construct view
      *
-     * @param array $array 
      * @return void
      */
-    public function __construct( array $array = array() )
+    public function __construct()
     {
-        $this->array  = $array;
+        parent::__construct();
+
+        $this->viewFunctions = array(
+            'units' => array(
+                'map'    => __DIR__ . '/map/recipe_units.js',
+                'reduce' => __DIR__ . '/reduce/sum.js',
+            ),
+            'ingredients' => array(
+                'map'    => __DIR__ . '/map/recipe_ingredients.js',
+                'reduce' => __DIR__ . '/reduce/sum.js',
+            ),
+        );
+    }
+
+    /**
+     * Get name of view
+     *
+     * Get name of view
+     *
+     * @return string
+     */
+    protected function getViewName()
+    {
+        return 'recipes';
     }
 }
 

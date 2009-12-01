@@ -76,6 +76,36 @@ class arbitRecipeModel extends arbitModelBase
     );
 
     /**
+     * Get unit list
+     *
+     * Return a list of units, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public static function getUnits( $string = '' )
+    {
+        $recipe = arbitFacadeManager::getFacade( 'recipe' );
+        return $recipe->getUnits( $string );
+    }
+
+    /**
+     * Get ingredient list
+     *
+     * Return a list of ingredients, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public static function getIngredients( $string = '' )
+    {
+        $recipe = arbitFacadeManager::getFacade( 'recipe' );
+        return $recipe->getIngredients( $string );
+    }
+
+    /**
      * Method called to create a new instance in the backend.
      *
      * Method called when the model should be created in the backend the first

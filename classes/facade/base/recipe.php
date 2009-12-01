@@ -35,6 +35,28 @@
 interface arbitRecipeFacade
 {
     /**
+     * Get unit list
+     *
+     * Return a lsit of units, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public function getUnits( $string );
+
+    /**
+     * Get ingredient list
+     *
+     * Return a lsit of ingredients, starting with the provided characters. 
+     * Sorted by popularity
+     *
+     * @param string $string
+     * @return array
+     */
+    public function getIngredients( $string );
+
+    /**
      * Get recipe data
      *
      * Get data for the given recipe id. The data should be returned as an array,

@@ -59,6 +59,42 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Units actions
+     *
+     * Returns a list of the units, starting with the string, specified 
+     * in the subaction
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function units( arbitRequest $request )
+    {
+        return new arbitViewListModel(
+            arbitRecipeModel::getIngredients(
+                $request->subaction === 'index' ? '' : $request->subaction
+            )
+        );
+    }
+
+    /**
+     * Ingredients actions
+     *
+     * Returns a list of the ingredients, starting with the string, specified 
+     * in the subaction
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function ingredients( arbitRequest $request )
+    {
+        return new arbitViewListModel(
+            arbitRecipeModel::getIngredients(
+                $request->subaction === 'index' ? '' : $request->subaction
+            )
+        );
+    }
+
+    /**
      * Convert ingredient list
      *
      * Converts the ingredient list, passed from the HTML view into the format, 
