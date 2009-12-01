@@ -578,4 +578,47 @@ Actual behavior
       <translation type="unfinished">Hello Receipts!</translation>
     </message>
   </context>
+  <context>
+    <name>receipts</name>
+    <message>
+      <source>Add receipt</source>
+      <translation type="unfinished">Add receipt</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+      <source>Description</source>
+      <translation type="unfinished">Description</translation>
+    </message>
+    <message>
+      <source>RST markup</source>
+      <translation type="unfinished">RST markup</translation>
+    </message>
+    <message>
+      <source>Short description</source>
+      <translation type="unfinished">Short description</translation>
+    </message>
+    <message>
+      <source>Amount of portions / persons</source>
+      <translation type="unfinished">Amount of portions / persons</translation>
+    </message>
+    <message>
+      <source>Instructions</source>
+      <translation type="unfinished">Instructions</translation>
+    </message>
+    <message>
+      <source>Preparation time</source>
+      <translation type="unfinished">Preparation time</translation>
+    </message>
+    <message>
+      <source>Cooking time</source>
+      <translation type="unfinished">Cooking time</translation>
+    </message>
+    <message>
+      <source>Ingredients</source>
+      <translation type="unfinished">Ingredients</translation>
+    </message>
+  </context>
 </TS>

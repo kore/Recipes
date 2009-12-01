@@ -57,5 +57,52 @@ class arbitReceiptController extends arbitController
     {
         return new arbitViewUserMessageModel( 'Hello Receipts!' );
     }
+
+    /**
+     * Overview action
+     *
+     * Gives an overview on the currently available receipts
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function add( arbitRequest $request )
+    {
+        $model = new arbitReceiptCreateModel();
+
+        if ( arbitHttpTools::get( 'create' ) !== null )
+        {
+            try
+            {
+                $issue = new arbitReceiptModel();
+                $issue->title      = arbitHttpTools::get( 'title' );
+                $issue->issueType  = arbitHttpTools::get( 'type' );
+                $issue->text       = arbitHttpTools::get( 'text' );
+                $issue->state      = 'new';
+                $issue->priority   = arbitHttpTools::get( 'priority' );
+                $issue->resolution = 'none';
+                $issue->versions   = arbitHttpTools::get( 'versions', arbitHttpTools::TYPE_ARRAY );
+                $issue->components = arbitHttpTools::get( 'components', arbitHttpTools::TYPE_ARRAY );
+                $issue->create();
+                $issue->storeChanges();
+
+                $model->success = array( new arbitViewUserMessageModel( 'Your issue has been successfully added.' ) );
+
+                // Assigne issue to model to keep already validated data.
+                $model->issue = new arbitTrackerIssueViewModel( $issue );
+
+                // Update issue in search index
+                $search = $this->getSearchSession( $request );
+                $search->index( $issue );
+                arbitCacheRegistry::getCache()->clearCache( 'tracker_reports' );
+            }
+            catch ( arbitException $e )
+            {
+                $model->errors = array( $e );
+            }
+        }
+
+        return $model;
+    }
 }
 

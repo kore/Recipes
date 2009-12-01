@@ -114,10 +114,6 @@ class arbitViewModelDecorationDependencyInjectionManager
                 'addContextInformation',
                 'showNotFoundError',
             ),
-            'arbitViewModuleModel' => array(
-                'addContextInformation',
-                'showModule',
-            ),
             'arbitViewUserMessageModel' => array(
                 'addContextInformation',
                 'showMessage',
@@ -139,25 +135,15 @@ class arbitViewModelDecorationDependencyInjectionManager
                 'addContextInformation',
                 'showCoreUserRegisteredModel',
             ),
-            'arbitViewCoreAboutModel' => array(
-                'addContextInformation',
-                'showCoreAboutModel',
-            ),
-            'arbitViewCorePermissionsModel' => array(
-                'addContextInformation',
-                'showCorePermissionsModel',
-            ),
             'arbitViewCoreUserModel' => array(
                 'addContextInformation',
                 'showCoreUserModel',
             ),
-            'arbitViewCoreUserAcceptModel' => array(
+
+            // Core models for receipt handling
+            'arbitReceiptCreateModel' => array(
                 'addContextInformation',
-                'showCoreUserAcceptModel',
-            ),
-            'arbitViewCoreUserAccountModel' => array(
-                'addContextInformation',
-                'showCoreUserAccountModel',
+                'showReceiptCreateModel',
             ),
         ),
 

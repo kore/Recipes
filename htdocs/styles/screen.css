@@ -419,6 +419,11 @@ label input {
 	float: right;
 }
 
+label input.number {
+	width: 20%;
+    text-align: right;
+}
+
 label textarea,
 label select {
 	font-family: monospace;
@@ -451,38 +456,34 @@ input[disabled="disabled"] {
 }
 
 /**
- * Auth type selection
+ * Receipt form formatting
  */
-
-div.content ul.authtypes {
-	display: block;
-	width: 80%;
-	margin: .5em auto 0em auto;
-	padding: 0em;
+label ul.ingredients {
+	width: 70%;
+	float: right;
+    padding: 0px;
+    margin: 0px;
 }
 
-div.content ul.authtypes li {
-	display: inline;
-	padding: 0em .2em;
-	margin: 0em .5em;
-	border: 1px solid #888a85;
+label ul.ingredients * {
+    float: none;
 }
 
-div.content ul.authtypes li.selected {
-	background-color: #d3d7cf;
-	border-bottom-color: #d3d7cf;
+label ul.ingredients input.title {
+    display: block;
 }
 
-div.content ul.authtypes li#password {
-	background-image: url( "../images/password.png" );
-	background-repeat: no-repeat;
-	padding-left: 24px;
+label ul.ingredients ul {
+    padding-left: 10%;
 }
 
-div.content ul.authtypes li#openid {
-	background-image: url( "../images/openid.png" );
-	background-repeat: no-repeat;
-	padding-left: 24px;
+label ul.ingredients ul input.amount,
+label ul.ingredients ul input.unit {
+    width: 5%;
+}
+
+label ul.ingredients ul input.ingredient {
+    width: 70%;
 }
 
 /**

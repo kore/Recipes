@@ -198,6 +198,7 @@ return array(
     'arbitViewDataModel'                                 => 'classes/view/model/data.php',
     'arbitViewMainModel'                                 => 'classes/view/model/main.php',
     'arbitViewModuleModel'                               => 'classes/view/model/module.php',
+    'arbitReceiptCreateModel'                            => 'classes/view/model/receipt_create.php',
     'arbitViewUserMessageModel'                          => 'classes/view/model/error.php',
     'arbitViewUserSuccessModel'                          => 'classes/view/model/success.php',
 );
