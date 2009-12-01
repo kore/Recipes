@@ -31,8 +31,8 @@ var ingredients = [];
 var groupHtml = "<li id=\"group_%group\">\
     <h4>\
         <input type=\"text\" name=\"ingredients[%group][title]\" class=\"title\" value=\"{tr "Main ingredients"}\"/>\
-        <image onclick=\"addIngredientBlock()\" width=\"14\" height=\"14\" src=\"{$root}/images/add.png\" alt=\"Add\" />\
-        <image onclick=\"$( 'li#group_%group' ).remove()\" width=\"14\" height=\"14\" src=\"{$root}/images/remove.png\" alt=\"Remove\" />\
+        <image class=\"button\" onclick=\"addIngredientBlock()\" width=\"14\" height=\"14\" src=\"{$root}/images/add.png\" alt=\"Add\" />\
+        <image class=\"button\" onclick=\"confirm( '{tr "Are you sure that you want to remove the whole section?"}' ) && $( 'li#group_%group' ).remove()\" width=\"14\" height=\"14\" src=\"{$root}/images/remove.png\" alt=\"Remove\" />\
     </h4>\
     <ul></ul>\
 </li>";
@@ -41,8 +41,8 @@ var itemHtml  = "<li id=\"ingredient_%group_%item\">\
     <input type=\"text\" name=\"ingredients[%group][%item][amount]\" class=\"amount number\"/>\
     <input type=\"text\" name=\"ingredients[%group][%item][unit]\" class=\"unit number\"\"/>\
     <input type=\"text\" name=\"ingredients[%group][%item][ingredient]\" class=\"ingredient\"/>\
-    <image onclick=\"addIngredient( %group )\" width=\"14\" height=\"14\" src=\"{$root}/images/add.png\" alt=\"Add\" />\
-    <image onclick=\"$( 'li#ingredient_%group_%item' ).remove()\" width=\"14\" height=\"14\" src=\"{$root}/images/remove.png\" alt=\"Remove\" />\
+    <image class=\"button\" onclick=\"addIngredient( %group )\" width=\"14\" height=\"14\" src=\"{$root}/images/add.png\" alt=\"Add\" />\
+    <image class=\"button\" onclick=\"confirm( '{tr "Are you sure that you want to remove the ingredient?"}' ) && $( 'li#ingredient_%group_%item' ).remove()\" width=\"14\" height=\"14\" src=\"{$root}/images/remove.png\" alt=\"Remove\" />\
 </li>";
 
  {literal}
@@ -60,6 +60,8 @@ function addIngredientBlock()
 {
     $( "ul.ingredients" ).append( groupHtml.replace( /%group/g, group ) );
     ingredients[group] = 0;
+    addIngredient( group );
+    addIngredient( group );
     addIngredient( group );
     ++group;
 }

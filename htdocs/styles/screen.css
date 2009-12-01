@@ -141,6 +141,10 @@ div.footer {
 	background-image: url( "../images/footer.png" );
 }
 
+img.button {
+    cursor: pointer;
+}
+
 /**
  * Navigation bars
  */

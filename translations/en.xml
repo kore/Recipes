@@ -664,5 +664,17 @@ Actual behavior
       <source>persons</source>
       <translation type="unfinished">persons</translation>
     </message>
+    <message>
+      <source>Sure you want to remove the whole section?</source>
+      <translation type="unfinished">Sure you want to remove the whole section?</translation>
+    </message>
+    <message>
+      <source>Are you sure that you want to remove the whole section?</source>
+      <translation type="unfinished">Are you sure that you want to remove the whole section?</translation>
+    </message>
+    <message>
+      <source>Are you sure that you want to remove the ingredient?</source>
+      <translation type="unfinished">Are you sure that you want to remove the ingredient?</translation>
+    </message>
   </context>
 </TS>
