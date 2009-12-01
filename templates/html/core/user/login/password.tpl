@@ -6,11 +6,11 @@
 <legend>Password login</legend>
 
 <label>
-	<input type="text" name="login" value="{$values['login']}" />
+	<input type="text" class="required" name="login" value="{$values['login']}" />
 	Username
 </label>
 <label>
-	<input type="password" name="password" />
+	<input type="password" class="required" name="password" />
 	Password
 </label>
 <label>

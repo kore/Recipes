@@ -5,10 +5,12 @@
 <html 
 	xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
+    <meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
 
-	<link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
-	<title>Receipt Manager</title>
+    <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
+    <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
+
+    <title>Receipt Manager</title>
 </head>
 <body class="dashboard">
 	<h1>

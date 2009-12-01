@@ -7,7 +7,7 @@
 {include 'html/core/errors.tpl' 
 	send $model->errors as $errors}
 
-<form method="post" action="{$root}/{$project}/core/login/{$model->selected}">
+<form method="post" action="{$root}/{$project}/core/login/{$model->selected}" onsubmit="return validateForm( this );">
 	<fieldset>
 		{include arbit_get_template( 'html/core/user/login/' . $model->selected . '.tpl' )
 			send $root, $project}

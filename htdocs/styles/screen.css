@@ -50,14 +50,39 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* Color configuration */
+/* Color configuration
+ *
+ * - Dark:   #2c2827
+ * - Brown:  #643525
+ * - Medium: #915014
+ * - Light:  #a18266
+ */
+label textarea, label select, label input,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6,
 body {
-	color: #000000;
+	color: #2c2827;
 }
 
 a {
-	color: #ce5c00;
+	color: #915014;
 }
+
+form {
+    background-color: #643525;
+    color: #ffffff;
+}
+
+label textarea, label select, label input {
+    background-color: #eeeeef;
+    border: 1px solid #915014;
+}
+
+label textarea.errnous, label select.errnous, label input.errnous,
+label textarea:focus, label select:focus, label input:focus {
+	background-color: #ffffff;
+	border: 1px solid #a18266;
+}
+
 
 /* Layout configuration */
 body {
@@ -114,7 +139,6 @@ ul.errors {
 	border: 2px solid #ce5c00;
 	list-style-type: disc;
 
-	background-color: #ffffff;
 	background-image: url( "../images/error_bg.png" );
 	background-repeat: no-repeat;
 	background-position: bottom right;
@@ -168,7 +192,6 @@ div.content div.body {
 }
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-	color: #000000;
 	margin: 1em 0em .5em .0em;
 }
 
@@ -182,10 +205,6 @@ div.content a.external:after {
 
 div.content a.internal:before {
 	content: url( "../images/internal.png" );
-}
-
-div.content a.missing {
-	color: #a40000;
 }
 
 .content h2 {
@@ -322,7 +341,8 @@ form {
 	padding: 0em 0em .2em 0em;
 	width: 80%;
 
-	border: 1px solid #888a85;
+    padding: 5px;
+    -moz-border-radius: 10px;
 }
 
 form.wide {
@@ -352,17 +372,6 @@ label select,
 label input {
 	width: 70%;
 	float: right;
-
-	background-color: #eeeeef;
-	color: #000000;
-	border: 1px solid #888a85;
-}
-
-label textarea.errnous,
-label select.errnous,
-label input.errnous {
-	border: 2px solid #ce5c00;
-	background-color: #ffffff;
 }
 
 label textarea,
