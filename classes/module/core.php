@@ -49,25 +49,10 @@ class arbitCoreDefinition extends arbitModuleDefintion
             // classes are available through the default autoload mechanism.
         ),
         'permissions'       => array(
-            'core_versions_edit'   => 'User is allowed to edit the available project versions.',
-            'core_components_edit' => 'User is allowed to edit the available project components.',
-            'core_groups_edit'     => 'User is allowed to edit the permissions associated with groups.',
-            'core_groups_create'   => 'User is allowed to create new groups.',
-            'core_users_manage'    => 'User is allowed to change the associated groups for users.',
-            'core_users_accept'    => 'User is allowed to change the validation state of users.',
         ),
         'slots'             => array(
-            'coreDashboardInfo' => 'arbitMainControllerSlots::dashboardUpdate',
         ),
         'signals'           => array(
-            'coreNewUser'                 => 'A new user has been created.',
-            'coreConfirmedUser'           => 'A user account has been confirmed by the user itself.',
-            'coreLoginUser'               => 'A user has logged in.',
-            'coreLogoutUser'              => 'A user has logged out.',
-            'coreProjectVersionsUpdate'   => 'The available versions of a project have been updated.',
-            'coreProjectComponentsUpdate' => 'The available components of a project have been updated.',
-            'coreNewGroup'                => 'A new group has been created.',
-            'coreDashboardInfo'           => 'Information updates for the dashboard.',
         ),
 
         'templateDirectory' => 'templates/',

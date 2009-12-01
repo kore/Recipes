@@ -59,6 +59,46 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Convert ingredient list
+     *
+     * Converts the ingredient list, passed from the HTML view into the format, 
+     * used by the model
+     * 
+     * @param array $ingredients 
+     * @return void
+     */
+    protected function convertIngredientList( array $ingredients )
+    {
+        $return = array();
+        foreach ( $ingredients as $category )
+        {
+            if ( !isset( $category['title'] ) )
+            {
+                continue;
+            }
+
+            $title = $category['title'];
+            unset( $category['title'] );
+            
+            foreach ( $category as $ingredient )
+            {
+                foreach ( array( 'amount', 'unit', 'ingredient' ) as $field )
+                {
+                    if ( !isset( $ingredient[$field] ) ||
+                         empty( $ingredient[$field] ) )
+                    {
+                        continue 2;
+                    }
+                }
+
+                $return[$title][] = $ingredient;
+            }
+        }
+
+        return $return;
+    }
+
+    /**
      * Overview action
      *
      * Gives an overview on the currently available recipes
@@ -75,21 +115,21 @@ class arbitRecipeController extends arbitController
             try
             {
                 $issue = new arbitRecipeModel();
-                $issue->title      = arbitHttpTools::get( 'title' );
-                $issue->issueType  = arbitHttpTools::get( 'type' );
-                $issue->text       = arbitHttpTools::get( 'text' );
-                $issue->state      = 'new';
-                $issue->priority   = arbitHttpTools::get( 'priority' );
-                $issue->resolution = 'none';
-                $issue->versions   = arbitHttpTools::get( 'versions', arbitHttpTools::TYPE_ARRAY );
-                $issue->components = arbitHttpTools::get( 'components', arbitHttpTools::TYPE_ARRAY );
+                $issue->title        = arbitHttpTools::get( 'title' );
+                $issue->amount       = (int) arbitHttpTools::get( 'amount', arbitHttpTools::TYPE_NUMERIC );
+                $issue->description  = arbitHttpTools::get( 'description' );
+                $issue->ingredients  = $this->convertIngredientList( arbitHttpTools::get( 'ingredients', arbitHttpTools::TYPE_ARRAY ) );
+                $issue->preparation  = (int) arbitHttpTools::get( 'preparation', arbitHttpTools::TYPE_NUMERIC );
+                $issue->cooking      = (int) arbitHttpTools::get( 'cooking', arbitHttpTools::TYPE_NUMERIC );
+                $issue->instructions = arbitHttpTools::get( 'instructions' );
+                $issue->tags         = array();
                 $issue->create();
                 $issue->storeChanges();
 
-                $model->success = array( new arbitViewUserMessageModel( 'Your issue has been successfully added.' ) );
+                $model->success = array( new arbitViewUserMessageModel( 'Your recipe has been successfully stored.' ) );
 
                 // Assigne issue to model to keep already validated data.
-                $model->issue = new arbitTrackerIssueViewModel( $issue );
+                $model->issue = new arbitRecipeViewModel( $issue );
 
                 // Update issue in search index
                 $search = $this->getSearchSession( $request );

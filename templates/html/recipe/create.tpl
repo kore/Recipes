@@ -16,7 +16,7 @@
 	<input type="hidden" name="_arbit_form_token" value="{arbit_form_token()}" />
 
     <div class="recipe">
-		<h2><input type="text" class="required h1" name="name" value="{tr "Recipe title"}" /></h2>
+		<h2><input type="text" class="required h1" name="title" value="{tr "Recipe title"}" /></h2>
 		<h4 class="subtitle">{tr "For"} <input type="text" name="amount" class="required number" value="4"/> {tr "persons"}.</h4>
     
 		<p><textarea name="description" rows="3">{tr "Short description of the recipe"}</textarea></p>

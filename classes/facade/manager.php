@@ -41,9 +41,9 @@ class arbitFacadeManager
      */
     protected static $facadeClasses = array(
         'couchdb' => array(
-            'user'      => 'arbitCouchDbUserFacade',
-            'group'     => 'arbitCouchDbGroupFacade',
-            'project'   => 'arbitCouchDbProjectFacade',
+            'user'   => 'arbitCouchDbUserFacade',
+            'group'  => 'arbitCouchDbGroupFacade',
+            'recipe' => 'arbitCouchDbRecipeFacade',
         ),
     );
 
@@ -215,12 +215,6 @@ class arbitFacadeManager
             array(
                 'description' => 'Default group for all registered users.',
                 'users' => array(),
-                'permissions' => array(
-                    'tracker_view',
-                    'wiki_view',
-                    'source_view_source',
-                    'notification_edit',
-                ),
             )
         );
 
@@ -229,11 +223,6 @@ class arbitFacadeManager
             array(
                 'description' => 'Group for anonymous users.',
                 'users' => array(),
-                'permissions' => array(
-                    'tracker_view',
-                    'wiki_view',
-                    'source_view_source',
-                ),
             )
         );
     }

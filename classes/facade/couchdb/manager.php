@@ -214,9 +214,9 @@ class arbitCouchDbFacadeProjectManager extends arbitCouchDbFacadeBase implements
     private function registerBaseDocuments()
     {
         $documents = array(
-            'group'   => 'arbitBackendCouchDBGroupDocument',
-            'project' => 'arbitBackendCouchDbProjectDocument',
-            'user'    => 'arbitBackendCouchDbUserDocument',
+            'user'   => 'arbitBackendCouchDbUserDocument',
+            'group'  => 'arbitBackendCouchDBGroupDocument',
+            'recipe' => 'arbitBackendCouchDbRecipeDocument',
         );
 
         foreach ( $documents as $name => $class )

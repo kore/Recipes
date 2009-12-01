@@ -577,6 +577,22 @@ Actual behavior
       <source>Hello Recipes!</source>
       <translation type="unfinished">Hello Recipes!</translation>
     </message>
+    <message>
+      <source>The given value for the model property '%property' is not of type '%expected'.</source>
+      <translation type="unfinished">The given value for the model property '%property' is not of type '%expected'.</translation>
+    </message>
+    <message>
+      <source>There is no implementation for the requested facade class '%class'.</source>
+      <translation type="unfinished">There is no implementation for the requested facade class '%class'.</translation>
+    </message>
+    <message>
+      <source>A PHP error occured: %message</source>
+      <translation type="unfinished">A PHP error occured: %message</translation>
+    </message>
+    <message>
+      <source>Your recipe has been successfully stored.</source>
+      <translation type="unfinished">Your recipe has been successfully stored.</translation>
+    </message>
   </context>
   <context>
     <name>recipes</name>
