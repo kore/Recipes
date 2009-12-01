@@ -154,6 +154,16 @@ class arbitDispatcherConfiguration implements ezcMvcDispatcherConfiguration
 
         // No filters required yet.
         arbitUserController::checkPersitentLogin( $request );
+
+        // Always redirect to login view, for unauthorized users
+        if ( ( arbitSession::get( 'login' ) === false ) &&
+             ( $request->controller !== 'user' ) )
+        {
+            $redirect = clone $request;
+            $redirect->controller = 'user';
+            $redirect->action     = 'login';
+            return new ezcMvcInternalRedirect( $redirect );
+        }
     }
 
     /**
