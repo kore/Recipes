@@ -30,7 +30,7 @@
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitReceiptController extends arbitController
+class arbitRecipeController extends arbitController
 {
     /**
      * Index action
@@ -48,33 +48,33 @@ class arbitReceiptController extends arbitController
     /**
      * Overview action
      *
-     * Gives an overview on the currently available receipts
+     * Gives an overview on the currently available recipes
      *
      * @param arbitRequest $request
      * @return arbitViewModel
      */
     public function overview( arbitRequest $request )
     {
-        return new arbitViewUserMessageModel( 'Hello Receipts!' );
+        return new arbitViewUserMessageModel( 'Hello Recipes!' );
     }
 
     /**
      * Overview action
      *
-     * Gives an overview on the currently available receipts
+     * Gives an overview on the currently available recipes
      *
      * @param arbitRequest $request
      * @return arbitViewModel
      */
     public function add( arbitRequest $request )
     {
-        $model = new arbitReceiptCreateModel();
+        $model = new arbitRecipeCreateModel();
 
         if ( arbitHttpTools::get( 'create' ) !== null )
         {
             try
             {
-                $issue = new arbitReceiptModel();
+                $issue = new arbitRecipeModel();
                 $issue->title      = arbitHttpTools::get( 'title' );
                 $issue->issueType  = arbitHttpTools::get( 'type' );
                 $issue->text       = arbitHttpTools::get( 'text' );

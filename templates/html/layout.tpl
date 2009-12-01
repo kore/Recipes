@@ -10,11 +10,11 @@
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
 
-    <title>Receipt Manager</title>
+    <title>Recipe Manager</title>
 </head>
 <body class="dashboard">
 	<h1>
-		<a href="{$root}/">Receipt Manager</a>
+		<a href="{$root}/">Recipe Manager</a>
 	</h1>
 
 	<div class="navigation">
@@ -28,9 +28,9 @@
 
         {if $model->loggedIn}
         <ul class="main">
-            <li><a href="{$root}/receipts/overview">Overview</a></li>
-            <li><a href="{$root}/receipts/tags">By Tag</a></li>
-            <li><a href="{$root}/receipts/add">Add receipt</a></li>
+            <li><a href="{$root}/recipes/overview">Overview</a></li>
+            <li><a href="{$root}/recipes/tags">By Tag</a></li>
+            <li><a href="{$root}/recipes/add">Add recipe</a></li>
         </ul>
         {/if}
 

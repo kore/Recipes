@@ -24,14 +24,14 @@
  */
 
 /**
- * Model struct representing receipt creation
+ * Model struct representing recipe creation
  *
  * @package Core
  * @subpackage View
  * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitReceiptCreateModel extends arbitViewModel
+class arbitRecipeCreateModel extends arbitViewModel
 {
     /**
      * Array containing the actual view data.
@@ -41,7 +41,7 @@ class arbitReceiptCreateModel extends arbitViewModel
     protected $properties = array(
         'errors'  => array(),
         'success' => null,
-        'receipt' => null,
+        'recipe' => null,
     );
 
     /**

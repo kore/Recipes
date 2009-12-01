@@ -140,10 +140,10 @@ class arbitViewModelDecorationDependencyInjectionManager
                 'showCoreUserModel',
             ),
 
-            // Core models for receipt handling
-            'arbitReceiptCreateModel' => array(
+            // Core models for recipe handling
+            'arbitRecipeCreateModel' => array(
                 'addContextInformation',
-                'showReceiptCreateModel',
+                'showRecipeCreateModel',
             ),
         ),
 

@@ -44,7 +44,7 @@ class arbitHttpRouter extends ezcMvcRouter
     {
         $this->routes[] = new arbitRoute( 'core', 'arbitMainController' );
         $this->routes[] = new arbitRoute( 'user', 'arbitUserController' );
-        $this->routes[] = new arbitRoute( 'receipts', 'arbitReceiptController' );
+        $this->routes[] = new arbitRoute( 'recipes', 'arbitRecipeController' );
         $this->routes[] = new arbitRoute( 'error', 'arbitErrorController' );
         arbitCacheRegistry::setCache( 'core' );
 

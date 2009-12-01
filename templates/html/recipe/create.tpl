@@ -1,6 +1,6 @@
 {use $model, $root = $model->request->root}
-{tr_context "receipts"}
-<h2>{tr "Add receipt"}</h2>
+{tr_context "recipes"}
+<h2>{tr "Add recipe"}</h2>
 
 {include arbit_get_template( 'html/core/errors.tpl' )
 	send $model->errors as $errors}
@@ -11,7 +11,7 @@
 <form method="post" action="{$root}/{$model->request->controller}/{$model->request->action}/add"
       onsubmit="return validateForm( this );">
 <fieldset>
-	<legend>{tr "Add receipt"}</legend>
+	<legend>{tr "Add recipe"}</legend>
 
 	<input type="hidden" name="_arbit_form_token" value="{arbit_form_token()}" />
 
@@ -74,7 +74,7 @@ var ingredient = 1;
 	</label>
 
 	<label>
-		<input type="submit" name="create" value="{tr "Add receipt"}" />
+		<input type="submit" name="create" value="{tr "Add recipe"}" />
 	</label>
 </fieldset>
 </form>

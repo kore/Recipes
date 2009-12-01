@@ -574,15 +574,15 @@ Actual behavior
       <translation type="unfinished">Hello World!</translation>
     </message>
     <message>
-      <source>Hello Receipts!</source>
-      <translation type="unfinished">Hello Receipts!</translation>
+      <source>Hello Recipes!</source>
+      <translation type="unfinished">Hello Recipes!</translation>
     </message>
   </context>
   <context>
-    <name>receipts</name>
+    <name>recipes</name>
     <message>
-      <source>Add receipt</source>
-      <translation type="unfinished">Add receipt</translation>
+      <source>Add recipe</source>
+      <translation type="unfinished">Add recipe</translation>
     </message>
     <message>
       <source>Name</source>

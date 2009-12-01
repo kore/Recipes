@@ -51,7 +51,7 @@ return array(
     'arbitExceptionNotFoundMarker'                       => 'classes/framework/exception_marker.php',
     'arbitControllerUnknownActionException'              => 'classes/controller/exception.php',
     'arbitMainController'                                => 'classes/controller/main.php',
-    'arbitReceiptController'                             => 'classes/controller/receipts.php',
+    'arbitRecipeController'                              => 'classes/controller/recipe.php',
     'arbitResult'                                        => 'classes/controller/result.php',
     'arbitRedirectResult'                                => 'classes/controller/redirect.php',
     'arbitUserController'                                => 'classes/controller/user.php',
@@ -198,7 +198,7 @@ return array(
     'arbitViewDataModel'                                 => 'classes/view/model/data.php',
     'arbitViewMainModel'                                 => 'classes/view/model/main.php',
     'arbitViewModuleModel'                               => 'classes/view/model/module.php',
-    'arbitReceiptCreateModel'                            => 'classes/view/model/receipt_create.php',
+    'arbitRecipeCreateModel'                             => 'classes/view/model/recipe_create.php',
     'arbitViewUserMessageModel'                          => 'classes/view/model/error.php',
     'arbitViewUserSuccessModel'                          => 'classes/view/model/success.php',
 );
