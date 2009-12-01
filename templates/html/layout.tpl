@@ -10,7 +10,16 @@
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
 
     <script src="{$root}/scripts/jquery-1.3.2.min.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery.autogrow.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
+    <script type="text/ecmascript">
+    // <![CDATA[ {literal}
+    $( document ).ready( function()
+    {
+        $( "textarea" ).autogrow();
+    } );
+    {/literal} // ]]>
+    </script>
 
     <title>Recipe Manager</title>
 </head>

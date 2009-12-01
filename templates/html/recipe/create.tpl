@@ -19,7 +19,7 @@
 		<h2><input type="text" class="required h1" name="name" value="{tr "Recipe title"}" /></h2>
 		<h4 class="subtitle">{tr "For"} <input type="text" name="amount" class="required number" value="4"/> {tr "persons"}.</h4>
     
-		<p><textarea name="description" rows="5">{tr "Short description of the recipe"}</textarea></p>
+		<p><textarea name="description" rows="3">{tr "Short description of the recipe"}</textarea></p>
 
         <h3>{tr "Ingredients"}</h3>
 
@@ -83,7 +83,7 @@ $( document ).ready( function()
             <dt>{tr "Cooking time"}</dt>
             <dd><input type="text" name="cooking" class="number" value="60"/> minutes</dd>
         </dl>
-		<p><textarea name="instructions" class="required" rows="10">{tr "Preparation instructions"}</textarea></p>
+		<p><textarea name="instructions" class="required" rows="5">{tr "Preparation instructions"}</textarea></p>
     </div>
 
 	<label>
