@@ -17,6 +17,26 @@
 		<a href="{$root}/">Receipt Manager</a>
 	</h1>
 
+	<div class="navigation">
+        <ul class="user">
+        {if $model->loggedIn}
+            <li><a href="{$root}/user/logout">Logout</a></li>
+        {else}
+            <li><a href="{$root}/user/login">Login</a></li>
+        {/if}
+        </ul>
+
+        {if $model->loggedIn}
+        <ul class="main">
+            <li><a href="{$root}/receipts/overview">Overview</a></li>
+            <li><a href="{$root}/receipts/tags">By Tag</a></li>
+            <li><a href="{$root}/receipts/new">Add receipt</a></li>
+        </ul>
+        {/if}
+
+        <div class="break"></div>
+	</div>
+
 	<div class="main">
         {raw arbit_decorate($model->view)}
 	</div>

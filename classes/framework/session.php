@@ -58,7 +58,7 @@ class arbitSession
      *
      * @var array
      */
-    protected static $project = 'core';
+    protected static $project = '__global';
 
     /**
      * Flag if the session currently is (still) writeable.
@@ -120,12 +120,12 @@ class arbitSession
         self::$writeable = true;
 
         self::$request = $request;
-        self::$project = $project = $request->controller;
+        // self::$project = $project = $request->controller;
 
         // Initialize project array, if required
-        if ( !isset( self::$backend[$project] ) )
+        if ( !isset( self::$backend[self::$project] ) )
         {
-            self::$backend[$project] = array();
+            self::$backend[self::$project] = array();
             self::resetSession();
         }
 

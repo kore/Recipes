@@ -50,6 +50,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+div.navigation ul li a {
+    font-size: .9em;
+}
+
 /* Color configuration
  *
  * - Dark:   #2c2827
@@ -67,6 +71,14 @@ a {
 	color: #915014;
 }
 
+div.navigation ul li,
+div.navigation ul li a {
+    background-color: #a18266;
+    color: #ffffff;
+}
+
+div.navigation ul li:hover,
+div.navigation ul li:hover a,
 form {
     background-color: #643525;
     color: #ffffff;
@@ -107,10 +119,11 @@ h1 a {
 	text-indent: -9999em;
 }
 
+div.navigation,
 div.main {
 	margin: 0em auto;
-    padding: 5px;
-    width: 792px;
+    padding: 10px;
+    width: 782px;
 	min-height: 20em;
 
 	background-image: url( "../images/body.png" );
@@ -124,6 +137,38 @@ div.footer {
 	height: 35px;
 
 	background-image: url( "../images/footer.png" );
+}
+
+/**
+ * Navigation bars
+ */
+
+div.navigation {
+    padding: 0px 15px;
+    width: 772px;
+	min-height: 0px;
+}
+
+div.navigation ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.navigation ul li {
+    float: left;
+    padding: 0px 2px 2px 2px;
+    margin: 0px 5px 0px 0px;
+
+    -moz-border-radius: 0px 0px 5px 5px;
+}
+
+div.navigation ul li a:hover {
+    text-decoration: none;
+}
+
+div.navigation ul.user li {
+    float: right;
+    margin: 0px 0px 0px 5px;
 }
 
 /**
