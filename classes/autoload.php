@@ -51,6 +51,7 @@ return array(
     'arbitExceptionNotFoundMarker'                       => 'classes/framework/exception_marker.php',
     'arbitControllerUnknownActionException'              => 'classes/controller/exception.php',
     'arbitMainController'                                => 'classes/controller/main.php',
+    'arbitReceiptController'                             => 'classes/controller/receipts.php',
     'arbitResult'                                        => 'classes/controller/result.php',
     'arbitRedirectResult'                                => 'classes/controller/redirect.php',
     'arbitUserController'                                => 'classes/controller/user.php',

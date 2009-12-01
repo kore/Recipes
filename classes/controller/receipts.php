@@ -1,6 +1,6 @@
 <?php
 /**
- * Arbit HTTP base router
+ * arbit core controller
  *
  * This file is part of arbit.
  *
@@ -23,32 +23,39 @@
  */
 
 /**
- * Arbit HTTP base router
+ * Main controller for the arbit project tracker, implementing all user and
+ * group related functionality.
  *
  * @package Core
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitHttpRouter extends ezcMvcRouter
+class arbitReceiptController extends arbitController
 {
     /**
-     * User implemented method that should provide all the routes.
+     * Index action
      *
-     * It should return an array of objects that implement the ezcMvcRoute
-     * interface. This could be objects of the ezcMvcRegexpRoute class for
-     * example.
+     * Dispatches to the default action
      *
-     * @return array(ezcMvcRoute)
+     * @param arbitRequest $request
+     * @return arbitViewModel
      */
-    public function createRoutes()
+    public function index( arbitRequest $request )
     {
-        $this->routes[] = new arbitRoute( 'core', 'arbitMainController' );
-        $this->routes[] = new arbitRoute( 'user', 'arbitUserController' );
-        $this->routes[] = new arbitRoute( 'receipts', 'arbitReceiptController' );
-        $this->routes[] = new arbitRoute( 'error', 'arbitErrorController' );
-        arbitCacheRegistry::setCache( 'core' );
+        return $this->overview( $request );
+    }
 
-        return $this->routes;
+    /**
+     * Overview action
+     *
+     * Gives an overview on the currently available receipts
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function overview( arbitRequest $request )
+    {
+        return new arbitViewUserMessageModel( 'Hello Receipts!' );
     }
 }
 

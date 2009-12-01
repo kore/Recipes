@@ -573,5 +573,9 @@ Actual behavior
       <source>Hello World!</source>
       <translation type="unfinished">Hello World!</translation>
     </message>
+    <message>
+      <source>Hello Receipts!</source>
+      <translation type="unfinished">Hello Receipts!</translation>
+    </message>
   </context>
 </TS>
