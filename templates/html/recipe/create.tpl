@@ -85,9 +85,9 @@ $( document ).ready( function()
             // Fill up ingredient items with existing data
             $.each( values, function( key, properties )
             {
-                if ( key > 2 )
+                if ( key > 1 )
                 {
-                    addIngredientBlock();
+                    addIngredient( currentGroup );
                 }
 
                 $.each( properties, function( name, value )
