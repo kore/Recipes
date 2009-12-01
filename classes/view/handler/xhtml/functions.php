@@ -67,6 +67,11 @@ class arbitViewXHtmlTemplateFunctions
                 $def->class = 'arbitSession';
                 $def->method = 'getFormToken';
                 return $def;
+            case 'json_encode':
+                $def = new ezcTemplateCustomFunctionDefinition();
+                $def->class = null;
+                $def->method = 'json_encode';
+                return $def;
         }
 
         return false;

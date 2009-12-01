@@ -41,7 +41,7 @@
         <ul class="main">
             <li><a href="{$root}/recipes/overview">Overview</a></li>
             <li><a href="{$root}/recipes/tags">By Tag</a></li>
-            <li><a href="{$root}/recipes/add">Add recipe</a></li>
+            <li><a href="{$root}/recipes/edit">Add recipe</a></li>
         </ul>
         {/if}
 

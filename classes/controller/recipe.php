@@ -106,40 +106,51 @@ class arbitRecipeController extends arbitController
      * @param arbitRequest $request
      * @return arbitViewModel
      */
-    public function add( arbitRequest $request )
+    public function edit( arbitRequest $request )
     {
-        $model = new arbitRecipeCreateModel();
+        $model  = new arbitRecipeCreateModel();
+        $id     = $request->subaction !== 'index' ? $request->subaction : null;
+        $recipe = new arbitRecipeModel( $id );
 
-        if ( arbitHttpTools::get( 'create' ) !== null )
+        if ( arbitHttpTools::get( 'store' ) !== null )
         {
             try
             {
-                $issue = new arbitRecipeModel();
-                $issue->title        = arbitHttpTools::get( 'title' );
-                $issue->amount       = (int) arbitHttpTools::get( 'amount', arbitHttpTools::TYPE_NUMERIC );
-                $issue->description  = arbitHttpTools::get( 'description' );
-                $issue->ingredients  = $this->convertIngredientList( arbitHttpTools::get( 'ingredients', arbitHttpTools::TYPE_ARRAY ) );
-                $issue->preparation  = (int) arbitHttpTools::get( 'preparation', arbitHttpTools::TYPE_NUMERIC );
-                $issue->cooking      = (int) arbitHttpTools::get( 'cooking', arbitHttpTools::TYPE_NUMERIC );
-                $issue->instructions = arbitHttpTools::get( 'instructions' );
-                $issue->tags         = array();
-                $issue->create();
-                $issue->storeChanges();
+                $recipe->title        = arbitHttpTools::get( 'title' );
+                $recipe->amount       = (int) arbitHttpTools::get( 'amount', arbitHttpTools::TYPE_NUMERIC );
+                $recipe->description  = arbitHttpTools::get( 'description' );
+                $recipe->ingredients  = $this->convertIngredientList( arbitHttpTools::get( 'ingredients', arbitHttpTools::TYPE_ARRAY ) );
+                $recipe->preparation  = (int) arbitHttpTools::get( 'preparation', arbitHttpTools::TYPE_NUMERIC );
+                $recipe->cooking      = (int) arbitHttpTools::get( 'cooking', arbitHttpTools::TYPE_NUMERIC );
+                $recipe->instructions = arbitHttpTools::get( 'instructions' );
+                $recipe->tags         = array();
+
+                // Force creation, if it is a new recipe
+                if ( $id === null )
+                {
+                    $recipe->create();
+                    $id = $recipe->_id;
+                }
+
+                $recipe->storeChanges();
 
                 $model->success = array( new arbitViewUserMessageModel( 'Your recipe has been successfully stored.' ) );
 
-                // Assigne issue to model to keep already validated data.
-                $model->issue = new arbitRecipeViewModel( $issue );
-
-                // Update issue in search index
+                // Update recipe in search index
                 $search = $this->getSearchSession( $request );
-                $search->index( $issue );
+                $search->index( $recipe );
                 arbitCacheRegistry::getCache()->clearCache( 'tracker_reports' );
             }
             catch ( arbitException $e )
             {
                 $model->errors = array( $e );
             }
+        }
+
+        // Assign recipe to model to keep already validated data.
+        if ( $id )
+        {
+            $model->recipe = new arbitRecipeViewModel( $recipe );
         }
 
         return $model;
