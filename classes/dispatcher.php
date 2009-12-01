@@ -142,7 +142,10 @@ class arbitDispatcherConfiguration implements ezcMvcDispatcherConfiguration
         ezcLog::getInstance()->log( "Inferenced route: {$routeInfo->controllerClass}::{$routeInfo->action}.", ezcLog::INFO );
 
         // Set current project / controller dependant default controller
-        arbitCacheRegistry::setDefaultCache( $request->controller );
+        arbitCacheRegistry::setDefaultCache( 'core' );
+
+        // Initialize database connection
+        arbitFacadeManager::selectProject( 'core' );
 
         // Start session, within currently selected project / controller
         // context

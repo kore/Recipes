@@ -12,7 +12,7 @@
 {elseif $model->user->valid === "1"}
 	<p>
 		Your account has been activated. Feel free to <a
-		href="{$root}/{$model->request->controller}/core/login">login now</a>.
+		href="{$root}/{$model->request->controller}/login">login now</a>.
 	</p>
 {else}
 	<p>
@@ -21,7 +21,7 @@
 		and login afterwards.
 	</p>
 	<p>
-		You can <a href="{$root}/{$model->request->controller}/core/login">login
+		You can <a href="{$root}/{$model->request->controller}/login">login
 		here</a> after you have completed the registration process.
 	</p>
 {/if}

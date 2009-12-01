@@ -162,6 +162,27 @@ class arbitViewModelDecorationDependencyInjectionManager
         ),
 
         /**
+         * For the email handler we only need to decorate those structures,
+         * which actually send via mail, but there is no general way to format
+         * those mails, and they should all be customizeable through templates.
+         */
+        'arbitViewEmailHandler' => array(
+            // Main controller view model decorators
+            'arbitViewModel' => array(
+                // This just causes a runtime exception
+                'showDefaultModel',
+            ),
+            'arbitViewErrorContextModel' => array(
+                'addContextInformation',
+                'showError',
+            ),
+            'arbitViewCoreUserRegisteredModel' => array(
+                'addContextInformation',
+                'showCoreUserRegisteredModel',
+            ),
+        ),
+
+        /**
          * The XML display handler does only need special assignements for
          * custom values. Most stff should just be ahndled by the default
          * decorator which serializes all PHP structures to XML.

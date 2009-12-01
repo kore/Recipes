@@ -5,19 +5,19 @@
 <legend>Password registration</legend>
 
 <label>
-	<input type="text" name="login" value="{$values['login']}" />
+	<input type="text" class="required" name="login" value="{$values['login']}" />
 	Username
 </label>
 <label>
-	<input type="password" name="password_0" />
+	<input type="password" class="required" name="password_0" />
 	Password
 </label>
 <label>
-	<input type="password" name="password_1" />
+	<input type="password" class="required" name="password_1" />
 	Repeat password
 </label>
 <label>
-	<input type="text" name="email" value="{$values['email']}" />
+	<input type="text" class="required" name="email" value="{$values['email']}" />
 	Email
 </label>
 

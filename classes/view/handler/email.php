@@ -47,11 +47,6 @@ class arbitViewEmailHandler extends arbitTemplateViewHandler
         // View models
         'showError'                     => 'email/exception.tpl',
         'showCoreUserRegisteredModel'   => 'email/core/user/registered.tpl',
-
-        // Signal structs
-        'showDefaultSignal'             => 'email/core/signal/default.tpl',
-        'showVersionUpdateStruct'       => 'email/core/signal/versions.tpl',
-        'showComponentsUpdateStruct'    => 'email/core/signal/components.tpl',
     );
 
     /**

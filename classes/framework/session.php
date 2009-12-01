@@ -218,33 +218,10 @@ class arbitSession
         // Prevent from session fixation
         self::regenerateId();
 
-        // Emit signal about logged in user
-        arbitSignalSlot::emit(
-            'coreLoginUser',
-            new arbitCoreLoginUserStruct( $user )
-        );
-
         // Store important user data directly in session
         self::set( 'login',       $user->_id );
         self::set( 'permissions', $user->privileges );
         self::set( 'settings',    $user->settings ? $user->settings : array() );
-
-        // Special permission handling for administrators.
-        $conf = arbitBackendIniConfigurationManager::getProjectConfiguration( self::$project );
-        if ( in_array( $user->_id, $conf->administrators ) )
-        {
-            $privileges = array();
-            foreach ( arbitModuleManager::getPermissions() as $module => $permissions )
-            {
-                $privileges = array_merge(
-                    $privileges,
-                    array_keys( $permissions )
-                );
-            }
-
-            // Assign ALL available permissions to administrators
-            self::set( 'permissions', $privileges );
-        }
 
         return true;
     }
@@ -426,7 +403,9 @@ class arbitSession
 
         if ( isset( self::$backend[self::$project][$key] ) )
         {
-            unset( self::$backend[self::$project][$key] );
+            $data = self::$backend[self::$project];
+            unset( $data[$key] );
+            self::$backend[self::$project] = $data;
         }
     }
 

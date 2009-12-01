@@ -63,12 +63,6 @@ abstract class arbitCoreModuleUserAuthentification extends arbitController
         $user->valid     = $this->getValidationKey();
         $user->storeChanges();
 
-        // Emit signal about new user
-        arbitSignalSlot::emit(
-            'coreNewUser',
-            new arbitCoreNewUserStruct( $user )
-        );
-
         // Assign user to default group for all registered users
         try
         {
@@ -94,8 +88,7 @@ abstract class arbitCoreModuleUserAuthentification extends arbitController
 
         // Redirect to registration success overview
         $redirect = clone $request;
-        $redirect->action    = 'core';
-        $redirect->subaction = 'registered';
+        $redirect->action    = 'registered';
         $redirect->path      = '/' . $user->_id;
         return new ezcMvcInternalRedirect( $redirect );
     }
@@ -144,23 +137,13 @@ abstract class arbitCoreModuleUserAuthentification extends arbitController
             );
         }
 
-        // Try to redirect the user to a site, which requested the login.
-        try
-        {
-            $url = arbitSession::get( 'login_redirect' );
-            arbitSession::remove( 'login_redirect' );
-            arbitHttpTools::header( 'Location: ' . $url );
-            exit( 0 );
-        }
-        catch ( arbitPropertyException $e )
-        {
-            // otherwise just redirect to some default URL
-            $redirect = clone $request;
-            $redirect->action    = 'index';
-            $redirect->subaction = 'index';
-            $redirect->path      = null;
-            return new ezcMvcInternalRedirect( $redirect );
-        }
+        // Just redirect to some default URL
+        $redirect = clone $request;
+        $redirect->controller = 'core';
+        $redirect->action     = 'index';
+        $redirect->subaction  = 'index';
+        $redirect->path       = null;
+        return new ezcMvcInternalRedirect( $redirect );
     }
 
     /**

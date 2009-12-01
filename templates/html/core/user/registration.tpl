@@ -14,16 +14,7 @@
 </ul>
 {/if}
 
-<ul class="authtypes">
-{foreach $model->mechanisms as $name => $type}
-	<li {if $type === $model->selected}class="selected"{/if}
-		id="{$type}"><a href="{$root}/{$project}/core/register/{$type}" title="{$name}">
-		{$name}
-	</a></li>
-{/foreach}
-</ul>
-
-<form method="post" action="{$root}/{$project}/core/register/{$model->selected}">
+<form method="post" action="{$root}/{$project}/register/{$model->selected}" onsubmit="return validateForm( this );">
 	<fieldset>
 		{include arbit_get_template( 'html/core/user/registration/' . $model->selected . '.tpl' )}
 		<input type="hidden" name="_arbit_form_token" value="{arbit_form_token()}" />

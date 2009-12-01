@@ -48,7 +48,7 @@ class arbitUserController extends arbitController
      * @var array
      */
     protected $authMechanisms = array(
-        'password',
+        'password' => 'arbitCoreModuleUserPasswordAuthentification',
     );
 
     /**
@@ -129,7 +129,7 @@ class arbitUserController extends arbitController
 
             if ( is_array( $return ) )
             {
-                $model->content->errors = $return;
+                $model->errors = $return;
             }
         }
 
@@ -175,8 +175,9 @@ class arbitUserController extends arbitController
      */
     public function confirm( arbitRequest $request )
     {
-        list( $unused, $userId, $hash ) = explode( '/', $request->path );
-        $user = new arbitModelUser( $userId );
+        $userId = $request->subaction;
+        $hash   = substr( $request->path, 1 );
+        $user   = new arbitModelUser( $userId );
 
         // Check if the hash matches and update account then.
         if ( ( $hash !== '0' ) &&
@@ -184,12 +185,6 @@ class arbitUserController extends arbitController
         {
             $user->valid = '1';
             $user->storeChanges();
-
-            // Emit signal about confirmed account
-            arbitSignalSlot::emit(
-                'coreConfirmedUser',
-                new arbitCoreConfirmedUserStruct( $user )
-            );
         }
 
         // Display something
@@ -244,7 +239,7 @@ class arbitUserController extends arbitController
             $user->storeChanges();
 
             // Update user displayed in the view model
-            $model->content->user = new arbitViewUserModel( $user );
+            $model->user = new arbitViewUserModel( $user );
         }
 
         if ( ( arbitHttpTools::get( 'settings_change' ) !== null ) &&
@@ -259,7 +254,7 @@ class arbitUserController extends arbitController
             $user->storeChanges();
 
             // Update user displayed in the view model
-            $model->content->user = new arbitViewUserModel( $user );
+            $model->user = new arbitViewUserModel( $user );
         }
 
         return $model;
@@ -326,7 +321,7 @@ class arbitUserController extends arbitController
 
             if ( is_array( $return ) )
             {
-                $model->content->errors = $return;
+                $model->errors = $return;
             }
         }
 
@@ -352,8 +347,7 @@ class arbitUserController extends arbitController
 
         $redirect = clone $request;
         $redirect->controller = 'core';
-        $redirect->action     = 'dashboard';
-        $redirect->subaction  = 'index';
+        $redirect->action     = 'index';
         return new ezcMvcInternalRedirect( $redirect );
     }
 

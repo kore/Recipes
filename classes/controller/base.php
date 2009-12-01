@@ -56,9 +56,23 @@ abstract class arbitController extends ezcMvcController
 
         if ( method_exists( $this, $actionMethod ) )
         {
-            return new arbitResult(
-                $this->$actionMethod( $this->request )
-            );
+            $response = $this->$actionMethod( $this->request );
+
+            // If a internal redirect has been returned, directly pass it up.
+            if ( $response instanceof ezcMvcInternalRedirect )
+            {
+                return $response;
+            }
+
+            // If already a result object, directly pass up
+            if ( $response instanceof arbitResult )
+            {
+                return $response;
+            }
+
+            // Otherwise just return the module response directly, which may for
+            // example be a binary data response.
+            return new arbitResult( $response );
         }
         throw new arbitControllerUnknownActionException( $this->action );
     }
