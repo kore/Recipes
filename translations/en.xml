@@ -163,5 +163,17 @@
       <source>Edit recipe</source>
       <translation type="unfinished">Edit recipe</translation>
     </message>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">Search</translation>
+    </message>
+    <message>
+      <source>Issue search had no results.</source>
+      <translation type="unfinished">Issue search had no results.</translation>
+    </message>
+    <message>
+      <source>%number results in search for "%term"</source>
+      <translation type="unfinished">%number results in search for "%term"</translation>
+    </message>
   </context>
 </TS>

@@ -207,8 +207,11 @@ return array(
     'arbitViewRecipeEditModel'                           => 'classes/view/model/recipe_edit.php',
     'arbitViewRecipeTagsModel'                           => 'classes/view/model/recipe_tags.php',
     'arbitViewRecipeOverviewModel'                       => 'classes/view/model/recipe_overview.php',
+    'arbitViewRecipeSearchModel'                         => 'classes/view/model/recipe_search.php',
     'arbitViewRecipeTagModel'                            => 'classes/view/model/recipe_tag.php',
     'arbitViewRecipeViewModel'                           => 'classes/view/model/recipe_view.php',
+    'arbitViewSearchResultModel'                         => 'classes/view/model/search_result.php',
+    'arbitViewSearchResultDocumentModel'                 => 'classes/view/model/search_result_document.php',
     'arbitViewUserMessageModel'                          => 'classes/view/model/error.php',
     'arbitViewUserSuccessModel'                          => 'classes/view/model/success.php',
 );

@@ -23,7 +23,7 @@
     <p>
         The exception, which caused the error is:
     </p>
-    <code>
+    <pre>
         {$model->exception}
-    </code>
+    </pre>
 {/if}

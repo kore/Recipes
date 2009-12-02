@@ -54,6 +54,11 @@ div.navigation ul li a {
     font-size: .9em;
 }
 
+div.content ul.pager li a.selected,
+em {
+    font-weight: bold;
+}
+
 /* Color configuration
  *
  * - Dark:   #2c2827
@@ -61,6 +66,7 @@ div.navigation ul li a {
  * - Medium: #915014
  * - Light:  #a18266
  */
+div.content ul.pager li a,
 label textarea, label select, label input,
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6,
 form div.recipe,
@@ -69,6 +75,7 @@ body {
 	color: #2c2827;
 }
 
+div.content ul.pager li a.selected,
 a {
 	color: #915014;
 }
@@ -599,6 +606,26 @@ form div.recipe ul.ingredients ul input.ingredient {
     font-size: x-small !important;
     position:absolute;
     bottom:3px;
+}
+
+/**
+ * Pager formatting
+ */
+div.content ul.pager {
+    text-align: center;
+	list-style-type: none;
+}
+
+div.content ul.pager:before {
+    content: "[";
+}
+
+div.content ul.pager:after {
+    content: "]";
+}
+
+div.content ul.pager li {
+    display: inline;
 }
 
 /**

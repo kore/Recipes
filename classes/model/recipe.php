@@ -39,6 +39,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
      * @var array
      */
     protected $properties = array(
+        'id'           => null,
         'title'        => null,
         'amount'       => null,
         'description'  => null,
@@ -361,7 +362,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
      */
     public function setState( array $properties )
     {
-        $this->id = $properties['id'];
+        $this->properties['id'] = $this->id = $properties['id'];
     }
 }
 

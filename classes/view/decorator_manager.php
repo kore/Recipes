@@ -157,6 +157,10 @@ class arbitViewModelDecorationDependencyInjectionManager
                 'addContextInformation',
                 'showRecipeTagsModel',
             ),
+            'arbitViewRecipeSearchModel' => array(
+                'addContextInformation',
+                'showRecipeSearchModel',
+            ),
             'arbitViewRecipeTagModel' => array(
                 'addContextInformation',
                 'showRecipeTagModel',

@@ -5,8 +5,8 @@
 <ul>
 {foreach $model->recipes as $recipe}
     <li>
-        <h4><a href="{$root}/{$model->request->controller}/view/{$recipe->id}">{$recipe->title}</a></h4>
-        <p>{$recipe->description}</p>
+        {include arbit_get_template( 'html/recipe/view_short.tpl' )
+            send $model->request as $request, $recipe}
     </li>
 {/foreach}
 </ul>
