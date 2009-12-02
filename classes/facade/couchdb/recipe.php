@@ -256,7 +256,7 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
         }
         catch ( phpillowResponseConflictErrorException $e )
         {
-            throw new arbitFacadeRecipeExistsException( $name );
+            throw new arbitFacadeExistsException( $name );
         }
 
         // Return generated ID
