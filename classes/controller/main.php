@@ -42,7 +42,9 @@ class arbitMainController extends arbitController
      */
     public function index( arbitRequest $request )
     {
-        return new arbitViewUserMessageModel( 'Hello World!' );
+        $redirect = clone $request;
+        $redirect->controller = 'recipes';
+        return new ezcMvcInternalRedirect( $redirect );
     }
 
     /**
