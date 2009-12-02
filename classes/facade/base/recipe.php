@@ -35,9 +35,29 @@
 interface arbitRecipeFacade
 {
     /**
+     * Get tag list
+     *
+     * Return a list of tags, each associated with the number of occurences in 
+     * the recipes. Sorted by popularity.
+     *
+     * @return array
+     */
+    public function getTags();
+
+    /**
+     * Get recipes by tag
+     *
+     * Return the IDs of all recipes, which contain the given tag,
+     *
+     * @param string $tag
+     * @return array
+     */
+    public function getRecipesByTag( $tag );
+
+    /**
      * Get unit list
      *
-     * Return a lsit of units, starting with the provided characters. 
+     * Return a list of units, starting with the provided characters. 
      * Sorted by popularity
      *
      * @param string $string
@@ -48,7 +68,7 @@ interface arbitRecipeFacade
     /**
      * Get ingredient list
      *
-     * Return a lsit of ingredients, starting with the provided characters. 
+     * Return a list of ingredients, starting with the provided characters. 
      * Sorted by popularity
      *
      * @param string $string

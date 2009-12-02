@@ -35,6 +35,65 @@
 class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRecipeFacade
 {
     /**
+     * Get tag list
+     *
+     * Return a list of tags, each associated with the number of occurences in 
+     * the recipes.
+     *
+     * @return array
+     */
+    public function getTags()
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'tags', array(
+            'group' => true,
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $tags = array();
+        foreach ( $result->rows as $row )
+        {
+            $tags[$row['key']] = (int) is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+
+        return $tags;
+    }
+
+    /**
+     * Get recipes by tag
+     *
+     * Return the IDs of all recipes, which contain the given tag,
+     *
+     * @param string $tag
+     * @return array
+     */
+    public function getRecipesByTag( $tag )
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'tags', array(
+            'group' => false,
+            'key'   => $tag,
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $docs = array();
+        foreach ( $result->rows as $row )
+        {
+            $docs[] = is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+
+        return $docs;
+    }
+
+    /**
      * Get unit list
      *
      * Return a list of units, starting with the provided characters. 
@@ -47,9 +106,9 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
     {
         $issues = phpillowManager::getView( 'recipe' );
         $result = $issues->query( 'units', array(
-            'group' => true,
+            'group'    => true,
             'startkey' => $string,
-            'endkey' => $string . "\xE9\xA6\x99",
+            'endkey'   => $string . "\xE9\xA6\x99",
         ) );
 
         if ( !count( $result->rows ) )
@@ -80,9 +139,9 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
     {
         $issues = phpillowManager::getView( 'recipe' );
         $result = $issues->query( 'ingredients', array(
-            'group' => true,
+            'group'    => true,
             'startkey' => $string,
-            'endkey' => $string . "\xE9\xA6\x99",
+            'endkey'   => $string . "\xE9\xA6\x99",
         ) );
 
         if ( !count( $result->rows ) )

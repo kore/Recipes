@@ -76,6 +76,57 @@ class arbitRecipeModel extends arbitModelBase
     );
 
     /**
+     * Get tags
+     *
+     * Return a list of tags, each associated with the number of occurences in 
+     * the recipes.
+     *
+     * @return array
+     */
+    public static function getTags()
+    {
+        $recipe = arbitFacadeManager::getFacade( 'recipe' );
+        return $recipe->getTags();
+    }
+
+    /**
+     * Get most popular tags
+     *
+     * Return a the $count most popular tags, sorted alphabetcally.
+     *
+     * @return array
+     */
+    public static function getMostPopularTags( $count = 20 )
+    {
+        $recipe = arbitFacadeManager::getFacade( 'recipe' );
+        $tags = $recipe->getTags();
+        arsort( $tags );
+        $mostPopular = array_splice( $tags, 0, $count );
+        ksort( $mostPopular );
+        return $mostPopular;
+    }
+
+    /**
+     * Get recipes by tag
+     *
+     * Return recipe models of all recipes, which contain the given tag,
+     *
+     * @param string $tag
+     * @return array
+     */
+    public function getRecipesByTag( $tag )
+    {
+        $recipe  = arbitFacadeManager::getFacade( 'recipe' );
+        $recipes = $recipe->getRecipesByTag( $tag );
+        return array_map( function( $id )
+            {
+                return new arbitRecipeModel( $id );
+            },
+            $recipes
+        );
+    }
+
+    /**
      * Get unit list
      *
      * Return a list of units, starting with the provided characters. 

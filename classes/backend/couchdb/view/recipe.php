@@ -53,6 +53,10 @@ class arbitBackendCouchDbRecipeView extends phpillowFileView
                 'map'    => __DIR__ . '/map/recipe_ingredients.js',
                 'reduce' => __DIR__ . '/reduce/sum.js',
             ),
+            'tags' => array(
+                'map'    => __DIR__ . '/map/recipe_tags.js',
+                'reduce' => __DIR__ . '/reduce/sum.js',
+            ),
         );
     }
 

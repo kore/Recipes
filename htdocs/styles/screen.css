@@ -225,15 +225,15 @@ h2 {
 }
 
 h3 {
-	font-size: 1.4em;
+	font-size: 1.3em;
 }
 
 h4 {
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 h5 {
-	font-size: 1.1em;
+	font-size: 1em;
 }
 
 div.content div.body {
@@ -377,6 +377,60 @@ div.content dd {
 	margin-left: 21%;
 	width: 79%;
 	padding: .1em .1em .5em .1em;
+}
+
+div.content ul.cloud {
+    text-align: center;
+	list-style-type: none;
+    margin: .5em 0em;
+    padding: 0em;
+}
+
+div.content ul.cloud li {
+    display: inline;
+}
+
+div.content ul.cloud li.tag0 a {
+    font-size: .6em;
+}
+
+div.content ul.cloud li.tag1 a {
+    font-size: .8em;
+}
+
+div.content ul.cloud li.tag2 a {
+    font-size: 1em;
+}
+
+div.content ul.cloud li.tag3 a {
+    font-size: 1.2em;
+}
+
+div.content ul.cloud li.tag4 a {
+    font-size: 1.4em;
+}
+
+div.content ul.cloud li.tag5 a {
+    font-size: 1.6em;
+}
+
+.content table.tags {
+    border: none;
+}
+
+.content table.tags td {
+    border: none;
+    width: 33%;
+    vertical-align: top;
+}
+
+.content table.tags td > ul {
+    list-style-type: none;
+    padding-left: 0em;
+}
+
+.content table.tags td li {
+	padding: 0em;
 }
 
 /**

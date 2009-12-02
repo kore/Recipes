@@ -59,6 +59,22 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Tag listing action
+     *
+     * Provides an overview on the used tags
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function tags( arbitRequest $request )
+    {
+        return new arbitViewRecipeTagsModel(
+            arbitRecipeModel::getMostPopularTags( 20 ),
+            arbitRecipeModel::getTags()
+        );
+    }
+
+    /**
      * Units actions
      *
      * Returns a list of the units, starting with the string, specified 

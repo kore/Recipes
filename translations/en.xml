@@ -696,5 +696,17 @@ Actual behavior
       <source>cake, easter, vanilla</source>
       <translation type="unfinished">cake, easter, vanilla</translation>
     </message>
+    <message>
+      <source>Tags</source>
+      <translation type="unfinished">Tags</translation>
+    </message>
+    <message>
+      <source>Most popular</source>
+      <translation type="unfinished">Most popular</translation>
+    </message>
+    <message>
+      <source>All tags</source>
+      <translation type="unfinished">All tags</translation>
+    </message>
   </context>
 </TS>
