@@ -19,6 +19,7 @@
 		<h2><input type="text" class="required h1" name="title" value="{if $model->recipe}{$model->recipe->title}{else}{tr "Recipe title"}{/if}" /></h2>
 		<h4 class="subtitle">{tr "For"} <input type="text" name="amount" class="required number" value="{if $model->recipe}{$model->recipe->amount}{else}4{/if}"/> {tr "persons"}.</h4>
     
+		<p>Tagged with: <input type="text" class="tags" name="tags" value="{if $model->recipe}{str_join( ', ', $model->recipe->tags)}{else}{tr "cake, easter, vanilla"}{/if}" /></p>
 		<p><textarea name="description" rows="3">{if $model->recipe}{$model->recipe->description}{else}{tr "Short description of the recipe"}{/if}</textarea></p>
 
         <h3>{tr "Ingredients"}</h3>

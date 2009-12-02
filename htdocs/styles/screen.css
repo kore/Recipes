@@ -484,6 +484,10 @@ form div.recipe input.number {
     text-align: right;
 }
 
+form div.recipe input.tags {
+    width: auto;
+}
+
 .recipe h1, .recipe h2, .recipe h3, .recipe h4, .recipe h5, .recipe h6 {
 	margin: .4em 0em .2em .0em;
 }

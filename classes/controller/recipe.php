@@ -159,7 +159,7 @@ class arbitRecipeController extends arbitController
                 $recipe->preparation  = (int) arbitHttpTools::get( 'preparation', arbitHttpTools::TYPE_NUMERIC );
                 $recipe->cooking      = (int) arbitHttpTools::get( 'cooking', arbitHttpTools::TYPE_NUMERIC );
                 $recipe->instructions = arbitHttpTools::get( 'instructions' );
-                $recipe->tags         = array();
+                $recipe->tags         = preg_split( '(\s*,\s*)', trim( arbitHttpTools::get( 'tags' ) ) );
 
                 // Force creation, if it is a new recipe
                 if ( $id === null )

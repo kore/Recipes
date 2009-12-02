@@ -692,5 +692,9 @@ Actual behavior
       <source>Are you sure that you want to remove the ingredient?</source>
       <translation type="unfinished">Are you sure that you want to remove the ingredient?</translation>
     </message>
+    <message>
+      <source>cake, easter, vanilla</source>
+      <translation type="unfinished">cake, easter, vanilla</translation>
+    </message>
   </context>
 </TS>
