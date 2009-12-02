@@ -171,11 +171,15 @@ class arbitRecipeController extends arbitController
             {
                 foreach ( array( 'amount', 'unit', 'ingredient' ) as $field )
                 {
-                    if ( !isset( $ingredient[$field] ) ||
-                         empty( $ingredient[$field] ) )
+                    if ( !isset( $ingredient[$field] ) )
                     {
                         continue 2;
                     }
+                }
+
+                if ( empty( $ingredient['ingredient'] ) )
+                {
+                    continue;
                 }
 
                 $return[$title][] = $ingredient;
