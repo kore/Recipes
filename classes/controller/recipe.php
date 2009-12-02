@@ -185,6 +185,69 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Get search seassion
+     *
+     * Get the search session based on the configuration values.
+     *
+     * @param arbitRequest $request
+     * @return ezcSearchSession
+     */
+    protected function getSearchSession( arbitRequest $request )
+    {
+        $path = ARBIT_CACHE_PATH . 'search/' . $request->controller . '/';
+
+        if ( !file_exists( $path ) )
+        {
+            mkdir( $path, 0777, true );
+            Zend_Search_Lucene::create( $path );
+        }
+
+        $handler = new ezcSearchZendLuceneHandler( $path );
+        
+        $manager = new ezcSearchXmlManager( __DIR__ . '/../../search/' );
+        return new ezcSearchSession( $handler, $manager );
+    }
+
+    /**
+     * Search action
+     *
+     * Search bug reports
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModuleModel
+     */
+    public function search( arbitRequest $request )
+    {
+        $searchTerm = isset( $request->variables['search'] ) ? $request->variables['search'] : null;
+
+        if ( $searchTerm !== null )
+        {
+            $offset = isset( $request->variables['offset'] ) ? (int) $request->variables['offset'] : 0;
+            $limit  = 10;
+         
+            $search = $this->getSearchSession( $request );
+            $query  = $search->createFindQuery( 'arbitRecipeModel' );
+
+            $queryBuilder  = new ezcSearchQueryBuilder();
+            $queryBuilder->parseSearchQuery( $query, $searchTerm, array( 'title', 'description', 'instructions' ) ); 
+            $query->offset = $offset;
+            $query->limit  = 10;
+            $result        = $search->find( $query );
+        }
+        else
+        {
+            $result = new ezcSearchResult();
+            $offset = 0;
+        }
+
+        return new arbitViewRecipeSearchModel(
+            $searchTerm,
+            new arbitViewSearchResultModel( $result ),
+            $offset
+        );
+    }
+
+    /**
      * Edit action
      *
      * Allows registered users to edit a recipe
@@ -225,7 +288,6 @@ class arbitRecipeController extends arbitController
                 // Update recipe in search index
                 $search = $this->getSearchSession( $request );
                 $search->index( $recipe );
-                arbitCacheRegistry::getCache()->clearCache( 'tracker_reports' );
             }
             catch ( arbitException $e )
             {

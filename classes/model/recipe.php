@@ -31,7 +31,7 @@
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitRecipeModel extends arbitModelBase
+class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
 {
     /**
      * Array containing the recipes properties
@@ -328,6 +328,40 @@ class arbitRecipeModel extends arbitModelBase
                 parent::__set( $property, $value );
                 break;
         }
+    }
+
+    /**
+     * Returns all the object's properties so that they can be stored or indexed.
+     *
+     * @return array(string=>mixed)
+     */
+    public function getState()
+    {
+        $this->fetchRecipeData();
+        $properties = array_diff_key(
+            $this->properties,
+            array(
+                'amount'      => true,
+                'preparation' => true,
+                'cooking'     => true,
+                'ingredients' => true,
+                'user'        => true,
+                'tags'        => true,
+            )
+        );
+        $properties['id'] = $this->id;
+
+        return $properties;
+    }
+
+    /**
+     * Accepts an array containing data for one or more of the class' properties.
+     *
+     * @param array $properties
+     */
+    public function setState( array $properties )
+    {
+        $this->id = $properties['id'];
     }
 }
 
