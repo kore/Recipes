@@ -32,6 +32,10 @@
       <source>Your repeated password did not match the new password.</source>
       <translation type="unfinished">Your repeated password did not match the new password.</translation>
     </message>
+    <message>
+      <source>A document with the name '%name' already exists.</source>
+      <translation type="unfinished">A document with the name '%name' already exists.</translation>
+    </message>
   </context>
   <context>
     <name>recipes</name>
