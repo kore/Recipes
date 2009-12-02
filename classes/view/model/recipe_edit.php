@@ -31,7 +31,7 @@
  * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitRecipeCreateModel extends arbitViewModel
+class arbitViewRecipeEditModel extends arbitViewModel
 {
     /**
      * Array containing the actual view data.

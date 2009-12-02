@@ -176,7 +176,7 @@ class arbitRecipeController extends arbitController
      */
     public function edit( arbitRequest $request )
     {
-        $model  = new arbitRecipeCreateModel();
+        $model  = new arbitViewRecipeEditModel();
         $id     = $request->subaction !== 'index' ? $request->subaction : null;
         $recipe = new arbitRecipeModel( $id );
 

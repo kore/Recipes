@@ -141,9 +141,9 @@ class arbitViewModelDecorationDependencyInjectionManager
             ),
 
             // Core models for recipe handling
-            'arbitRecipeCreateModel' => array(
+            'arbitViewRecipeEditModel' => array(
                 'addContextInformation',
-                'showRecipeCreateModel',
+                'showRecipeEditModel',
             ),
             'arbitViewRecipeTagsModel' => array(
                 'addContextInformation',
