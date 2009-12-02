@@ -1,8 +1,5 @@
 {use $model, $recipe = $model->recipe, $root = $model->request->root}
 {tr_context "recipes"}
-<h2>{$recipe->title}</h2>
-<h4 class="subtitle">{tr "for %count persons" vars "count" => $recipe->amount}</h4>
-
 {if $recipe->tags}
 <ul class="tags">
 {foreach $recipe->tags as $tag}
@@ -10,6 +7,9 @@
 {/foreach}
 </ul>
 {/if}
+
+<h2>{$recipe->title} <a class="edit" href="{$root}/{$model->request->controller}/edit/{$recipe->id}">[{tr "Edit recipe"}]</a></h2>
+<h4 class="subtitle">{tr "for %count persons" vars "count" => $recipe->amount}</h4>
 
 <p>{$recipe->description}</p>
 
@@ -41,3 +41,5 @@
 {else}
     {arbit_simple_markup( $recipe->instructions )}
 {/if}
+
+<a href="{$root}/{$model->request->controller}/edit/{$recipe->id}">{tr "Edit recipe"}</a>

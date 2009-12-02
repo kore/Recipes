@@ -1,6 +1,6 @@
 {use $model, $root = $model->request->root}
 {tr_context "recipes"}
-<h2>{tr "Add recipe"}</h2>
+<h2>{tr "Edit recipe"}</h2>
 
 {include arbit_get_template( 'html/core/errors.tpl' )
 	send $model->errors as $errors}
@@ -11,7 +11,7 @@
 <form method="post" action="{$root}/{$model->request->controller}/{$model->request->action}{if $model->recipe}/{$model->recipe->id}{/if}"
       onsubmit="return validateForm( this );">
 <fieldset>
-	<legend>{tr "Add recipe"}</legend>
+	<legend>{tr "Edit recipe"}</legend>
 
 	<input type="hidden" name="_arbit_form_token" value="{arbit_form_token()}" />
 

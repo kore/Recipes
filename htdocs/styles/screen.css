@@ -92,12 +92,15 @@ form {
     color: #ffffff;
 }
 
+.content ul.tags,
 .content div.jsonSuggestResults,
 label textarea, label select, label input {
-    background-color: #eeeeef;
+    background-color: #f6f3f3;
     border: 1px solid #915014;
 }
 
+form div.recipe textarea:focus, form div.recipe input:focus,
+form div.recipe textarea.errnous, form div.recipe input.errnous,
 label textarea.errnous, label select.errnous, label input.errnous,
 label textarea:focus, label select:focus, label input:focus {
 	background-color: #ffffff;
@@ -431,6 +434,17 @@ div.content ul.cloud li.tag5 a {
 
 .content table.tags td li {
 	padding: 0em;
+}
+
+.content ul.tags {
+    width: 20%;
+    float:right;
+    padding: .2em;
+    list-style-type: none;
+}
+
+.content h2 a.edit {
+    font-size: .6em;
 }
 
 /**
