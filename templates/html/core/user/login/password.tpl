@@ -1,25 +1,26 @@
 {use $root, $project}
+{tr_context "recipes"}
 {var $values = arbit_get_form_values( array(
     'login'  => 'string',
     'keepme' => 'string',
 ) )}
-<legend>Password login</legend>
+<legend>{tr "Password login"}</legend>
 
 <label>
 	<input type="text" class="required" name="login" value="{$values['login']}" />
-	Username
+	{tr "Username"}
 </label>
 <label>
 	<input type="password" class="required" name="password" />
-	Password
+	{tr "Password"}
 </label>
 <label>
 	<input type="checkbox" name="keepme" value="1" {if $values['keepme']}checked="checked"{/if} />
-	Keep me logged in
+	{tr "Keep me logged in"}
 </label>
 
 <label>
-	<input type="submit" name="submit" value="Login" />
+	<input type="submit" name="submit" value="{tr "Login"}" />
 </label>
 
 <div class="break"></div>

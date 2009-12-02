@@ -158,13 +158,13 @@ $( document ).ready( function()
         <h3>{tr "Instructions"}</h3>
         <dl>
             <dt>{tr "Preparation time"}</dt>
-            <dd><input type="text" name="preparation" class="number" value="{if $model->recipe}{$model->recipe->preparation}{else}0{/if}"/> minutes</dd>
+            <dd><input type="text" name="preparation" class="number" value="{if $model->recipe}{$model->recipe->preparation}{else}0{/if}"/> {tr "minutes"}</dd>
             <dt>{tr "Cooking time"}</dt>
-            <dd><input type="text" name="cooking" class="number" value="{if $model->recipe}{$model->recipe->cooking}{else}60{/if}"/> minutes</dd>
+            <dd><input type="text" name="cooking" class="number" value="{if $model->recipe}{$model->recipe->cooking}{else}60{/if}"/> {tr "minutes"}</dd>
         </dl>
 		<p><textarea name="instructions" class="required" rows="5">{if $model->recipe}{$model->recipe->instructions}{else}{tr "Preparation instructions"}{/if}</textarea></p>
 
-		<p>Tagged with: <input type="text" class="tags" name="tags" value="{if $model->recipe}{str_join( ', ', $model->recipe->tags)}{else}{tr "cake, easter, vanilla"}{/if}" /></p>
+		<p>{tr "Tagged with:"} <input type="text" class="tags" name="tags" value="{if $model->recipe}{str_join( ', ', $model->recipe->tags)}{else}{tr "cake, easter, vanilla"}{/if}" /></p>
     </div>
 
 	<label>

@@ -1,7 +1,8 @@
 {use $model, $root = $model->request->root, $project = $model->request->controller}
-<h2>Login</h2>
+{tr_context "recipes"}
+<h2>{tr "Login"}</h2>
 <p>
-	Login with your credentials using the method you registered with.
+	{tr "Login with your credentials using the method you registered with."}
 </p>
 
 {include 'html/core/errors.tpl' 

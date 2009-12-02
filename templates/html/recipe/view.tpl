@@ -31,9 +31,9 @@
 
 <dl>
     <dt>{tr "Preparation time"}</dt>
-    <dd>{$recipe->preparation} minutes</dd>
+    <dd>{$recipe->preparation} {tr "minutes"}</dd>
     <dt>{tr "Cooking time"}</dt>
-    <dd>{$recipe->cooking} minutes</dd>
+    <dd>{$recipe->cooking} {tr "minutes"}</dd>
 </dl>
 
 {if $recipe->html}

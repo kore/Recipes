@@ -1,4 +1,5 @@
 {use $model, $root = $model->request->root}
+{tr_context "recipes"}
 <?xml version="1.0"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -26,23 +27,23 @@
 </head>
 <body class="dashboard">
 	<h1>
-		<a href="{$root}/">Recipe Manager</a>
+		<a href="{$root}/">{tr "Recipe Database"}</a>
 	</h1>
 
 	<div class="navigation">
         <ul class="user">
         {if $model->loggedIn}
-            <li><a href="{$root}/user/logout">Logout</a></li>
+            <li><a href="{$root}/user/logout">{tr "Logout"}</a></li>
         {else}
-            <li><a href="{$root}/user/login">Login</a></li>
+            <li><a href="{$root}/user/login">{tr "Login"}</a></li>
         {/if}
         </ul>
 
         {if $model->loggedIn}
         <ul class="main">
-            <li><a href="{$root}/recipes/overview">Overview</a></li>
-            <li><a href="{$root}/recipes/tags">By Tag</a></li>
-            <li><a href="{$root}/recipes/edit">Add recipe</a></li>
+            <li><a href="{$root}/recipes/overview">{tr "Overview"}</a></li>
+            <li><a href="{$root}/recipes/tags">{tr "By Tag"}</a></li>
+            <li><a href="{$root}/recipes/edit">{tr "Add recipe"}</a></li>
         </ul>
         {/if}
 
