@@ -544,7 +544,6 @@ form div.recipe {
 form div.recipe textarea,
 form div.recipe input {
     font-size: inherit;
-    font-family: inherit;
     font-weight: inherit;
     color: inherit;
     background-color: inherit;
