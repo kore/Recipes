@@ -175,29 +175,6 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     }
 
     /**
-     * Method called to store changes to the model.
-     *
-     * Method called to store changes in the model to the backend. The method
-     * should only modify the backend data, if something really has been
-     * changed in the model. Use the __set() method, which should wrap all
-     * write access to the model, to remember write access.
-     *
-     * @return void
-     */
-    public function storeChanges()
-    {
-        $recipe = arbitFacadeManager::getFacade( 'recipe' );
-        $recipe->updateRecipeData( $this->id, $this->getModifiedValues() );
-
-        // Clear associated cache
-        arbitCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
-
-        // As we now stored everything in backend, nothing has to be considered
-        // modified anymore...
-        $this->modifiedProperty = array();
-    }
-
-    /**
      * Fetch the basic recipe data
      *
      * Fetch the basic recipe data
@@ -223,6 +200,34 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
                 $this->properties[$key] = $value;
             }
         }
+    }
+
+    /**
+     * Method called to store changes to the model.
+     *
+     * Method called to store changes in the model to the backend. The method
+     * should only modify the backend data, if something really has been
+     * changed in the model. Use the __set() method, which should wrap all
+     * write access to the model, to remember write access.
+     *
+     * @return void
+     */
+    public function storeChanges()
+    {
+        // Update editor data
+        $this->properties['user'] = new arbitModelUser( arbitSession::get( 'login' ) );
+        $this->modifiedProperty[] = 'user';
+
+        $storage = arbitFacadeManager::getFacade( 'recipe' );
+        $storage->updateRecipeData( $this->id, $this->getModifiedValues() );
+
+        // Clear associated cache
+        arbitCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
+
+        // As we now stored everything in backend, nothing has to be considered
+        // modified anymore...
+        $this->modifiedProperty = array();
+        $this->properties['revisions'] = null;
     }
 
     /**

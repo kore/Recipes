@@ -259,6 +259,14 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
             );
         }
 
+        // Get ID from user user model
+        if ( isset( $data['user'] ) &&
+             ( $data['user'] instanceof arbitModelUser ) )
+        {
+            $data['user'] = $data['user']->_id;
+        }
+
+
         // Set data, which will be validated internally, and store.
         foreach ( $data as $key => $value )
         {

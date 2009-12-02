@@ -60,7 +60,7 @@ class arbitBackendCouchDbRecipeDocument extends phpillowDocument
             'preparation'  => new phpillowIntegerValidator(),
             'cooking'      => new phpillowIntegerValidator(),
             'instructions' => new phpillowStringValidator(),
-            'user'         => new phpillowArrayValidator(),
+            'user'         => new phpillowStringValidator(),
             'tags'         => new phpillowArrayValidator(),
         );
 

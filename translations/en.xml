@@ -28,6 +28,10 @@
       <source>Your recipe has been successfully stored.</source>
       <translation type="unfinished">Your recipe has been successfully stored.</translation>
     </message>
+    <message>
+      <source>Your repeated password did not match the new password.</source>
+      <translation type="unfinished">Your repeated password did not match the new password.</translation>
+    </message>
   </context>
   <context>
     <name>recipes</name>
