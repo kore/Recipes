@@ -712,5 +712,13 @@ Actual behavior
       <source>Tag %tag</source>
       <translation type="unfinished">Tag %tag</translation>
     </message>
+    <message>
+      <source>for %count persons</source>
+      <translation type="unfinished">for %count persons</translation>
+    </message>
+    <message>
+      <source>Preparation</source>
+      <translation type="unfinished">Preparation</translation>
+    </message>
   </context>
 </TS>

@@ -248,7 +248,7 @@ class arbitRecipeModel extends arbitModelBase
 
         try
         {
-            $document->loadString( $this->text );
+            $document->loadString( $this->instructions );
             $html = $document->getAsXhtml();
             return $html->save();
         }

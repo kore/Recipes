@@ -52,6 +52,7 @@ class arbitViewXHtmlHandler extends arbitTemplateViewHandler
         'showCoreUserRegisteredModel'   => 'html/core/user/registered.tpl',
         'showCoreUserLoginModel'        => 'html/core/user/login.tpl',
         'showCoreUserModel'             => 'html/core/user.tpl',
+        'showRecipeViewModel'           => 'html/recipe/view.tpl',
         'showRecipeEditModel'           => 'html/recipe/edit.tpl',
         'showRecipeTagsModel'           => 'html/recipe/tags.tpl',
         'showRecipeTagModel'            => 'html/recipe/tag.tpl',

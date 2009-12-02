@@ -19,19 +19,19 @@
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
 /**
- * Base model struct for all project module views
+ * Model struct representing recipe creation
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitRecipeViewModel extends arbitViewModel
+class arbitViewRecipeViewModel extends arbitViewModel
 {
     /**
      * Array containing the actual view data.
@@ -39,40 +39,17 @@ class arbitRecipeViewModel extends arbitViewModel
      * @var array
      */
     protected $properties = array(
-        'id'           => null,
-        'title'        => null,
-        'amount'       => null,
-        'description'  => null,
-        'ingredients'  => array(),
-        'preparation'  => null,
-        'cooking'      => null,
-        'instructions' => null,
-        'html'         => null,
-        'user'         => null,
-        'tags'         => array(),
+        'recipe' => null,
     );
 
     /**
-     * Construct project module view model from common values
+     * Construct view model
      *
-     * @param arbitRecipeModel $recipe
      * @return void
      */
     public function __construct( arbitRecipeModel $recipe = null )
     {
-        if ( $recipe !== null )
-        {
-            foreach ( $this->properties as $name => $value )
-            {
-                if ( $name === 'id' )
-                {
-                    $this->id = $recipe->_id;
-                    continue;
-                }
-
-                $this->$name = $recipe->$name;
-            }
-        }
+        $this->recipe = new arbitRecipeViewModel( $recipe );
     }
 }
 

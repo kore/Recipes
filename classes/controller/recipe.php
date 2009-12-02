@@ -167,9 +167,24 @@ class arbitRecipeController extends arbitController
     }
 
     /**
-     * Overview action
+     * View action
      *
-     * Gives an overview on the currently available recipes
+     * Allows registered users to view a recipe
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function view( arbitRequest $request )
+    {
+        return new arbitViewRecipeViewModel(
+            new arbitRecipeModel( $request->subaction )
+        );
+    }
+
+    /**
+     * Edit action
+     *
+     * Allows registered users to edit a recipe
      *
      * @param arbitRequest $request
      * @return arbitViewModel
