@@ -1,288 +1,185 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="en_US">
+<!DOCTYPE TS><TS>
 <defaultcodec></defaultcodec>
 <context>
-    <name>core</name>
+    <name>core/dynamic</name>
     <message>
-        <source>licensed under</source>
-        <translation>lizenziert unter</translation>
+        <source>Login failed.</source>
+        <translation>Login fehlgeschlagen.</translation>
     </message>
     <message>
-        <source>You need an SVG enabled browser to see this.</source>
-        <translation>Ein Browser mit SVG-Unterstützung ist für diese Grafik notwendig.</translation>
+        <source>You need to register before login.</source>
+        <translation>Du musst Dich registrieren bevor Du Dich einloggen kannst.</translation>
+    </message>
+    <message>
+        <source>The given value for the model property &apos;%property&apos; is not of type &apos;%expected&apos;.</source>
+        <translation>Der eingegebene Wert für die model property &apos;%property&apos; ist nicht vom Typ &apos;%expected&apos;.</translation>
+    </message>
+    <message>
+        <source>There is no implementation for the requested facade class &apos;%class&apos;.</source>
+        <translation>Für die angeforderte Facade-Klasse &apos;%class&apos; existiert keine Implementierung.</translation>
+    </message>
+    <message>
+        <source>A PHP error occured: %message</source>
+        <translation>Ein PHP-Fehler ist aufgetreten: %message</translation>
+    </message>
+    <message>
+        <source>Your recipe has been successfully stored.</source>
+        <translation>Dein Rezept wurde erfolgreich gespeichert.</translation>
+    </message>
+    <message>
+        <source>Your repeated password did not match the new password.</source>
+        <translation>Die Wiederholung des Passworts entsprach nicht der ersten Eingabe des Passworts.</translation>
     </message>
 </context>
 <context>
-    <name>core/dashboard</name>
+    <name>recipes</name>
     <message>
-        <source>Project quality index - average project quality reported by the used modules.</source>
-        <translation>Projekt-Qualitäts-Index - durchschnittliche Projektqualität der verwendeten Module.</translation>
-    </message>
-</context>
-<context>
-    <name>modules/tracker</name>
-    <message>
-        <source>Issue overview</source>
-        <translation>Problemübersicht</translation>
-    </message>
-    <message>
-        <source>Issue types</source>
-        <translation>Problemtypen</translation>
-    </message>
-    <message>
-        <source>Issue states</source>
-        <translation>Problemstatus</translation>
-    </message>
-    <message>
-        <source>Activity</source>
-        <translation>Aktivität</translation>
-    </message>
-    <message>
-        <source>Newest issues</source>
-        <translation>Neueste Probleme</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Typ</translation>
-    </message>
-    <message>
-        <source>Issue</source>
-        <translation>Problem</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>State</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Priorität</translation>
-    </message>
-    <message>
-        <source>Resolution</source>
-        <translation>Ergebnis</translation>
-    </message>
-    <message>
-        <source>Assigned</source>
-        <translation>Zugewiesen</translation>
-    </message>
-    <message>
-        <source>Last Change</source>
-        <translation>Letzte Änderung</translation>
-    </message>
-    <message>
-        <source>%date by %author</source>
-        <translation>%date durch %author</translation>
-    </message>
-    <message>
-        <source>Latest commented issues</source>
-        <translation>Zuletzt kommentierte Probleme</translation>
-    </message>
-    <message>
-        <source>Issue attachments</source>
-        <translation>Problemanhänge</translation>
-    </message>
-    <message>
-        <source>Mime type:</source>
-        <translation>Mime-type:</translation>
-    </message>
-    <message>
-        <source>Issue revisions</source>
-        <translation>Problemversionen</translation>
-    </message>
-    <message>
-        <source>Issue type</source>
-        <translation>Problemtyp</translation>
-    </message>
-    <message>
-        <source>Assigned to</source>
-        <translation>Zugeordnet zu</translation>
-    </message>
-    <message>
-        <source>Scheduled for</source>
-        <translation>Geplant für</translation>
-    </message>
-    <message>
-        <source>Affected versions</source>
-        <translation>Betroffene Versionen</translation>
-    </message>
-    <message>
-        <source>Affected components</source>
-        <translation>Betroffene Komponenten</translation>
-    </message>
-    <message>
-        <source>Last change</source>
-        <translation>Letzte Änderung</translation>
-    </message>
-    <message>
-        <source>Issue listing</source>
-        <translation>Problemliste</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Suche</translation>
-    </message>
-    <message>
-        <source>Search issues</source>
-        <translation>Durchsuche Probleme</translation>
-    </message>
-    <message>
-        <source>Search terms</source>
-        <translation>Suchbegriffe</translation>
-    </message>
-    <message>
-        <source>Issue search had no results.</source>
-        <translation>Problemsuche ohne Ergebnisse.</translation>
-    </message>
-    <message>
-        <source>Issue reports</source>
-        <translation>Problemberichte</translation>
-    </message>
-    <message>
-        <source>Not yet implemented.</source>
-        <translation>Bislang nicht implementiert.</translation>
-    </message>
-    <message>
-        <source>Roadmap</source>
-        <translation>Planung</translation>
-    </message>
-    <message>
-        <source>Create new issue</source>
-        <translation>Neues Problem berichten</translation>
-    </message>
-    <message>
-        <source>You do not have sufficatant permissions to create new issues.</source>
-        <translation>Keine ausreichenden Berechtigungen um Probleme zu berichten.</translation>
-    </message>
-    <message>
-        <source>Create a new issue. You should check first if similar issues are already in the issue database.</source>
-        <translation>Neues Problem berichten. Es sollte zuerst überprüft werden, dass dieses Problem nicht bereits bekannt ist.</translation>
-    </message>
-    <message>
-        <source>New issue</source>
-        <translation>Neues Problem</translation>
-    </message>
-    <message>
-        <source>Short description
------------------
-
-...
-
-Environment
------------
-
-...
-
-Steps to reproduce
-------------------
-
-...
-
-Expected behavior
------------------
-
-...
-
-Actual behavior
----------------
-
-...</source>
-        <translation>Kurzbeschreibung
-----------------
-
-...
-
-Umgebung
---------
-
-...</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beschreibung</translation>
-    </message>
-    <message>
-        <source>RST markup</source>
-        <translation>Auszeichnungssprache: RST</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation>Anlegen</translation>
-    </message>
-    <message>
-        <source>Issue actions</source>
-        <translation>Aktionen</translation>
-    </message>
-    <message>
-        <source>Change issue state</source>
-        <translation>Problemstatus ändern</translation>
-    </message>
-    <message>
-        <source>Take responsibility</source>
-        <translation>Verantwortung übernehmen</translation>
-    </message>
-    <message>
-        <source>Add comment</source>
-        <translation>Kommentieren</translation>
-    </message>
-    <message>
-        <source>Comment</source>
-        <translation>Kommentar</translation>
-    </message>
-    <message>
-        <source>Add attachement</source>
-        <translation>Anhang anfügen</translation>
+        <source>Add recipe</source>
+        <translation>Rezept hinzufügen</translation>
     </message>
     <message>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <source>File</source>
-        <translation>Datei</translation>
+        <source>Description</source>
+        <translation>Beschreibung</translation>
     </message>
     <message>
-        <source>Attach</source>
-        <translation>Anhängen</translation>
+        <source>Short description</source>
+        <translation>Kurzbeschreibung</translation>
     </message>
     <message>
-        <source>Update issue state</source>
-        <translation>Problemstatus aktualisieren</translation>
+        <source>Instructions</source>
+        <translation>Zubereitung</translation>
     </message>
     <message>
-        <source>Update</source>
-        <translation>Aktualisieren</translation>
+        <source>Preparation time</source>
+        <translation>Vorbereitungszeit</translation>
     </message>
     <message>
-        <source>Scheduled version</source>
-        <translation>Geplante Version</translation>
+        <source>Cooking time</source>
+        <translation>Zubereitungszeit</translation>
     </message>
     <message>
-        <source>Open issues scheduled for %version</source>
-        <translation>Offene Probleme, die für die Version %version geplant sind.</translation>
+        <source>Ingredients</source>
+        <translation>Zutaten</translation>
     </message>
     <message>
-        <source>Status</source>
-        <translation>Status</translation>
+        <source>Title</source>
+        <translation>Titel</translation>
     </message>
     <message>
-        <source>Closed issues %closed / %issue_count (%percent%)</source>
-        <translation>Behobene Probleme %closed / %issue_count (%percent%)</translation>
+        <source>Short description of the recipe</source>
+        <translation>Eine knappe Beschreibung des Rezepts</translation>
     </message>
     <message>
-        <source>assigned to</source>
-        <translation>zugewiesen an</translation>
+        <source>Main</source>
+        <translation>Hauptteil</translation>
     </message>
     <message>
-        <source>Nobody</source>
-        <translation>Niemand</translation>
+        <source>Preparation instructions</source>
+        <translation>Zubereitungsanweisungen</translation>
     </message>
     <message>
-        <source>System</source>
-        <translation>System</translation>
+        <source>Store recipe</source>
+        <translation>Rezept speichern</translation>
+    </message>
+    <message>
+        <source>Recipe title</source>
+        <translation>Rezepttitel</translation>
+    </message>
+    <message>
+        <source>Main ingredients</source>
+        <translation>Haupt-Zutaten</translation>
+    </message>
+    <message>
+        <source>g</source>
+        <translation>g</translation>
+    </message>
+    <message>
+        <source>saffron</source>
+        <translation>Safran</translation>
+    </message>
+    <message>
+        <source>For</source>
+        <translation>Für</translation>
+    </message>
+    <message>
+        <source>persons</source>
+        <translation>Person(en)</translation>
+    </message>
+    <message>
+        <source>Are you sure that you want to remove the whole section?</source>
+        <translation>Bist Du sicher, dass Du diese ganze Sektion entfernen willst?</translation>
+    </message>
+    <message>
+        <source>Are you sure that you want to remove the ingredient?</source>
+        <translation>Bist Du sicher, dass Du diese Zutat entfernen willst?</translation>
+    </message>
+    <message>
+        <source>cake, easter, vanilla</source>
+        <translation>Kuchen, Ostern, Vanille</translation>
+    </message>
+    <message>
+        <source>Tags</source>
+        <translation>Tags / Stichwörter</translation>
+    </message>
+    <message>
+        <source>Most popular</source>
+        <translation>Am populärsten</translation>
+    </message>
+    <message>
+        <source>All tags</source>
+        <translation>All Tags/Stichwörter</translation>
+    </message>
+    <message>
+        <source>Tag %tag</source>
+        <translation>Tag %tag</translation>
+    </message>
+    <message>
+        <source>for %count persons</source>
+        <translation>für %count Person(en)</translation>
+    </message>
+    <message>
+        <source>Preparation</source>
+        <translation>Vorbereitung</translation>
+    </message>
+    <message>
+        <source>Create a new recipe</source>
+        <translation>Erstelle ein neues Rezept</translation>
+    </message>
+    <message>
+        <source>Search recipes</source>
+        <translation>Suche Rezept</translation>
+    </message>
+    <message>
+        <source>Recipes</source>
+        <translation>Rezepte</translation>
+    </message>
+    <message>
+        <source>Most popular tags</source>
+        <translation>Populärste Tags/Stichwörter</translation>
+    </message>
+    <message>
+        <source>Edit recipe</source>
+        <translation>Rezept bearbeiten</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Suche</translation>
+    </message>
+    <message>
+        <source>Issue search had no results.</source>
+        <translation>Die Suche ergab keine Treffer.</translation>
+    </message>
+    <message>
+        <source>%number results in search for &quot;%term&quot;</source>
+        <translation>%number Treffer der Suche nach &quot;%term&quot;</translation>
+    </message>
+    <message>
+        <source>Ingredient %ingredient</source>
+        <translation>Zutat %ingredient</translation>
     </message>
 </context>
 </TS>
