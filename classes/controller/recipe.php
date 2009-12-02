@@ -105,7 +105,7 @@ class arbitRecipeController extends arbitController
     public function units( arbitRequest $request )
     {
         return new arbitViewListModel(
-            arbitRecipeModel::getIngredients(
+            arbitRecipeModel::getUnits(
                 $request->subaction === 'index' ? '' : $request->subaction
             )
         );

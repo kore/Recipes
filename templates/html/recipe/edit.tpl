@@ -19,7 +19,6 @@
 		<h2><input type="text" class="required h1" name="title" value="{if $model->recipe}{$model->recipe->title}{else}{tr "Recipe title"}{/if}" /></h2>
 		<h4 class="subtitle">{tr "For"} <input type="text" name="amount" class="required number" value="{if $model->recipe}{$model->recipe->amount}{else}4{/if}"/> {tr "persons"}.</h4>
     
-		<p>Tagged with: <input type="text" class="tags" name="tags" value="{if $model->recipe}{str_join( ', ', $model->recipe->tags)}{else}{tr "cake, easter, vanilla"}{/if}" /></p>
 		<p><textarea name="description" rows="3">{if $model->recipe}{$model->recipe->description}{else}{tr "Short description of the recipe"}{/if}</textarea></p>
 
         <h3>{tr "Ingredients"}</h3>
@@ -120,9 +119,31 @@ $( document ).ready( function()
                 },
                 "json"
             );
-            // From here you can put your own logic in to say what results show.
-            // For now I'm just going to return some dummy data.
-            
+        },
+        {ajaxResults:true
+        }
+    );
+
+    // Enable auto-suggest for unit fields
+    $( 'input.unit' ).jsonSuggest(
+        function( text, wildCard, caseSensitive, notCharacter, callback, filter )
+        {
+            var callback = callback;
+            var filter   = filter;
+
+            $.get( root + "/recipes/units/" + text + ".js", function ( data, textStatus )
+                {
+                    data = JSON.parse( data );
+                    var terms = [];
+                    $.each( data.properties.view.properties["array"], function( key, value )
+                        {
+                            terms.push( {text: key} );
+                        }
+                    );
+                    callback( terms, filter );
+                },
+                "json"
+            );
         },
         {ajaxResults:true
         }
@@ -142,6 +163,8 @@ $( document ).ready( function()
             <dd><input type="text" name="cooking" class="number" value="{if $model->recipe}{$model->recipe->cooking}{else}60{/if}"/> minutes</dd>
         </dl>
 		<p><textarea name="instructions" class="required" rows="5">{if $model->recipe}{$model->recipe->instructions}{else}{tr "Preparation instructions"}{/if}</textarea></p>
+
+		<p>Tagged with: <input type="text" class="tags" name="tags" value="{if $model->recipe}{str_join( ', ', $model->recipe->tags)}{else}{tr "cake, easter, vanilla"}{/if}" /></p>
     </div>
 
 	<label>
