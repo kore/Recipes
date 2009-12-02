@@ -230,24 +230,24 @@
         <translation>Tags/Stichwörter:</translation>
     </message>
     <message>
-      <source>Use this forms to register as a new user.</source>
-      <translation type="unfinished">Use this forms to register as a new user.</translation>
+        <source>Use this forms to register as a new user.</source>
+        <translation>Registriere einen neuen Benutzer.</translation>
     </message>
     <message>
-      <source>Password registration</source>
-      <translation type="unfinished">Password registration</translation>
+        <source>Password registration</source>
+        <translation>Registrierung via Passwort</translation>
     </message>
     <message>
-      <source>Repeat password</source>
-      <translation type="unfinished">Repeat password</translation>
+        <source>Repeat password</source>
+        <translation>Password-Wiederholung</translation>
     </message>
     <message>
-      <source>Email</source>
-      <translation type="unfinished">Email</translation>
+        <source>Email</source>
+        <translation>E-Mail</translation>
     </message>
     <message>
-      <source>Register</source>
-      <translation type="unfinished">Register</translation>
+        <source>Register</source>
+        <translation>Registrieren</translation>
     </message>
 </context>
 </TS>
