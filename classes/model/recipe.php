@@ -158,6 +158,26 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     }
 
     /**
+     * Get recipes by ingredient
+     *
+     * Return recipe models of all recipes, which contain the given ingredient,
+     *
+     * @param string $ingredient
+     * @return array
+     */
+    public static function getRecipesByIngredient( $ingredient )
+    {
+        $recipe  = arbitFacadeManager::getFacade( 'recipe' );
+        $recipes = $recipe->getRecipesByIngredient( $ingredient );
+        return array_map( function( $id )
+            {
+                return new arbitRecipeModel( $id );
+            },
+            $recipes
+        );
+    }
+
+    /**
      * Method called to create a new instance in the backend.
      *
      * Method called when the model should be created in the backend the first

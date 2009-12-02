@@ -94,6 +94,22 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Ingredient listing action
+     *
+     * Lists all recipes, which belong to a ingredient
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function ingredient( arbitRequest $request )
+    {
+        return new arbitViewRecipeIngredientModel(
+            $request->subaction,
+            arbitRecipeModel::getRecipesByIngredient( $request->subaction )
+        );
+    }
+
+    /**
      * Units actions
      *
      * Returns a list of the units, starting with the string, specified 

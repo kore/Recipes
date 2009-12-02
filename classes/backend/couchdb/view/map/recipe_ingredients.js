@@ -6,7 +6,7 @@ function( doc )
         {
             for( var key = 0; key < doc.ingredients[group].length; ++key ) 
             {
-                emit( doc.ingredients[group][key]["ingredient"], 1 );
+                emit( doc.ingredients[group][key]["ingredient"], doc._id );
             }
         }
     }

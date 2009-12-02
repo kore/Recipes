@@ -160,6 +160,36 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
     }
 
     /**
+     * Get recipes by ingredient
+     *
+     * Return the IDs of all recipes, which contain the given ingredient,
+     *
+     * @param string $ingredient
+     * @return array
+     */
+    public function getRecipesByIngredient( $ingredient )
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'ingredients', array(
+            'reduce' => false,
+            'key'    => $ingredient,
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $docs = array();
+        foreach ( $result->rows as $row )
+        {
+            $docs[] = is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+
+        return $docs;
+    }
+
+    /**
      * Get recipe data
      *
      * Get data for the given recipe id. The data should be returned as an array,

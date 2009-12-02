@@ -77,6 +77,16 @@ interface arbitRecipeFacade
     public function getIngredients( $string );
 
     /**
+     * Get recipes by ingredient
+     *
+     * Return the IDs of all recipes, which contain the given ingredient,
+     *
+     * @param string $ingredient
+     * @return array
+     */
+    public function getRecipesByIngredient( $ingredient );
+
+    /**
      * Get recipe data
      *
      * Get data for the given recipe id. The data should be returned as an array,

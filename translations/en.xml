@@ -179,5 +179,9 @@
       <source>%number results in search for "%term"</source>
       <translation type="unfinished">%number results in search for "%term"</translation>
     </message>
+    <message>
+      <source>Ingredient %ingredient</source>
+      <translation type="unfinished">Ingredient %ingredient</translation>
+    </message>
   </context>
 </TS>
