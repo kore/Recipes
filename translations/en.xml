@@ -708,5 +708,9 @@ Actual behavior
       <source>All tags</source>
       <translation type="unfinished">All tags</translation>
     </message>
+    <message>
+      <source>Tag %tag</source>
+      <translation type="unfinished">Tag %tag</translation>
+    </message>
   </context>
 </TS>

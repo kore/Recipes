@@ -75,6 +75,22 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Tag listing action
+     *
+     * Lists all recipes, which belong to a tag
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function tag( arbitRequest $request )
+    {
+        return new arbitViewRecipeTagModel(
+            $request->subaction,
+            arbitRecipeModel::getRecipesByTag( $request->subaction )
+        );
+    }
+
+    /**
      * Units actions
      *
      * Returns a list of the units, starting with the string, specified 

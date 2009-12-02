@@ -114,7 +114,7 @@ class arbitRecipeModel extends arbitModelBase
      * @param string $tag
      * @return array
      */
-    public function getRecipesByTag( $tag )
+    public static function getRecipesByTag( $tag )
     {
         $recipe  = arbitFacadeManager::getFacade( 'recipe' );
         $recipes = $recipe->getRecipesByTag( $tag );

@@ -14,7 +14,7 @@
 <ul class="cloud">
 {foreach $model->popular as $tag => $value}
     <li class="tag{math_floor( $value / $max * 5 )}">
-        <a href="{$root}/{$model->request->controller}/recipe/tag/{$tag}">{$tag}</a>
+        <a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a>
     </li>
 {/foreach}
 </ul>
@@ -33,7 +33,7 @@
                 <li><h4>{$group}</h4>
                     <ul>
                     {foreach $grouped[$group] as $tag}
-                        <li><a href="{$root}/{$model->request->controller}/recipe/tag/{$tag}">{$tag}</a></li>
+                        <li><a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a></li>
                     {/foreach}
                     </ul>
                 </li>
@@ -48,7 +48,7 @@
                 <li><h4>{$group}</h4>
                     <ul>
                     {foreach $grouped[$group] as $tag}
-                        <li><a href="{$root}/{$model->request->controller}/recipe/tag/{$tag}">{$tag}</a></li>
+                        <li><a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a></li>
                     {/foreach}
                     </ul>
                 </li>
@@ -63,7 +63,7 @@
                 <li><h4>{$group}</h4>
                     <ul>
                     {foreach $grouped[$group] as $tag}
-                        <li><a href="{$root}/{$model->request->controller}/recipe/tag/{$tag}">{$tag}</a></li>
+                        <li><a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a></li>
                     {/foreach}
                     </ul>
                 </li>

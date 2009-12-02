@@ -75,8 +75,8 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
     {
         $issues = phpillowManager::getView( 'recipe' );
         $result = $issues->query( 'tags', array(
-            'group' => false,
-            'key'   => $tag,
+            'reduce' => false,
+            'key'    => $tag,
         ) );
 
         if ( !count( $result->rows ) )
