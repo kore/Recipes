@@ -1,10 +1,8 @@
 {use $model, $root = $model->request->root, $project = $model->request->controller}
+{tr_context "recipes"}
 <h2>Register</h2>
 <p>
-	Use this forms to register as a new user. Depending on the project
-	configuration there may be different types of user registration availabale.
-	Select the one you like most.
-</p>
+	{tr "Use this forms to register as a new user."}</p>
 
 {if $model->errors !== null }
 <ul class="errors">

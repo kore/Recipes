@@ -2,25 +2,26 @@
     'login' => 'string',
     'email' => 'string',
 ) )}
-<legend>Password registration</legend>
+{tr_context "recipes"}
+<legend>{tr "Password registration"}</legend>
 
 <label>
 	<input type="text" class="required" name="login" value="{$values['login']}" />
-	Username
+	{tr "Username"}
 </label>
 <label>
 	<input type="password" class="required" name="password_0" />
-	Password
+	{tr "Password"}
 </label>
 <label>
 	<input type="password" class="required" name="password_1" />
-	Repeat password
+	{tr "Repeat password"}
 </label>
 <label>
 	<input type="text" class="required" name="email" value="{$values['email']}" />
-	Email
+	{tr "Email"}
 </label>
 
 <label>
-	<input type="submit" name="submit" value="Register" />
+	<input type="submit" name="submit" value="{tr "Register"}" />
 </label>
