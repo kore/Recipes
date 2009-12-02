@@ -55,6 +55,7 @@ class arbitViewXHtmlHandler extends arbitTemplateViewHandler
         'showRecipeViewModel'           => 'html/recipe/view.tpl',
         'showRecipeEditModel'           => 'html/recipe/edit.tpl',
         'showRecipeTagsModel'           => 'html/recipe/tags.tpl',
+        'showRecipeOverviewModel'       => 'html/recipe/overview.tpl',
         'showRecipeTagModel'            => 'html/recipe/tag.tpl',
     );
 

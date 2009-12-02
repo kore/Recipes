@@ -1,23 +1,12 @@
 {use $model, $root = $model->request->root}
-{var $max = 0,
-     $grouped}
+{var $grouped}
 {tr_context "recipes"}
 <h2>{tr "Tags"}</h2>
 
 <h3>{tr "Most popular"}</h3>
 
-{* Build up classes array first so that we only show the TOP n *}
-{foreach $model->popular as $tag => $value}
-    {$max = math_max( $max, $value )}
-{/foreach}
-
-<ul class="cloud">
-{foreach $model->popular as $tag => $value}
-    <li class="tag{math_floor( $value / $max * 5 )}">
-        <a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a>
-    </li>
-{/foreach}
-</ul>
+{include arbit_get_template( 'html/recipe/tag_cloud.tpl' )
+	send $model->request as $request, $model->popular as $tags}
 
 <h3>{tr "All tags"}</h3>
 {foreach $model->all as $tag => $value}

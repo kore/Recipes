@@ -720,5 +720,21 @@ Actual behavior
       <source>Preparation</source>
       <translation type="unfinished">Preparation</translation>
     </message>
+    <message>
+      <source>Create a new recipe</source>
+      <translation type="unfinished">Create a new recipe</translation>
+    </message>
+    <message>
+      <source>Search recipes</source>
+      <translation type="unfinished">Search recipes</translation>
+    </message>
+    <message>
+      <source>Recipes</source>
+      <translation type="unfinished">Recipes</translation>
+    </message>
+    <message>
+      <source>Most popular tags</source>
+      <translation type="unfinished">Most popular tags</translation>
+    </message>
   </context>
 </TS>

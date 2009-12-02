@@ -55,7 +55,10 @@ class arbitRecipeController extends arbitController
      */
     public function overview( arbitRequest $request )
     {
-        return new arbitViewUserMessageModel( 'Hello Recipes!' );
+        return new arbitViewRecipeOverviewModel(
+            arbitRecipeModel::getMostPopularTags( 20 ),
+            arbitRecipeModel::getTags()
+        );
     }
 
     /**
