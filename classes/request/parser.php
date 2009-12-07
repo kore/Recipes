@@ -112,11 +112,11 @@ class arbitHttpRequestParser extends ezcMvcRequestParser
         // Try to match controller and action using a regualr expression
         if ( !preg_match( '(^
           (?# Optionally specified whitelisted controller )
-            (?:/(?P<controller>[a-zA-Z0-9_-]+))?
+            (?:/(?P<controller>[^./?]+))?
           (?# Optionally specified action, falls back to "index" )
-            (?:/(?P<action>[a-zA-Z0-9_-]+)?
+            (?:/(?P<action>[^./?]+)?
               (?# Optionally specified action, falls back to "index" )
-                (?:/(?P<subaction>[a-zA-Z0-9_-]+))?
+                (?:/(?P<subaction>[^./?]+))?
             )?
           (?# Optionally provided file extension )
             (:?\.(?P<ext>[a-z]+))?
@@ -124,7 +124,7 @@ class arbitHttpRequestParser extends ezcMvcRequestParser
             (?P<path>[^?]*)? /?
           (?# Optional query string )
             (?:\\?(?P<query>.*))?
-            $)x', $url, $match ) )
+            $)ux', urldecode( $url ), $match ) )
         {
             throw new arbitRouterInvalidUrlException( $url );
         }
