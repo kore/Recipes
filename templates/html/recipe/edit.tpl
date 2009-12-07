@@ -28,7 +28,7 @@
 var root        = '{$root}';
 var group       = 0;
 var ingredients = [];
-var data        = {if $model->recipe}{raw json_encode( $model->recipe->ingredients )}{else}null{/if};
+var data        = {if $model->recipe && $model->recipe->ingredients}{raw json_encode( $model->recipe->ingredients )}{else}null{/if};
 
 var groupHtml = "<li id=\"group_%group\">\
     <h4>\
