@@ -131,7 +131,7 @@
     </message>
     <message>
         <source>All tags</source>
-        <translation>All Tags/Stichwörter</translation>
+        <translation>Alle Tags/Stichwörter</translation>
     </message>
     <message>
         <source>Tag %tag</source>
@@ -263,7 +263,7 @@
     </message>
     <message>
         <source>Personal recipe list</source>
-        <translation>Persönliche Rezepte</translation>
+        <translation>Persönliche Einkaufsliste</translation>
     </message>
     <message>
         <source>Recipe</source>
@@ -279,7 +279,7 @@
     </message>
     <message>
         <source>Remove from list</source>
-        <translation>Von der Liste löschen</translation>
+        <translation>Von der Einkaufsliste löschen</translation>
     </message>
     <message>
         <source>Update list</source>
@@ -287,7 +287,7 @@
     </message>
     <message>
         <source>Edit recipe list</source>
-        <translation>Rezeptliste bearbeiten</translation>
+        <translation>Einkaufsliste bearbeiten</translation>
     </message>
     <message>
         <source>Ingredient list</source>
@@ -295,7 +295,7 @@
     </message>
     <message>
         <source>List</source>
-        <translation>Liste</translation>
+        <translation>Einkaufsliste</translation>
     </message>
 </context>
 </TS>
