@@ -22,7 +22,7 @@
         </a>
     </li>
     <li>
-        <a href="{$root}/{$model->request->controller}/list/{$recipe->id}">
+        <a href="{$root}/{$model->request->controller}/listRecipe/{$recipe->id}">
             <img src="{$root}/images/add.png" width="16" height="16" alt="{tr "Put on list"}" />
             {tr "Put on list"}
         </a>

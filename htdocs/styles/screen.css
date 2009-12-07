@@ -86,6 +86,7 @@ div.navigation ul li a {
     color: #ffffff;
 }
 
+thead,
 .content div.jsonSuggestResults div.resultItem.odd {
     background-color: #a18266;
     color: #2c2827;
@@ -99,12 +100,26 @@ form {
     color: #ffffff;
 }
 
+table,
+form table,
 .content ul.commands,
 .content ul.tags,
 .content div.jsonSuggestResults,
 label textarea, label select, label input {
+    color: #2c2827;
     background-color: #f6f3f3;
     border: 1px solid #915014;
+}
+
+tbody,
+tbody tr:first-child th {
+    background-color: #f6f3f3;
+    border-bottom: 1px solid #915014;
+}
+
+tbody td {
+    background-color: #f6f3f3;
+    border-left: 1px solid #915014;
 }
 
 form div.recipe textarea:focus, form div.recipe input:focus,
@@ -306,7 +321,6 @@ table {
     margin: .5em 0em;
 	width: 100%;
 	font-size: .95em;
-	border: 1px solid #888a85;
     border-collapse: separate;
 }
 
@@ -315,38 +329,16 @@ fieldset table {
     border-right: none;
 }
 
-thead {
-	background-color: #d3d7cf;
-	border-bottom: 1px solid #888a85;
-}
-
-tbody {
-    border-bottom: 1px solid #888a85;
-}
-
 tbody tr:first-child th {
 	padding-top: .5em;
-	border-bottom: 1px solid #888a85;
 }
 
 thead th {
 	text-align: center;
 }
 
-tbody td {
-	border-left: 1px solid #888a85;
-}
-
 tbody td:first-child {
 	border-left: none;
-}
-
-tr.light {
-	background-color: #eeeeef;
-}
-
-tr.light td.source {
-	background-color: #f8f8f9;
 }
 
 th {
@@ -366,6 +358,11 @@ td.form {
 td.image {
 	text-align: center;
 	vertical-align: middle;
+}
+
+td.amount {
+    text-align: right;
+    width: 10%;
 }
 
 td.number {
@@ -544,6 +541,7 @@ form div.recipe {
     padding: 5px;
 }
 
+table td.amount input,
 form div.recipe textarea,
 form div.recipe input {
     font-size: inherit;
@@ -554,6 +552,11 @@ form div.recipe input {
     padding: inherit;
     border: 1px solid #d3d7cf;
     width: 100%;
+}
+
+table td.amount input {
+    width: 90%;
+    text-align: right;
 }
 
 form div.recipe input.number {

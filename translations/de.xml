@@ -263,5 +263,41 @@
       <source>Do you really want to delete this recipe?</source>
       <translation type="unfinished">Do you really want to delete this recipe?</translation>
     </message>
+    <message>
+      <source>Personal recipe list</source>
+      <translation type="unfinished">Personal recipe list</translation>
+    </message>
+    <message>
+      <source>Recipe</source>
+      <translation type="unfinished">Recipe</translation>
+    </message>
+    <message>
+      <source>Amount</source>
+      <translation type="unfinished">Amount</translation>
+    </message>
+    <message>
+      <source>Options</source>
+      <translation type="unfinished">Options</translation>
+    </message>
+    <message>
+      <source>Remove from list</source>
+      <translation type="unfinished">Remove from list</translation>
+    </message>
+    <message>
+      <source>Update list</source>
+      <translation type="unfinished">Update list</translation>
+    </message>
+    <message>
+      <source>Edit recipe list</source>
+      <translation type="unfinished">Edit recipe list</translation>
+    </message>
+    <message>
+      <source>Ingredient list</source>
+      <translation type="unfinished">Ingredient list</translation>
+    </message>
+    <message>
+      <source>List</source>
+      <translation type="unfinished">List</translation>
+    </message>
   </context>
 </TS>

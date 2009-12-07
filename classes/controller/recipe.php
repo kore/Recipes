@@ -221,6 +221,52 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Delete action
+     *
+     * Allows registered users to remove a recipe
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function listRecipe( arbitRequest $request )
+    {
+        $list = arbitSession::is_set( 'list' ) ? arbitSession::get( 'list' ) : array();
+
+        if ( $request->subaction !== 'index' )
+        {
+            arbitLogger::dump( $request->subaction );
+            $recipe = new arbitRecipeModel( $request->subaction );
+            $list[$recipe->_id] = $recipe->amount;
+            arbitSession::set( 'list', $list );
+        }
+
+        if ( arbitHttpTools::get( 'update' ) !== null )
+        {
+            $list = arbitHttpTools::get( 'amount', arbitHttpTools::TYPE_ARRAY );
+            
+            foreach ( $list as $recipe => $amount )
+            {
+                if ( $amount <= 0 )
+                {
+                    unset( $list[$recipe] );
+                }
+                elseif ( preg_match( '((?P<top>\\d+)\\s*/\\s*(?P<bottom>\\d+))', trim( $amount ), $match ) )
+                {
+                    $list[$recipe] = $match['top'] / $match['bottom'];
+                }
+                else
+                {
+                    $list[$recipe] = (float) $amount;
+                }
+            }
+
+            arbitSession::set( 'list', $list );
+        }
+
+        return new arbitViewRecipeListModel( $list );
+    }
+
+    /**
      * Get search seassion
      *
      * Get the search session based on the configuration values.

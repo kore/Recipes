@@ -339,6 +339,17 @@ class arbitSession
     }
 
     /**
+     * Return if session value exists
+     *
+     * @param string $key
+     * @return bool
+     */
+    public static function is_set( $key )
+    {
+        return isset( self::$backend[self::$project][$key] );
+    }
+
+    /**
      * Get session value.
      *
      * @param string $key
