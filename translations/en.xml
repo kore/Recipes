@@ -36,6 +36,10 @@
       <source>A document with the name '%name' already exists.</source>
       <translation type="unfinished">A document with the name '%name' already exists.</translation>
     </message>
+    <message>
+      <source>Recipe deleted.</source>
+      <translation type="unfinished">Recipe deleted.</translation>
+    </message>
   </context>
   <context>
     <name>recipes</name>
