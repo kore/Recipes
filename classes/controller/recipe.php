@@ -205,6 +205,22 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Delete action
+     *
+     * Allows registered users to remove a recipe
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function delete( arbitRequest $request )
+    {
+        $recipe = new arbitRecipeModel( $request->subaction );
+        $recipe->delete();
+
+        return new arbitViewUserMessageModel( "Recipe deleted." );
+    }
+
+    /**
      * Get search seassion
      *
      * Get the search session based on the configuration values.

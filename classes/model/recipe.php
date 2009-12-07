@@ -195,6 +195,20 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     }
 
     /**
+     * Method used to delete an instance from the backend.
+     *
+     * Method, which removes the current instance from the backend, without any 
+     * possibility to undo this.
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        $recipe = arbitFacadeManager::getFacade( 'recipe' );
+        $recipe->delete( $this->id );
+    }
+
+    /**
      * Fetch the basic recipe data
      *
      * Fetch the basic recipe data

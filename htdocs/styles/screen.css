@@ -99,6 +99,7 @@ form {
     color: #ffffff;
 }
 
+.content ul.commands,
 .content ul.tags,
 .content div.jsonSuggestResults,
 label textarea, label select, label input {
@@ -443,9 +444,11 @@ div.content ul.cloud li.tag5 a {
 	padding: 0em;
 }
 
+.content ul.commands,
 .content ul.tags {
     width: 20%;
     float:right;
+    clear: right;
     padding: .2em;
     list-style-type: none;
 }

@@ -132,5 +132,16 @@ interface arbitRecipeFacade
      * @return void
      */
     public function updateRecipeData( $recipe, $data );
+
+    /**
+     * Method used to delete an instance from the backend.
+     *
+     * Method, which removes the current instance from the backend, without any 
+     * possibility to undo this.
+     *
+     * @param string $id
+     * @return void
+     */
+    public function delete( $id );
 }
 

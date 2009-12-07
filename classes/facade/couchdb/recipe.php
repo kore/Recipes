@@ -304,5 +304,32 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
         }
         $doc->save();
     }
+
+    /**
+     * Method used to delete an instance from the backend.
+     *
+     * Method, which removes the current instance from the backend, without any 
+     * possibility to undo this.
+     *
+     * @param string $id
+     * @return void
+     */
+    public function delete( $id )
+    {
+        try
+        {
+            phpillowManager::deleteDocument( 'recipe', $id );
+        }
+        catch ( phpillowResponseNotFoundErrorException $e )
+        {
+            throw new arbitFacadeNotFoundException(
+                "The recipe '%recipe' could not be found.",
+                array(
+                    'recipe' => $recipe,
+                )
+            );
+        }
+
+    }
 }
 
