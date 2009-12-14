@@ -39,11 +39,11 @@
 <ul class="ingredients">
 {foreach $recipe->ingredients as $section => $ingredients}
     <li><h4>{$section}</h4>
-        <ul>
+        <table class="ingredients">
         {foreach $ingredients as $ingredient}
-            <li>{$ingredient['amount']} {$ingredient['unit']} <a href="{$root}/{$model->request->controller}/ingredient/{$ingredient['ingredient']}">{$ingredient['ingredient']}</a></li>
+            <tr><td class="amount">{$ingredient['amount']} {$ingredient['unit']}</td><td><a href="{$root}/{$model->request->controller}/ingredient/{$ingredient['ingredient']}">{$ingredient['ingredient']}</a></td></tr>
         {/foreach}
-        </ul>
+        </table>
     </li>
 {/foreach}
 </ul>

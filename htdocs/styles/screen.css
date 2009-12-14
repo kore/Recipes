@@ -23,7 +23,7 @@ caption, th {
 	text-align: left;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-size:100%;
+	font-size:  100%;
 }
 q:before, q:after {
 	content: '';
@@ -157,8 +157,8 @@ h1 a {
 div.navigation,
 div.content {
 	margin: 0em auto;
-    padding: 10px;
-    width: 782px;
+    padding: 20px;
+    width: 762px;
 	min-height: 20em;
 
 	background-image: url( "../images/body.png" );
@@ -247,11 +247,11 @@ strong {
 }
 
 h2 {
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 
 h3 {
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
 
 h4 {
@@ -268,6 +268,11 @@ div.content div.body {
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
 	margin: 1em 0em .5em .0em;
+}
+
+.content h4.subtitle {
+	margin-top: .2em;
+	margin-left: 1em;
 }
 
 .content .right {
@@ -374,14 +379,17 @@ div.content dl {
 }
 
 div.content dt {
+    font-size:  90%;
 	width: 20%;
 	font-weight: bold;
 	float: left;
     clear: left;
-	padding: .1em .1em .5em .1em;
+	padding: 0.1em 0.1em 0.5em 1em;
+	margin-
 }
 
 div.content dd {
+    font-size:  90%;
 	margin-left: 21%;
 	width: 79%;
 	padding: .1em .1em .5em .1em;
@@ -579,6 +587,19 @@ form div.recipe ul.ingredients ul {
 form div.recipe ul.ingredients input.title,
 form div.recipe ul.ingredients ul input.ingredient {
     width: 70%;
+}
+
+ul.ingredients {
+    list-style-type:    none;
+}
+table.ingredients {
+    width: auto;
+}
+table.ingredients tr {
+    width: auto;
+}
+table.ingredients td.amount {
+    text-align:         right;
 }
 
 .content div.jsonSuggestResults {
