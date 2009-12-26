@@ -51,5 +51,5 @@
         <td>{$ingredient['ingredient']}</td>
     </tr>
 {/foreach}
-</ul>
+</table>
 
