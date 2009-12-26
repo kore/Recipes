@@ -44,9 +44,12 @@
     {/foreach}
 {/foreach}
 
-<ul class="ingredients">
+<table class="ingredients">
 {foreach $ingredientList as $ingredient}
-    <li>{str_number( $ingredient['amount'], 2, '.', ',' )} {$ingredient['unit']} {$ingredient['ingredient']}</li>
+    <tr>
+        <td class="amount">{str_number( $ingredient['amount'], 2, '.', ',' )} {$ingredient['unit']}</td>
+        <td>{$ingredient['ingredient']}</td>
+    </tr>
 {/foreach}
 </ul>
 
