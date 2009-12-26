@@ -595,12 +595,17 @@ ul.ingredients {
 }
 table.ingredients {
     width: auto;
+    border: none;
 }
 table.ingredients tr {
     width: auto;
 }
+table.ingredients td {
+    padding:    2px 10px;
+}
 table.ingredients td.amount {
     text-align:         right;
+    width:  120px;
 }
 
 .content div.jsonSuggestResults {
