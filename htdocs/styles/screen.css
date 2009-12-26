@@ -398,8 +398,9 @@ div.content dd {
 div.content ul.cloud {
     text-align: center;
 	list-style-type: none;
-    margin: .5em 0em;
+    margin: auto;
     padding: 0em;
+    width:  500px;
 }
 
 div.content ul.cloud li {
@@ -423,11 +424,11 @@ div.content ul.cloud li.tag3 a {
 }
 
 div.content ul.cloud li.tag4 a {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 div.content ul.cloud li.tag5 a {
-    font-size: 1.6em;
+    font-size: 1.4em;
 }
 
 .content table.tags {

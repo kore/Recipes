@@ -72,7 +72,7 @@ class arbitRecipeController extends arbitController
     public function tags( arbitRequest $request )
     {
         return new arbitViewRecipeTagsModel(
-            arbitRecipeModel::getMostPopularTags( 20 ),
+            arbitRecipeModel::getMostPopularTags( 30 ),
             arbitRecipeModel::getTags()
         );
     }
