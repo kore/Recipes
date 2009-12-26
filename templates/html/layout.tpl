@@ -43,6 +43,7 @@
         <ul class="main">
             <li><a href="{$root}/recipes/overview">{tr "Overview"}</a></li>
             <li><a href="{$root}/recipes/tags">{tr "By Tag"}</a></li>
+            <li><a href="{$root}/recipes/all">{tr "Index"}</a></li>
             <li><a href="{$root}/recipes/edit">{tr "Add recipe"}</a></li>
             <li><a href="{$root}/recipes/listRecipe">{tr "List"}</a></li>
         </ul>
