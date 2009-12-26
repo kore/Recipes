@@ -35,7 +35,7 @@
     <name>recipes</name>
     <message>
         <source>Add recipe</source>
-        <translation>Rezept hinzufügen</translation>
+        <translation>Neues Rezept</translation>
     </message>
     <message>
         <source>Name</source>
@@ -296,6 +296,14 @@
     <message>
         <source>List</source>
         <translation>Einkaufsliste</translation>
+    </message>
+    <message>
+        <source>Index</source>
+        <translation>Index</translation>
+    </message>
+    <message>
+        <source>All recipes</source>
+        <translation>Alle Rezepte</translation>
     </message>
 </context>
 </TS>
