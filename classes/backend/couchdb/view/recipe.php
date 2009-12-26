@@ -45,6 +45,9 @@ class arbitBackendCouchDbRecipeView extends phpillowFileView
         parent::__construct();
 
         $this->viewFunctions = array(
+            'all' => array(
+                'map'    => __DIR__ . '/map/recipe_all.js',
+            ),
             'units' => array(
                 'map'    => __DIR__ . '/map/recipe_units.js',
                 'reduce' => __DIR__ . '/reduce/sum.js',

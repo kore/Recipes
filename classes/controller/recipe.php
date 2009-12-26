@@ -78,6 +78,21 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Full alphabetical index
+     *
+     * Provides an alphabetical index of all recipes
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function all( arbitRequest $request )
+    {
+        return new arbitViewRecipeIndexModel(
+            arbitRecipeModel::getAll()
+        );
+    }
+
+    /**
      * Tag listing action
      *
      * Lists all recipes, which belong to a tag

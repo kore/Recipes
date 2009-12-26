@@ -205,6 +205,7 @@ return array(
     'arbitViewMainModel'                                 => 'classes/view/model/main.php',
     'arbitViewModuleModel'                               => 'classes/view/model/module.php',
     'arbitViewRecipeEditModel'                           => 'classes/view/model/recipe_edit.php',
+    'arbitViewRecipeIndexModel'                          => 'classes/view/model/recipe_index.php',
     'arbitViewRecipeTagModel'                            => 'classes/view/model/recipe_tag.php',
     'arbitViewRecipeIngredientModel'                     => 'classes/view/model/recipe_ingredient.php',
     'arbitViewRecipeListModel'                           => 'classes/view/model/recipe_list.php',

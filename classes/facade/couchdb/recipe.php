@@ -35,6 +35,32 @@
 class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRecipeFacade
 {
     /**
+     * Get full recipe list
+     *
+     * Return an alphabetical list of all recipes.
+     *
+     * @return array
+     */
+    public function getAll()
+    {
+        $issues = phpillowManager::getView( 'recipe' );
+        $result = $issues->query( 'all' );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $docs = array();
+        foreach ( $result->rows as $row )
+        {
+            $docs[] = is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+        }
+
+        return $docs;
+    }
+
+    /**
      * Get tag list
      *
      * Return a list of tags, each associated with the number of occurences in 

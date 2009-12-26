@@ -35,6 +35,15 @@
 interface arbitRecipeFacade
 {
     /**
+     * Get full recipe list
+     *
+     * Return an alphabetical list of all recipes.
+     *
+     * @return array
+     */
+    public function getAll();
+
+    /**
      * Get tag list
      *
      * Return a list of tags, each associated with the number of occurences in 

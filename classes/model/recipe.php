@@ -108,6 +108,25 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     }
 
     /**
+     * Get all recipes
+     *
+     * Return an alphabetical list of all recipes.
+     *
+     * @return array
+     */
+    public static function getAll()
+    {
+        $recipe  = arbitFacadeManager::getFacade( 'recipe' );
+        $recipes = $recipe->getAll();
+        return array_map( function( $id )
+            {
+                return new arbitRecipeModel( $id );
+            },
+            $recipes
+        );
+    }
+
+    /**
      * Get recipes by tag
      *
      * Return recipe models of all recipes, which contain the given tag,
