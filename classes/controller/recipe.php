@@ -236,16 +236,27 @@ class arbitRecipeController extends arbitController
         switch ( $request->variables['format'] )
         {
             case '.html':
+                $html = new ezcDocumentXhtml();
+                $html->createFromDocbook( $docbook->getAsDocbook() );
+                return new arbitViewDataModel( (string) $html, 'text/html' );
 
             case '.txt':
+                $txt = new ezcDocumentRst();
+                $txt->createFromDocbook( $docbook->getAsDocbook() );
+                return new arbitViewDataModel( (string) $txt, 'text/text' );
 
             case '.odt':
+                $converter = new ezcDocumentDocbookToOdtConverter();
+                $converter->options->styler->addStylesheetFile( __DIR__ . '/recipe.css' );
+                $odt = $converter->convert( $docbook );
+                return new arbitViewDataModel( (string) $odt, 'application/vnd.oasis.opendocument.text' );
 
             case '.xml':
+                return new arbitViewDataModel( (string) $docbook, 'application/docbook+xml' );
 
             case '.pdf':
             default:
-                $pdf = new ezcDocumentPdf( );
+                $pdf = new ezcDocumentPdf();
                 $pdf->loadStyles( __DIR__ . '/recipe.css' );
                 $pdf->options->errorReporting = E_PARSE | E_ERROR;
                 $pdf->createFromDocbook( $docbook->getAsDocbook() );
