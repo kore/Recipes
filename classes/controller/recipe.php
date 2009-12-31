@@ -220,6 +220,21 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * List exports
+     *
+     * Provide a list of available export formats for the recipe
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function listExports( arbitRequest $request )
+    {
+        return new arbitViewRecipeExportModel(
+            new arbitRecipeModel( $request->subaction )
+        );
+    }
+
+    /**
      * Return a normalized name
      *
      * Return a normalized anme, which can be used as a filename on most file 

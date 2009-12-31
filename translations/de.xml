@@ -335,5 +335,37 @@
       <source>Docbook</source>
       <translation>Docbook</translation>
     </message>
+    <message>
+      <source>Export recipe</source>
+      <translation>Rezept exportieren</translation>
+    </message>
+    <message>
+      <source>List exports</source>
+      <translation>Exportformate auflisten</translation>
+    </message>
+    <message>
+      <source>Export %recipe</source>
+      <translation>%recipe exportieren</translation>
+    </message>
+    <message>
+      <source>Export as HTML</source>
+      <translation>Als HTML exportieren</translation>
+    </message>
+    <message>
+      <source>Export as PDF</source>
+      <translation>Als PDF exportieren</translation>
+    </message>
+    <message>
+      <source>Export as OpenDocument</source>
+      <translation>Als OpenDocument exportieren</translation>
+    </message>
+    <message>
+      <source>Export as ReStructured Text</source>
+      <translation>Als ReStructured Text exportieren</translation>
+    </message>
+    <message>
+      <source>Export as Docbook XML</source>
+      <translation>Als Docbook XML exportieren</translation>
+    </message>
   </context>
 </TS>
