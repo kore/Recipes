@@ -41,6 +41,7 @@ class arbitViewDataModel extends arbitViewModel
     protected $properties = array(
         'content'  => null,
         'mimetype' => null,
+        'filename' => null,
     );
 
     /**
@@ -48,12 +49,14 @@ class arbitViewDataModel extends arbitViewModel
      *
      * @param string $content
      * @param string $mimetype
+     * @param string $filename
      * @return void
      */
-    public function __construct( $content = null, $mimetype = 'application/octet-stream' )
+    public function __construct( $content = null, $mimetype = 'application/octet-stream', $filename = null )
     {
         $this->content  = $content;
         $this->mimetype = $mimetype;
+        $this->filename = $filename;
     }
 }
 

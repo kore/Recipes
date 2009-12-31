@@ -254,6 +254,14 @@ class arbitViewManager extends ezcMvcView
             $response->content = new ezcMvcResultContent(
                 'en', $result->mimetype
             );
+
+            if ( $result->filename )
+            {
+                $response->content->disposition = new ezcMvcResultContentDisposition(
+                    'attachment', $result->filename
+                );
+            }
+
             return $response;
         }
 

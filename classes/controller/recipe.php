@@ -220,6 +220,21 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Return a normalized name
+     *
+     * Return a normalized anme, which can be used as a filename on most file 
+     * systems.
+     * 
+     * @param string $string 
+     * @return string
+     */
+    public function normalizeName( $string )
+    {
+        $string = iconv( 'UTF-8', 'ASCII//TRANSLIT', $string );
+        return trim( preg_replace( '([^A-Za-z0-9]+)', '_', $string ), '_' );
+    }
+
+    /**
      * Export action
      *
      * Allows to export a given recipe to a selected format, and a given amount 
@@ -230,29 +245,30 @@ class arbitRecipeController extends arbitController
      */
     public function export( arbitRequest $request )
     {
-        $recipe  = new arbitRecipeModel( $request->subaction );
-        $docbook = $recipe->getAsDocbook( $request );
+        $recipe   = new arbitRecipeModel( $request->subaction );
+        $docbook  = $recipe->getAsDocbook( $request );
+        $filename = $this->normalizeName( $recipe->title ) . $request->variables['format'];
 
         switch ( $request->variables['format'] )
         {
             case '.html':
                 $html = new ezcDocumentXhtml();
                 $html->createFromDocbook( $docbook->getAsDocbook() );
-                return new arbitViewDataModel( (string) $html, 'text/html' );
+                return new arbitViewDataModel( (string) $html, 'text/html', $filename );
 
             case '.txt':
                 $txt = new ezcDocumentRst();
                 $txt->createFromDocbook( $docbook->getAsDocbook() );
-                return new arbitViewDataModel( (string) $txt, 'text/text' );
+                return new arbitViewDataModel( (string) $txt, 'text/text', $filename );
 
             case '.odt':
                 $converter = new ezcDocumentDocbookToOdtConverter();
                 $converter->options->styler->addStylesheetFile( __DIR__ . '/recipe.css' );
                 $odt = $converter->convert( $docbook );
-                return new arbitViewDataModel( (string) $odt, 'application/vnd.oasis.opendocument.text' );
+                return new arbitViewDataModel( (string) $odt, 'application/vnd.oasis.opendocument.text', $filename );
 
             case '.xml':
-                return new arbitViewDataModel( (string) $docbook, 'application/docbook+xml' );
+                return new arbitViewDataModel( (string) $docbook, 'application/docbook+xml', $filename );
 
             case '.pdf':
             default:
@@ -260,7 +276,7 @@ class arbitRecipeController extends arbitController
                 $pdf->loadStyles( __DIR__ . '/recipe.css' );
                 $pdf->options->errorReporting = E_PARSE | E_ERROR;
                 $pdf->createFromDocbook( $docbook->getAsDocbook() );
-                return new arbitViewDataModel( (string) $pdf, 'application/pdf' );
+                return new arbitViewDataModel( (string) $pdf, 'application/pdf', $filename );
         }
     }
 
