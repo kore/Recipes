@@ -197,6 +197,26 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     }
 
     /**
+     * Return a docbook representation of the recipe.
+     * 
+     * @param arbitRequest $request 
+     * @return ezcDocumentDocbook
+     */
+    public function getAsDocbook( arbitRequest $request )
+    {
+        $viewHandler = new arbitViewDocbookHandler( $request );
+        $conf = arbitBackendIniConfigurationManager::getMainConfiguration();
+        $viewHandler->setLocale( $conf->language );
+
+        // Let view handler generate output
+        $docbook  = $viewHandler->showRecipe( new arbitRecipeViewModel( $this ) );
+        $document = new ezcDocumentDocbook();
+        $document->loadString( $docbook );
+
+        return $document;
+    }
+
+    /**
      * Method called to create a new instance in the backend.
      *
      * Method called when the model should be created in the backend the first
@@ -294,26 +314,50 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
      */
     public function __get( $property )
     {
-        if ( $property !== 'html' )
+        switch ( $property )
         {
-            return parent::__get( $property );
-        }
+            case 'html':
+                // Compile RST to HTML.
+                $document = new ezcDocumentRst();
+                $document->options->errorReporting                   = E_ERROR | E_PARSE;
+                $document->options->xhtmlVisitor                     = 'ezcDocumentRstXhtmlBodyVisitor';
+                $document->options->xhtmlVisitorOptions->headerLevel = 3;
 
-        // Compile RST to HTML.
-        $document = new ezcDocumentRst();
-        $document->options->errorReporting                   = E_ERROR | E_PARSE;
-        $document->options->xhtmlVisitor                     = 'ezcDocumentRstXhtmlBodyVisitor';
-        $document->options->xhtmlVisitorOptions->headerLevel = 3;
+                try
+                {
+                    $document->loadString( $this->instructions );
+                    $html = $document->getAsXhtml();
+                    return $html->save();
+                }
+                catch ( ezcDocumentParserException $e )
+                {
+                    return null;
+                }
 
-        try
-        {
-            $document->loadString( $this->instructions );
-            $html = $document->getAsXhtml();
-            return $html->save();
-        }
-        catch ( ezcDocumentParserException $e )
-        {
-            return null;
+            case 'docbookBody':
+                // Compile RST to HTML.
+                $document = new ezcDocumentRst();
+                $document->options->errorReporting                   = E_ERROR | E_PARSE;
+
+                try
+                {
+                    $document->loadString( $this->instructions );
+                    $docbook = $document->getAsDocbook();
+
+                    $result = '';
+                    foreach ( $docbook->getDomDocument()->documentElement->childNodes as $child )
+                    {
+                        $result .= simplexml_import_dom( $child )->asXml();
+                    }
+                    return $result;
+                }
+                catch ( ezcDocumentParserException $e )
+                {
+                    return 'Errors occured while parsing the text.';
+                }
+
+            default:
+                return parent::__get( $property );
         }
     }
 

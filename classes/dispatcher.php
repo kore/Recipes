@@ -177,6 +177,11 @@ class arbitDispatcherConfiguration implements ezcMvcDispatcherConfiguration
      */
     public function runResultFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
+        if ( $result->view instanceof arbitViewDataModel )
+        {
+            return $result;
+        }
+
         $result->view = new arbitViewMainModel( $result->view );
 
         $conf = arbitBackendIniConfigurationManager::getMainConfiguration();

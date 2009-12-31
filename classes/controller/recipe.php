@@ -220,6 +220,40 @@ class arbitRecipeController extends arbitController
     }
 
     /**
+     * Export action
+     *
+     * Allows to export a given recipe to a selected format, and a given amount 
+     * of portions.
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function export( arbitRequest $request )
+    {
+        $recipe  = new arbitRecipeModel( $request->subaction );
+        $docbook = $recipe->getAsDocbook( $request );
+
+        switch ( $request->variables['format'] )
+        {
+            case '.html':
+
+            case '.txt':
+
+            case '.odt':
+
+            case '.xml':
+
+            case '.pdf':
+            default:
+                $pdf = new ezcDocumentPdf( );
+                $pdf->loadStyles( __DIR__ . '/recipe.css' );
+                $pdf->options->errorReporting = E_PARSE | E_ERROR;
+                $pdf->createFromDocbook( $docbook->getAsDocbook() );
+                return new arbitViewDataModel( (string) $pdf, 'application/pdf' );
+        }
+    }
+
+    /**
      * Delete action
      *
      * Allows registered users to remove a recipe
@@ -249,7 +283,6 @@ class arbitRecipeController extends arbitController
 
         if ( $request->subaction !== 'index' )
         {
-            arbitLogger::dump( $request->subaction );
             $recipe = new arbitRecipeModel( $request->subaction );
             $list[$recipe->_id] = $recipe->amount;
             arbitSession::set( 'list', $list );

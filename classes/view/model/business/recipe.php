@@ -48,6 +48,7 @@ class arbitRecipeViewModel extends arbitViewModel
         'cooking'      => null,
         'instructions' => null,
         'html'         => null,
+        'docbookBody'  => null,
         'user'         => null,
         'tags'         => array(),
     );

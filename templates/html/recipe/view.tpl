@@ -27,6 +27,26 @@
             {tr "Put on list"}
         </a>
     </li>
+    <li>
+        <form method="GET" action="{$root}/{$model->request->controller}/export/{$recipe->id}" class="export">
+            <label>
+                <input type="text" name="amount" value="4" />
+                {tr "Amount"}
+            </label>
+            <label>
+                <select name="format" size="1">
+                    <option value=".pdf">{tr "PDF"}</option>
+                    <option value=".odt">{tr "Word"}</option>
+                    <option value=".txt">{tr "Text"}</option>
+                    <option value=".html">{tr "HTML"}</option>
+                    <option value=".xml">{tr "Docbook"}</option>
+                </select>
+                {tr "Format"}
+            </label>
+            <input type="submit" value="{tr "Export"}" />
+            <div class="break"/>
+        </form>
+    </li>
 </ul>
 
 <h2>{$recipe->title} <a class="edit" href="{$root}/{$model->request->controller}/edit/{$recipe->id}">[{tr "Edit recipe"}]</a></h2>

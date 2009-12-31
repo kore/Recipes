@@ -39,7 +39,6 @@ class arbitRedirectResult extends arbitResult
      */
     public function __construct( arbitRequest $target )
     {
-        arbitLogger::dump( $target->serialize( true ) );
         $this->status = new ezcMvcExternalRedirect( $target->serialize( true ) );
     }
 }

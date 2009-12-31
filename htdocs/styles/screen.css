@@ -67,7 +67,7 @@ em {
  * - Light:  #a18266
  */
 div.content ul.pager li a,
-label textarea, label select, label input,
+label textarea, label select, input,
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6,
 form div.recipe,
 body {
@@ -105,7 +105,7 @@ form table,
 .content ul.commands,
 .content ul.tags,
 .content div.jsonSuggestResults,
-label textarea, label select, label input {
+label textarea, label select, input {
     color: #2c2827;
     background-color: #f6f3f3;
     border: 1px solid #915014;
@@ -124,8 +124,8 @@ tbody td {
 
 form div.recipe textarea:focus, form div.recipe input:focus,
 form div.recipe textarea.errnous, form div.recipe input.errnous,
-label textarea.errnous, label select.errnous, label input.errnous,
-label textarea:focus, label select:focus, label input:focus {
+label textarea.errnous, label select.errnous, input.errnous,
+label textarea:focus, label select:focus, input:focus {
 	background-color: #ffffff;
 	border: 1px solid #a18266;
 }
@@ -507,6 +507,12 @@ label input {
 	float: right;
 }
 
+form.export label select,
+form.export label input {
+	width: 40%;
+	float: right;
+}
+
 label input.number {
 	width: 20%;
     text-align: right;
@@ -528,7 +534,11 @@ label textarea {
 	font-size: .9em;
 }
 
-label input[type="submit"] {
+form.export input[type="submit"] {
+    width: 60%;
+}
+
+input[type="submit"] {
 	width: 15em;
 	float: right;
 }
