@@ -24,14 +24,14 @@
  */
 
 /**
- * Model struct representing user errors.
+ * Model struct representing a simple list of strings
  *
  * @package Core
  * @subpackage View
  * @version $Revision: 1480 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class arbitViewDataModel extends arbitViewModel
+class arbitViewListModel extends arbitViewModel
 {
     /**
      * Array containing the actual view data.
@@ -39,21 +39,18 @@ class arbitViewDataModel extends arbitViewModel
      * @var array
      */
     protected $properties = array(
-        'content'  => null,
-        'mimetype' => null,
+        'array'  => array(),
     );
 
     /**
-     * Construct view model from binary content and an optional mimetype.
+     * Construct view model from an arbitrary array
      *
-     * @param string $content
-     * @param string $mimetype
+     * @param array $array 
      * @return void
      */
-    public function __construct( $content = null, $mimetype = 'application/octet-stream' )
+    public function __construct( array $array = array() )
     {
-        $this->content  = $content;
-        $this->mimetype = $mimetype;
+        $this->array  = $array;
     }
 }
 
