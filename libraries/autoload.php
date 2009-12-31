@@ -1208,5 +1208,9 @@ return array(
     'ezcTranslationData'                                                  => 'libraries/ezc/translation/structs/translation_data.php',
     'ezcTranslation'                                                      => 'libraries/ezc/translation/translation.php',
     'ezcTranslationManager'                                               => 'libraries/ezc/translation/translation_manager.php',
+    'TCPDF2DBarcode'                                                      => 'libraries/tcpdf/2dbarcodes.php',
+    'TCPDFBarcode'                                                        => 'libraries/tcpdf/barcodes.php',
+    'MakeFont'                                                            => 'libraries/tcpdf/fonts/utils/makefont.php',
+    'TCPDF'                                                               => 'libraries/tcpdf/tcpdf.php',
 );
 
