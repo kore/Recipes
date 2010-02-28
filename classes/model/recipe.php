@@ -79,7 +79,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     /**
      * Get tags
      *
-     * Return a list of tags, each associated with the number of occurences in 
+     * Return a list of tags, each associated with the number of occurences in
      * the recipes.
      *
      * @return array
@@ -97,7 +97,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
      *
      * @return array
      */
-    public static function getMostPopularTags( $count = 20 )
+    public static function getMostPopularTags( $count = 30 )
     {
         $recipe = arbitFacadeManager::getFacade( 'recipe' );
         $tags = $recipe->getTags();
@@ -149,7 +149,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     /**
      * Get unit list
      *
-     * Return a list of units, starting with the provided characters. 
+     * Return a list of units, starting with the provided characters.
      * Sorted by popularity
      *
      * @param string $string
@@ -164,7 +164,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     /**
      * Get ingredient list
      *
-     * Return a list of ingredients, starting with the provided characters. 
+     * Return a list of ingredients, starting with the provided characters.
      * Sorted by popularity
      *
      * @param string $string
@@ -236,7 +236,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
     /**
      * Method used to delete an instance from the backend.
      *
-     * Method, which removes the current instance from the backend, without any 
+     * Method, which removes the current instance from the backend, without any
      * possibility to undo this.
      *
      * @return void
