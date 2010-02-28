@@ -56,7 +56,7 @@ class arbitRecipeController extends arbitController
     public function overview( arbitRequest $request )
     {
         return new arbitViewRecipeOverviewModel(
-            arbitRecipeModel::getMostPopularTags( 20 ),
+            arbitRecipeModel::getMostPopularTags( 30 ),
             arbitRecipeModel::getTags()
         );
     }
@@ -127,7 +127,7 @@ class arbitRecipeController extends arbitController
     /**
      * Units actions
      *
-     * Returns a list of the units, starting with the string, specified 
+     * Returns a list of the units, starting with the string, specified
      * in the subaction
      *
      * @param arbitRequest $request
@@ -145,7 +145,7 @@ class arbitRecipeController extends arbitController
     /**
      * Ingredients actions
      *
-     * Returns a list of the ingredients, starting with the string, specified 
+     * Returns a list of the ingredients, starting with the string, specified
      * in the subaction
      *
      * @param arbitRequest $request
@@ -163,10 +163,10 @@ class arbitRecipeController extends arbitController
     /**
      * Convert ingredient list
      *
-     * Converts the ingredient list, passed from the HTML view into the format, 
+     * Converts the ingredient list, passed from the HTML view into the format,
      * used by the model
-     * 
-     * @param array $ingredients 
+     *
+     * @param array $ingredients
      * @return void
      */
     protected function convertIngredientList( array $ingredients )
@@ -181,7 +181,7 @@ class arbitRecipeController extends arbitController
 
             $title = $category['title'];
             unset( $category['title'] );
-            
+
             foreach ( $category as $ingredient )
             {
                 foreach ( array( 'amount', 'unit', 'ingredient' ) as $field )
@@ -237,10 +237,10 @@ class arbitRecipeController extends arbitController
     /**
      * Return a normalized name
      *
-     * Return a normalized anme, which can be used as a filename on most file 
+     * Return a normalized anme, which can be used as a filename on most file
      * systems.
-     * 
-     * @param string $string 
+     *
+     * @param string $string
      * @return string
      */
     public function normalizeName( $string )
@@ -252,7 +252,7 @@ class arbitRecipeController extends arbitController
     /**
      * Export action
      *
-     * Allows to export a given recipe to a selected format, and a given amount 
+     * Allows to export a given recipe to a selected format, and a given amount
      * of portions.
      *
      * @param arbitRequest $request
@@ -334,7 +334,7 @@ class arbitRecipeController extends arbitController
         if ( arbitHttpTools::get( 'update' ) !== null )
         {
             $list = arbitHttpTools::get( 'amount', arbitHttpTools::TYPE_ARRAY );
-            
+
             foreach ( $list as $recipe => $amount )
             {
                 if ( $amount <= 0 )
@@ -376,7 +376,7 @@ class arbitRecipeController extends arbitController
         }
 
         $handler = new ezcSearchZendLuceneHandler( $path );
-        
+
         $manager = new ezcSearchXmlManager( __DIR__ . '/../../search/' );
         return new ezcSearchSession( $handler, $manager );
     }
@@ -397,12 +397,12 @@ class arbitRecipeController extends arbitController
         {
             $offset = isset( $request->variables['offset'] ) ? (int) $request->variables['offset'] : 0;
             $limit  = 10;
-         
+
             $search = $this->getSearchSession( $request );
             $query  = $search->createFindQuery( 'arbitRecipeModel' );
 
             $queryBuilder  = new ezcSearchQueryBuilder();
-            $queryBuilder->parseSearchQuery( $query, $searchTerm, array( 'title', 'description', 'instructions' ) ); 
+            $queryBuilder->parseSearchQuery( $query, $searchTerm, array( 'title', 'description', 'instructions' ) );
             $query->offset = $offset;
             $query->limit  = 10;
             $result        = $search->find( $query );
