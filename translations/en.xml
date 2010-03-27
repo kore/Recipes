@@ -40,6 +40,18 @@
       <source>Recipe deleted.</source>
       <translation type="unfinished">Recipe deleted.</translation>
     </message>
+    <message>
+      <source>No backup for core module possible.</source>
+      <translation type="unfinished">No backup for core module possible.</translation>
+    </message>
+    <message>
+      <source>Backup written to file "%file".</source>
+      <translation type="unfinished">Backup written to file "%file".</translation>
+    </message>
+    <message>
+      <source>Imported file "%file" into database.</source>
+      <translation type="unfinished">Imported file "%file" into database.</translation>
+    </message>
   </context>
   <context>
     <name>recipes</name>
