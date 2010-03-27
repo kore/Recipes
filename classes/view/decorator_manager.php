@@ -184,6 +184,22 @@ class arbitViewModelDecorationDependencyInjectionManager
         ),
 
         /**
+         * The text display is mostly used for command line output and requires
+         * custom definitions for each view struct.
+         */
+        'arbitViewTextHandler' => array(
+            'arbitViewCliContextModel' => array(
+                'showCliViewModelList',
+            ),
+            'arbitViewModuleModel' => array(
+                'showModuleModel'
+            ),
+            'arbitViewUserMessageModel' => array(
+                'showMessageModel'
+            ),
+        ),
+
+        /**
          * For the email handler we only need to decorate those structures,
          * which actually send via mail, but there is no general way to format
          * those mails, and they should all be customizeable through templates.

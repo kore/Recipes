@@ -51,7 +51,7 @@ class arbitBackendIniConfigurationManager
      *
      * @var array(arbitBackendIniProjectConfiguration)
      */
-    protected static $projects = null;
+    protected static $projects = array();
 
     /**
      * Conatins the configuration for all modules per project. The array

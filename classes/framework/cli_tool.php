@@ -340,29 +340,6 @@ abstract class arbitFrameworkCliTool
             arbitSession::login( new arbitModelUser( $options['user'] ) );
         }
 
-        // Login as a default shell user, with all permissions
-        $userName = getenv( 'USER' );
-
-        $conf = arbitBackendIniConfigurationManager::getProjectConfiguration( $request->controller );
-        foreach ( $conf->administrators as $admin )
-        {
-            try
-            {
-                $user = new arbitModelUser( $admin );
-
-                if ( $user->valid === '1' )
-                {
-                    ezcLog::getInstance()->log( "Log in as user '$admin'.", ezcLog::INFO );
-                    return arbitSession::login( $user );
-                }
-            }
-            catch ( arbitFacadeNotFoundException $e )
-            {
-                // Gracefully handle non existing users in log file
-                ezcLog::getInstance()->log( $e->getMessage(), ezcLog::WARNING );
-            }
-        }
-
         ezcLog::getInstance()->log( "No valid admin user found for project '{$request->controller}'.", ezcLog::WARNING );
     }
 
@@ -387,31 +364,19 @@ abstract class arbitFrameworkCliTool
             $request->variables = $options;
             $request->extension = $options['output'];
 
-            // Initialize session
-            arbitSession::setBackend( new arbitMemorySessionBackend() );
-            arbitSession::initialize( $request, true );
-
             // Set current project / controller dependant default controller
-            arbitCacheRegistry::setCache( $request->controller );
-            arbitCacheRegistry::setDefaultCache( $request->controller );
+            arbitCacheRegistry::setDefaultCache( 'core' );
 
-            if ( ( $request->controller !== 'core' ) &&
-                 ( $request->controller !== 'error' ) )
-            {
-                // Embed module context in request
-                $projectConfig = arbitBackendIniConfigurationManager::getProjectConfiguration( $project );
-                $modules = array();
-                foreach ( $projectConfig->modules as $name => $type )
-                {
-                    $modules[arbitProjectController::normalizeModuleName( $name )] = $type;
-                }
-                $request->variables['arbit_modules'] = $modules;
+            // Initialize database connection
+            arbitFacadeManager::selectProject( 'core' );
 
-                arbitProjectController::initialize( $request );
+            // Start session, within currently selected project / controller
+            // context
+            arbitSession::setBackend( new arbitHttpSessionBackend() );
+            arbitSession::initialize( $request );
 
-                // Login requested or default user
-                $this->login( $request, $options );
-            }
+            // Login requested or default user
+            $this->login( $request, $options );
 
             $controller = $this->createController( $request, $options );
             $views[]    = $controller->createResult()->view;
