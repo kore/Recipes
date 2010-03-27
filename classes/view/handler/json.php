@@ -19,7 +19,7 @@
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1650 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
@@ -28,7 +28,7 @@
  *
  * @package Core
  * @subpackage View
- * @version $Revision: 1236 $
+ * @version $Revision: 1650 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 class arbitViewJsonHandler extends arbitViewHandler
@@ -122,14 +122,37 @@ class arbitViewJsonHandler extends arbitViewHandler
      */
     protected function transformArray( array $array )
     {
-        $string = "{";
-
-        foreach ( $array as $key => $value )
+        if ( array_reduce(
+                array_map(
+                    function ( $key )
+                    {
+                        return is_numeric( $key );
+                    },
+                    array_keys( $array )
+                ),
+                function ( $lastKey, $key )
+                {
+                    return $lastKey && $key;
+                },
+                true
+             ) )
         {
-            $string .= $this->transformValue( $key ) . ": " . $this->transformValue( $value ) . ",";
+            $string = '[ ';
+            foreach ( $array as $key => $value )
+            {
+                $string .= $this->transformValue( $value ) . ",";
+            }
+
+            return substr( $string, 0, -1 ) . "]";
         }
 
-        return $string . "}";
+        $string = "{";
+        foreach ( $array as $key => $value )
+        {
+            $string .= $this->transformValue( (string) $key ) . ": " . $this->transformValue( $value ) . ",";
+        }
+
+        return substr( $string, 0, -1 ) . "}";
     }
 
     /**
@@ -151,9 +174,7 @@ class arbitViewJsonHandler extends arbitViewHandler
             $string .= "" . $this->transformValue( $property ) . ": " . $this->transformValue( $model->$property ) . ",";
         }
 
-        $string .= "}}";
-
-        return $string;
+        return substr( $string, 0, -1 ) . "}}";
     }
 
     /**
@@ -168,7 +189,7 @@ class arbitViewJsonHandler extends arbitViewHandler
     {
         return "{
             \"type\": " . $this->transformValue( get_class( $model->exception ) ) . ",
-            \"error\": " . $this->transformValue( $model->exception->getMessage() ) . ",
+            \"error\": " . $this->transformValue( $model->exception->getMessage() ) . "
         }";
     }
 
