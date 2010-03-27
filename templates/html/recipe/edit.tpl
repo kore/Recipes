@@ -100,52 +100,46 @@ $( document ).ready( function()
     }
 
     // Enable auto-suggest for ingredient fields
-    $( 'input.ingredient' ).jsonSuggest(
-        function( text, wildCard, caseSensitive, notCharacter, callback, filter )
-        {
-            var callback = callback;
-            var filter   = filter;
+    $( 'input.ingredient' ).autocomplete({
+        source: function( request, callback )
+            {
+                var callback = callback;
 
-            $.get( root + "/recipes/ingredients/" + text + ".js", function ( data, textStatus )
-                {
-                    data = JSON.parse( data );
-                    var terms = [];
-                    $.each( data.properties.view.properties["array"], function( key, value )
-                        {
-                            terms.push( {text: key} );
-                        }
-                    );
-                    callback( terms, filter );
-                },
-                "json"
-            );
-        },
-        {ajaxResults:true
+                $.get( root + "/recipes/ingredients/" + request.term + ".js", function ( data, textStatus )
+                    {
+                        var terms = [];
+                        $.each( data.properties.view.properties["array"], function( key, value )
+                            {
+                                terms.push( key );
+                            }
+                        );
+                        callback( terms );
+                    },
+                    "json"
+                );
+            }
         }
     );
 
     // Enable auto-suggest for unit fields
-    $( 'input.unit' ).jsonSuggest(
-        function( text, wildCard, caseSensitive, notCharacter, callback, filter )
-        {
-            var callback = callback;
-            var filter   = filter;
+    $( 'input.unit' ).autocomplete({
+        source: function( request, callback )
+            {
+                var callback = callback;
 
-            $.get( root + "/recipes/units/" + text + ".js", function ( data, textStatus )
-                {
-                    data = JSON.parse( data );
-                    var terms = [];
-                    $.each( data.properties.view.properties["array"], function( key, value )
-                        {
-                            terms.push( {text: key} );
-                        }
-                    );
-                    callback( terms, filter );
-                },
-                "json"
-            );
-        },
-        {ajaxResults:true
+                $.get( root + "/recipes/units/" + request.term + ".js", function ( data, textStatus )
+                    {
+                        var terms = [];
+                        $.each( data.properties.view.properties["array"], function( key, value )
+                            {
+                                terms.push( key );
+                            }
+                        );
+                        callback( terms );
+                    },
+                    "json"
+                );
+            }
         }
     );
 } );
