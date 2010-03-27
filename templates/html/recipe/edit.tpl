@@ -8,7 +8,7 @@
 {include arbit_get_template( 'html/core/success.tpl' )
 	send $model->success as $success}
 
-<form method="post" action="{$root}/{$model->request->controller}/{$model->request->action}{if $model->recipe}/{$model->recipe->id}{/if}"
+<form class="protect" method="post" action="{$root}/{$model->request->controller}/{$model->request->action}{if $model->recipe}/{$model->recipe->id}{/if}"
       onsubmit="return validateForm( this );">
 <fieldset>
 	<legend>{tr "Edit recipe"}</legend>

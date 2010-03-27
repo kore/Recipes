@@ -367,5 +367,9 @@
       <source>Export as Docbook XML</source>
       <translation>Als Docbook XML exportieren</translation>
     </message>
+    <message>
+      <source>Unsaved changes to the recipe will be lost.</source>
+      <translation>Änderungen am Rezept werden dabei verloren gehen.</translation>
+    </message>
   </context>
 </TS>

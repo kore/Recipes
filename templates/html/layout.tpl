@@ -9,16 +9,19 @@
     <meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
 
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.css" media="screen" />
+    <link rel="Stylesheet" type="text/css" href="{$root}/styles/ui-lightness/jquery-ui-1.8.custom.css" media="screen" />
 
-    <script src="{$root}/scripts/jquery-1.3.2.min.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery-1.4.2.min.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery.ui-1.8-custom.min.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery.protect.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/jquery.autogrow.js" type="text/ecmascript"></script>
-    <script src="{$root}/scripts/jquery.jsonSuggest-dev.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
     <script type="text/ecmascript">
     // <![CDATA[ {literal}
     $( document ).ready( function()
     {
         $( "textarea" ).autogrow();
+        $( "form.protect" ).protect( '{/literal}{tr "Unsaved changes to the recipe will be lost."}{literal}' );
     } );
     {/literal} // ]]>
     </script>
