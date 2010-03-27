@@ -90,13 +90,6 @@ class arbitAdminCouchdbController extends arbitController
      */
     public function importBackup( arbitRequest $request )
     {
-        if ( $request->controller === 'core' )
-        {
-            return new arbitViewUserMessageModel(
-                "No backup for core module possible."
-            );
-        }
-
         $filename = $this->getFileName( $request );
         $dsn      = arbitBackendIniConfigurationManager::getMainConfiguration()->backendUrl;
         $options  = array(
