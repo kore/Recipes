@@ -14,13 +14,13 @@
     <script src="{$root}/scripts/jquery-1.4.2.min.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/jquery-ui-1.8.custom.min.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/jquery.protect.js" type="text/ecmascript"></script>
-    <script src="{$root}/scripts/jquery.autogrow.js" type="text/ecmascript"></script>
+    <script src="{$root}/scripts/jquery.elastic.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/form.js" type="text/ecmascript"></script>
     <script type="text/ecmascript">
     // <![CDATA[ {literal}
     $( document ).ready( function()
     {
-        $( "textarea" ).autogrow();
+        $( "textarea" ).elastic();
         $( "form.protect" ).protect( '{/literal}{tr "Unsaved changes to the recipe will be lost."}{literal}' );
     } );
     {/literal} // ]]>

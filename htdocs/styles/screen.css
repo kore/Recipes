@@ -531,6 +531,7 @@ label input:focus {
 label textarea {
 	font-family: monospace;
 	font-size: .9em;
+    max-height: 500px;
 }
 
 form.export input[type="submit"] {
