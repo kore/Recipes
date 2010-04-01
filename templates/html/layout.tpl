@@ -29,7 +29,7 @@
     <title>Recipe Manager</title>
 </head>
 <body class="dashboard">
-	<h1>
+	<h1 class="{tr "en" context "locale"}">
 		<a href="{$root}/">{tr "Recipe Database"}</a>
 	</h1>
 

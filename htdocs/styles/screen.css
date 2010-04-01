@@ -146,6 +146,10 @@ h1 {
 	background-image: url( "../images/header.png" );
 }
 
+h1.de {
+	background-image: url( "../images/header_de.png" );
+}
+
 h1 a {
 	display: block;
     width: 802px;

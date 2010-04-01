@@ -369,7 +369,14 @@
     </message>
     <message>
       <source>Unsaved changes to the recipe will be lost.</source>
-      <translation>Änderungen am Rezept werden dabei verloren gehen.</translation>
+      <translation>&#xC4;nderungen am Rezept werden dabei verloren gehen.</translation>
+    </message>
+  </context>
+  <context>
+    <name>locale</name>
+    <message>
+      <source>en</source>
+      <translation>de</translation>
     </message>
   </context>
 </TS>
