@@ -26,7 +26,7 @@
     {/literal} // ]]>
     </script>
 
-    <title>Recipe Manager</title>
+    <title>{tr "Recipe Database"}</title>
 </head>
 <body class="dashboard">
 	<h1 class="{tr "en" context "locale"}">
