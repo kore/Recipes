@@ -169,6 +169,9 @@ abstract class arbitCoreModuleUserAuthentification extends arbitController
         // or each registration request should be administrated, we could set
         // it to '0' (deactivated).
 
+        // Disable user login by default for new users.
+        return '0';
+
         // Append several different seeds for pseudo random numbers, so that
         // the confirmation key is hard to predict from outside.
         return md5(
