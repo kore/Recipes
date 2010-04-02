@@ -1,5 +1,30 @@
 {use $model, $root = $model->request->root}
 {tr_context "recipes"}
+<ul class="commands">
+	{if $model->recipe}
+		<li>
+			<a href="{$root}/{$model->request->controller}/view/{$model->recipe->id}">
+				{tr "View"}
+			</a>
+		</li>
+		<li>
+			<a onclick="return confirm( '{tr "Do you really want to delete this recipe?"}' );" href="{$root}/{$model->request->controller}/delete/{$model->recipe->id}">
+				{tr "Delete"}
+			</a>
+		</li>
+		<li>
+			<a href="{$root}/{$model->request->controller}/listExports/{$model->recipe->id}">
+				{tr "Export"}
+			</a>
+		</li>
+	{else}
+		<li>
+			<a href="{$root}/{$model->request->controller}">
+				{tr "Abort"}
+			</a>
+		</li>
+	{/if}
+</ul>
 <div class="page">
 	<h2>{tr "Edit recipe"}</h2>
 

@@ -389,11 +389,43 @@
     </message>
     <message>
       <source>Delete</source>
-      <translation>Loeschen</translation>
+      <translation>L&#xF6;schen</translation>
     </message>
     <message>
       <source>On list</source>
       <translation>Auf Einkaufsliste</translation>
+    </message>
+    <message>
+      <source>OpenDocument</source>
+      <translation type="unfinished">OpenDocument</translation>
+    </message>
+    <message>
+      <source>ODT</source>
+      <translation type="unfinished">ODT</translation>
+    </message>
+    <message>
+      <source>View</source>
+      <translation>Anzeigen</translation>
+    </message>
+    <message>
+      <source>Abort</source>
+      <translation>Abbrechen</translation>
+    </message>
+    <message>
+      <source>People</source>
+      <translation>Personen</translation>
+    </message>
+    <message>
+      <source>Tagindex</source>
+      <translation>Stichwortverzeichnis</translation>
+    </message>
+    <message>
+      <source>Alphabetically</source>
+      <translation>Alphabetisch</translation>
+    </message>
+    <message>
+      <source>Clear List</source>
+      <translation>Liste leeren</translation>
     </message>
   </context>
   <context>

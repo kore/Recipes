@@ -89,17 +89,26 @@ div.navigation ul li:hover a {
 
 table,
 label textarea, label select, input {
-    border: 1px solid #e1d7ce;
+    border: 1px solid #aa8d74;
+	padding: 2px;
+}
+
+label textarea, label select, input {
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
 }
 
 form div.recipe textarea:focus, form div.recipe input:focus,
-form div.recipe textarea.errnous, form div.recipe input.errnous,
-label textarea.errnous, label select.errnous, input.errnous,
 label textarea:focus, label select:focus, input:focus {
 	background-color: #ffffff;
 	border: 1px solid #643525;
 }
 
+form div.recipe textarea.errnous, form div.recipe input.errnous,
+label textarea.errnous, label select.errnous, input.errnous {
+	background-color: #fee5bf;
+}
 
 /* Layout configuration */
 body {
@@ -176,28 +185,39 @@ div.navigation ul.user li {
  * Content layout definitions
  */
 
-ul.success,
-ul.errors {
-	width: 80%;
-	min-height: 40px;
+div.content ul.success,
+div.content ul.errors {
+	width: 100%;
 	margin: 1em auto;
-	padding: .5em 0em;
-	border: 2px solid #ce5c00;
+	padding: 1em 0;
 	list-style-type: disc;
 
-	background-image: url( "../images/error_bg.png" );
-	background-repeat: no-repeat;
-	background-position: bottom right;
+	min-height: 50px;	
+
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
+
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
-ul.success {
-	border: 2px solid #4e9a06;
-	background-image: url( "../images/success_bg.png" );
+div.content ul.errors {
+	background: #fdcf8a url( "../images/jakob/warning.png" ) 8px center no-repeat;
 }
 
-ul.success li,
-ul.errors li {
-	margin: .3em .3em .3em 2em;
+div.content ul.success {
+	list-style-type: none;
+	background: #9cbcdd url( "../images/jakob/information.png" ) 8px center no-repeat;	
+}
+
+div.content ul.success li {
+	margin:  16px .5em .5em 70px;
+}
+
+div.content ul.errors li {
+	margin: 16px .5em .5em 5.5em;
 }
 
 em {
@@ -228,6 +248,10 @@ h5 {
 	margin: 1em 0em .5em .0em;
 }
 
+.content h2 {
+	text-shadow: #e1d7ce 2px 2px 1px;
+}
+
 .content h3 {
 	margin: 2em 0em .5em .0em;
 }
@@ -254,7 +278,7 @@ div.content a.internal:before {
 }
 
 p {
-	margin: 0em 0em 1em 0em;
+	margin: 1em 0em 0em 0em;
 	line-height: 140%;
 }
 
@@ -341,9 +365,13 @@ div.content dt {
 
 div.content dd {
     font-size:  90%;
-	margin-left: 21%;
-	width: 79%;
+	margin-left: 24%;
+	width: 76%;
 	padding: .1em .1em .5em .1em;
+}
+
+div.content dl dd input {
+	margin: 0 0 0 0.5em;
 }
 
 div.content div.article {
@@ -353,7 +381,7 @@ div.content div.article {
 div.content ul.cloud {
     text-align: center;
 	list-style-type: none;
-    margin: auto;
+    margin: 1em auto;
     padding: 0em;
     width:  500px;
 }
@@ -419,7 +447,7 @@ div.content ul.cloud li.tag5 a {
 	-moz-box-shadow: #3a1f15 5px 5px 4px;
 	-webkit-box-shadow: #3a1f15 5px 5px 4px;
 
-	padding: 51px;
+	padding: 38px 51px 51px 51px;
 }
 
 .content ul.commands {
@@ -472,12 +500,7 @@ div.content ul.cloud li.tag5 a {
 form {
 	display: block;
 	clear: right;
-	margin: 0em auto .5em auto;
-	padding: 0em 0em .2em 0em;
-	width: 80%;
-
-    padding: 5px;
-    -moz-border-radius: 10px;
+	margin: 1em auto;
 }
 
 form.wide {
@@ -489,7 +512,7 @@ fieldset {
 }
 
 legend {
-	display: block;
+	display: none;
 	margin: 0em 0em .5em 0em;
 	padding: .1em;
 
@@ -516,7 +539,7 @@ form.export label input {
 }
 
 label input.number {
-	width: 20%;
+	width: 3em;
     text-align: right;
 }
 
@@ -544,6 +567,8 @@ form.export input[type="submit"] {
 input[type="submit"] {
 	width: 15em;
 	float: right;
+	margin: 1em 0 0 0;
+	background-color: #ffffff;
 }
 
 td input[type="checkbox"],
@@ -571,31 +596,36 @@ form div.recipe input {
     color: inherit;
     background-color: inherit;
     margin: inherit;
-    padding: inherit;
-    border: 1px solid #d3d7cf;
+    padding: 2px;
+    border: 1px solid #aa8d74;
     width: 100%;
+
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
 }
 
 table td.amount input {
-    width: 90%;
+    width: 85%;
     text-align: right;
 }
 
 form div.recipe input.number {
-    width: 2em;
+    width: 2.5em;
     text-align: right;
 }
 
 form div.recipe input.tags {
     width: auto;
+	margin: 0.3em 0 0 0.5em;
 }
 
-.recipe h1, .recipe h2, .recipe h3, .recipe h4, .recipe h5, .recipe h6 {
+.recipe h1, .recipe h2, .recipe h4, .recipe h5, .recipe h6 {
 	margin: .4em 0em .2em .0em;
 }
 
 form div.recipe ul.ingredients ul {
-    padding-left: 10%;
+    padding-left: 5%;
 }
 
 form div.recipe ul.ingredients input.title,
@@ -606,16 +636,25 @@ form div.recipe ul.ingredients ul input.ingredient {
 .content ul.ingredients {
     list-style-type:    none;
 }
+
+.content ul.ingredients li {
+    margin: 0.1em 0;
+}
+
 table.ingredients {
     width: auto;
     border: none;
 }
+
 table.ingredients tr {
     width: auto;
 }
+
 table.ingredients td {
     padding:    2px 10px;
 }
+
+table td.amount,
 table.ingredients td.amount {
     text-align:         right;
     width:  80px;
@@ -651,6 +690,18 @@ table.ingredients td.amount {
     font-size: x-small !important;
     position:absolute;
     bottom:3px;
+}
+
+div.content ul.exports {
+	list-style-type: none;
+}
+
+div.content ul.exports li {
+	margin: 0.2em 0;
+}
+
+div.content ul.exports img {
+	margin: 0 8px 0 0;
 }
 
 /**

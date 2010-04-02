@@ -1,5 +1,18 @@
 {use $model, $recipe = $model->recipe, $root = $model->request->root}
 {tr_context "recipes"}
+<ul class="commands">
+    <li>
+        <a href="{$root}/{$model->request->controller}/view/{$recipe->id}">
+            {tr "View"}
+        </a>
+    </li>
+    <li>
+        <a href="{$root}/{$model->request->controller}/edit/{$recipe->id}">
+            {tr "Edit"}
+        </a>
+    </li>
+</ul>
+
 <div class="page">
 	<h2>{tr "Export %recipe" vars "recipe" => $recipe->title}</h2>
 

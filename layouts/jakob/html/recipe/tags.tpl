@@ -1,6 +1,11 @@
 {use $model, $root = $model->request->root}
 {var $grouped}
 {tr_context "recipes"}
+<ul class="commands">
+	<li><a href="{$root}/recipes/edit">{tr "Add recipe"}</a></li>
+	<li><a href="{$root}/recipes/all">{tr "Alphabetically"}</a></li>
+	<li><a href="{$root}/recipes/listRecipe">{tr "List"}</a></li>
+</ul>
 <div class="page">
 	<h2>{tr "Tags"}</h2>
 

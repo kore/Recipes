@@ -1,5 +1,8 @@
 {use $model, $root = $model->request->root, $project = $model->request->controller}
 {tr_context "recipes"}
+<ul class="commands">
+	<li><a href="{$root}/{$project}/login">{tr "Login"}</a></li>
+</ul>
 <div class="page">
 	<h2>{tr "Login"}</h2>
 	<p>

@@ -1,6 +1,23 @@
 {use $model, $root = $model->request->root}
 {var $ingredientList = array()}
 {tr_context "recipes"}
+<ul class="commands">
+	<li><a href="#" id="clear-list">{tr "Clear List"}</a></li>
+	<script type="text/javascript">
+    // <![CDATA[ {literal}
+    $( document ).ready( function() {
+		$( "#clear-list" ).bind( "click", function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$('td.amount input').val(0);
+			$('input[type="submit"]').click();
+		});
+    });
+    {/literal} // ]]>
+    </script>
+	<li><a href="{$root}/recipes/tags">{tr "Tagindex"}</a></li>
+	<li><a href="{$root}/recipes/all">{tr "Alphabetically"}</a></li>
+</ul>
 <div class="page">
 	<h2>{tr "Personal recipe list"}</h2>
 
@@ -12,12 +29,12 @@
 
 		<table>
 			<thead>
-				<tr><th>{tr "Recipe"}</th><th>{tr "Amount"}</th></tr>
+				<tr><th>{tr "Recipe"}</th><th>{tr "People"}</th></tr>
 			</thead>
 			<tbody>
 			{foreach $model->list as $row}
 				<tr>
-					<td class="title">{$row['recipe']->title}</td>
+					<td class="title"><a href="{$root}/{$model->request->controller}/view/{$row['recipe']->id}">{$row['recipe']->title}</a></td>
 					<td class="amount"><input type="text" name="amount[{$row['recipe']->id}]" value="{$row['amount']}" /></td>
 				</tr>
 			{/foreach}
