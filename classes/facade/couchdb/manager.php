@@ -72,9 +72,12 @@ class arbitCouchDbFacadeProjectManager extends arbitCouchDbFacadeBase implements
     {
         $this->registerBaseDocuments();
 
-        list( $host, $port ) = $this->getConnectionInformation();
+        list( $host, $port, $username, $password ) = $this->getConnectionInformation();
         phpillowConnection::createInstance(
-            $host, $port
+            $host,
+            $port,
+            $username,
+            $password
         );
         $db = phpillowConnection::getInstance();
 
@@ -252,7 +255,12 @@ class arbitCouchDbFacadeProjectManager extends arbitCouchDbFacadeBase implements
         // Ommit the starting /
         $this->prefix = substr( $parts['path'], 1 );
 
-        return array( $parts['host'], $parts['port'] );
+        return array( 
+            $parts['host'], 
+            $parts['port'],
+            isset( $parts['user'] ) ? $parts['user'] : null,
+            isset( $parts['pass'] ) ? $parts['pass'] : null,
+        );
     }
 
     /**
