@@ -44,6 +44,7 @@ body {
 }
 
 a {
+	color: #915014;
 	text-decoration: none;
 }
 
@@ -223,8 +224,12 @@ h5 {
 	font-size: 1em;
 }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+.content h1, .content h2, .content h4, .content h5, .content h6 {
 	margin: 1em 0em .5em .0em;
+}
+
+.content h3 {
+	margin: 2em 0em .5em .0em;
 }
 
 .content h4.subtitle {
@@ -261,13 +266,8 @@ div.content ol {
 
 div.content ul {
 	margin: .5em 0em .3em 0em;
-	padding: 0em 0em 0em 2em;
+	padding: 0em 0em 0em 1em;
 	list-style-type: disc;
-}
-
-div.content ol li,
-div.content ul li {
-	padding: .1em 0em;
 }
 
 div.content ol li p,
@@ -322,22 +322,17 @@ td.image {
 	vertical-align: middle;
 }
 
-td.amount {
-    text-align: right;
-    width: 10%;
-}
-
 td.number {
 	text-align: right;
 }
 
 div.content dl {
-	margin: .5em 0em 1em 0em;
+	margin: 1em 0em 2em 0em;
 }
 
 div.content dt {
     font-size:  90%;
-	width: 20%;
+	width: 24%;
 	font-weight: bold;
 	float: left;
     clear: left;
@@ -349,6 +344,10 @@ div.content dd {
 	margin-left: 21%;
 	width: 79%;
 	padding: .1em .1em .5em .1em;
+}
+
+div.content div.article {
+	margin: 0 0 2em 0;
 }
 
 div.content ul.cloud {
@@ -604,7 +603,7 @@ form div.recipe ul.ingredients ul input.ingredient {
     width: 70%;
 }
 
-ul.ingredients {
+.content ul.ingredients {
     list-style-type:    none;
 }
 table.ingredients {
@@ -619,7 +618,7 @@ table.ingredients td {
 }
 table.ingredients td.amount {
     text-align:         right;
-    width:  120px;
+    width:  80px;
 }
 
 .content div.jsonSuggestResults {
