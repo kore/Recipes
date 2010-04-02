@@ -1,12 +1,16 @@
 {use $model, $recipe = $model->recipe, $root = $model->request->root}
 {tr_context "recipes"}
 {if $recipe->tags}
-<ul class="tags">
-{foreach $recipe->tags as $tag}
-    <li><a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a></li>
-{/foreach}
-</ul>
+	<div class="page-border">
+		<ul class="tags">
+		{foreach $recipe->tags as $tag}
+			<li><a href="{$root}/{$model->request->controller}/tag/{$tag}">{$tag}</a></li>
+		{/foreach}
+		</ul>
+		<div class="break"></div>
+	</div>
 {/if}
+
 
 <ul class="commands">
     <li>

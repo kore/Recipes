@@ -443,6 +443,7 @@ div.content ul.cloud li.tag5 a {
 	float: right;
 	margin: 0 5px 5px 0;
 	border: 1px solid #643525;
+	border-top: none;
 	box-shadow: #3a1f15 5px 5px 4px;
 	-moz-box-shadow: #3a1f15 5px 5px 4px;
 	-webkit-box-shadow: #3a1f15 5px 5px 4px;
@@ -484,8 +485,39 @@ div.content ul.cloud li.tag5 a {
 	text-decoration: none;
 }
 
-.content ul.tags {
-	display: none;
+.content div.page-border {
+	width: 100%;
+	clear: both;
+}
+
+.content div.page-border ul.tags {
+	float: right;
+	margin: 0 32px -1px 0;
+	list-style-type: none;
+}
+
+.content div.page-border ul.tags li {
+	display: block;
+	height: 27px;
+	min-width: 50px;
+	float: left;
+	background: transparent url( "../images/jakob/tag-left.png" ) left top no-repeat;
+}
+
+.content div.page-border ul.tags li a {
+	height: 27px;
+	padding: 6px 31px 0 0;
+	margin: 0 0 0 24px;
+	display: block;
+	background: transparent url( "../images/jakob/tag-right.png" ) right top no-repeat;
+	clear: both;
+	color: #000000;
+	outline: none;
+}
+
+.content div.page-border ul.tags li a:hover {
+    text-decoration: none;
+	color: #915014;
 }
 
 .footer {
