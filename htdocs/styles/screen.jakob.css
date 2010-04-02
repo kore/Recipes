@@ -111,7 +111,7 @@ h1 {
     width: 880px;
 	height: 95px;
 
-	background-image: url( "../images/jakobs_design/header.png" );
+	background-image: url( "../images/jakob/header.png" );
 }
 
 h1 a {
@@ -161,7 +161,7 @@ div.navigation ul li a:hover {
 }
 
 div.navigation ul li.new {
-	background: transparent url( "../images/jakobs_design/new_recipe.png" ) no-repeat left center;
+	background: transparent url( "../images/jakob/new_recipe.png" ) no-repeat left center;
     margin: 12px 64px 0 0;
 	text-indent: 24px;
 }
@@ -434,7 +434,7 @@ div.content ul.cloud li.tag5 a {
 .content ul.commands li {
 	float: right;
 	display: inline;
-	background: #e1d7ce url( "../images/jakobs_design/tab_shadow.png") right top repeat-y;
+	background: #e1d7ce url( "../images/jakob/tab_shadow.png") right top repeat-y;
 	font-size: 0.9em;
 	margin: 0 0 8px 0;
 	clear: both;

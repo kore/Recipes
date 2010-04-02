@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
 
-    <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.jakobs_design.css" media="screen" />
+    <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.jakob.css" media="screen" />
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/ui-lightness/jquery-ui-1.8.custom.css" media="screen" />
 	</style>
 

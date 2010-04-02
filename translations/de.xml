@@ -383,6 +383,18 @@
       <source>Upload image</source>
       <translation>Bild hochladen</translation>
     </message>
+    <message>
+      <source>Edit</source>
+      <translation>Bearbeiten</translation>
+    </message>
+    <message>
+      <source>Delete</source>
+      <translation>Loeschen</translation>
+    </message>
+    <message>
+      <source>On list</source>
+      <translation>Auf Einkaufsliste</translation>
+    </message>
   </context>
   <context>
     <name>locale</name>
