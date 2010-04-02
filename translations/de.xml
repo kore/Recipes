@@ -373,15 +373,15 @@
     </message>
     <message>
       <source>Image</source>
-      <translation type="unfinished">Image</translation>
+      <translation>Bild</translation>
     </message>
     <message>
       <source>Upload</source>
-      <translation type="unfinished">Upload</translation>
+      <translation>Hochladen</translation>
     </message>
     <message>
       <source>Upload image</source>
-      <translation type="unfinished">Upload image</translation>
+      <translation>Bild hochladen</translation>
     </message>
   </context>
   <context>
