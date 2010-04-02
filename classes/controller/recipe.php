@@ -298,8 +298,9 @@ class arbitRecipeController extends arbitController
 
             case '.pdf':
             default:
-                $pdf = new ezcDocumentPdf();
-                $pdf->options->driver = new ezcDocumentPdfTcpdfDriver();
+                $options = new ezcDocumentPdfOptions();
+                $options->driver = new ezcDocumentPdfTcpdfDriver();
+                $pdf = new ezcDocumentPdf( $options );
                 $pdf->loadStyles( __DIR__ . '/recipe.css' );
                 $pdf->options->errorReporting = E_PARSE | E_ERROR;
                 $pdf->createFromDocbook( $docbook->getAsDocbook() );
