@@ -230,6 +230,7 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
      *  - instructions
      *  - user
      *  - tags
+     *  - attachments
      *
      * @param string $recipe
      * @return array
@@ -260,7 +261,80 @@ class arbitCouchDbRecipeFacade extends arbitCouchDbFacadeBase implements arbitRe
             'instructions' => $doc->instructions,
             'user'         => $doc->user,
             'tags'         => $doc->tags,
+            'attachments'  => $doc->_attachments,
         );
+    }
+
+    /**
+     * Attach file to page
+     *
+     * Attach a file to the page specified by its ID. The files mime type is
+     * given as a third parameter and should also be stored.
+     *
+     * @param mixed $id
+     * @param string $fileName
+     * @param string $mimeType
+     * @return void
+     */
+    public function attachFile( $id, $fileName, $mimeType )
+    {
+        try
+        {
+            $doc = phpillowManager::fetchDocument( 'recipe', $id );
+        }
+        catch ( phpillowResponseNotFoundErrorException $e )
+        {
+            throw new arbitFacadeNotFoundException(
+                "The recipe '%recipe' could not be found.",
+                array(
+                    'recipe' => $id,
+                )
+            );
+        }
+
+        // Set data, which will be validated internally, and store.
+        $doc->attachFile( $fileName, false, $mimeType );
+        $doc->save();
+    }
+
+    /**
+     * Get file contents
+     *
+     * Return the contents of the file specified by its storage file name.
+     *
+     * @param mixed $id
+     * @param string $fileName
+     * @return string
+     */
+    public function getFileContents( $id, $fileName )
+    {
+        try
+        {
+            $doc = phpillowManager::fetchDocument( 'recipe', $id );
+        }
+        catch ( phpillowResponseNotFoundErrorException $e )
+        {
+            throw new arbitFacadeNotFoundException(
+                "The recipe '%recipe' could not be found.",
+                array(
+                    'recipe' => $id,
+                )
+            );
+        }
+
+        try
+        {
+            return $doc->getFile( $fileName );
+        }
+        catch ( phpillowNoSuchPropertyException $e )
+        {
+            throw new arbitFacadeNotFoundException(
+                "The recipe attachment '%file' could not be found.",
+                array(
+                    'file' => $fileName,
+                )
+            );
+        }
     }
 
     /**

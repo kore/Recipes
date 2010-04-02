@@ -35,6 +35,63 @@
     </li>
 </ul>
 
+<script type="text/ecmascript">
+// <![CDATA[
+$( document ).ready( function()
+{"{"}
+    var dialog = $('<div></div>')
+        .html('\
+            <form method="post" action="{$root}/{$model->request->controller}/attach/{$recipe->id}" enctype="multipart/form-data"\
+                onsubmit="return validateForm( this );">\
+            <fieldset>\
+                <legend>{tr "Upload image"}</legend>\
+\
+                <input type="hidden" name="_arbit_form_token" value="{arbit_form_token()}" />\
+                <input type="hidden" name="recipe" value="{$recipe->id}" />\
+\
+                <label>\
+                    <input type="text" name="name" />\
+                    {tr "Name"}\
+                </label>\
+\
+                <label>\
+                    <input type="file" name="attachment" />\
+                    {tr "Image"}\
+                </label>\
+\
+                <label>\
+                    <input type="submit" name="attach" value="{tr "Upload"}" />\
+                </label>\
+            </fieldset>\
+            </form>\
+        ')
+        .dialog({"{"}
+            modal:    true,
+            autoOpen: false,
+            title:    '{tr "Upload image"}',
+            width:    '600px',
+        {"}"});
+
+    $('#opener').click(function() {"{"}
+        dialog.dialog('open');
+    {"}"});
+{"}"} );
+// ]]>
+</script>
+
+<ul class="attachments">
+{foreach $recipe->attachments as $attachment => $info}
+    <li>
+        <a href="{$root}/{$model->request->controller}/view/{$recipe->id}/{$attachment}">
+            {$attachment}
+        </a>
+    </li>
+{/foreach}
+    <li>
+        <a id="opener">{tr "Upload image"}</a>
+    </li>
+</ul>
+
 <h2>{$recipe->title} <a class="edit" href="{$root}/{$model->request->controller}/edit/{$recipe->id}">[{tr "Edit recipe"}]</a></h2>
 <h4 class="subtitle">{tr "for %count persons" vars "count" => $recipe->amount}</h4>
 

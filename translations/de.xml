@@ -371,6 +371,18 @@
       <source>Unsaved changes to the recipe will be lost.</source>
       <translation>&#xC4;nderungen am Rezept werden dabei verloren gehen.</translation>
     </message>
+    <message>
+      <source>Image</source>
+      <translation type="unfinished">Image</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation type="unfinished">Upload</translation>
+    </message>
+    <message>
+      <source>Upload image</source>
+      <translation type="unfinished">Upload image</translation>
+    </message>
   </context>
   <context>
     <name>locale</name>

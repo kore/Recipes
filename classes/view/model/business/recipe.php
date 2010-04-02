@@ -51,6 +51,7 @@ class arbitRecipeViewModel extends arbitViewModel
         'docbookBody'  => null,
         'user'         => null,
         'tags'         => array(),
+        'attachments'  => array(),
     );
 
     /**

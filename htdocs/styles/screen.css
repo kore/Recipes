@@ -102,6 +102,7 @@ form {
 
 table,
 form table,
+.content ul.attachments,
 .content ul.commands,
 .content ul.tags,
 .content div.jsonSuggestResults,
@@ -453,6 +454,7 @@ div.content ul.cloud li.tag5 a {
 	padding: 0em;
 }
 
+.content ul.attachments,
 .content ul.commands,
 .content ul.tags {
     width: 20%;
@@ -474,11 +476,20 @@ form {
 	display: block;
 	clear: right;
 	margin: 0em auto .5em auto;
-	padding: 0em 0em .2em 0em;
 	width: 80%;
 
     padding: 5px;
     -moz-border-radius: 10px;
+}
+
+ul form {
+	display: block;
+	clear: none;
+	margin: 0em;
+	padding: 0em;
+	width: 100%;
+
+    -moz-border-radius: 0px;
 }
 
 form.wide {
@@ -508,6 +519,10 @@ label select,
 label input {
 	width: 70%;
 	float: right;
+}
+
+ul form label input {
+    width: 50%;
 }
 
 form.export label select,

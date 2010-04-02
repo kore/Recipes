@@ -214,6 +214,17 @@ class arbitRecipeController extends arbitController
      */
     public function view( arbitRequest $request )
     {
+        if ( strlen( $request->path ) > 1 )
+        {
+            $file = substr( $request->path, 1 );
+            $recipe = new arbitRecipeModel( $request->subaction );
+            $attachment = $recipe->getAttachment( $file );
+            return new arbitViewDataModel(
+                $attachment->data,
+                $attachment->contentType
+            );
+        }
+
         return new arbitViewRecipeViewModel(
             new arbitRecipeModel( $request->subaction )
         );
@@ -310,6 +321,44 @@ class arbitRecipeController extends arbitController
         $recipe->delete();
 
         return new arbitViewUserMessageModel( "Recipe deleted." );
+    }
+
+    /**
+     * Delete action
+     *
+     * Allows registered users to remove a recipe
+     *
+     * @param arbitRequest $request
+     * @return arbitViewModel
+     */
+    public function attach( arbitRequest $request )
+    {
+        $errors = array();
+        if ( arbitHttpTools::get( 'attach' ) !== null )
+        {
+            try
+            {
+                $files = arbitHttpTools::getFiles( 'attachment' );
+                arbitLogger::dump( $files );
+                $recipe  = new arbitRecipeModel( $request->subaction );
+                $recipe->attachFile(
+                    arbitHttpTools::get( 'name' ), key( $files ), reset( $files )
+                );
+
+                return new arbitViewRecipeViewModel(
+                    new arbitRecipeModel( $request->subaction )
+                );
+            }
+            catch ( arbitException $e )
+            {
+                $errors[] = $e;
+            }
+        }
+
+        return new arbitViewRecipeViewModel(
+            new arbitRecipeModel( $request->subaction ),
+            $errors
+        );
     }
 
     /**

@@ -49,6 +49,7 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
         'instructions' => null,
         'user'         => null,
         'tags'         => null,
+        'attachments'  => array(),
     );
 
     /**
@@ -273,6 +274,48 @@ class arbitRecipeModel extends arbitModelBase implements ezcBasePersistable
                 $this->properties[$key] = $value;
             }
         }
+    }
+
+    /**
+     * Attach file to page
+     *
+     * @param string $name
+     * @param string $fileName
+     * @param array $info
+     * @return void
+     */
+    public function attachFile( $name, $fileName, array $info = array() )
+    {
+        // Generate normalized file name
+        $name = preg_replace( '([^A-Za-z0-9-]+)', '_', $name ) . $info['extension'];
+
+        // Rename file and guess its mime type
+        rename( $fileName, $fileName = ARBIT_TMP_PATH . $name );
+        $info['type'] = arbitFrameworkMimeTypeGuesser::guess( $fileName, $info['type'] );
+
+        $storage = arbitFacadeManager::getFacade( 'recipe' );
+        $storage->attachFile( $this->id, $fileName, $info['type'] );
+
+        // Clear associated cache
+        arbitCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
+
+        // Remove file from temp dir
+        unlink( $fileName );
+    }
+
+    /**
+     * Get attachment contents
+     *
+     * Return the contents of the attachment specified by its storage file
+     * name.
+     *
+     * @param string $name
+     * @return string
+     */
+    public function getAttachment( $name )
+    {
+        $storage = arbitFacadeManager::getFacade( 'recipe' );
+        return $storage->getFileContents( $this->id, $name );
     }
 
     /**
