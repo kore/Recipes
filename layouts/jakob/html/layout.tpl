@@ -27,7 +27,7 @@
     {/literal} // ]]>
     </script>
 
-    <title>Recipe Manager xxx</title>
+    <title>{tr "Recipe Database"}</title>
 </head>
 <body class="dashboard">
 	<h1>
