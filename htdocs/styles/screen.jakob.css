@@ -388,6 +388,7 @@ div.content ul.cloud {
 
 div.content ul.cloud li {
     display: inline;
+	margin: 0 .2em;
 }
 
 div.content ul.cloud li.tag0 a {
@@ -742,6 +743,7 @@ div.content ul.exports img {
 div.content ul.pager {
     text-align: center;
 	list-style-type: none;
+	margin-top: 2em;
 }
 
 div.content ul.pager:before {
