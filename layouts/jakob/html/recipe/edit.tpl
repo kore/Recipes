@@ -76,11 +76,23 @@
 	 {literal}
 	function addIngredient( targetGroup )
 	{
-		$( "li#group_" + targetGroup + " ul" ).append(
+		var item = $(
 			itemHtml
 				.replace( /%item/g, ingredients[targetGroup] )
 				.replace( /%group/g, targetGroup )
 		);
+
+		registerAutocomplete( 
+			'ingredients', 
+			item.find( 'input.ingredient' )
+		);
+		registerAutocomplete( 
+			'units', 
+			item.find( 'input.unit' )
+		);
+		
+		$( "li#group_" + targetGroup + " ul" ).append( item );
+
 		++ingredients[targetGroup];
 	}
 
@@ -92,6 +104,29 @@
 		addIngredient( group );
 		addIngredient( group );
 		++group;
+	}
+
+	function registerAutocomplete( type, selector ) {
+		$( selector ).autocomplete({
+			source: function( request, callback )
+				{
+					var callback = callback;
+
+					$.get( root + "/recipes/" + type + "/" + request.term + ".js", function ( data, textStatus )
+						{
+							var terms = [];
+							$.each( data.properties.view.properties["array"], function( key, value )
+								{
+									terms.push( key );
+								}
+							);
+							callback( terms );
+						},
+						"json"
+					);
+				}
+			}
+		);
 	}
 
 	$( document ).ready( function()
@@ -124,50 +159,9 @@
 				} );
 			} );
 		}
-
-		// Enable auto-suggest for ingredient fields
-		$( 'input.ingredient' ).autocomplete({
-			source: function( request, callback )
-				{
-					var callback = callback;
-
-					$.get( root + "/recipes/ingredients/" + request.term + ".js", function ( data, textStatus )
-						{
-							var terms = [];
-							$.each( data.properties.view.properties["array"], function( key, value )
-								{
-									terms.push( key );
-								}
-							);
-							callback( terms );
-						},
-						"json"
-					);
-				}
-			}
-		);
-
-		// Enable auto-suggest for unit fields
-		$( 'input.unit' ).autocomplete({
-			source: function( request, callback )
-				{
-					var callback = callback;
-
-					$.get( root + "/recipes/units/" + request.term + ".js", function ( data, textStatus )
-						{
-							var terms = [];
-							$.each( data.properties.view.properties["array"], function( key, value )
-								{
-									terms.push( key );
-								}
-							);
-							callback( terms );
-						},
-						"json"
-					);
-				}
-			}
-		);
+		
+		registerAutocomplete( 'ingredients', 'input.ingredient' );
+		registerAutocomplete( 'units', 'input.unit' );
 	} );
 	{/literal} // ]]>
 	</script>
