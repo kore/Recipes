@@ -166,6 +166,33 @@
 	{/literal} // ]]>
 	</script>
 
+	{if !$model->recipe}
+		<script type="text/ecmascript">
+		// <![CDATA[ {literal}
+		$( document ).ready( function()
+		{
+			$('input, textarea').each( function() {
+				var $$ = $(this);
+				$$.data( 'original-value', $$.val() );
+				$$.bind( 'focus', function(e) {
+					var $$ = $(this);
+					if ( $$.val() == $$.data( 'original-value' ) ) {
+						$$.val("");
+					}
+				});
+				$$.bind( 'blur', function(e) {
+					var $$ = $(this);
+					if ( $$.val() == "" ) {
+						$$.val( $$.data( 'original-value' ) );
+					}
+				});
+			}); 
+		} );
+		{/literal} // ]]>
+		</script>
+	{/if}
+
+
 			<ul class="ingredients">
 			</ul>
 
