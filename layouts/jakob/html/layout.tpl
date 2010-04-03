@@ -9,8 +9,7 @@
     <meta http-equiv="Content-Type" content="{$model->mimetype}; charset={$model->charset}" />
 
     <link rel="Stylesheet" type="text/css" href="{$root}/styles/screen.jakob.css" media="screen" />
-    <link rel="Stylesheet" type="text/css" href="{$root}/styles/ui-lightness/jquery-ui-1.8.custom.css" media="screen" />
-	</style>
+    <link rel="Stylesheet" type="text/css" href="{$root}/styles/recipedb-coffee/jquery-ui-1.8.custom.css" media="screen" />
 
     <script src="{$root}/scripts/jquery-1.4.2.min.js" type="text/ecmascript"></script>
     <script src="{$root}/scripts/jquery-ui-1.8.custom.min.js" type="text/ecmascript"></script>
