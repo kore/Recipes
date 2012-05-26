@@ -150,7 +150,8 @@ class User implements Gateway\User
     {
         try
         {
-            $doc = phpillowManager::fetchDocument( 'user', $user );
+            $doc = new User\Document();
+            $doc->fetchById( $user );
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {

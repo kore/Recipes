@@ -77,8 +77,9 @@ class User extends Model
      * @param Gateway\User $userGateway
      * @return void
      */
-    public function __construct( Gateway\User $gateway )
+    public function __construct( Gateway\User $gateway, $id = null )
     {
+        parent::__construct( $id );
         $this->gateway = $gateway;
     }
 
