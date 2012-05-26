@@ -238,18 +238,10 @@ class Recipe
     {
         if ( strlen( $request->path ) > 1 )
         {
-            $file = substr( $request->path, 1 );
-            $recipe = new recipeRecipeModel( $request->subaction );
-            $attachment = $recipe->getAttachment( $file );
-            return new recipeViewDataModel(
-                $attachment->data,
-                $attachment->contentType
-            );
+            $recipe = $this->model->load( $request->variables['recipe'] );
         }
 
-        return new recipeViewRecipeViewModel(
-            new recipeRecipeModel( $request->subaction )
-        );
+        return new Struct\Recipe( $recipe );
     }
 
     /**

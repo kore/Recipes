@@ -222,6 +222,19 @@ class Recipe extends Model
     }
 
     /**
+     * Load recipe
+     *
+     * Return recipe model
+     *
+     * @param string $ingredient
+     * @return Recipe
+     */
+    public function load( $id )
+    {
+        return new Recipe( $this->gateway, $id );
+    }
+
+    /**
      * Return a docbook representation of the recipe.
      * 
      * @param recipeRequest $request 

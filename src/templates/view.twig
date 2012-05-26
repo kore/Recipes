@@ -1,0 +1,66 @@
+{% extends "index.twig" %}
+{% set recipe = result.recipe %}
+
+{% block commands %}
+<ul class="commands">
+    <li>
+        <a href="/recipe/edit/{result.id}">
+            <i class="icon-edit"></i> Bearbeiten
+        </a>
+    </li>
+    <li>
+        <a onclick="return confirm( 'Do you really want to delete this recipe?' );" href="/recipe/delete/{result.id}">
+            <i class="icon-trash"></i> Löschen
+        </a>
+    </li>
+    <li>
+        <a href="/recipe/listRecipe/{result.id}">
+            <i class="icon-bookmark"></i> Auf Einkaufsliste
+        </a>
+    </li>
+    <li>
+        <a href="/recipe/listExports/{result.id}">
+            <i class="icon-file"></i> Exportieren
+        </a>
+    </li>
+</ul>
+{%endblock %}
+
+{% block content %}
+<h2>{{recipe.title}} <a class="edit" href="/recipe/edit/{{recipe.id}}">[Bearbeiten]</a></h2>
+<h4 class="subtitle">Für {{recipe.amount}} Personen</h4>
+
+<p>{{recipe.description}}</p>
+
+<h3>{{Ingredients}}</h3>
+
+<ul class="ingredients">
+{% for section, ingredients in recipe.ingredients %}
+    <li><h4>{{section}}</h4>
+        <table class="ingredients">
+        {% for ingredient in ingredients %}
+            <tr>
+                <td class="amount">{{ingredient.amount}} {{ingredient.unit}}</td>
+                <td><a href="/recipe/ingredient/{{ingredient.ingredient}}">{{ingredient.ingredient}}</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </li>
+{% endfor %}
+</ul>
+
+<h3>{{Instructions}}</h3>
+
+<dl>
+    <dt>Vorbereitungszeit</dt>
+    <dd>{{recipe.preparation}} Minuten</dd>
+    <dt>Zubereitungszeit</dt>
+    <dd>{{recipe.cooking}} Minuten</dd>
+</dl>
+
+{% if recipe.html %}
+    {{recipe.html}}
+{% else %}
+    {{recipe.instructions}}
+{% endif %}
+{% endblock %}
