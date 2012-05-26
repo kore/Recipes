@@ -28,6 +28,8 @@ html {
 	-webkit-box-shadow: #3a1f15 5px 5px 4px;
 
 	padding: 38px 51px 51px 51px;
+
+    min-height: 300px;
 }
 
 .span-content {
