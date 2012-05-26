@@ -2,13 +2,16 @@ html {
     overflow-y: scroll;
 }
 
+body {
+    padding-top: 50px;
+}
+
 #header h1 {
     background-image: url("/images/header.png");
     width: 880px;
     height: 95px;
     background-repeat: none;
 
-    margin-top: 50px;
     margin-bottom: 20px;
 }
 
