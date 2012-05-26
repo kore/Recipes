@@ -72,7 +72,7 @@ class Twig extends \Qafoo\RMF\View
             }
         }
 
-        throw new \OutOfBoundsException( "Can't find a template for class " . get_class( $object ) );
+        throw new \OutOfBoundsException( "Can't find a template for class " . ( $object ? get_class( $object ) : 'null' ) );
     }
 
     /**
