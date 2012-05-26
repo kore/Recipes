@@ -6,7 +6,7 @@
     <h3>Alle Rezepte</h3>
     <div class="row-fluid">
         <div class="span4">
-            <ul>
+            <ul class="unstyled">
             {%for group in range( 'a', 'i' ) %}
                 {%if result.recipes[group] %}
                 <li><h4>{{group}}</h4>
@@ -21,7 +21,7 @@
             </ul>
         </div>
         <div class="span4">
-            <ul>
+            <ul class="unstyled">
             {%for group in range( 'j', 'q' ) %}
                 {%if result.recipes[group] %}
                 <li><h4>{{group}}</h4>
@@ -36,7 +36,7 @@
             </ul>
         </div>
         <div class="span4">
-            <ul>
+            <ul class="unstyled">
             {%for group in range( 'r', 'z' ) %}
                 {%if result.recipes[group] %}
                 <li><h4>{{group}}</h4>
