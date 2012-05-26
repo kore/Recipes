@@ -1,7 +1,5 @@
 <?php
 /**
- * This file is part of recipes
- *
  * This file is part of recipes.
  *
  * recipes is free software; you can redistribute it and/or modify
@@ -34,7 +32,7 @@ spl_autoload_register(
     {
         if ( 0 === strpos( $class, __NAMESPACE__ ) )
         {
-            include __DIR__ . '/../../' . strtr( $class, '\\', '/' ) . '.php';
+            include __DIR__ . '/../' . strtr( $class, '\\', '/' ) . '.php';
         }
     }
 );
