@@ -308,31 +308,12 @@ ul.cloud {
 	list-style-type: none;
     margin: 1em auto;
     padding: 0em;
-    width:  500px;
+    max-width:  500px;
 }
 
 ul.cloud li {
     display: inline;
 	margin: 0 .2em;
-}
-
-table.tags {
-    border: none;
-}
-
-table.tags td {
-    border: none;
-    width: 33%;
-    vertical-align: top;
-}
-
-table.tags td > ul {
-    list-style-type: none;
-    padding-left: 0em;
-}
-
-table.tags td li {
-	padding: 0em;
 }
 
 h2 a.edit {
