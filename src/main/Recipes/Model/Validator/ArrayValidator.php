@@ -59,7 +59,7 @@ class ArrayValidator extends Validator
      * @param recipeModelValidatorBase $valueValidator
      * @return void
      */
-    public function configure( recipeModelValidatorBase $keyValidator = null, recipeModelValidatorBase $valueValidator = null )
+    public function configure( Validator $keyValidator = null, Validator $valueValidator = null )
     {
         $this->keyValidator   = $keyValidator;
         $this->valueValidator = $valueValidator;

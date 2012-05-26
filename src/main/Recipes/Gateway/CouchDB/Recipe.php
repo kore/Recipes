@@ -73,7 +73,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getAll()
     {
-        $result = $this->view->query( 'all' );
+        $result = $this->view->query( 'all', array( 'include_docs' => true ) );
 
         if ( !count( $result->rows ) )
         {
@@ -83,7 +83,7 @@ class Recipe implements Gateway\Recipe
         $docs = array();
         foreach ( $result->rows as $row )
         {
-            $docs[] = is_array( $row['value'] ) ? reset( $row['value'] ) : $row['value'];
+            $docs[] = $row['doc'];
         }
 
         return $docs;

@@ -140,9 +140,16 @@ class Recipe extends Model
     {
         $recipes = $this->gateway->getAll();
         $gateway = $this->gateway;
-        return array_map( function( $id ) use ( $gateway )
+        return array_map( function( $doc ) use ( $gateway )
             {
-                return new Recipe( $gateway, $id );
+                $recipe = new Recipe( $gateway, $doc['_id'] );
+
+                foreach ( $doc as $property => $value )
+                {
+                    $recipe->properties[$property] = $value;
+                }
+
+                return $recipe;
             },
             $recipes
         );
@@ -270,7 +277,6 @@ class Recipe extends Model
      */
     protected function fetchRecipeData()
     {
-        $cacheId = 'recipe/' . $this->id;
         $data = $this->gateway->getRecipeData( $this->id );
 
         foreach ( $data as $key => $value )
@@ -422,7 +428,7 @@ class Recipe extends Model
             case 'instructions':
                 parent::__set(
                     $property,
-                    recipeModelStringValidator::create()
+                    Validator\StringValidator::create()
                         ->validate( $property, $value, 'string' )
                 );
                 break;
@@ -432,7 +438,7 @@ class Recipe extends Model
             case 'preparation':
                 parent::__set(
                     $property,
-                    recipeModelIntegerValidator::create()
+                    Validator\IntegerValidator::create()
                         ->validate( $property, $value, 'integer' )
                 );
                 break;
@@ -440,13 +446,13 @@ class Recipe extends Model
             case 'ingredients':
                 parent::__set(
                     $property,
-                    recipeModelArrayValidator::create(
-                            recipeModelStringValidator::create(),
-                            recipeModelArrayValidator::create(
-                                recipeModelIntegerValidator::create(),
-                                recipeModelArrayValidator::create(
-                                    recipeModelStringValidator::create(),
-                                    recipeModelStringValidator::create()
+                    Validator\ArrayValidator::create(
+                            Validator\StringValidator::create(),
+                            Validator\ArrayValidator::create(
+                                Validator\IntegerValidator::create(),
+                                Validator\ArrayValidator::create(
+                                    Validator\StringValidator::create(),
+                                    Validator\StringValidator::create()
                                 )
                             )
                         )
@@ -457,9 +463,9 @@ class Recipe extends Model
             case 'tags':
                 parent::__set(
                     $property,
-                    recipeModelArrayValidator::create(
-                            recipeModelIntegerValidator::create(),
-                            recipeModelStringValidator::create()
+                    Validator\ArrayValidator::create(
+                            Validator\IntegerValidator::create(),
+                            Validator\StringValidator::create()
                         )
                         ->validate( $property, $value, 'array( string )' )
                 );
