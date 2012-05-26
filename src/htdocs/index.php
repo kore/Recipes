@@ -29,15 +29,15 @@ $dic->environment = 'development';
 
 $dispatcher = new RMF\Dispatcher\Simple(
     new RMF\Router\Regexp( array(
-        '(^/$)' => array(
-            'GET'  => array( $dic->controller, 'showOverview' ),
-        ),
         '(^/user/login$)' => array(
             'GET'  => array( $dic->controller, 'login' ),
             'POST' => array( $dic->controller, 'login' ),
         ),
         '(^/user/logout$)' => array(
             'GET'  => array( $dic->controller, 'logout' ),
+        ),
+        '(^/(?:recipe/overview)?$)' => array(
+            'GET'  => array( $dic->controller, 'showOverview' ),
         ),
     ) ),
     $dic->view
