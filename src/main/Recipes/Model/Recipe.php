@@ -139,9 +139,10 @@ class Recipe extends Model
     public function getAll()
     {
         $recipes = $this->gateway->getAll();
-        return array_map( function( $id )
+        $gateway = $this->gateway;
+        return array_map( function( $id ) use ( $gateway )
             {
-                return new recipeRecipeModel( $id );
+                return new Recipe( $gateway, $id );
             },
             $recipes
         );
@@ -222,8 +223,6 @@ class Recipe extends Model
     public function getAsDocbook( recipeRequest $request )
     {
         $viewHandler = new recipeViewDocbookHandler( $request );
-        $conf = recipeBackendIniConfigurationManager::getMainConfiguration();
-        $viewHandler->setLocale( $conf->language );
 
         // Let view handler generate output
         $docbook  = $viewHandler->showRecipe( new recipeRecipeViewModel( $this ) );
@@ -272,13 +271,7 @@ class Recipe extends Model
     protected function fetchRecipeData()
     {
         $cacheId = 'recipe/' . $this->id;
-        if ( ( $data = recipeCacheRegistry::getCache()->get( 'model', $cacheId ) ) === false )
-        {
-            $data = $this->gateway->getRecipeData( $this->id );
-
-            // Cache retrieved project data
-            recipeCacheRegistry::getCache()->cache( 'model', $cacheId, $data );
-        }
+        $data = $this->gateway->getRecipeData( $this->id );
 
         foreach ( $data as $key => $value )
         {
@@ -307,9 +300,6 @@ class Recipe extends Model
         $info['type'] = recipeFrameworkMimeTypeGuesser::guess( $fileName, $info['type'] );
 
         $this->gateway->attachFile( $this->id, $fileName, $info['type'] );
-
-        // Clear associated cache
-        recipeCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
 
         // Remove file from temp dir
         unlink( $fileName );
@@ -346,9 +336,6 @@ class Recipe extends Model
         $this->modifiedProperty[] = 'user';
 
         $this->gateway->updateRecipeData( $this->id, $this->getModifiedValues() );
-
-        // Clear associated cache
-        recipeCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
 
         // As we now stored everything in backend, nothing has to be considered
         // modified anymore...

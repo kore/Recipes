@@ -263,21 +263,32 @@ class Recipe implements Gateway\Recipe
     {
         try
         {
-            $doc = phpillowManager::fetchDocument( 'recipe', $id );
+            $doc = new Recipe\Document();
+            $doc->fetchById( $recipe );
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
             throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
-                    'recipe' => $id,
+                    'recipe' => $recipe,
                 )
             );
         }
 
-        // Set data, which will be validated internally, and store.
-        $doc->attachFile( $fileName, false, $mimeType );
-        $doc->save();
+        return array(
+            'id'           => $doc->_id,
+            'title'        => $doc->title,
+            'amount'       => $doc->amount,
+            'description'  => $doc->description,
+            'ingredients'  => $doc->ingredients,
+            'preparation'  => $doc->preparation,
+            'cooking'      => $doc->cooking,
+            'instructions' => $doc->instructions,
+            'user'         => $doc->user,
+            'tags'         => $doc->tags,
+            'attachments'  => $doc->_attachments,
+        );
     }
 
     /**

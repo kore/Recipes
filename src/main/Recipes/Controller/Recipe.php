@@ -100,8 +100,17 @@ class Recipe
      */
     public function all( RMF\Request $request )
     {
-        return new recipeViewRecipeIndexModel(
-            $this->model->getAll()
+        $grouped = array();
+        foreach ( $this->model->getAll() as $recipe )
+        {
+            if ( $recipe )
+            {
+                $grouped[strtolower( $recipe->title[0] )][] = $recipe;
+            }
+        }
+
+        return new Struct\Recipes(
+            $grouped
         );
     }
 

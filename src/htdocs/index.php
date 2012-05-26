@@ -42,6 +42,9 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipe/tags$)' => array(
             'GET'  => array( $dic->controller, 'tags' ),
         ),
+        '(^/recipe/all$)' => array(
+            'GET'  => array( $dic->controller, 'all' ),
+        ),
     ) ),
     $dic->view
 );

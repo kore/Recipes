@@ -23,6 +23,8 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
+namespace Recipes\Gateway\CouchDB\Recipe;
+
 /**
  * Document representing the recipes
  *
@@ -31,7 +33,7 @@
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class recipeBackendCouchDbRecipeDocument extends phpillowDocument
+class Document extends \phpillowDocument
 {
     /**
      * List of required properties. For each required property, which is not
@@ -53,15 +55,15 @@ class recipeBackendCouchDbRecipeDocument extends phpillowDocument
     public function __construct()
     {
         $this->properties = array(
-            'title'        => new phpillowStringValidator(),
-            'amount'       => new phpillowIntegerValidator(),
-            'description'  => new phpillowStringValidator(),
-            'ingredients'  => new phpillowArrayValidator(),
-            'preparation'  => new phpillowIntegerValidator(),
-            'cooking'      => new phpillowIntegerValidator(),
-            'instructions' => new phpillowStringValidator(),
-            'user'         => new phpillowStringValidator(),
-            'tags'         => new phpillowArrayValidator(),
+            'title'        => new \phpillowStringValidator(),
+            'amount'       => new \phpillowIntegerValidator(),
+            'description'  => new \phpillowStringValidator(),
+            'ingredients'  => new \phpillowArrayValidator(),
+            'preparation'  => new \phpillowIntegerValidator(),
+            'cooking'      => new \phpillowIntegerValidator(),
+            'instructions' => new \phpillowStringValidator(),
+            'user'         => new \phpillowStringValidator(),
+            'tags'         => new \phpillowArrayValidator(),
         );
 
         parent::__construct();
