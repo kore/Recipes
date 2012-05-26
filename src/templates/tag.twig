@@ -1,0 +1,11 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Tag {{result.tag}}</h2>
+
+    <ul>
+    {% for recipe in result.recipies %}
+        <li>{% include 'include/recipe_short.twig' %}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

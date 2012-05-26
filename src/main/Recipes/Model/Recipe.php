@@ -166,9 +166,10 @@ class Recipe extends Model
     public function getRecipesByTag( $tag )
     {
         $recipes = $this->gateway->getRecipesByTag( $tag );
-        return array_map( function( $id )
+        $gateway = $this->gateway;
+        return array_map( function( $id ) use ( $gateway )
             {
-                return new recipeRecipeModel( $id );
+                return new Recipe( $gateway, $id );
             },
             $recipes
         );

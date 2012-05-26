@@ -124,9 +124,9 @@ class Recipe
      */
     public function tag( RMF\Request $request )
     {
-        return new recipeViewRecipeTagModel(
-            $request->subaction,
-            $this->model->getRecipesByTag( $request->subaction )
+        return new Struct\Tag(
+            $request->variables['tag'],
+            $this->model->getRecipesByTag( $request->variables['tag'] )
         );
     }
 
