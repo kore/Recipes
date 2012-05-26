@@ -140,9 +140,10 @@ class Recipe
      */
     public function ingredient( RMF\Request $request )
     {
+        $ingredient = urldecode( $request->variables['ingredient'] );
         return new Struct\Ingredient(
-            $request->variables['ingredient'],
-            $this->model->getRecipesByIngredient( $request->variables['ingredient'] )
+            $ingredient,
+            $this->model->getRecipesByIngredient( $ingredient )
         );
     }
 
