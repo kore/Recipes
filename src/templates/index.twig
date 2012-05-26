@@ -17,10 +17,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="navbar">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="/">Recipe Manager</a>
                     <div class="nav">
                         <ul class="nav">
                             {% block navItems %}{% endblock %}
@@ -31,9 +30,10 @@
         </div>
         <div id="content" class="row">
             <div class="span12">
+                <h1><span>Recipe Manager</span></h1>
             {% block content %}
                 <div class="alert">
-                    <h1>Please extend from this template…</h1>
+                    <h2>Please extend from this template…</h2>
                 </div>
             {% endblock %}
             </div>
