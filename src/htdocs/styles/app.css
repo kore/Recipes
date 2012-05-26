@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    padding-top: 40px;
+    margin-top: 40px;
 }
 
 #header h1 {
@@ -12,7 +12,8 @@ body {
     height: 95px;
     background-repeat: none;
 
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #header h1 span {
