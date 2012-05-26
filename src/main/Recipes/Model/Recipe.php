@@ -377,7 +377,7 @@ class Recipe extends Model
         {
             case 'html':
                 // Compile RST to HTML.
-                $document = new ezcDocumentRst();
+                $document = new \ezcDocumentRst();
                 $document->options->errorReporting                   = E_ERROR | E_PARSE;
                 $document->options->xhtmlVisitor                     = 'ezcDocumentRstXhtmlBodyVisitor';
                 $document->options->xhtmlVisitorOptions->headerLevel = 3;
@@ -388,14 +388,14 @@ class Recipe extends Model
                     $html = $document->getAsXhtml();
                     return $html->save();
                 }
-                catch ( ezcDocumentParserException $e )
+                catch ( \ezcDocumentParserException $e )
                 {
                     return null;
                 }
 
             case 'docbookBody':
-                // Compile RST to HTML.
-                $document = new ezcDocumentRst();
+                // Compile RST to Docbook.
+                $document = new \ezcDocumentRst();
                 $document->options->errorReporting                   = E_ERROR | E_PARSE;
 
                 try
@@ -410,13 +410,35 @@ class Recipe extends Model
                     }
                     return $result;
                 }
-                catch ( ezcDocumentParserException $e )
+                catch ( \ezcDocumentParserException $e )
                 {
                     return 'Errors occured while parsing the text.';
                 }
 
             default:
                 return parent::__get( $property );
+        }
+    }
+
+    /**
+     * Check if property exists in struct
+     *
+     * Check if property exists in struct
+     *
+     * @ignore
+     * @param string $property
+     * @return mixed
+     */
+    public function __isset( $property )
+    {
+        switch ( $property )
+        {
+            case 'html':
+            case 'docbookBody':
+                return true;
+
+            default:
+                return parent::__isset( $property );
         }
     }
 

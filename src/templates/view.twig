@@ -59,8 +59,10 @@
 </dl>
 
 {% if recipe.html %}
+    {% autoescape false %}
     {{recipe.html}}
+    {% endautoescape %}
 {% else %}
-    {{recipe.instructions}}
+    <p>{{recipe.instructions}}</p>
 {% endif %}
 {% endblock %}
