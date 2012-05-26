@@ -73,7 +73,8 @@ class Base extends DIC
 
         $this->controller = function ( $dic )
         {
-            return new Recipes\Controller(
+            return new Recipes\Controller\Auth(
+                new Recipes\Controller\Recipe()
             );
         };
     }

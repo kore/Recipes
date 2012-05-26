@@ -20,14 +20,25 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes;
+namespace Recipes\Controller;
+use Qafoo\RMF;
 
 /**
- * Dependency Injection Container base class
+ * Recipe controller
  *
  * @version $Revision$
  */
-class Controller
+class Recipe
 {
+    /**
+     * Show recipe overview
+     *
+     * @param RMF\Request $request
+     * @return Struct\Response
+     */
+    public function showOverview( RMF\Request $request )
+    {
+
+    }
 }
 
