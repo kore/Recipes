@@ -4,22 +4,22 @@
 {% block commands %}
 <ul class="commands">
     <li>
-        <a href="/recipe/edit/{result.id}">
+        <a href="/recipe/edit/{{recipe.id}}">
             <i class="icon-edit"></i> Bearbeiten
         </a>
     </li>
     <li>
-        <a onclick="return confirm( 'Do you really want to delete this recipe?' );" href="/recipe/delete/{result.id}">
+        <a onclick="return confirm( 'Do you really want to delete this recipe?' );" href="/recipe/delete/{{recipe.id}}">
             <i class="icon-trash"></i> Löschen
         </a>
     </li>
     <li>
-        <a href="/recipe/listRecipe/{result.id}">
+        <a href="/recipe/listRecipe/{{recipe.id}}">
             <i class="icon-bookmark"></i> Auf Einkaufsliste
         </a>
     </li>
     <li>
-        <a href="/recipe/listExports/{result.id}">
+        <a href="/recipe/listExports/{{recipe.id}}">
             <i class="icon-file"></i> Exportieren
         </a>
     </li>
