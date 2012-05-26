@@ -1,0 +1,8 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Nachricht</h2>
+    <div class="alert alert-{{result.type}}">
+        <p>{{result.message}}</p>
+    </div>
+{% endblock %}

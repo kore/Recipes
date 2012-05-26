@@ -412,7 +412,9 @@ class Recipe implements Gateway\Recipe
     {
         try
         {
-            phpillowManager::deleteDocument( 'recipe', $id );
+            $doc = new Recipe\Document();
+            $doc->fetchById( $id );
+            $doc->delete();
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {

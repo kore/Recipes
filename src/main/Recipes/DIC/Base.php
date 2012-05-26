@@ -83,6 +83,7 @@ class Base extends DIC
                 array(
                     '\\Exception'                   => 'error.twig',
                     '\\Recipes\\Struct\\Login'      => 'login.twig',
+                    '\\Recipes\\Struct\\Message'    => 'message.twig',
                     '\\Recipes\\Struct\\Overview'   => 'overview.twig',
                     '\\Recipes\\Struct\\Tag'        => 'tag.twig',
                     '\\Recipes\\Struct\\Tags'       => 'tags.twig',

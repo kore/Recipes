@@ -345,10 +345,10 @@ class Recipe
      */
     public function delete( RMF\Request $request )
     {
-        $recipe = new recipeRecipeModel( $request->subaction );
+        $recipe = $this->model->load( $request->variables['recipe'] );
         $recipe->delete();
 
-        return new recipeViewUserMessageModel( "Recipe deleted." );
+        return new Struct\Message( "Recipe deleted." );
     }
 
     /**
