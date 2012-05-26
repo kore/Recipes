@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of recipes
+ * This file is part of recipes.
  *
  * recipes is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,29 +20,32 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Controller;
-
+namespace Recipes\Struct;
 use Recipes\Struct;
-use Qafoo\RMF;
 
 /**
- * Recipe controller
+ * Overview struct class
  *
  * @version $Revision$
  */
-class Recipe
+class Overview extends Struct
 {
     /**
-     * Show recipe overview
+     * Module identifier
      *
-     * @param RMF\Request $request
-     * @return Struct\Response
+     * @var string
      */
-    public function showOverview( RMF\Request $request )
+    public $text;
+
+    /**
+     * Construct
+     *
+     * @param string $text
+     * @return void
+     */
+    public function __construct( $text )
     {
-        return new Struct\Overview(
-            "Hello world"
-        );
+        $this->text = $text;
     }
 }
 
