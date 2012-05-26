@@ -5,7 +5,7 @@
 
 <ul class="cloud">
 {%for tag, value in result.popular %}
-    <li class="tag" style="font-size: {{50 + ( 100 * value / max )}}%;">
+    <li class="tag" style="font-size: {{100 + ( 100 * value / max )}}%;">
         <a href="/recipe/tag/{{tag}}">{{tag}}</a>
     </li>
 {%endfor%}
