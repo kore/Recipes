@@ -72,6 +72,7 @@ class Base extends DIC
                 $dic->twig,
                 array(
                     '\\Exception'                 => 'error.twig',
+                    '\\Recipes\\Struct\\Login'    => 'login.twig',
                     '\\Recipes\\Struct\\Overview' => 'overview.twig',
                 )
             );

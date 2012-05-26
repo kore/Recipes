@@ -1,0 +1,7 @@
+{%if result.errors %}
+<ul class="errors">
+{%for error in result.errors %}
+	<li>{{error}}</li>
+{%endfor%}
+</ul>
+{%endif%}

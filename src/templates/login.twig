@@ -1,0 +1,45 @@
+{% extends "index.twig" %}
+
+{% block navItems %}
+{% endblock %}
+
+{% block userNav %}
+<li><a href="/user/login"><i class="icon-user"></i> Login</a></li>
+{% endblock %}
+
+{% block commands %}
+<ul class="commands">
+	<li><a href="/user/login">Login</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="page">
+	<h2>Login</h2>
+
+	<p>Login mit Deinen Zugangsdaten.</p>
+
+	{%include 'include/errors.twig' %}
+
+	<form method="post" action="/user/login" onsubmit="return validateForm( this );">
+		<fieldset>
+            <label>
+                <input type="text" class="required" name="login" value="{{result.login}}" />
+                Benutzername
+            </label>
+            <label>
+                <input type="password" class="required" name="password" />
+                Passwort
+            </label>
+            <label>
+                <input type="checkbox" name="keepme" value="1" {if $values['keepme']}checked="checked"{/if} />
+                Eingeloggt bleiben
+            </label>
+
+            <label>
+                <input type="submit" name="submit" value="Login" />
+            </label>
+		</fieldset>
+	</form>
+</div>
+{% endblock %}

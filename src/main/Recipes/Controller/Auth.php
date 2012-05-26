@@ -21,6 +21,7 @@
  */
 
 namespace Recipes\Controller;
+use Recipes\Struct;
 use Qafoo\RMF;
 
 /**
@@ -56,7 +57,12 @@ class Auth
      */
     public function login( RMF\Request $request )
     {
+        if ( isset( $request->body['submit'] ) )
+        {
+            // Handle post
+        }
 
+        return new Struct\Login();
     }
 
     /**
@@ -67,7 +73,8 @@ class Auth
      */
     public function logut( RMF\Request $request )
     {
-
+        unset( $request->session->user );
+        return $this->login( $request );
     }
 
     /**
@@ -80,6 +87,11 @@ class Auth
     {
         // @TODO: Check auth
         $request = $arguments[0];
+
+        if ( !isset( $request->session->user ) )
+        {
+            return $this->login( $request );
+        }
 
         return $this->controller->$method( $request );
     }
