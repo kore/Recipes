@@ -66,13 +66,45 @@ class Auth
      */
     public function login( RMF\Request $request )
     {
+        $errors = array();
         if ( isset( $request->body['submit'] ) )
         {
-            $user = $this->user->findByLogin( $request->body['login'] );
-            var_dump( $user );
+            try
+            {
+                $user = $this->user->findByLogin( $request->body['login'] );
+                if ( $user->auth_infos !== $this->getPasswordHash( $request->body['password'] ) )
+                {
+                    throw new \Exception( 'Invalid password provided.' );
+                }
+                $request->session['user'] = $user->_id;
+
+                header( 'Location: /' );
+                exit( 0 );
+            }
+            catch ( \Exception $e )
+            {
+                $errors[] = "Could not login with the provided data.";
+            }
         }
 
-        return new Struct\Login();
+        return new Struct\Login( $errors );
+    }
+
+    /**
+     * Generate a password hash
+     *
+     * Generates one or more hashes from a password. Must be an injective
+     * function.
+     *
+     * @param string $password
+     * @return array
+     */
+    protected function getPasswordHash( $password )
+    {
+        return array(
+            md5( 'arbit_' . $password ),
+            sha1( 'arbit_' . $password ),
+        );
     }
 
     /**
@@ -81,9 +113,9 @@ class Auth
      * @param RMF\Request $request
      * @return Struct\Response
      */
-    public function logut( RMF\Request $request )
+    public function logout( RMF\Request $request )
     {
-        unset( $request->session->user );
+        unset( $request->session['user'] );
         return $this->login( $request );
     }
 
@@ -98,7 +130,7 @@ class Auth
         // @TODO: Check auth
         $request = $arguments[0];
 
-        if ( !isset( $request->session->user ) )
+        if ( !isset( $request->session['user'] ) )
         {
             return $this->login( $request );
         }

@@ -30,5 +30,22 @@ use Recipes\Struct;
  */
 class Login extends Struct
 {
+    /**
+     * Errors
+     *
+     * @var string[]
+     */
+    public $errors = array();
+
+    /**
+     * Construct from error array
+     *
+     * @param string[] $errors
+     * @return void
+     */
+    public function __construct( array $errors = array() )
+    {
+        $this->errors = $errors;
+    }
 }
 

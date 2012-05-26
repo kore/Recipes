@@ -32,6 +32,13 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/$)' => array(
             'GET'  => array( $dic->controller, 'showOverview' ),
         ),
+        '(^/user/login$)' => array(
+            'GET'  => array( $dic->controller, 'login' ),
+            'POST' => array( $dic->controller, 'login' ),
+        ),
+        '(^/user/logout$)' => array(
+            'GET'  => array( $dic->controller, 'logout' ),
+        ),
     ) ),
     $dic->view
 );
