@@ -78,9 +78,35 @@ class Base extends DIC
             );
         };
 
+        $this->couchdbConnection = function( $dic )
+        {
+            \phpillowConnection::createInstance(
+                'localhost',
+                5984
+            );
+            \phpillowConnection::setDatabase( 'recipe_core' );
+            return \phpillowConnection::getInstance();
+        };
+
+        $this->userFacade = function( $dic )
+        {
+            return new Recipes\Facade\CouchDB\User(
+                $dic->couchdbConnection,
+                new Recipes\Facade\CouchDB\User\View()
+            );
+        };
+
+        $this->userModel = function( $dic )
+        {
+            return new Recipes\Model\User(
+                $this->userFacade
+            );
+        };
+
         $this->controller = function ( $dic )
         {
             return new Recipes\Controller\Auth(
+                $dic->userModel,
                 new Recipes\Controller\Recipe()
             );
         };

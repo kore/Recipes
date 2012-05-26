@@ -21,6 +21,7 @@
  */
 
 namespace Recipes\Controller;
+use Recipes\Model;
 use Recipes\Struct;
 use Qafoo\RMF;
 
@@ -39,13 +40,21 @@ class Auth
     protected $controller;
 
     /**
+     * User model
+     *
+     * @var Model\User
+     */
+    protected $user;
+
+    /**
      * Construct from aggregated controller, which performs authorized actions
      *
      * @param mixed $controller
      * @return void
      */
-    public function __construct( $controller )
+    public function __construct( Model\User $user, $controller )
     {
+        $this->user       = $user;
         $this->controller = $controller;
     }
 
@@ -59,7 +68,8 @@ class Auth
     {
         if ( isset( $request->body['submit'] ) )
         {
-            // Handle post
+            $user = $this->user->findByLogin( $request->body['login'] );
+            var_dump( $user );
         }
 
         return new Struct\Login();
