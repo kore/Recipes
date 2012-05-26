@@ -1,0 +1,38 @@
+{
+    "hash": "ef5fe576bedb46a732a06fa03868b431",
+    "packages": [
+        {
+            "package": "Qafoo/RMF",
+            "version": "dev-master",
+            "source-reference": "f5986d29512bfb2276ffde62921efd6776b79d70"
+        },
+        {
+            "package": "twig/twig",
+            "version": "1.6.0"
+        },
+        {
+            "package": "zetacomponents/base",
+            "version": "dev-master",
+            "source-reference": "642f63a8a72c32996f1aaf8a317fdf746bc32ce7"
+        },
+        {
+            "package": "zetacomponents/document",
+            "version": "dev-master",
+            "source-reference": "c866fc6745e314140d834ba6a26b4186872a8fbb"
+        },
+        {
+            "package": "zetacomponents/graph",
+            "version": "dev-master",
+            "source-reference": "aac41cd6ae90da36856cc8c2c6b0123344e6252d"
+        },
+        {
+            "package": "zetacomponents/search",
+            "version": "dev-master",
+            "source-reference": "6520938124e1f4d59453b17468558c7353dd6f85"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ]
+}

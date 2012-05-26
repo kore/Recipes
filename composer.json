@@ -1,0 +1,20 @@
+{
+    "name":         "Recipes",
+    "description":  "Recipe management tool",
+    "repositories": [ {
+        "type": "vcs",
+        "url":  "https://github.com/Qafoo/REST-Micro-Framework"
+    } ],
+    "require":      {
+        "Qafoo/RMF": "dev-master",
+        "zetacomponents/graph": ">1.0",
+        "zetacomponents/document": ">1.0",
+        "zetacomponents/search": ">1.0",
+        "twig/twig": "1.6.0"
+    },
+    "autoload": {
+    },
+    "config":       {
+        "vendor-dir": "src/library"
+    }
+}
