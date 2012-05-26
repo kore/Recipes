@@ -1,5 +1,5 @@
 {
-    "hash": "ef5fe576bedb46a732a06fa03868b431",
+    "hash": "2e93d5e0dbd53659a507951af5ad50db",
     "packages": [
         {
             "package": "Qafoo/RMF",
@@ -9,6 +9,10 @@
         {
             "package": "twig/twig",
             "version": "1.6.0"
+        },
+        {
+            "package": "twitter/bootstrap",
+            "version": "0.1"
         },
         {
             "package": "zetacomponents/base",

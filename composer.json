@@ -4,12 +4,24 @@
     "repositories": [ {
         "type": "vcs",
         "url":  "https://github.com/Qafoo/REST-Micro-Framework"
+    }, {
+        "type":    "package",
+        "package": {
+            "name":    "twitter/bootstrap",
+            "version": "0.1",
+            "source": {
+                "url": "https://github.com/twitter/bootstrap/",
+                "type": "git",
+                "reference": "origin/master"
+            }
+        }
     } ],
     "require":      {
         "Qafoo/RMF": "dev-master",
-        "zetacomponents/graph": ">1.0",
-        "zetacomponents/document": ">1.0",
-        "zetacomponents/search": ">1.0",
+        "zetacomponents/graph": ">=1.0",
+        "zetacomponents/document": ">=1.0",
+        "zetacomponents/search": ">=1.0",
+        "twitter/bootstrap": ">=0.1",
         "twig/twig": "1.6.0"
     },
     "autoload": {
