@@ -1,6 +1,6 @@
 <?php
 /**
- * recipe storage backend facade
+ * recipe storage backend gateway
  *
  * This file is part of recipe.
  *
@@ -18,24 +18,24 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Facade\CouchDB;
-use Recipes\Facade;
+namespace Recipes\Gateway\CouchDB;
+use Recipes\Gateway;
 
 /**
- * Recipe facade defining all methods required to access recipe related data in the
+ * Recipe gateway defining all methods required to access recipe related data in the
  * backend.
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class Recipe implements Facade\Recipe
+class Recipe implements Gateway\Recipe
 {
     /**
      * Get full recipe list
@@ -246,7 +246,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
                     'recipe' => $recipe,
@@ -287,7 +287,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
                     'recipe' => $id,
@@ -317,7 +317,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
                     'recipe' => $id,
@@ -331,7 +331,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowNoSuchPropertyException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe attachment '%file' could not be found.",
                 array(
                     'file' => $fileName,
@@ -359,7 +359,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseConflictErrorException $e )
         {
-            throw new recipeFacadeExistsException( $name );
+            throw new recipeGatewayExistsException( $name );
         }
 
         // Return generated ID
@@ -384,7 +384,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
                     'recipe' => $recipe,
@@ -425,7 +425,7 @@ class Recipe implements Facade\Recipe
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The recipe '%recipe' could not be found.",
                 array(
                     'recipe' => $recipe,

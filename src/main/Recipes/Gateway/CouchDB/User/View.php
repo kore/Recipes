@@ -23,7 +23,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Facade\CouchDB\User;
+namespace Recipes\Gateway\CouchDB\User;
 
 /**
  * Wrapper for user views

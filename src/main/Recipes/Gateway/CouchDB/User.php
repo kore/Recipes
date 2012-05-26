@@ -16,24 +16,24 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Facade\CouchDB;
-use Recipes\Facade;
+namespace Recipes\Gateway\CouchDB;
+use Recipes\Gateway;
 
 /**
- * User facade defining all methods required to access user related data in the
+ * User gateway defining all methods required to access user related data in the
  * backend.
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class User implements Facade\User
+class User implements Gateway\User
 {
     /**
      * PHPillow connection handler
@@ -56,7 +56,7 @@ class User implements Facade\User
      * @param phpillowView $view
      * @return void
      */
-    public function __construct( \phpillowConnection $connection, Facade\CouchDB\User\View $view )
+    public function __construct( \phpillowConnection $connection, Gateway\CouchDB\User\View $view )
     {
         $this->connection = $connection;
         $this->view       = $view;
@@ -106,7 +106,7 @@ class User implements Facade\User
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The user '%user' could not be found.",
                 array(
                     'user' => $user,
@@ -117,7 +117,7 @@ class User implements Facade\User
         // Check if we got a result at all
         if ( count( $result->rows ) !== 1 )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The user '%user' could not be found.",
                 array(
                     'user' => $login,
@@ -154,7 +154,7 @@ class User implements Facade\User
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The user '%user' could not be found.",
                 array(
                     'user' => $user,
@@ -194,7 +194,7 @@ class User implements Facade\User
         }
         catch ( phpillowResponseConflictErrorException $e )
         {
-            throw new recipeFacadeUserExistsException( $name );
+            throw new recipeGatewayUserExistsException( $name );
         }
 
         // Return generated ID
@@ -219,7 +219,7 @@ class User implements Facade\User
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeFacadeNotFoundException(
+            throw new recipeGatewayNotFoundException(
                 "The user '%user' could not be found.",
                 array(
                     'user' => $user,

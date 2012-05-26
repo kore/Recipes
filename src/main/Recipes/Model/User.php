@@ -23,7 +23,7 @@
 
 namespace Recipes\Model;
 use Recipes\Model;
-use Recipes\Facade;
+use Recipes\Gateway;
 
 /**
  * User model
@@ -65,21 +65,21 @@ class User extends Model
     protected $defaultFetchMethod = 'fetchUserData';
 
     /**
-     * User facade
+     * User gateway
      *
-     * @var Facade\User
+     * @var Gateway\User
      */
-    protected $facade;
+    protected $gateway;
 
     /**
-     * Construct from user facade
+     * Construct from user gateway
      *
-     * @param Facade\User $userFacade
+     * @param Gateway\User $userGateway
      * @return void
      */
-    public function __construct( Facade\User $facade )
+    public function __construct( Gateway\User $gateway )
     {
-        $this->facade = $facade;
+        $this->gateway = $gateway;
     }
 
     /**
@@ -93,8 +93,8 @@ class User extends Model
      */
     public function findByLogin( $login )
     {
-        $userId = $this->facade->getUserDataByLogin( $login );
-        return new User( $this->facade, $userId );
+        $userId = $this->gateway->getUserDataByLogin( $login );
+        return new User( $this->gateway, $userId );
     }
 
     /**
@@ -108,12 +108,12 @@ class User extends Model
      */
     public function fetchAll()
     {
-        $userIDs = $this->facade->getAllUserIDs();
+        $userIDs = $this->gateway->getAllUserIDs();
 
         $users = array();
         foreach ( $userIDs as $id )
         {
-            $users[] = new User( $this->facade, $id );
+            $users[] = new User( $this->gateway, $id );
         }
         return $users;
     }
@@ -131,7 +131,7 @@ class User extends Model
      */
     public function create()
     {
-        return $this->id = $this->facade->createUser( $this->login );
+        return $this->id = $this->gateway->createUser( $this->login );
     }
 
     /**
@@ -146,7 +146,7 @@ class User extends Model
      */
     public function storeChanges()
     {
-        $this->facade->updateUserData( $this->id, $this->getModifiedValues() );
+        $this->gateway->updateUserData( $this->id, $this->getModifiedValues() );
 
         // As we now stored everything in backend, nothing has to be considered
         // modified anymore...
@@ -162,7 +162,7 @@ class User extends Model
      */
     protected function fetchUserData()
     {
-        $data = $this->facade->getUserData( $this->id );
+        $data = $this->gateway->getUserData( $this->id );
 
         foreach ( $data as $key => $value )
         {

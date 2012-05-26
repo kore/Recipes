@@ -88,18 +88,18 @@ class Base extends DIC
             return \phpillowConnection::getInstance();
         };
 
-        $this->userFacade = function( $dic )
+        $this->userGateway = function( $dic )
         {
-            return new Recipes\Facade\CouchDB\User(
+            return new Recipes\Gateway\CouchDB\User(
                 $dic->couchdbConnection,
-                new Recipes\Facade\CouchDB\User\View()
+                new Recipes\Gateway\CouchDB\User\View()
             );
         };
 
         $this->userModel = function( $dic )
         {
             return new Recipes\Model\User(
-                $this->userFacade
+                $this->userGateway
             );
         };
 

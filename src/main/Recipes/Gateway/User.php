@@ -16,19 +16,19 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Facade;
+namespace Recipes\Gateway;
 
 /**
- * User facade defining all methods required to access user related data in the
+ * User gateway defining all methods required to access user related data in the
  * backend.
  *
  * @package Core
- * @subpackage Facade
+ * @subpackage Gateway
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
