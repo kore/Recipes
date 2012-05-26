@@ -132,9 +132,10 @@ class Recipe
      */
     public function tag( RMF\Request $request )
     {
+        $tag = urldecode( $request->variables['tag'] );
         return new Struct\Tag(
-            $request->variables['tag'],
-            $this->model->getRecipesByTag( $request->variables['tag'] )
+            $tag,
+            $this->model->getRecipesByTag( $tag )
         );
     }
 
