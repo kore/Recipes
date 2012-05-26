@@ -88,6 +88,7 @@ class Base extends DIC
                     '\\Recipes\\Struct\\Tags'       => 'tags.twig',
                     '\\Recipes\\Struct\\Recipes'    => 'all.twig',
                     '\\Recipes\\Struct\\Recipe'     => 'view.twig',
+                    '\\Recipes\\Struct\\Export'     => 'export.twig',
                     '\\Recipes\\Struct\\Ingredient' => 'ingredient.twig',
                 )
             );
@@ -138,7 +139,8 @@ class Base extends DIC
             return new Recipes\Controller\Auth(
                 $dic->userModel,
                 new Recipes\Controller\Recipe(
-                    $dic->recipeModel
+                    $dic->recipeModel,
+                    $dic->twig
                 )
             );
         };

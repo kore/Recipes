@@ -29,14 +29,28 @@ use Recipes\Model;
  *
  * @version $Revision$
  */
-class Recipe extends Struct
+class File extends Struct
 {
     /**
-     * Recipe
+     * Content
      *
-     * @var Model\Recipe
+     * @var string
      */
-    public $recipe;
+    public $content;
+
+    /**
+     * Mime type
+     *
+     * @var string
+     */
+    public $mimeType;
+
+    /**
+     * File name
+     *
+     * @var string
+     */
+    public $name;
 
     /**
      * Construct
@@ -44,9 +58,11 @@ class Recipe extends Struct
      * @param string $recipes
      * @return void
      */
-    public function __construct( Model\Recipe $recipe = null )
+    public function __construct( $content = null, $mimeType = null, $name = null )
     {
-        $this->recipe = $recipe;
+        $this->content  = $content;
+        $this->mimeType = $mimeType;
+        $this->name     = $name;
     }
 }
 

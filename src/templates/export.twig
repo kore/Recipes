@@ -1,0 +1,24 @@
+{% extends "index.twig" %}
+{% set recipe = result.recipe %}
+
+{% block commands %}
+<ul class="commands">
+    <li>
+        <a href="/recipe/recipe/{{recipe}}">
+            <i class="icon-arrow-left"></i> Zurück
+        </a>
+    </li>
+</ul>
+{%endblock %}
+
+{% block content %}
+<h2>Rezept exportieren</h2>
+
+<ul class="exports">
+    <li><a href="/recipe/export/{{recipe}}.pdf"><img width="16" height="16" src="/images/application-pdf.png" alt="application/pdf" />Export as PDF</a></li>
+    <li><a href="/recipe/export/{{recipe}}.html"><img width="16" height="16" src="/images/text-html.png" alt="text/html" />Export as HTML</a></li>
+    <li><a href="/recipe/export/{{recipe}}.odt"><img width="16" height="16" src="/images/application-vnd.oasis.opendocument.text.png" alt="application/vnd.oasis.opendocument.text" />Export as OpenDocument</a></li>
+    <li><a href="/recipe/export/{{recipe}}.txt"><img width="16" height="16" src="/images/text-plain.png" alt="text/plain" />Export as ReStructured Text</a></li>
+    <li><a href="/recipe/export/{{recipe}}.xml"><img width="16" height="16" src="/images/text-xml.png" alt="text/xml" />Export as Docbook XML</a></li>
+</ul>
+{% endblock %}

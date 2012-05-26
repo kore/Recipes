@@ -21,6 +21,7 @@
  */
 
 namespace Recipes\View;
+use Recipes\Struct;
 use Qafoo\RMF\Request;
 
 /**
@@ -84,6 +85,16 @@ class Twig extends \Qafoo\RMF\View
      */
     public function display( Request $request, $result )
     {
+        // @TODO: This should not be here…
+        if ( $result instanceof Struct\File )
+        {
+            header( 'Content-Type: ' . $result->mimeType );
+            header( 'Content-Disposition: attachment; filename="' . $result->name . '"' );
+
+            echo $result->content;
+            exit( 0 );
+        }
+
         echo $this->twig->render(
             $this->getTemplate( $result ),
             array(

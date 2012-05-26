@@ -237,24 +237,6 @@ class Recipe extends Model
     }
 
     /**
-     * Return a docbook representation of the recipe.
-     * 
-     * @param recipeRequest $request 
-     * @return ezcDocumentDocbook
-     */
-    public function getAsDocbook( recipeRequest $request )
-    {
-        $viewHandler = new recipeViewDocbookHandler( $request );
-
-        // Let view handler generate output
-        $docbook  = $viewHandler->showRecipe( new recipeRecipeViewModel( $this ) );
-        $document = new ezcDocumentDocbook();
-        $document->loadString( $docbook );
-
-        return $document;
-    }
-
-    /**
      * Method called to create a new instance in the backend.
      *
      * Method called when the model should be created in the backend the first

@@ -41,14 +41,22 @@ class Recipe
     protected $model;
 
     /**
+     * Twig
+     *
+     * @var \Twig_Environment
+     */
+    protected $twig;
+
+    /**
      * Construct from recipe model
      *
      * @param Model\Recipe $model
      * @return void
      */
-    public function __construct( Model\Recipe $model )
+    public function __construct( Model\Recipe $model, \Twig_Environment $twig )
     {
         $this->model = $model;
+        $this->twig  = $twig;
     }
 
     /**
@@ -255,8 +263,8 @@ class Recipe
      */
     public function listExports( RMF\Request $request )
     {
-        return new recipeViewRecipeExportModel(
-            new recipeRecipeModel( $request->subaction )
+        return new Struct\Export(
+            $request->variables['recipe']
         );
     }
 
@@ -286,40 +294,43 @@ class Recipe
      */
     public function export( RMF\Request $request )
     {
-        $recipe   = new recipeRecipeModel( $request->subaction );
-        $docbook  = $recipe->getAsDocbook( $request );
-        $filename = $this->normalizeName( $recipe->title ) . $request->variables['format'];
+        $recipe   = $this->model->load( $request->variables['recipe'] );
+        $filename = $this->normalizeName( $recipe->title ) . '.' . $request->variables['format'];
+
+        $docbookXml = $this->twig->render( 'docbook.twig', array( 'recipe' => $recipe ) );
+        $docbook    = new \ezcDocumentDocbook();
+        $docbook->loadString( $docbookXml );
 
         switch ( $request->variables['format'] )
         {
-            case '.html':
-                $html = new ezcDocumentXhtml();
-                $html->createFromDocbook( $docbook->getAsDocbook() );
-                return new recipeViewDataModel( (string) $html, 'text/html', $filename );
+            case 'html':
+                $html = new \ezcDocumentXhtml();
+                $html->createFromDocbook( $docbook );
+                return new Struct\File( (string) $html, 'text/html', $filename );
 
-            case '.txt':
-                $txt = new ezcDocumentRst();
-                $txt->createFromDocbook( $docbook->getAsDocbook() );
-                return new recipeViewDataModel( (string) $txt, 'text/text', $filename );
+            case 'txt':
+                $txt = new \ezcDocumentRst();
+                $txt->createFromDocbook( $docbook );
+                return new Struct\File( (string) $txt, 'text/text', $filename );
 
-            case '.odt':
-                $converter = new ezcDocumentDocbookToOdtConverter();
+            case 'odt':
+                $converter = new \ezcDocumentDocbookToOdtConverter();
                 $converter->options->styler->addStylesheetFile( __DIR__ . '/recipe.css' );
                 $odt = $converter->convert( $docbook );
-                return new recipeViewDataModel( (string) $odt, 'application/vnd.oasis.opendocument.text', $filename );
+                return new Struct\File( (string) $odt, 'application/vnd.oasis.opendocument.text', $filename );
 
-            case '.xml':
-                return new recipeViewDataModel( (string) $docbook, 'application/docbook+xml', $filename );
+            case 'xml':
+                return new Struct\File( $docbook, 'application/docbook+xml', $filename );
 
-            case '.pdf':
+            case 'pdf':
             default:
                 $options = new ezcDocumentPdfOptions();
-                $options->driver = new ezcDocumentPdfTcpdfDriver();
-                $pdf = new ezcDocumentPdf( $options );
+                $options->driver = new \ezcDocumentPdfTcpdfDriver();
+                $pdf = new \ezcDocumentPdf( $options );
                 $pdf->loadStyles( __DIR__ . '/recipe.css' );
                 $pdf->options->errorReporting = E_PARSE | E_ERROR;
-                $pdf->createFromDocbook( $docbook->getAsDocbook() );
-                return new recipeViewDataModel( (string) $pdf, 'application/pdf', $filename );
+                $pdf->createFromDocbook( $docbook );
+                return new Struct\File( (string) $pdf, 'application/pdf', $filename );
         }
     }
 

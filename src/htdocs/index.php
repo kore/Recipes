@@ -48,6 +48,12 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipe/recipe/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'view' ),
         ),
+        '(^/recipe/listExports/(?P<recipe>.*)$)' => array(
+            'GET'  => array( $dic->controller, 'listExports' ),
+        ),
+        '(^/recipe/export/(?P<recipe>.*)\.(?P<format>[a-z]+)$)' => array(
+            'GET'  => array( $dic->controller, 'export' ),
+        ),
         '(^/recipe/all$)' => array(
             'GET'  => array( $dic->controller, 'all' ),
         ),

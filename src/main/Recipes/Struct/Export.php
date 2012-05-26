@@ -29,12 +29,12 @@ use Recipes\Model;
  *
  * @version $Revision$
  */
-class Recipe extends Struct
+class Export extends Struct
 {
     /**
-     * Recipe
+     * Recipe ID
      *
-     * @var Model\Recipe
+     * @var string
      */
     public $recipe;
 
@@ -44,7 +44,7 @@ class Recipe extends Struct
      * @param string $recipes
      * @return void
      */
-    public function __construct( Model\Recipe $recipe = null )
+    public function __construct( $recipe = null )
     {
         $this->recipe = $recipe;
     }

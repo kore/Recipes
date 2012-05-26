@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<article xmlns="http://docbook.org/ns/docbook">
+  <section>
+    <title>{{recipe.title}}</title>
+    <para>Für {{recipe.amount}} Personen</para>
+    <para>{{recipe.description}}</para>
+    <section>
+      <title>Zutaten</title>
+{% for name, ingredients in recipe.ingredients %}
+      <section>
+        <title>{{name}}</title>
+        <itemizedlist>
+    {% for ingredient in ingredients %}
+          <listitem><para>{{ingredient.amount}} {{ingredient.unit}} {{ingredient.ingredient}}</para></listitem>
+    {% endfor %}
+        </itemizedlist>
+      </section>
+{% endfor %}
+    </section>
+    <section>
+      <title>Instructions</title>
+      <variablelist>
+        <varlistentry>
+          <term>Vorbereitungszeit</term><listitem><para>{{recipe.preparation}} Minuten</para></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Zubereitungszeit</term><listitem><para>{{recipe.cooking}} Minuten</para></listitem>
+        </varlistentry>
+      </variablelist>
+      {% autoescape false %}
+      {{recipe.docbookBody}}
+      {% endautoescape %}
+    </section>
+  </section>
+</article>
