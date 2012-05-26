@@ -140,9 +140,9 @@ class Recipe
      */
     public function ingredient( RMF\Request $request )
     {
-        return new recipeViewRecipeIngredientModel(
-            $request->subaction,
-            $this->model->getRecipesByIngredient( $request->subaction )
+        return new Struct\Ingredient(
+            $request->variables['ingredient'],
+            $this->model->getRecipesByIngredient( $request->variables['ingredient'] )
         );
     }
 

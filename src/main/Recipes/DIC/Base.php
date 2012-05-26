@@ -81,13 +81,14 @@ class Base extends DIC
             return new Recipes\View\Twig(
                 $dic->twig,
                 array(
-                    '\\Exception'                 => 'error.twig',
-                    '\\Recipes\\Struct\\Login'    => 'login.twig',
-                    '\\Recipes\\Struct\\Overview' => 'overview.twig',
-                    '\\Recipes\\Struct\\Tag'      => 'tag.twig',
-                    '\\Recipes\\Struct\\Tags'     => 'tags.twig',
-                    '\\Recipes\\Struct\\Recipes'  => 'all.twig',
-                    '\\Recipes\\Struct\\Recipe'   => 'view.twig',
+                    '\\Exception'                   => 'error.twig',
+                    '\\Recipes\\Struct\\Login'      => 'login.twig',
+                    '\\Recipes\\Struct\\Overview'   => 'overview.twig',
+                    '\\Recipes\\Struct\\Tag'        => 'tag.twig',
+                    '\\Recipes\\Struct\\Tags'       => 'tags.twig',
+                    '\\Recipes\\Struct\\Recipes'    => 'all.twig',
+                    '\\Recipes\\Struct\\Recipe'     => 'view.twig',
+                    '\\Recipes\\Struct\\Ingredient' => 'ingredient.twig',
                 )
             );
         };

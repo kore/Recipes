@@ -1,0 +1,11 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Zutat {{result.ingredient}}</h2>
+
+    <ul>
+    {% for recipe in result.recipies %}
+        <li>{% include 'include/recipe_medium.twig' %}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -214,9 +214,10 @@ class Recipe extends Model
     public function getRecipesByIngredient( $ingredient )
     {
         $recipes = $this->gateway->getRecipesByIngredient( $ingredient );
-        return array_map( function( $id )
+        $gateway = $this->gateway;
+        return array_map( function( $id ) use ( $gateway )
             {
-                return new recipeRecipeModel( $id );
+                return new Recipe( $gateway, $id );
             },
             $recipes
         );
