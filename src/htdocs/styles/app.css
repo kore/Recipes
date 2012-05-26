@@ -83,3 +83,612 @@ ul.commands li a:hover {
     border-bottom: 2px solid #aa8d74;
 }
 
+/**
+ * Content styling
+ */
+table,
+label textarea, label select, input {
+    border: 1px solid #aa8d74;
+	padding: 2px;
+}
+
+label textarea, label select, input {
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
+}
+
+form div.recipe textarea:focus, form div.recipe input:focus,
+label textarea:focus, label select:focus, input:focus {
+	background-color: #ffffff;
+	border: 1px solid #643525;
+}
+
+form div.recipe textarea.errnous, form div.recipe input.errnous,
+label textarea.errnous, label select.errnous, input.errnous {
+	background-color: #fee5bf;
+}
+
+#content ul.success,
+#content ul.errors {
+	width: 100%;
+	margin: 1em auto;
+	padding: 1em 0;
+	list-style-type: disc;
+
+	min-height: 50px;	
+
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
+
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#content ul.errors {
+	background: #fdcf8a url( "../images/jakob/warning.png" ) 8px center no-repeat;
+}
+
+#content ul.success {
+	list-style-type: none;
+	background: #9cbcdd url( "../images/jakob/information.png" ) 8px center no-repeat;	
+}
+
+#content ul.success li {
+	margin:  16px .5em .5em 70px;
+}
+
+#content ul.errors li {
+	margin: 16px .5em .5em 5.5em;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+h4 {
+	font-size: 1.1em;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+#content h1, #content h2, .content h4, .content h5, .content h6 {
+	margin: 1em 0em .5em .0em;
+}
+
+#content h2 {
+	text-shadow: #e1d7ce 2px 2px 1px;
+}
+
+#content h3 {
+	margin: 2em 0em .5em .0em;
+}
+
+#content h4.subtitle {
+	margin-top: .2em;
+	margin-left: 1em;
+}
+
+#content .right {
+	float: right;
+}
+
+#content a.external:after {
+	content: url( "../images/external.png" );
+}
+
+#content a.internal:before {
+	content: url( "../images/internal.png" );
+}
+
+#content h2 {
+	margin-top: 0em;
+}
+
+p {
+	margin: 1em 0em 0em 0em;
+	line-height: 140%;
+}
+
+#content ol {
+	margin: .5em 0em .3em 0em;
+	padding: 0em 0em 0em 2em;
+	list-style-type: lower-roman;
+}
+
+#content ul {
+	margin: .5em 0em .3em 0em;
+	padding: 0em 0em 0em 1em;
+	list-style-type: disc;
+}
+
+#content ol li p,
+#content ul li p {
+	margin: .5em 0em 0em 0em;
+}
+
+div.break {
+	clear: both;
+}
+
+table {
+    margin: .5em 0em;
+	width: 100%;
+	font-size: .95em;
+    border-collapse: separate;
+}
+
+fieldset table {
+    border-left: none;
+    border-right: none;
+}
+
+tbody tr:first-child th {
+	padding-top: .5em;
+}
+
+thead th {
+	text-align: center;
+}
+
+tbody td:first-child {
+	border-left: none;
+}
+
+th {
+	padding: .1em .3em;
+	font-weight: bold;
+}
+
+td {
+	padding: .1em;
+	font-size: .9em;
+}
+
+td.form {
+	text-align: center;
+}
+
+td.image {
+	text-align: center;
+	vertical-align: middle;
+}
+
+td.number {
+	text-align: right;
+}
+
+#content dl {
+	margin: 1em 0em 2em 0em;
+}
+
+#content dt {
+    font-size:  90%;
+	width: 24%;
+	font-weight: bold;
+	float: left;
+    clear: left;
+	padding: 0.1em 0.1em 0.5em 1em;
+}
+
+#content dd {
+    font-size:  90%;
+	margin-left: 24%;
+	width: 76%;
+	padding: .1em .1em .5em .1em;
+}
+
+#content dl dd input {
+	margin: 0 0 0 0.5em;
+}
+
+#content div.article {
+	margin: 0 0 2em 0;
+}
+
+#content ul.cloud {
+    text-align: center;
+	list-style-type: none;
+    margin: 1em auto;
+    padding: 0em;
+    width:  500px;
+}
+
+#content ul.cloud li {
+    display: inline;
+	margin: 0 .2em;
+}
+
+#content ul.cloud li.tag0 a {
+    font-size: .6em;
+}
+
+#content ul.cloud li.tag1 a {
+    font-size: .8em;
+}
+
+#content ul.cloud li.tag2 a {
+    font-size: 1em;
+}
+
+#content ul.cloud li.tag3 a {
+    font-size: 1.2em;
+}
+
+#content ul.cloud li.tag4 a {
+    font-size: 1.3em;
+}
+
+#content ul.cloud li.tag5 a {
+    font-size: 1.4em;
+}
+
+#content table.tags {
+    border: none;
+}
+
+#content table.tags td {
+    border: none;
+    width: 33%;
+    vertical-align: top;
+}
+
+#content table.tags td > ul {
+    list-style-type: none;
+    padding-left: 0em;
+}
+
+#content table.tags td li {
+	padding: 0em;
+}
+
+#content h2 a.edit {
+    font-size: .6em;
+}
+
+/**
+ * General form formatting
+ */
+
+form {
+	display: block;
+	clear: right;
+	margin: 1em auto;
+}
+
+form.wide {
+	width: 100%;
+	border: none;
+}
+
+fieldset {
+}
+
+legend {
+	display: none;
+	margin: 0em 0em .5em 0em;
+	padding: .1em;
+
+	font-weight: bold;
+}
+
+label {
+	display: block;
+	padding: .3em .1em .1em .1em;
+	clear: right;
+}
+
+label textarea,
+label select,
+label input {
+	width: 70%;
+	float: right;
+}
+
+form.export label select,
+form.export label input {
+	width: 40%;
+	float: right;
+}
+
+label input.number {
+	width: 3em;
+    text-align: right;
+}
+
+label textarea,
+label select {
+	font-family: monospace;
+}
+
+label textarea:focus,
+label select:focus,
+label input:focus {
+	background-color: #ffffff;
+}
+
+label textarea {
+	font-family: monospace;
+	font-size: .9em;
+    max-height: 500px;
+}
+
+form.export input[type="submit"] {
+    width: 60%;
+}
+
+input[type="submit"] {
+	width: 15em;
+	float: right;
+	margin: 1em 0 0 0;
+	background-color: #ffffff;
+}
+
+td input[type="checkbox"],
+td select {
+	display: block;
+	margin: .1em auto;
+}
+
+input[disabled="disabled"] {
+	color: #888a85;
+}
+
+/**
+ * Recipe form formatting
+ */
+form div.recipe {
+    padding: 5px;
+}
+
+table td.amount input,
+form div.recipe textarea,
+form div.recipe input {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background-color: inherit;
+    margin: inherit;
+    padding: 2px;
+    border: 1px solid #aa8d74;
+    width: 100%;
+
+	box-shadow: #e1d7ce 2px 2px 2px;
+	-moz-box-shadow: #e1d7ce 2px 2px 2px;
+	-webkit-box-shadow: #e1d7ce 2px 2px 2px;
+}
+
+table td.amount input {
+    width: 85%;
+    text-align: right;
+}
+
+form div.recipe input.number {
+    width: 2.5em;
+    text-align: right;
+}
+
+form div.recipe input.tags {
+    width: auto;
+	margin: 0.3em 0 0 0.5em;
+}
+
+.recipe h1, .recipe h2, .recipe h4, .recipe h5, .recipe h6 {
+	margin: .4em 0em .2em .0em;
+}
+
+form div.recipe ul.ingredients ul {
+    padding-left: 5%;
+}
+
+form div.recipe ul.ingredients input.title,
+form div.recipe ul.ingredients ul input.ingredient {
+    width: 70%;
+}
+
+#content ul.ingredients {
+    list-style-type:    none;
+}
+
+#content ul.ingredients li {
+    margin: 0.1em 0;
+}
+
+table.ingredients {
+    width: auto;
+    border: none;
+}
+
+table.ingredients tr {
+    width: auto;
+}
+
+table.ingredients td {
+    padding:    2px 10px;
+}
+
+table td.amount,
+table.ingredients td.amount {
+    text-align:         right;
+    width:  80px;
+}
+
+#content div.jsonSuggestResults {
+    position:absolute;
+    z-index:1;
+}
+
+#content div.jsonSuggestResults div.resultItem {
+    position:relative;
+    height:auto;
+    cursor:pointer;
+}
+
+#content div.jsonSuggestResults div.resultItem img {
+    float:left;
+    margin-right:10px;
+}
+
+#content div.jsonSuggestResults div.resultItem p {
+    margin:0px;
+    padding:0px;
+}
+
+#content div.jsonSuggestResults div.resultItem p strong {
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+#content div.jsonSuggestResults div.resultItem p.extra {
+    font-size: x-small !important;
+    position:absolute;
+    bottom:3px;
+}
+
+#content ul.exports {
+	list-style-type: none;
+}
+
+#content ul.exports li {
+	margin: 0.2em 0;
+}
+
+#content ul.exports img {
+	margin: 0 8px 0 0;
+}
+
+/**
+ * Pager formatting
+ */
+#content ul.pager {
+    text-align: center;
+	list-style-type: none;
+	margin-top: 2em;
+}
+
+#content ul.pager:before {
+    content: "[";
+}
+
+#content ul.pager:after {
+    content: "]";
+}
+
+#content ul.pager li {
+    display: inline;
+}
+
+/**
+ * Debug variable dump
+ */
+
+div.dump {
+	display: block;
+	overflow: auto;
+    white-space: normal;
+
+	font-size: .9em;
+	font-family: monospace;
+	background-color: #ffffff;
+	color: #000000;
+    max-height: 20em;
+}
+
+div.dump ul {
+    padding-left: 2em;
+}
+
+div.dump ul.model {
+    border-left: 2px solid #729fcf;
+}
+
+div.dump ul.array {
+    border-left: 2px solid #8ae234;
+}
+
+div.dump ul.object {
+    border-left: 2px solid #ef2929;
+}
+
+/**
+ * Debug output
+ */
+div.debug {
+    margin: 1em auto;
+    border: 1px solid #babdb6;
+    background-color: #eeeeef;
+    width: 790px;
+    padding: 5px;
+
+	font-size: .8em;
+	color: #555753;
+}
+
+div.debug h2 {
+	text-align: center;
+}
+
+div.debug ul.debug li {
+	border-bottom: 1px solid #d3d7cf;
+	padding: .1em .5em;
+	margin: 0em;
+}
+
+div.debug ul.debug li h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+div.debug ul.debug li h4 {
+	background-color: #eeeeef;
+	font-size: 1.1em;
+	font-weight: normal;
+}
+
+div.debug ul.debug li p {
+	font-family: monospace;
+	white-space: pre;
+	white-space: pre-wrap;
+	margin: .2em .2em;
+}
+
+div.debug h3.debug {
+	background-color: #eeeeef;
+}
+
+div.debug h3.info,
+div.debug h3.success {
+	background-color: #c1dea4;
+}
+
+div.debug h3.notice,
+#content table.metrics tr.warning {
+	background-color: #fdc879;
+}
+
+div.debug h3.failed,
+div.debug h3.warning,
+#content table.metrics tr.error {
+	background-color: #e9b5b5;
+}
+
+div.debug h3.error,
+div.debug h3.fatal {
+	background-color: #901f1f;
+}
