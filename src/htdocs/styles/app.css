@@ -65,3 +65,15 @@ ul.commands li a:hover {
 	padding-right: 16px;
 	text-decoration: none;
 }
+
+/**
+ * Navigation improvements
+ */
+.navbar .nav > li > a {
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+.navbar {
+    border-bottom: 2px solid #aa8d74;
+}
+

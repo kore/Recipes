@@ -22,7 +22,20 @@
                 <div class="container">
                     <div class="nav">
                         <ul class="nav">
-                            {% block navItems %}{% endblock %}
+                            {% block navItems %}
+                            <li><a href="/recipe/edit"><i class="icon-plus-sign"></i> Neues Rezept</a></li>
+                            <li><a href="/recipe/overview">Übersicht</a></li>
+                            <li><a href="/recipe/tags">Tagindex</a></li>
+                            <li><a href="/recipe/all">Alphabetisch</a></li>
+                            <li><a href="/recipe/listRecipe">Einkaufsliste</a></li>
+                            {% endblock %}
+                        </ul>
+                    </div>
+                    <div class="nav pull-right">
+                        <ul class="nav">
+                            {% block userNav %}
+                            <li><a href="/user/logout"><i class="icon-off"></i> Abmelden</a></li>
+                            {% endblock %}
                         </ul>
                     </div>
                 </div>
