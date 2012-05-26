@@ -84,6 +84,7 @@ class Base extends DIC
                     '\\Exception'                 => 'error.twig',
                     '\\Recipes\\Struct\\Login'    => 'login.twig',
                     '\\Recipes\\Struct\\Overview' => 'overview.twig',
+                    '\\Recipes\\Struct\\Tags'     => 'tags.twig',
                 )
             );
         };

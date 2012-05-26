@@ -75,9 +75,18 @@ class Recipe
      */
     public function tags( RMF\Request $request )
     {
-        return new recipeViewRecipeTagsModel(
+        $grouped = array();
+        foreach ( $this->model->getTags() as $tag => $value )
+        {
+            if ( $tag )
+            {
+                $grouped[strtolower( $tag[0] )][] = $tag;
+            }
+        }
+
+        return new Struct\Tags(
             $this->model->getMostPopularTags( 30 ),
-            $this->model->getTags()
+            $grouped
         );
     }
 

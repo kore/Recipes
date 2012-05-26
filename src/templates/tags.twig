@@ -1,0 +1,61 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Tags / Stichwörter</h2>
+
+    <h3>Am populärsten</h3>
+    {%include "include/tag_cloud.twig"%}
+
+    <h3>Alle Tags/Stichwörter</h3>
+
+    <table class="tags">
+        <tr>
+            <td>
+                <ul>
+                {%for group in range( 'a', 'i' ) %}
+                    {%if result.grouped[group] %}
+                    <li><h4>{{group}}</h4>
+                        <ul>
+                        {%for tag in result.grouped[group] %}
+                            <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
+                        {%endfor%}
+                        </ul>
+                    </li>
+                    {%endif%}
+                {%endfor%}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                {%for group in range( 'j', 'q' ) %}
+                    {%if result.grouped[group] %}
+                    <li><h4>{{group}}</h4>
+                        <ul>
+                        {%for tag in result.grouped[group] %}
+                            <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
+                        {%endfor%}
+                        </ul>
+                    </li>
+                    {%endif%}
+                {%endfor%}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                {%for group in range( 'r', 'z' ) %}
+                    {%if result.grouped[group] %}
+                    <li><h4>{{group}}</h4>
+                        <ul>
+                        {%for tag in result.grouped[group] %}
+                            <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
+                        {%endfor%}
+                        </ul>
+                    </li>
+                    {%endif%}
+                {%endfor%}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}

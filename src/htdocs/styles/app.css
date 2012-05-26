@@ -233,7 +233,6 @@ div.break {
 table {
     margin: .5em 0em;
 	width: 100%;
-	font-size: .95em;
     border-collapse: separate;
 }
 
@@ -261,7 +260,6 @@ th {
 
 td {
 	padding: .1em;
-	font-size: .9em;
 }
 
 td.form {
@@ -282,7 +280,6 @@ td.number {
 }
 
 #content dt {
-    font-size:  90%;
 	width: 24%;
 	font-weight: bold;
 	float: left;
@@ -291,7 +288,6 @@ td.number {
 }
 
 #content dd {
-    font-size:  90%;
 	margin-left: 24%;
 	width: 76%;
 	padding: .1em .1em .5em .1em;
@@ -316,30 +312,6 @@ td.number {
 #content ul.cloud li {
     display: inline;
 	margin: 0 .2em;
-}
-
-#content ul.cloud li.tag0 a {
-    font-size: .6em;
-}
-
-#content ul.cloud li.tag1 a {
-    font-size: .8em;
-}
-
-#content ul.cloud li.tag2 a {
-    font-size: 1em;
-}
-
-#content ul.cloud li.tag3 a {
-    font-size: 1.2em;
-}
-
-#content ul.cloud li.tag4 a {
-    font-size: 1.3em;
-}
-
-#content ul.cloud li.tag5 a {
-    font-size: 1.4em;
 }
 
 #content table.tags {
@@ -428,7 +400,6 @@ label input:focus {
 
 label textarea {
 	font-family: monospace;
-	font-size: .9em;
     max-height: 500px;
 }
 
@@ -597,101 +568,3 @@ table.ingredients td.amount {
     display: inline;
 }
 
-/**
- * Debug variable dump
- */
-
-div.dump {
-	display: block;
-	overflow: auto;
-    white-space: normal;
-
-	font-size: .9em;
-	font-family: monospace;
-	background-color: #ffffff;
-	color: #000000;
-    max-height: 20em;
-}
-
-div.dump ul {
-    padding-left: 2em;
-}
-
-div.dump ul.model {
-    border-left: 2px solid #729fcf;
-}
-
-div.dump ul.array {
-    border-left: 2px solid #8ae234;
-}
-
-div.dump ul.object {
-    border-left: 2px solid #ef2929;
-}
-
-/**
- * Debug output
- */
-div.debug {
-    margin: 1em auto;
-    border: 1px solid #babdb6;
-    background-color: #eeeeef;
-    width: 790px;
-    padding: 5px;
-
-	font-size: .8em;
-	color: #555753;
-}
-
-div.debug h2 {
-	text-align: center;
-}
-
-div.debug ul.debug li {
-	border-bottom: 1px solid #d3d7cf;
-	padding: .1em .5em;
-	margin: 0em;
-}
-
-div.debug ul.debug li h3 {
-	font-size: 1.2em;
-	font-weight: bold;
-}
-
-div.debug ul.debug li h4 {
-	background-color: #eeeeef;
-	font-size: 1.1em;
-	font-weight: normal;
-}
-
-div.debug ul.debug li p {
-	font-family: monospace;
-	white-space: pre;
-	white-space: pre-wrap;
-	margin: .2em .2em;
-}
-
-div.debug h3.debug {
-	background-color: #eeeeef;
-}
-
-div.debug h3.info,
-div.debug h3.success {
-	background-color: #c1dea4;
-}
-
-div.debug h3.notice,
-#content table.metrics tr.warning {
-	background-color: #fdc879;
-}
-
-div.debug h3.failed,
-div.debug h3.warning,
-#content table.metrics tr.error {
-	background-color: #e9b5b5;
-}
-
-div.debug h3.error,
-div.debug h3.fatal {
-	background-color: #901f1f;
-}
