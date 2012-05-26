@@ -38,14 +38,41 @@ class Twig extends \Qafoo\RMF\View
     protected $twig;
 
     /**
+     * Array of templates per class
+     *
+     * @var array
+     */
+    protected $templates = array();
+
+    /**
      * Construct from twig environment
      *
      * @param \Twig_Environment $twig
      * @return void
      */
-    public function __construct( \Twig_Environment $twig )
+    public function __construct( \Twig_Environment $twig, array $templates = array() )
     {
-        $this->twig = $twig;
+        $this->twig      = $twig;
+        $this->templates = $templates;
+    }
+
+    /**
+     * Get template for passed object
+     *
+     * @param mixed $object
+     * @return void
+     */
+    protected function getTemplate( $object )
+    {
+        foreach ( $this->templates as $class => $template )
+        {
+            if ( $object instanceof $class )
+            {
+                return $template;
+            }
+        }
+
+        throw new \OutOfBoundsException( "Can't find a template for class " . get_class( $object ) );
     }
 
     /**
@@ -57,20 +84,12 @@ class Twig extends \Qafoo\RMF\View
      */
     public function display( Request $request, $result )
     {
-        if ( $result instanceof \Exception )
-        {
-            echo $this->twig->render(
-                'error.twig',
-                array(
-                    'exception' => $result,
-                )
-            );
-            return;
-        }
-
         echo $this->twig->render(
-            $result->template,
-            $result->data
+            $this->getTemplate( $result ),
+            array(
+                'request' => $request,
+                'result'  => $result,
+            )
         );
     }
 }

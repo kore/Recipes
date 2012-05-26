@@ -68,7 +68,13 @@ class Base extends DIC
 
         $this->view = function( $dic )
         {
-            return new Recipes\View\Twig( $dic->twig );
+            return new Recipes\View\Twig(
+                $dic->twig,
+                array(
+                    '\\Exception'                 => 'error.twig',
+                    '\\Recipes\\Struct\\Overview' => 'overview.twig',
+                )
+            );
         };
 
         $this->controller = function ( $dic )
