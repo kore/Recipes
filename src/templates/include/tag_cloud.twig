@@ -1,0 +1,12 @@
+{%set max = 0 %}
+{%for tag, value in result.popular %}
+    {%set max = max( max, value ) %}
+{%endfor%}
+
+<ul class="cloud">
+{%for tag, value in result.popular %}
+    <li class="tag" style="font-size: {{50 + ( 100 * value / max )}}%;">
+        <a href="/recipe/tag/{{tag}}">{{tag}}</a>
+    </li>
+{%endfor%}
+</ul>

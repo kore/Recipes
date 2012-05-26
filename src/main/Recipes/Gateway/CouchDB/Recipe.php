@@ -38,6 +38,33 @@ use Recipes\Gateway;
 class Recipe implements Gateway\Recipe
 {
     /**
+     * PHPillow connection handler
+     *
+     * @var phpillowConnection
+     */
+    protected $connection;
+
+    /**
+     * PHPillow view
+     *
+     * @var phpillowView
+     */
+    protected $view;
+
+    /**
+     * Construct from conneciton and view
+     *
+     * @param phpillowConnection $connection
+     * @param phpillowView $view
+     * @return void
+     */
+    public function __construct( \phpillowConnection $connection, Gateway\CouchDB\Recipe\View $view )
+    {
+        $this->connection = $connection;
+        $this->view       = $view;
+    }
+
+    /**
      * Get full recipe list
      *
      * Return an alphabetical list of all recipes.
@@ -46,8 +73,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getAll()
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'all' );
+        $result = $this->view->query( 'all' );
 
         if ( !count( $result->rows ) )
         {
@@ -73,8 +99,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getTags()
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'tags', array(
+        $result = $this->view->query( 'tags', array(
             'group' => true,
         ) );
 
@@ -102,8 +127,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipesByTag( $tag )
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'tags', array(
+        $result = $this->view->query( 'tags', array(
             'reduce' => false,
             'key'    => $tag,
         ) );
@@ -133,8 +157,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getUnits( $string )
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'units', array(
+        $result = $this->view->query( 'units', array(
             'group'    => true,
             'startkey' => $string,
             'endkey'   => $string . "\xE9\xA6\x99",
@@ -166,8 +189,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getIngredients( $string )
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'ingredients', array(
+        $result = $this->view->query( 'ingredients', array(
             'group'    => true,
             'startkey' => $string,
             'endkey'   => $string . "\xE9\xA6\x99",
@@ -198,8 +220,7 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipesByIngredient( $ingredient )
     {
-        $issues = phpillowManager::getView( 'recipe' );
-        $result = $issues->query( 'ingredients', array(
+        $result = $this->view->query( 'ingredients', array(
             'reduce' => false,
             'key'    => $ingredient,
         ) );
@@ -239,47 +260,6 @@ class Recipe implements Gateway\Recipe
      * @return array
      */
     public function getRecipeData( $recipe )
-    {
-        try
-        {
-            $doc = phpillowManager::fetchDocument( 'recipe', $recipe );
-        }
-        catch ( phpillowResponseNotFoundErrorException $e )
-        {
-            throw new recipeGatewayNotFoundException(
-                "The recipe '%recipe' could not be found.",
-                array(
-                    'recipe' => $recipe,
-                )
-            );
-        }
-
-        return array(
-            'title'        => $doc->title,
-            'amount'       => $doc->amount,
-            'description'  => $doc->description,
-            'ingredients'  => $doc->ingredients,
-            'preparation'  => $doc->preparation,
-            'cooking'      => $doc->cooking,
-            'instructions' => $doc->instructions,
-            'user'         => $doc->user,
-            'tags'         => $doc->tags,
-            'attachments'  => $doc->_attachments,
-        );
-    }
-
-    /**
-     * Attach file to page
-     *
-     * Attach a file to the page specified by its ID. The files mime type is
-     * given as a third parameter and should also be stored.
-     *
-     * @param mixed $id
-     * @param string $fileName
-     * @param string $mimeType
-     * @return void
-     */
-    public function attachFile( $id, $fileName, $mimeType )
     {
         try
         {

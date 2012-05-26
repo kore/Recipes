@@ -31,11 +31,18 @@ use Recipes\Struct;
 class Overview extends Struct
 {
     /**
-     * Module identifier
+     * Popular tags
      *
-     * @var string
+     * @var array
      */
-    public $text;
+    public $popular = array();
+
+    /**
+     * All tags
+     *
+     * @var array
+     */
+    public $tags = array();
 
     /**
      * Construct
@@ -43,9 +50,10 @@ class Overview extends Struct
      * @param string $text
      * @return void
      */
-    public function __construct( $text )
+    public function __construct( array $popular = array(), array $tags = array() )
     {
-        $this->text = $text;
+        $this->popular = $popular;
+        $this->tags = $tags;
     }
 }
 

@@ -1,5 +1,11 @@
 {% extends "index.twig" %}
 
 {% block content %}
-    <p>{{result.text}}</p>
+    <h2>Rezepte</h2>
+
+    <h3>Populärste Tags/Stichwörter</h3>
+    {%include "include/tag_cloud.twig"%}
+
+    <h3>Suche Rezept</h3>
+    {%include "include/search_box.twig"%}
 {% endblock %}

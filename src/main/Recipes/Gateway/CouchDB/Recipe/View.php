@@ -23,6 +23,8 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
+namespace Recipes\Gateway\CouchDB\Recipe;
+
 /**
  * Wrapper for recipe views
  *
@@ -31,7 +33,7 @@
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class recipeBackendCouchDbRecipeView extends phpillowFileView
+class View extends \phpillowFileView
 {
     /**
      * Construct view

@@ -38,10 +38,15 @@ class Base extends DIC
      * @var array(string)
      */
     protected $alwaysShared = array(
-        'srcDir'     => true,
-        'view'       => true,
-        'twig'       => true,
-        'controller' => true,
+        'srcDir'            => true,
+        'view'              => true,
+        'twig'              => true,
+        'couchdbConnection' => true,
+        'userGateway'       => true,
+        'userModel'         => true,
+        'recipeGateway'     => true,
+        'recipeModel'       => true,
+        'controller'        => true,
     );
 
     /**
@@ -58,12 +63,17 @@ class Base extends DIC
 
         $this->twig = function ( $dic )
         {
-            return new \Twig_Environment(
+            $twig = new \Twig_Environment(
                 new \Twig_Loader_Filesystem( $dic->srcDir . '/templates' ),
                 array(
 //                    'cache' => $dic->srcDir . '/cache'
                 )
             );
+
+            $twig->addFunction( 'max', new \Twig_Function_Function( 'max' ) );
+            $twig->addFunction( 'floor', new \Twig_Function_Function( 'floor' ) );
+
+            return $twig;
         };
 
         $this->view = function( $dic )
@@ -103,11 +113,28 @@ class Base extends DIC
             );
         };
 
+        $this->recipeGateway = function( $dic )
+        {
+            return new Recipes\Gateway\CouchDB\Recipe(
+                $dic->couchdbConnection,
+                new Recipes\Gateway\CouchDB\Recipe\View()
+            );
+        };
+
+        $this->recipeModel = function( $dic )
+        {
+            return new Recipes\Model\Recipe(
+                $this->recipeGateway
+            );
+        };
+
         $this->controller = function ( $dic )
         {
             return new Recipes\Controller\Auth(
                 $dic->userModel,
-                new Recipes\Controller\Recipe()
+                new Recipes\Controller\Recipe(
+                    $dic->recipeModel
+                )
             );
         };
     }

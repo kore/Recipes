@@ -23,6 +23,10 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
+namespace Recipes\Model;
+use Recipes\Gateway;
+use Recipes\Model;
+
 /**
  * Recipe model
  *
@@ -31,7 +35,7 @@
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
+class Recipe extends Model
 {
     /**
      * Array containing the recipes properties
@@ -78,6 +82,25 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
     );
 
     /**
+     * recipe gateway
+     *
+     * @var Gateway\Recipe
+     */
+    protected $gateway;
+
+    /**
+     * Construct from recipe gateway
+     *
+     * @param Gateway\Recipe $gateway
+     * @return void
+     */
+    public function __construct( Gateway\Recipe $gateway, $id = null )
+    {
+        parent::__construct( $id );
+        $this->gateway = $gateway;
+    }
+
+    /**
      * Get tags
      *
      * Return a list of tags, each associated with the number of occurences in
@@ -85,10 +108,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      *
      * @return array
      */
-    public static function getTags()
+    public function getTags()
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        return $recipe->getTags();
+        return $this->gateway->getTags();
     }
 
     /**
@@ -98,10 +120,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      *
      * @return array
      */
-    public static function getMostPopularTags( $count = 30 )
+    public function getMostPopularTags( $count = 30 )
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        $tags = $recipe->getTags();
+        $tags = $this->gateway->getTags();
         arsort( $tags );
         $mostPopular = array_splice( $tags, 0, $count );
         ksort( $mostPopular );
@@ -115,10 +136,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      *
      * @return array
      */
-    public static function getAll()
+    public function getAll()
     {
-        $recipe  = recipeGatewayManager::getGateway( 'recipe' );
-        $recipes = $recipe->getAll();
+        $recipes = $this->gateway->getAll();
         return array_map( function( $id )
             {
                 return new recipeRecipeModel( $id );
@@ -135,10 +155,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      * @param string $tag
      * @return array
      */
-    public static function getRecipesByTag( $tag )
+    public function getRecipesByTag( $tag )
     {
-        $recipe  = recipeGatewayManager::getGateway( 'recipe' );
-        $recipes = $recipe->getRecipesByTag( $tag );
+        $recipes = $this->gateway->getRecipesByTag( $tag );
         return array_map( function( $id )
             {
                 return new recipeRecipeModel( $id );
@@ -156,10 +175,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      * @param string $string
      * @return array
      */
-    public static function getUnits( $string = '' )
+    public function getUnits( $string = '' )
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        return $recipe->getUnits( $string );
+        return $this->gateway->getUnits( $string );
     }
 
     /**
@@ -171,10 +189,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      * @param string $string
      * @return array
      */
-    public static function getIngredients( $string = '' )
+    public function getIngredients( $string = '' )
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        return $recipe->getIngredients( $string );
+        return $this->gateway->getIngredients( $string );
     }
 
     /**
@@ -185,10 +202,9 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      * @param string $ingredient
      * @return array
      */
-    public static function getRecipesByIngredient( $ingredient )
+    public function getRecipesByIngredient( $ingredient )
     {
-        $recipe  = recipeGatewayManager::getGateway( 'recipe' );
-        $recipes = $recipe->getRecipesByIngredient( $ingredient );
+        $recipes = $this->gateway->getRecipesByIngredient( $ingredient );
         return array_map( function( $id )
             {
                 return new recipeRecipeModel( $id );
@@ -230,8 +246,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      */
     public function create()
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        return $this->id = $recipe->createRecipe( $this->title );
+        return $this->id = $this->gateway->createRecipe( $this->title );
     }
 
     /**
@@ -244,8 +259,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      */
     public function delete()
     {
-        $recipe = recipeGatewayManager::getGateway( 'recipe' );
-        $recipe->delete( $this->id );
+        $this->gateway->delete( $this->id );
     }
 
     /**
@@ -260,8 +274,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
         $cacheId = 'recipe/' . $this->id;
         if ( ( $data = recipeCacheRegistry::getCache()->get( 'model', $cacheId ) ) === false )
         {
-            $recipe = recipeGatewayManager::getGateway( 'recipe' );
-            $data = $recipe->getRecipeData( $this->id );
+            $data = $this->gateway->getRecipeData( $this->id );
 
             // Cache retrieved project data
             recipeCacheRegistry::getCache()->cache( 'model', $cacheId, $data );
@@ -293,8 +306,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
         rename( $fileName, $fileName = ARBIT_TMP_PATH . $name );
         $info['type'] = recipeFrameworkMimeTypeGuesser::guess( $fileName, $info['type'] );
 
-        $storage = recipeGatewayManager::getGateway( 'recipe' );
-        $storage->attachFile( $this->id, $fileName, $info['type'] );
+        $this->gateway->attachFile( $this->id, $fileName, $info['type'] );
 
         // Clear associated cache
         recipeCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
@@ -314,8 +326,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
      */
     public function getAttachment( $name )
     {
-        $storage = recipeGatewayManager::getGateway( 'recipe' );
-        return $storage->getFileContents( $this->id, $name );
+        return $this->gateway->getFileContents( $this->id, $name );
     }
 
     /**
@@ -334,8 +345,7 @@ class recipeRecipeModel extends recipeModelBase implements ezcBasePersistable
         $this->properties['user'] = new recipeModelUser( recipeSession::get( 'login' ) );
         $this->modifiedProperty[] = 'user';
 
-        $storage = recipeGatewayManager::getGateway( 'recipe' );
-        $storage->updateRecipeData( $this->id, $this->getModifiedValues() );
+        $this->gateway->updateRecipeData( $this->id, $this->getModifiedValues() );
 
         // Clear associated cache
         recipeCacheRegistry::getCache()->purge( 'model', 'recipe/' . $this->id );
