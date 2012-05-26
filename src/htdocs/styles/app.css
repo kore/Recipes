@@ -3,7 +3,14 @@ html {
 }
 
 body {
-    margin-top: 40px;
+    padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
 }
 
 #header h1 {
