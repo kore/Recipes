@@ -89,6 +89,7 @@ class Base extends DIC
                     '\\Recipes\\Struct\\Tags'       => 'tags.twig',
                     '\\Recipes\\Struct\\Recipes'    => 'all.twig',
                     '\\Recipes\\Struct\\Recipe'     => 'view.twig',
+                    '\\Recipes\\Struct\\Edit'       => 'edit.twig',
                     '\\Recipes\\Struct\\Export'     => 'export.twig',
                     '\\Recipes\\Struct\\Ingredient' => 'ingredient.twig',
                 )

@@ -48,6 +48,9 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipe/recipe/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'view' ),
         ),
+        '(^/recipe/edit(?:/(?P<recipe>.*))?$)' => array(
+            'GET'  => array( $dic->controller, 'edit' ),
+        ),
         '(^/recipe/delete/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'delete' ),
         ),

@@ -362,7 +362,7 @@ class Recipe
     public function attach( RMF\Request $request )
     {
         $errors = array();
-        if ( recipeHttpTools::get( 'attach' ) !== null )
+        if ( $request->body['attach'] !== null )
         {
             try
             {
@@ -370,7 +370,7 @@ class Recipe
                 recipeLogger::dump( $files );
                 $recipe  = new recipeRecipeModel( $request->subaction );
                 $recipe->attachFile(
-                    recipeHttpTools::get( 'name' ), key( $files ), reset( $files )
+                    $request->body['name'], key( $files ), reset( $files )
                 );
 
                 return new recipeViewRecipeViewModel(
@@ -390,114 +390,6 @@ class Recipe
     }
 
     /**
-     * Delete action
-     *
-     * Allows registered users to remove a recipe
-     *
-     * @param RMF\Request $request
-     * @return recipeViewModel
-     */
-    public function listRecipe( RMF\Request $request )
-    {
-        $list = recipeSession::is_set( 'list' ) ? recipeSession::get( 'list' ) : array();
-
-        if ( $request->subaction !== 'index' )
-        {
-            $recipe = new recipeRecipeModel( $request->subaction );
-            $list[$recipe->_id] = $recipe->amount;
-            recipeSession::set( 'list', $list );
-        }
-
-        if ( recipeHttpTools::get( 'update' ) !== null )
-        {
-            $list = recipeHttpTools::get( 'amount', recipeHttpTools::TYPE_ARRAY );
-
-            foreach ( $list as $recipe => $amount )
-            {
-                if ( $amount <= 0 )
-                {
-                    unset( $list[$recipe] );
-                }
-                elseif ( preg_match( '((?P<top>\\d+)\\s*/\\s*(?P<bottom>\\d+))', trim( $amount ), $match ) )
-                {
-                    $list[$recipe] = $match['top'] / $match['bottom'];
-                }
-                else
-                {
-                    $list[$recipe] = (float) $amount;
-                }
-            }
-
-            recipeSession::set( 'list', $list );
-        }
-
-        return new recipeViewRecipeListModel( $list );
-    }
-
-    /**
-     * Get search seassion
-     *
-     * Get the search session based on the configuration values.
-     *
-     * @param RMF\Request $request
-     * @return ezcSearchSession
-     */
-    protected function getSearchSession( RMF\Request $request )
-    {
-        $path = ARBIT_CACHE_PATH . 'search/' . $request->controller . '/';
-
-        if ( !file_exists( $path ) )
-        {
-            mkdir( $path, 0777, true );
-            Zend_Search_Lucene::create( $path );
-        }
-
-        $handler = new ezcSearchZendLuceneHandler( $path );
-
-        $manager = new ezcSearchXmlManager( __DIR__ . '/../../search/' );
-        return new ezcSearchSession( $handler, $manager );
-    }
-
-    /**
-     * Search action
-     *
-     * Search bug reports
-     *
-     * @param RMF\Request $request
-     * @return recipeViewModuleModel
-     */
-    public function search( RMF\Request $request )
-    {
-        $searchTerm = isset( $request->variables['search'] ) ? $request->variables['search'] : null;
-
-        if ( $searchTerm !== null )
-        {
-            $offset = isset( $request->variables['offset'] ) ? (int) $request->variables['offset'] : 0;
-            $limit  = 10;
-
-            $search = $this->getSearchSession( $request );
-            $query  = $search->createFindQuery( 'recipeRecipeModel' );
-
-            $queryBuilder  = new ezcSearchQueryBuilder();
-            $queryBuilder->parseSearchQuery( $query, $searchTerm, array( 'title', 'description', 'instructions' ) );
-            $query->offset = $offset;
-            $query->limit  = 10;
-            $result        = $search->find( $query );
-        }
-        else
-        {
-            $result = new ezcSearchResult();
-            $offset = 0;
-        }
-
-        return new recipeViewRecipeSearchModel(
-            $searchTerm,
-            new recipeViewSearchResultModel( $result ),
-            $offset
-        );
-    }
-
-    /**
      * Edit action
      *
      * Allows registered users to edit a recipe
@@ -507,51 +399,48 @@ class Recipe
      */
     public function edit( RMF\Request $request )
     {
-        $model  = new recipeViewRecipeEditModel();
-        $id     = $request->subaction !== 'index' ? $request->subaction : null;
-        $recipe = new recipeRecipeModel( $id );
-
-        if ( recipeHttpTools::get( 'store' ) !== null )
+        $recipe = $this->model;
+        if ( isset( $request->variables['recipe'] ) )
         {
-            try
-            {
-                $recipe->title        = recipeHttpTools::get( 'title' );
-                $recipe->amount       = (int) recipeHttpTools::get( 'amount', recipeHttpTools::TYPE_NUMERIC );
-                $recipe->description  = recipeHttpTools::get( 'description' );
-                $recipe->ingredients  = $this->convertIngredientList( recipeHttpTools::get( 'ingredients', recipeHttpTools::TYPE_ARRAY ) );
-                $recipe->preparation  = (int) recipeHttpTools::get( 'preparation', recipeHttpTools::TYPE_NUMERIC );
-                $recipe->cooking      = (int) recipeHttpTools::get( 'cooking', recipeHttpTools::TYPE_NUMERIC );
-                $recipe->instructions = recipeHttpTools::get( 'instructions' );
-                $recipe->tags         = preg_split( '(\s*,\s*)', trim( recipeHttpTools::get( 'tags' ) ) );
-
-                // Force creation, if it is a new recipe
-                if ( $id === null )
-                {
-                    $recipe->create();
-                    $id = $recipe->_id;
-                }
-
-                $recipe->storeChanges();
-
-                $model->success = array( new recipeViewUserMessageModel( 'Your recipe has been successfully stored.' ) );
-
-                // Update recipe in search index
-                $search = $this->getSearchSession( $request );
-                $search->index( $recipe );
-            }
-            catch ( recipeException $e )
-            {
-                $model->errors = array( $e );
-            }
+            $id = $request->variables['recipe'];
+            $recipe = $recipe->load( $id );
         }
 
-        // Assign recipe to model to keep already validated data.
-        if ( $id )
+        $result = new Struct\Edit();
+
+        if ( !isset( $request->body['store'] ) )
         {
-            $model->recipe = new recipeRecipeViewModel( $recipe );
+            return $result;
         }
 
-        return $model;
+        try
+        {
+            $recipe->title        = $request->body['title'];
+            $recipe->amount       = (int) $request->body['amount'];
+            $recipe->description  = $request->body['description'];
+            $recipe->ingredients  = $this->convertIngredientList( $request->body['ingredients'] );
+            $recipe->preparation  = (int) $request->body['preparation'];
+            $recipe->cooking      = (int) $request->body['cooking'];
+            $recipe->instructions = $request->body['instructions'];
+            $recipe->tags         = preg_split( '(\s*,\s*)', trim( $request->body['tags'] ) );
+
+            // Force creation, if it is a new recipe
+            if ( $id === null )
+            {
+                $recipe->create();
+                $id = $recipe->_id;
+            }
+
+            $recipe->storeChanges();
+            $model->success = 'Your recipe has been successfully stored.';
+        }
+        catch ( \Exception $e )
+        {
+            $result->errors[] = $e->getMessage();
+        }
+
+        $result->recipe = $recipe;
+        return $result;
     }
 }
 
