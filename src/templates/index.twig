@@ -28,14 +28,29 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="row">
+        <div id="header" class="row">
             <div class="span12">
                 <h1><span>Recipe Manager</span></h1>
-            {% block content %}
-                <div class="alert">
-                    <h2>Please extend from this template…</h2>
-                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="commands" class="span3">
+            {% block commands %}
+                <ul class="commands">
+                    <li><a href="/recipes/edit">Neues Rezept</a></li>
+                    <li><a href="/recipes/tags">Tagindex</a></li>
+                    <li><a href="/recipes/listRecipe">Einkaufsliste</a></li>
+                </ul>
             {% endblock %}
+            </div>
+            <div class="span9 span-content">
+                <div id="content">
+                {% block content %}
+                    <div class="alert">
+                        <h2>Please extend from this template…</h2>
+                    </div>
+                {% endblock %}
+                </div>
             </div>
         </div>
         <div class="row">

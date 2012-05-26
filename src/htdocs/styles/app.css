@@ -1,4 +1,4 @@
-#content h1 {
+#header h1 {
     background-image: url("/images/header.png");
     width: 880px;
     height: 95px;
@@ -8,7 +8,60 @@
     margin-bottom: 20px;
 }
 
-#content h1 span {
+#header h1 span {
     display: none;
 }
 
+/**
+ * Main content area
+ */
+#content {
+	background: #eeeeec;
+	border: 1px solid #643525;
+	border-top: none;
+	box-shadow: #3a1f15 5px 5px 4px;
+	-moz-box-shadow: #3a1f15 5px 5px 4px;
+	-webkit-box-shadow: #3a1f15 5px 5px 4px;
+
+	padding: 38px 51px 51px 51px;
+}
+
+.span-content {
+    margin-left: 0px;
+}
+
+/**
+ * Commands
+ */
+ul.commands {
+	width: 100%;
+	float: left;
+	padding: 0;
+	margin: 32px 0 0 0;
+	list-style-type: none;	
+}
+
+ul.commands li {
+	float: right;
+	display: inline;
+	background: #e1d7ce url( "../images/jakob/tab_shadow.png") right top repeat-y;
+	margin: 0 0 8px 0;
+	clear: both;
+
+	box-shadow: #3a1f15 2px 2px 3px;
+	-moz-box-shadow: #3a1f15 2px 2px 3px;
+	-webkit-box-shadow: #3a1f15 2px 2px 3px;
+}
+
+ul.commands li a {
+	display: block;
+	height: 25px;
+	padding: 9px 8px 0 8px; 
+	color: #000000;
+}
+
+ul.commands li a:hover {
+    color: #915014;
+	padding-right: 16px;
+	text-decoration: none;
+}
