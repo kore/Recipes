@@ -2,7 +2,15 @@
 {% set recipe = result.recipe %}
 
 {% block commands %}
-    &nbsp;
+<ul class="commands">
+{% if recipe.id %}
+    <li>
+        <a href="/recipe/recipe/{{recipe.id}}">
+            <i class="icon-ok"></i> Ansicht
+        </a>
+    </li>
+{% endif %}
+</ul>
 {%endblock %}
 
 {% block content %}
