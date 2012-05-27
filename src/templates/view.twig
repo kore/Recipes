@@ -23,11 +23,23 @@
 
 {% block content %}
 <h2>{{recipe.title}} <a class="edit" href="/recipe/edit/{{recipe.id}}">[Bearbeiten]</a></h2>
+
+<div class="changes">
+    <h3>Änderungen</h3>
+    <ul class="changes">
+    {% for revision in recipe.revisions if revision._date and revision.user %}
+        {% set user = user( revision.user ) %}
+        <li>{{user.login}} at {{revision._date|date( "d.m.Y" )}}</li>
+    {% endfor %}
+    </ul>
+</div>
+
 <h4 class="subtitle">Für {{recipe.amount}} Personen</h4>
 
 <p>{{recipe.description}}</p>
 
-<h3>{{Ingredients}}</h3>
+<div style="clear: both;"></div>
+<h3>Zutaten</h3>
 
 <ul class="ingredients">
 {% for section, ingredients in recipe.ingredients %}
@@ -44,7 +56,7 @@
 {% endfor %}
 </ul>
 
-<h3>{{Instructions}}</h3>
+<h3>Zubereitung</h3>
 
 <dl>
     <dt>Vorbereitungszeit</dt>

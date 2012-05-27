@@ -61,6 +61,11 @@ class Base extends DIC
             return substr( __DIR__, 0, strpos( __DIR__, '/src/' ) + 4 );
         };
 
+        $this->twigExtension = function ( $dic )
+        {
+            return new Recipes\View\TwigExtension( $dic );
+        };
+
         $this->twig = function ( $dic )
         {
             $twig = new \Twig_Environment(
@@ -70,8 +75,11 @@ class Base extends DIC
                 )
             );
 
+            $twig->addExtension( $this->twigExtension );
+
             $twig->addFunction( 'max', new \Twig_Function_Function( 'max' ) );
             $twig->addFunction( 'floor', new \Twig_Function_Function( 'floor' ) );
+            $twig->addFunction( 'user', new \Twig_Function_Method( $dic->twigExtension, 'user' ) );
 
             return $twig;
         };

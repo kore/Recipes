@@ -53,7 +53,8 @@ class Recipe extends Model
         'instructions' => null,
         'user'         => null,
         'tags'         => null,
-        'attachments'  => array(),
+        'revisions'   => array(),
+        'attachments' => array(),
     );
 
     /**

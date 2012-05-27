@@ -341,7 +341,8 @@ class Recipe implements Gateway\Recipe
             'instructions' => $doc->instructions,
             'user'         => $doc->user,
             'tags'         => $doc->tags,
-            'attachments'  => $doc->_attachments,
+            'attachments' => $doc->_attachments,
+            'revisions'   => $doc->revisions,
         );
     }
 
