@@ -155,7 +155,7 @@ abstract class Model extends Struct
         // this check pass, even if the property is set to null.
         if ( !array_key_exists( $property, $this->properties ) )
         {
-            throw new recipePropertyException( $property );
+            throw new \OutOfBoundsException( $property . " not found." );
         }
 
         // We fetch all stuff at once lazy, when one of the properties is
@@ -287,7 +287,7 @@ abstract class Model extends Struct
         // thorough testing.
         if ( !array_key_exists( $property, $this->properties ) )
         {
-            throw new recipePropertyException( $property );
+            throw new \OutOfBoundsException( $property . " not found." );
         }
 
         // Store property and set modified
