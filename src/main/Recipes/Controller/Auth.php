@@ -47,15 +47,25 @@ class Auth
     protected $user;
 
     /**
+     * Requests, which may pass without authorization
+     *
+     * Array of regular expressions
+     *
+     * @var array
+     */
+    protected $unauthorized = array();
+
+    /**
      * Construct from aggregated controller, which performs authorized actions
      *
      * @param mixed $controller
      * @return void
      */
-    public function __construct( Model\User $user, $controller )
+    public function __construct( Model\User $user, $controller, array $unauthorized = array() )
     {
-        $this->user       = $user;
-        $this->controller = $controller;
+        $this->user         = $user;
+        $this->controller   = $controller;
+        $this->unauthorized = $unauthorized;
     }
 
     /**
@@ -129,6 +139,14 @@ class Auth
     {
         // @TODO: Check auth
         $request = $arguments[0];
+
+        foreach ( $this->unauthorized as $regexp )
+        {
+            if ( preg_match( $regexp, $request->path ) )
+            {
+                return $this->controller->$method( $request );
+            }
+        }
 
         if ( !isset( $request->session['user'] ) )
         {

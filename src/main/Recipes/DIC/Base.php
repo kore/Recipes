@@ -145,6 +145,9 @@ class Base extends DIC
                     $dic->recipeModel,
                     $dic->userModel,
                     $dic->twig
+                ),
+                array(
+                    '(^/recipes?/export)',
                 )
             );
         };
