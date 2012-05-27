@@ -1,7 +1,5 @@
 <?php
 /**
- * recipe base model validation
- *
  * This file is part of recipe.
  *
  * recipe is free software; you can redistribute it and/or modify
@@ -24,40 +22,20 @@
  */
 
 namespace Recipes\Model\Validator;
-use Recipes\Model\Validator;
 
 /**
- * Dummy validator class, for situations where a validator is required, but no
- * validation is needed.
+ * Array validator class
  *
  * @package Core
  * @subpackage Model
  * @version $Revision: 1236 $
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
-class DummyValidator extends Validator
+class Exception extends \Exception
 {
-    /**
-     * Validate value
-     *
-     * Validates the given input. Returns the input, when it matches the
-     * validation constraints and throws a Exception
-     * exception otherwise.
-     *
-     * The name and expectation paramters are used to generate a better user
-     * error message. The name should be the name of the property, and the
-     * expectation should be a string somehow describing what kind of content
-     * was expected from validation.
-     *
-     * @throws recipePropertyValue If validation constraints are not met.
-     * @param string $name
-     * @param mixed $value
-     * @param string $expectation
-     * @return mixed
-     */
-    public function validate( $name, $value, $expectation )
+    public function __construct( $name, $expectation )
     {
-        return $value;
+        parent::__construct( "Validator for $name expected: $expectation." );
     }
 }
 

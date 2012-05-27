@@ -61,7 +61,7 @@ class ObjectValidator extends Validator
      * Validate value
      *
      * Validates the given input. Returns the input, when it matches the
-     * validation constraints and throws a recipePropertyValidationException
+     * validation constraints and throws a Exception
      * exception otherwise.
      *
      * The name and expectation paramters are used to generate a better user
@@ -81,7 +81,7 @@ class ObjectValidator extends Validator
              ( ( $this->className !== null ) &&
                ( !$value instanceof $this->className ) ) )
         {
-            throw new recipePropertyValidationException( $name, $expectation );
+            throw new Exception( $name, $expectation );
         }
 
         return $value;

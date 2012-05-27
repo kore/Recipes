@@ -69,7 +69,7 @@ class ArrayValidator extends Validator
      * Validate value
      *
      * Validates the given input. Returns the input, when it matches the
-     * validation constraints and throws a recipePropertyValidationException
+     * validation constraints and throws a Exception
      * exception otherwise.
      *
      * The name and expectation paramters are used to generate a better user
@@ -87,7 +87,7 @@ class ArrayValidator extends Validator
     {
         if ( !is_array( $value ) )
         {
-            throw new recipePropertyValidationException( $name, $expectation );
+            throw new Exception( $name, $expectation );
         }
 
         // If given, apply value validation to all array keys and contents

@@ -70,7 +70,7 @@ class StringValidator extends Validator
      * Validate value
      *
      * Validates the given input. Returns the input, when it matches the
-     * validation constraints and throws a recipePropertyValidationException
+     * validation constraints and throws a Exception
      * exception otherwise.
      *
      * The name and expectation paramters are used to generate a better user
@@ -92,7 +92,7 @@ class StringValidator extends Validator
              ( ( $this->max !== null ) &&
                ( strlen( $value ) > $this->max ) ) )
         {
-            throw new recipePropertyValidationException( $name, $expectation );
+            throw new Exception( $name, $expectation );
         }
 
         return $value;

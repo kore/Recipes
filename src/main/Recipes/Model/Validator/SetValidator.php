@@ -61,7 +61,7 @@ class SetValidator extends Validator
      * Validate value
      *
      * Validates the given input. Returns the input, when it matches the
-     * validation constraints and throws a recipePropertyValidationException
+     * validation constraints and throws a Exception
      * exception otherwise.
      *
      * The name and expectation paramters are used to generate a better user
@@ -79,7 +79,7 @@ class SetValidator extends Validator
     {
         if ( array_search( $value, $this->set, true ) === false )
         {
-            throw new recipePropertyValidationException( $name, $expectation );
+            throw new Exception( $name, $expectation );
         }
 
         return $value;
