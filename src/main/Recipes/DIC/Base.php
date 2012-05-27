@@ -75,7 +75,7 @@ class Base extends DIC
                 )
             );
 
-            $twig->addExtension( $this->twigExtension );
+            $twig->addExtension( $dic->twigExtension );
 
             $twig->addFunction( 'max', new \Twig_Function_Function( 'max' ) );
             $twig->addFunction( 'floor', new \Twig_Function_Function( 'floor' ) );
