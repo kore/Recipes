@@ -6,52 +6,5 @@
     <h3>Alle Rezepte</h3>
     {% set recipes = result.recipes %}
     {% include "include/recipe_list.twig" %}
-    <div class="row-fluid">
-        <div class="span4">
-            <ul class="unstyled">
-            {%for group in range( 'a', 'i' ) %}
-                {%if result.recipes[group] %}
-                <li><h4>{{group}}</h4>
-                    <ul>
-                    {%for recipe in result.recipes[group] %}
-                        <li>{% include 'include/recipe_short.twig' %}</li>
-                    {%endfor%}
-                    </ul>
-                </li>
-                {%endif%}
-            {%endfor%}
-            </ul>
-        </div>
-        <div class="span4">
-            <ul class="unstyled">
-            {%for group in range( 'j', 'q' ) %}
-                {%if result.recipes[group] %}
-                <li><h4>{{group}}</h4>
-                    <ul>
-                    {%for recipe in result.recipes[group] %}
-                        <li>{% include 'include/recipe_short.twig' %}</li>
-                    {%endfor%}
-                    </ul>
-                </li>
-                {%endif%}
-            {%endfor%}
-            </ul>
-        </div>
-        <div class="span4">
-            <ul class="unstyled">
-            {%for group in range( 'r', 'z' ) %}
-                {%if result.recipes[group] %}
-                <li><h4>{{group}}</h4>
-                    <ul>
-                    {%for recipe in result.recipes[group] %}
-                        <li>{% include 'include/recipe_short.twig' %}</li>
-                    {%endfor%}
-                    </ul>
-                </li>
-                {%endif%}
-            {%endfor%}
-            </ul>
-        </div>
-    </div>
 
 {% endblock %}
