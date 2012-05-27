@@ -399,14 +399,15 @@ class Recipe
      */
     public function edit( RMF\Request $request )
     {
+        $result = new Struct\Edit();
         $recipe = $this->model;
         if ( isset( $request->variables['recipe'] ) )
         {
             $id = $request->variables['recipe'];
             $recipe = $recipe->load( $id );
+            $result->recipe = $recipe;
+            $result->ingredients = json_encode( $recipe->ingredients );
         }
-
-        $result = new Struct\Edit();
 
         if ( !isset( $request->body['store'] ) )
         {
@@ -440,6 +441,7 @@ class Recipe
         }
 
         $result->recipe = $recipe;
+        $result->ingredients = json_encode( $recipe->ingredients );
         return $result;
     }
 }

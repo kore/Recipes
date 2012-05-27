@@ -39,6 +39,13 @@ class Edit extends Struct
     public $recipe;
 
     /**
+     * JSON encoded ingredients
+     *
+     * @var string
+     */
+    public $ingredients = "null";
+
+    /**
      * Success messages
      *
      * @var string[]

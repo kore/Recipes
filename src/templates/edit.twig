@@ -8,5 +8,75 @@
 {% block content %}
 <h2>Rezept bearbeiten</h2>
 
-@TODO: Add form
+{% include 'include/errors.twig' %}
+
+{% if result.success %}
+    <div class="alert alert-success">
+        <p>{{result.success}}</p>
+    </div>
+{% endif %}
+
+<form class="protect" method="post" action="/recipe/edit{% if result.recipe %}/{{result.recipe.id}}{% endif %}"
+      onsubmit="return validateForm( this );">
+<fieldset>
+	<legend>Edit recipe</legend>
+
+    <div class="recipe">
+		<h2><input type="text" class="required h1" name="title" value="{{result.recipe.title}}" placeholder="Rezepttitel" /></h2>
+		<h4 class="subtitle">Für <input type="text" name="amount" class="required number" value="{{result.recipe.amount}}" placeholder="4"/> Personen.</h4>
+    
+		<p><textarea name="description" placeholder="Kurze Beschreibung des Rezeptes" rows="3">{{result.recipe.description}}</textarea></p>
+
+        <h3>Zutaten</h3>
+
+<script type="text/ecmascript">
+// <![CDATA[
+var group       = 0;
+var ingredients = [];
+var data        = {% autoescape false %}{{result.ingredients}}{% endautoescape %};
+
+var groupHtml = "<li id=\"group_%group\">\
+    <h4>\
+        <input type=\"text\" name=\"ingredients[%group][title]\" class=\"title\" placeholder=\"Hauptzutaten\"/>\
+        <i class=\"icon-plus\" onclick=\"addIngredientBlock()\" alt=\"Weitere Sektion anlegen\" />\
+        <i class=\"icon-trash\" onclick=\"confirm( 'Sicher dass diese Sektion entfernt werden soll?' ) && $( 'li#group_%group' ).remove()\" alt=\"Sektion entfernen\" />\
+    </h4>\
+    <ul></ul>\
+</li>";
+
+var itemHtml  = "<li id=\"ingredient_%group_%item\">\
+    <input type=\"text\" name=\"ingredients[%group][%item][amount]\" class=\"amount number\"/>\
+    <input type=\"text\" name=\"ingredients[%group][%item][unit]\" class=\"unit number\"\"/>\
+    <input type=\"text\" name=\"ingredients[%group][%item][ingredient]\" class=\"ingredient\" placeholder=\"Zutat\" />\
+    <i class=\"icon-plus\" onclick=\"addIngredient( %group )\" alt=\"Weitere Zutat hinzufügen\" />\
+    <i class=\"icon-trash\" onclick=\"confirm( 'Sicher dass diese Zutat entfernt werden soll?' ) && $( 'li#ingredient_%group_%item' ).remove()\" alt=\"Zutat entfernen\" />\
+</li>";
+// ]]>
+</script>
+
+        <ul class="ingredients">
+        </ul>
+
+        <h3>Zubereitung</h3>
+        <dl>
+            <dt>Vorbereitungszeit</dt>
+            <dd><input type="text" name="preparation" class="number" value="{{result.recipe.preparation}}" placeholder="0"/> Minuten</dd>
+            <dt>Zubereitungszeit</dt>
+            <dd><input type="text" name="cooking" class="number" value="{{result.recipe.cooking}}" placeholder="60"/> Minuten</dd>
+        </dl>
+		<p><textarea name="instructions" class="required" placeholder="Zubereitungsanweisungen" rows="5">{{result.recipe.instructions}}</textarea></p>
+
+        <p>Tags: <input type="text" class="tags" name="tags" value="{% if result.recipe %}{{result.recipe.tags|join(", ")}}{% endif %}" placeholder="Kuchen, Ostern, Vanille" /></p>
+    </div>
+
+	<label>
+		<input type="submit" name="store" value="Rezept speichern" />
+	</label>
+</fieldset>
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/scripts/recipe-edit.js"></script>
 {% endblock %}
