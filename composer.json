@@ -37,7 +37,10 @@
         "twig/twig": "1.6.0"
     },
     "autoload": {
-        "classmap": ["src/library/arbitracker/phpillow/src/classes/"]
+        "classmap": [
+            "src/library/arbitracker/phpillow/src/classes/",
+            "src/library/tcpdf/"
+        ]
     },
     "config":       {
         "vendor-dir": "src/library"

@@ -289,10 +289,10 @@ class Recipe
 
             case 'pdf':
             default:
-                $options = new ezcDocumentPdfOptions();
+                $options = new \ezcDocumentPdfOptions();
                 $options->driver = new \ezcDocumentPdfTcpdfDriver();
                 $pdf = new \ezcDocumentPdf( $options );
-                $pdf->loadStyles( __DIR__ . '/recipe.css' );
+                $pdf->loadStyles( __DIR__ . '/../../../config/recipe.css' );
                 $pdf->options->errorReporting = E_PARSE | E_ERROR;
                 $pdf->createFromDocbook( $docbook );
                 return new Struct\File( (string) $pdf, 'application/pdf', $filename );
