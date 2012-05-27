@@ -4,6 +4,8 @@
     <h2>Inhaltsverzeichnis</h2>
 
     <h3>Alle Rezepte</h3>
+    {% set recipes = result.recipes %}
+    {% include "include/recipe_list.twig" %}
     <div class="row-fluid">
         <div class="span4">
             <ul class="unstyled">

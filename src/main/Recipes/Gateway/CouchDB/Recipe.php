@@ -118,6 +118,31 @@ class Recipe implements Gateway\Recipe
     }
 
     /**
+     * Get recipes by user
+     *
+     * Return a list of recipes per user
+     *
+     * @return array
+     */
+    public function getRecipesByUser()
+    {
+        $result = $this->view->query( 'perUser', array( 'reduce' => true, 'group' => true ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $recipes = array();
+        foreach ( $result->rows as $row )
+        {
+            $recipes[$row['key'][0]][] = $row['key'][1];
+        }
+
+        return $recipes;
+    }
+
+    /**
      * Get recipes by tag
      *
      * Return the IDs of all recipes, which contain the given tag,

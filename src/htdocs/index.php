@@ -39,6 +39,9 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/(?:recipe/overview)?$)' => array(
             'GET'  => array( $dic->controller, 'showOverview' ),
         ),
+        '(^/recipe/mine$)' => array(
+            'GET'  => array( $dic->controller, 'mine' ),
+        ),
         '(^/recipe/tag/(?P<tag>.*)$)' => array(
             'GET'  => array( $dic->controller, 'tag' ),
         ),

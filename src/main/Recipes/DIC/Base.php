@@ -85,6 +85,7 @@ class Base extends DIC
                     '\\Recipes\\Struct\\Login'      => 'login.twig',
                     '\\Recipes\\Struct\\Message'    => 'message.twig',
                     '\\Recipes\\Struct\\Overview'   => 'overview.twig',
+                    '\\Recipes\\Struct\\Mine'       => 'mine.twig',
                     '\\Recipes\\Struct\\Tag'        => 'tag.twig',
                     '\\Recipes\\Struct\\Tags'       => 'tags.twig',
                     '\\Recipes\\Struct\\Recipes'    => 'all.twig',

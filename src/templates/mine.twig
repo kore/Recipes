@@ -1,0 +1,14 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Meine Rezepte</h2>
+    {% set recipes = result.mine %}
+    {% include "include/recipe_list.twig" %}
+
+    <h2>Andere Benutzer</h2>
+    {% for user, recipes in result.perUser %}
+        <h3>{{user}}</h3>
+        {% include "include/recipe_list.twig" %}
+    {% endfor %}
+
+{% endblock %}

@@ -114,6 +114,28 @@ class Recipe extends Model
     }
 
     /**
+     * Get recipes by user
+     *
+     * Return a list of recipes per user
+     *
+     * @return array
+     */
+    public function getRecipesByUser()
+    {
+        $recipes = $this->gateway->getRecipesByUser();
+
+        foreach ( $recipes as $user => $set )
+        {
+            foreach ( $set as $nr => $id )
+            {
+                $recipes[$user][$nr] = new Recipe( $this->gateway, $id );
+            }
+        }
+
+        return $recipes;
+    }
+
+    /**
      * Get most popular tags
      *
      * Return a the $count most popular tags, sorted alphabetcally.

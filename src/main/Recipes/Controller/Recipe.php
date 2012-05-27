@@ -82,6 +82,41 @@ class Recipe
     }
 
     /**
+     * Show my recipes
+     *
+     * @param RMF\Request $request
+     * @return Struct\Response
+     */
+    public function mine( RMF\Request $request )
+    {
+        $recipes = $this->model->getRecipesByUser();
+
+        $result = new Struct\Mine();
+        foreach ( $recipes as $user => $set )
+        {
+            $grouped = array();
+            foreach ( $set as $recipe )
+            {
+                if ( $recipe )
+                {
+                    $grouped[strtolower( $recipe->title[0] )][] = $recipe;
+                }
+            }
+
+            if ( $user === $request->session['user'] )
+            {
+                $result->mine = $grouped;
+            }
+            else
+            {
+                $result->perUser[$user] = $grouped;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Tag listing action
      *
      * Provides an overview on the used tags
