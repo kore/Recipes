@@ -304,7 +304,8 @@ class Recipe implements Gateway\Recipe
     {
         try
         {
-            $doc = phpillowManager::fetchDocument( 'recipe', $id );
+            $doc = new Recipe\Document();
+            $doc->fetchById( $id );
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
@@ -344,7 +345,7 @@ class Recipe implements Gateway\Recipe
     {
         try
         {
-            $recipe = phpillowManager::createDocument( 'recipe' );
+            $recipe = Recipe\Document::createNew();
             $recipe->title = $name;
             $recipe->save();
         }
@@ -371,7 +372,8 @@ class Recipe implements Gateway\Recipe
     {
         try
         {
-            $doc = phpillowManager::fetchDocument( 'recipe', $recipe );
+            $doc = new Recipe\Document();
+            $doc->fetchById( $recipe );
         }
         catch ( phpillowResponseNotFoundErrorException $e )
         {
@@ -385,7 +387,7 @@ class Recipe implements Gateway\Recipe
 
         // Get ID from user user model
         if ( isset( $data['user'] ) &&
-             ( $data['user'] instanceof recipeModelUser ) )
+             ( $data['user'] instanceof User ) )
         {
             $data['user'] = $data['user']->_id;
         }

@@ -41,6 +41,13 @@ class Recipe
     protected $model;
 
     /**
+     * User model
+     *
+     * @var Model\User
+     */
+    protected $userModel;
+
+    /**
      * Twig
      *
      * @var \Twig_Environment
@@ -53,10 +60,11 @@ class Recipe
      * @param Model\Recipe $model
      * @return void
      */
-    public function __construct( Model\Recipe $model, \Twig_Environment $twig )
+    public function __construct( Model\Recipe $model, Model\User $userModel, \Twig_Environment $twig )
     {
-        $this->model = $model;
-        $this->twig  = $twig;
+        $this->model     = $model;
+        $this->userModel = $userModel;
+        $this->twig      = $twig;
     }
 
     /**
@@ -190,50 +198,6 @@ class Recipe
                 $request->subaction === 'index' ? '' : $request->subaction
             )
         );
-    }
-
-    /**
-     * Convert ingredient list
-     *
-     * Converts the ingredient list, passed from the HTML view into the format,
-     * used by the model
-     *
-     * @param array $ingredients
-     * @return void
-     */
-    protected function convertIngredientList( array $ingredients )
-    {
-        $return = array();
-        foreach ( $ingredients as $category )
-        {
-            if ( !isset( $category['title'] ) )
-            {
-                continue;
-            }
-
-            $title = $category['title'];
-            unset( $category['title'] );
-
-            foreach ( $category as $ingredient )
-            {
-                foreach ( array( 'amount', 'unit', 'ingredient' ) as $field )
-                {
-                    if ( !isset( $ingredient[$field] ) )
-                    {
-                        continue 2;
-                    }
-                }
-
-                if ( empty( $ingredient['ingredient'] ) )
-                {
-                    continue;
-                }
-
-                $return[$title][] = $ingredient;
-            }
-        }
-
-        return $return;
     }
 
     /**
@@ -401,12 +365,13 @@ class Recipe
     {
         $result = new Struct\Edit();
         $recipe = $this->model;
+        $id     = null;
         if ( isset( $request->variables['recipe'] ) )
         {
             $id = $request->variables['recipe'];
             $recipe = $recipe->load( $id );
             $result->recipe = $recipe;
-            $result->ingredients = json_encode( $recipe->ingredients );
+            $result->ingredients = $recipe->ingredients ? json_encode( $recipe->ingredients ) : 'null';
         }
 
         if ( !isset( $request->body['store'] ) )
@@ -424,6 +389,7 @@ class Recipe
             $recipe->cooking      = (int) $request->body['cooking'];
             $recipe->instructions = $request->body['instructions'];
             $recipe->tags         = preg_split( '(\s*,\s*)', trim( $request->body['tags'] ) );
+            $recipe->user         = $request->session['user'];
 
             // Force creation, if it is a new recipe
             if ( $id === null )
@@ -433,7 +399,7 @@ class Recipe
             }
 
             $recipe->storeChanges();
-            $model->success = 'Your recipe has been successfully stored.';
+            $result->success = 'Your recipe has been successfully stored.';
         }
         catch ( \Exception $e )
         {
@@ -441,8 +407,52 @@ class Recipe
         }
 
         $result->recipe = $recipe;
-        $result->ingredients = json_encode( $recipe->ingredients );
+        $result->ingredients = $recipe->ingredients ? json_encode( $recipe->ingredients ) : 'null';
         return $result;
+    }
+
+    /**
+     * Convert ingredient list
+     *
+     * Converts the ingredient list, passed from the HTML view into the format,
+     * used by the model
+     *
+     * @param array $ingredients
+     * @return void
+     */
+    protected function convertIngredientList( array $ingredients )
+    {
+        $return = array();
+        foreach ( $ingredients as $category )
+        {
+            if ( !isset( $category['title'] ) )
+            {
+                continue;
+            }
+
+            $title = $category['title'];
+            unset( $category['title'] );
+
+            foreach ( $category as $ingredient )
+            {
+                foreach ( array( 'amount', 'unit', 'ingredient' ) as $field )
+                {
+                    if ( !isset( $ingredient[$field] ) )
+                    {
+                        continue 2;
+                    }
+                }
+
+                if ( empty( $ingredient['ingredient'] ) )
+                {
+                    continue;
+                }
+
+                $return[$title][] = $ingredient;
+            }
+        }
+
+        return $return;
     }
 }
 

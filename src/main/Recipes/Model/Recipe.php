@@ -334,10 +334,6 @@ class Recipe extends Model
      */
     public function storeChanges()
     {
-        // Update editor data
-        $this->properties['user'] = new recipeModelUser( recipeSession::get( 'login' ) );
-        $this->modifiedProperty[] = 'user';
-
         $this->gateway->updateRecipeData( $this->id, $this->getModifiedValues() );
 
         // As we now stored everything in backend, nothing has to be considered

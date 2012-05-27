@@ -142,6 +142,7 @@ class Base extends DIC
                 $dic->userModel,
                 new Recipes\Controller\Recipe(
                     $dic->recipeModel,
+                    $dic->userModel,
                     $dic->twig
                 )
             );

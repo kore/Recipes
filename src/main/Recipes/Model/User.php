@@ -120,6 +120,19 @@ class User extends Model
     }
 
     /**
+     * Load user
+     *
+     * Return user model
+     *
+     * @param string $id
+     * @return User
+     */
+    public function load( $id )
+    {
+        return new User( $this->gateway, $id );
+    }
+
+    /**
      * Method called to create a new instance in the backend.
      *
      * Method called when the model should be created in the backend the first
