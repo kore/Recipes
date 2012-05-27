@@ -1,9 +1,17 @@
+<ul class="letters">
+{% for letter in range( 'a', 'z' ) %}
+    {% if recipes[letter] %}
+    <li><a href="#{{letter}}">{{letter|upper}}</a></li>
+    {% endif %}
+{% endfor %}
+</ul>
+
 <div class="row-fluid">
     <div class="span4">
         <ul class="unstyled">
         {% for group in range( 'a', 'i' ) %}
             {% if recipes[group] %}
-            <li><h4>{{group}}</h4>
+            <li><h4 id="{{group}}">{{group|upper}}</h4>
                 <ul>
                 {% for recipe in recipes[group] %}
                     <li>{%  include 'include/recipe_short.twig' %}</li>
@@ -18,7 +26,7 @@
         <ul class="unstyled">
         {% for group in range( 'j', 'q' ) %}
             {% if recipes[group] %}
-            <li><h4>{{group}}</h4>
+            <li><h4 id="{{group}}">{{group|upper}}</h4>
                 <ul>
                 {% for recipe in recipes[group] %}
                     <li>{%  include 'include/recipe_short.twig' %}</li>
@@ -33,7 +41,7 @@
         <ul class="unstyled">
         {% for group in range( 'r', 'z' ) %}
             {% if recipes[group] %}
-            <li><h4>{{group}}</h4>
+            <li><h4 id="{{group}}">{{group|upper}}</h4>
                 <ul>
                 {% for recipe in recipes[group] %}
                     <li>{%  include 'include/recipe_short.twig' %}</li>

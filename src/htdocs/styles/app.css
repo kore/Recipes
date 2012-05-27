@@ -371,6 +371,15 @@ div.changes h3 {
     margin-top: 0px;
 }
 
+ul.letters {
+    list-style-type: none;
+    text-align: center;
+}
+
+ul.letters li {
+    display: inline;
+}
+
 /**
  * General form formatting
  */
