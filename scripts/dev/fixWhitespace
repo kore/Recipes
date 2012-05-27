@@ -1,3 +1,0 @@
-#!/bin/bash
-find ./ -name '*.php' | grep -v libraries | xargs -n 1 sed -i -e 's/	/    /g' -e 's///' -e 's/ \+$//g'
-find ./ -name '*.php' | grep -v libraries | xargs -n 32 svn propset 'svn:eol-style' 'native'

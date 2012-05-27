@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<document>
-    <field type="id">id</field>
-    <field type="text" boost="2">title</field>
-    <field type="text">description</field>
-    <field type="text" inResult="false">instructions</field>
-</document>
