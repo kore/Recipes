@@ -7,7 +7,8 @@
 
     <h2>Andere Benutzer</h2>
     {% for userId, recipes in result.perUser %}
-        <h3>{{result.user[userId].login}}</h3>
+        {% set user = user( userId ) %}
+        <h3 id="{{userId}}">{{user.login}}</h3>
         {% include "include/recipe_list.twig" %}
     {% endfor %}
 

@@ -113,11 +113,6 @@ class Recipe
             }
         }
 
-        foreach ( $result->perUser as $user => $recipes )
-        {
-            $result->user[$user] = $this->userModel->load( $user );
-        }
-
         return $result;
     }
 
