@@ -95,6 +95,14 @@ class Twig extends \Qafoo\RMF\View
             exit( 0 );
         }
 
+        // @TODO: This should not be here…
+        if ( $result instanceof Struct\Listing )
+        {
+            header( 'Content-Type: application/json' );
+            echo json_encode( $result->listing );
+            exit( 0 );
+        }
+
         echo $this->twig->render(
             $this->getTemplate( $result ),
             array(

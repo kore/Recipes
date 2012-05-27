@@ -55,6 +55,12 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipe/delete/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'delete' ),
         ),
+        '(^/recipe/ingredients/(?P<ingredient>.*)\.js$)' => array(
+            'GET'  => array( $dic->controller, 'ingredients' ),
+        ),
+        '(^/recipe/units/(?P<unit>.*)\.js$)' => array(
+            'GET'  => array( $dic->controller, 'units' ),
+        ),
         '(^/recipe/listExports/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'listExports' ),
         ),

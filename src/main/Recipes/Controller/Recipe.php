@@ -175,9 +175,9 @@ class Recipe
      */
     public function units( RMF\Request $request )
     {
-        return new recipeViewListModel(
+        return new Struct\Listing(
             $this->model->getUnits(
-                $request->subaction === 'index' ? '' : $request->subaction
+                urldecode( $request->variables['unit'] )
             )
         );
     }
@@ -193,9 +193,9 @@ class Recipe
      */
     public function ingredients( RMF\Request $request )
     {
-        return new recipeViewListModel(
+        return new Struct\Listing(
             $this->model->getIngredients(
-                $request->subaction === 'index' ? '' : $request->subaction
+                urldecode( $request->variables['ingredient'] )
             )
         );
     }

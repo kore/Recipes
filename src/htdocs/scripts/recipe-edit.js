@@ -36,10 +36,10 @@ function registerAutocomplete( type, selector ) {
             {
                 var callback = callback;
 
-                $.get( root + "/recipes/" + type + "/" + request.term + ".js", function ( data, textStatus )
+                $.get( "/recipe/" + type + "/" + request.term + ".js", function ( data, textStatus )
                     {
                         var terms = [];
-                        $.each( data.properties.view.properties["array"], function( key, value )
+                        $.each( data, function( key, value )
                             {
                                 terms.push( key );
                             }
