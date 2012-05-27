@@ -27,7 +27,7 @@
 {% if recipe.attachments|length() %}
 <ul class="images">
 {% for image, data in recipe.attachments %}
-    <li><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></li>
+    <li><a href="/recipe/recipe/{{recipe.id}}/{{image}}"><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></a></li>
 {% endfor %}
 </ul>
 {% endif %}
