@@ -4,7 +4,9 @@ function ( doc )
         emit( [doc.user, doc._id], null );
 
         for ( i in doc.revisions ) {
-            emit( [doc.revisions[i].user, doc._id], null );
+            if ( doc.revisions[i].user ) {
+                emit( [doc.revisions[i].user, doc._id], null );
+            }
         }
     }
 }
