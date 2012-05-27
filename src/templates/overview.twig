@@ -6,6 +6,11 @@
     <h3>Populärste Tags/Stichwörter</h3>
     {%include "include/tag_cloud.twig"%}
 
+    <h3>Neueste Rezepte</h3>
+    {% for recipe in result.latest %}
+        <li>{% include 'include/recipe_short.twig' %}</li>
+    {% endfor %}
+
     <h3>Suche Rezept</h3>
     {%include "include/search_box.twig"%}
 {% endblock %}

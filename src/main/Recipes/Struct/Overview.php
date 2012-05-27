@@ -42,7 +42,7 @@ class Overview extends Struct
      *
      * @var array
      */
-    public $tags = array();
+    public $latest = array();
 
     /**
      * Construct
@@ -50,10 +50,10 @@ class Overview extends Struct
      * @param string $text
      * @return void
      */
-    public function __construct( array $popular = array(), array $tags = array() )
+    public function __construct( array $popular = array(), array $latest = array() )
     {
         $this->popular = $popular;
-        $this->tags = $tags;
+        $this->latest  = $latest;
     }
 }
 

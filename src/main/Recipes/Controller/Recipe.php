@@ -77,7 +77,7 @@ class Recipe
     {
         return new Struct\Overview(
             $this->model->getMostPopularTags( 30 ),
-            $this->model->getTags()
+            $this->model->getLatest()
         );
     }
 

@@ -114,6 +114,32 @@ class Recipe extends Model
     }
 
     /**
+     * Get latest recipes
+     *
+     * Return a list of recipes with most recent changes
+     *
+     * @return array
+     */
+    public function getLatest( $count = 10 )
+    {
+        $recipes = $this->gateway->getLatest( $count );
+        $gateway = $this->gateway;
+        return array_map( function( $doc ) use ( $gateway )
+            {
+                $recipe = new Recipe( $gateway, $doc['_id'] );
+
+                foreach ( $doc as $property => $value )
+                {
+                    $recipe->properties[$property] = $value;
+                }
+
+                return $recipe;
+            },
+            $recipes
+        );
+    }
+
+    /**
      * Get recipes by user
      *
      * Return a list of recipes per user

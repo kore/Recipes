@@ -118,6 +118,35 @@ class Recipe implements Gateway\Recipe
     }
 
     /**
+     * Get latest recipes
+     *
+     * Return a list of recipes with most recent changes
+     *
+     * @return array
+     */
+    public function getLatest( $count = 10 )
+    {
+        $result = $this->view->query( 'latest', array(
+            'descending'   => true,
+            'include_docs' => true,
+            'count'        => $count,
+        ) );
+
+        if ( !count( $result->rows ) )
+        {
+            return array();
+        }
+
+        $recipes = array();
+        foreach ( $result->rows as $row )
+        {
+            $recipes[] = $row['doc'];
+        }
+
+        return $recipes;
+    }
+
+    /**
      * Get recipes by user
      *
      * Return a list of recipes per user
