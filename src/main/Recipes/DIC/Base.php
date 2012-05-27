@@ -118,7 +118,7 @@ class Base extends DIC
         $this->userModel = function( $dic )
         {
             return new Recipes\Model\User(
-                $this->userGateway
+                $dic->userGateway
             );
         };
 
@@ -133,7 +133,7 @@ class Base extends DIC
         $this->recipeModel = function( $dic )
         {
             return new Recipes\Model\Recipe(
-                $this->recipeGateway
+                $dic->recipeGateway
             );
         };
 
