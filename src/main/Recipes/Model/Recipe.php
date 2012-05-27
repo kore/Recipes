@@ -123,20 +123,16 @@ class Recipe extends Model
     public function getLatest( $count = 10 )
     {
         $recipes = $this->gateway->getLatest( $count );
-        $gateway = $this->gateway;
-        return array_map( function( $doc ) use ( $gateway )
+        foreach ( $recipes as $nr => $doc )
+        {
+            $recipes[$nr] = new Recipe( $this->gateway, $doc['_id'] );
+            foreach ( $doc as $property => $value )
             {
-                $recipe = new Recipe( $gateway, $doc['_id'] );
+                $recipes[$nr]->properties[$property] = $value;
+            }
+        }
 
-                foreach ( $doc as $property => $value )
-                {
-                    $recipe->properties[$property] = $value;
-                }
-
-                return $recipe;
-            },
-            $recipes
-        );
+        return $recipes;
     }
 
     /**
