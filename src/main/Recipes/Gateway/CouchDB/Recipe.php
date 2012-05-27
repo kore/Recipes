@@ -341,8 +341,8 @@ class Recipe implements Gateway\Recipe
             'instructions' => $doc->instructions,
             'user'         => $doc->user,
             'tags'         => $doc->tags,
-            'attachments' => $doc->_attachments,
-            'revisions'   => $doc->revisions,
+            'attachments'  => $doc->_attachments,
+            'revisions'    => $doc->revisions,
         );
     }
 
@@ -411,6 +411,36 @@ class Recipe implements Gateway\Recipe
 
         // Return generated ID
         return $recipe->_id;
+    }
+
+    /**
+     * Attach file to page
+     *
+     * @param string $recipe
+     * @param string $file
+     * @param string $name
+     * @param string $mimeType
+     * @return void
+     */
+    public function attachFile( $recipe, $file, $name, $mimeType )
+    {
+        try
+        {
+            $doc = new Recipe\Document();
+            $doc->fetchById( $recipe );
+            $doc->attachFile( $file, $name, $mimeType );
+        }
+        catch ( phpillowResponseNotFoundErrorException $e )
+        {
+            throw new recipeGatewayNotFoundException(
+                "The recipe '%recipe' could not be found.",
+                array(
+                    'recipe' => $recipe,
+                )
+            );
+        }
+
+        $doc->save();
     }
 
     /**

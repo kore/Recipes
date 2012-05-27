@@ -245,12 +245,9 @@ class Recipe
      */
     public function view( RMF\Request $request )
     {
-        if ( strlen( $request->path ) > 1 )
-        {
-            $recipe = $this->model->load( $request->variables['recipe'] );
-        }
-
-        return new Struct\Recipe( $recipe );
+        return new Struct\Recipe(
+            $this->model->load( $request->variables['recipe'] )
+        );
     }
 
     /**
@@ -351,9 +348,9 @@ class Recipe
     }
 
     /**
-     * Delete action
+     * Attach action
      *
-     * Allows registered users to remove a recipe
+     * Add an attachment
      *
      * @param RMF\Request $request
      * @return recipeViewModel
@@ -361,30 +358,41 @@ class Recipe
     public function attach( RMF\Request $request )
     {
         $errors = array();
-        if ( $request->body['attach'] !== null )
+        if ( !isset( $request->body['attach'] ) )
         {
-            try
-            {
-                $files = recipeHttpTools::getFiles( 'attachment' );
-                recipeLogger::dump( $files );
-                $recipe  = new recipeRecipeModel( $request->subaction );
-                $recipe->attachFile(
-                    $request->body['name'], key( $files ), reset( $files )
-                );
-
-                return new recipeViewRecipeViewModel(
-                    new recipeRecipeModel( $request->subaction )
-                );
-            }
-            catch ( recipeException $e )
-            {
-                $errors[] = $e;
-            }
+            return $this->view( $request );
         }
 
-        return new recipeViewRecipeViewModel(
-            new recipeRecipeModel( $request->subaction ),
-            $errors
+        if ( $_FILES['image']['error'] )
+        {
+            throw new \RuntimeException( "File upload error: " . $_FILES['image']['error'] );
+        }
+
+        $recipe  = $this->model->load( $request->variables['recipe'] );
+        $recipe->attachFile(
+            $_FILES['image']['tmp_name'],
+            basename( $_FILES['image']['name'] ),
+            $_FILES['image']['type']
+        );
+
+        return $this->view( $request );
+    }
+
+    /**
+     * Get attachment
+     *
+     * @param RMF\Request $request
+     * @return recipeViewModel
+     */
+    public function attachment( RMF\Request $request )
+    {
+        $recipe     = $this->model->load( $request->variables['recipe'] );
+        $attachment = $recipe->getAttachment( $request->variables['file'] );
+
+        return new Struct\File(
+            $attachment->data,
+            $attachment->contentType,
+            $request->variables['file']
         );
     }
 

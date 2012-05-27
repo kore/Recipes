@@ -358,8 +358,9 @@ h2 a.edit {
     font-size: .6em;
 }
 
-div.changes {
+div.annotation {
     float: right;
+    clear: right;
     width: 200px;
 	border: 1px solid #643525;
 
@@ -367,7 +368,7 @@ div.changes {
     margin: 0px 0px 5px 5px;
 }
 
-div.changes h3 {
+div.annotation h3 {
     margin-top: 0px;
 }
 
@@ -597,6 +598,31 @@ ul.exports li {
 
 ul.exports img {
 	margin: 0 8px 0 0;
+}
+
+ul.images {
+    height: 100px;
+    width: 100%;
+
+    background-image: url("/images/film.png");
+    margin: 5px 0px 10px 0px;
+    padding: 20px 0px;
+
+    list-style-type: none;
+    text-align: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+ul.images li {
+    display: inline-block;
+    height: 100px;
+    overflow: hidden;
+}
+
+ul.images li img {
+    height: 100px;
 }
 
 /**

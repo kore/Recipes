@@ -329,24 +329,18 @@ class Recipe extends Model
     /**
      * Attach file to page
      *
+     * @param string $file
      * @param string $name
-     * @param string $fileName
-     * @param array $info
+     * @param string $mimeType
      * @return void
      */
-    public function attachFile( $name, $fileName, array $info = array() )
+    public function attachFile( $file, $name, $mimeType )
     {
-        // Generate normalized file name
-        $name = preg_replace( '([^A-Za-z0-9-]+)', '_', $name ) . $info['extension'];
+        // Normalized file name
+        $name = preg_replace( '([^A-Za-z0-9.-]+)', '_', $name );
+        $this->gateway->attachFile( $this->id, $file, $name, $mimeType );
 
-        // Rename file and guess its mime type
-        rename( $fileName, $fileName = ARBIT_TMP_PATH . $name );
-        $info['type'] = recipeFrameworkMimeTypeGuesser::guess( $fileName, $info['type'] );
-
-        $this->gateway->attachFile( $this->id, $fileName, $info['type'] );
-
-        // Remove file from temp dir
-        unlink( $fileName );
+        $this->load( $this->id );
     }
 
     /**

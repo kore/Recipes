@@ -24,7 +24,15 @@
 {% block content %}
 <h2>{{recipe.title}} <a class="edit" href="/recipe/edit/{{recipe.id}}">[Bearbeiten]</a></h2>
 
-<div class="changes">
+{% if recipe.attachments|length() %}
+<ul class="images">
+{% for image, data in recipe.attachments %}
+    <li><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<div class="annotation">
     <h3>Änderungen</h3>
     <ul class="changes">
     {% for revision in recipe.revisions if revision._date and revision.user %}
@@ -34,11 +42,18 @@
     </ul>
 </div>
 
+<div class="annotation">
+    <h3>Bild hochladen</h3>
+    <form action="/recipe/attach/{{recipe.id}}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" />
+        <input type="submit" name="attach" value="Hochladen" />
+    </form>
+</div>
+
 <h4 class="subtitle">Für {{recipe.amount}} Personen</h4>
 
 <p>{{recipe.description}}</p>
 
-<div style="clear: both;"></div>
 <h3>Zutaten</h3>
 
 <ul class="ingredients">
