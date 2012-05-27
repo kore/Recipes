@@ -1,10 +1,14 @@
 {
-    "hash": "2e93d5e0dbd53659a507951af5ad50db",
+    "hash": "8d611953805dbe2aaf5c3c673ee40335",
     "packages": [
         {
             "package": "Qafoo/RMF",
             "version": "dev-master",
             "source-reference": "f5986d29512bfb2276ffde62921efd6776b79d70"
+        },
+        {
+            "package": "arbitracker/phpillow",
+            "version": "0.7"
         },
         {
             "package": "twig/twig",

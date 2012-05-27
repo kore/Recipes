@@ -7,6 +7,17 @@
     }, {
         "type":    "package",
         "package": {
+            "name":    "arbitracker/phpillow",
+            "version": "0.7",
+            "source": {
+                "url": "svn://arbitracker.org/phpillow",
+                "type": "svn",
+                "reference": "releases/0.7"
+            }
+        }
+    }, {
+        "type":    "package",
+        "package": {
             "name":    "twitter/bootstrap",
             "version": "0.1",
             "source": {
@@ -22,9 +33,11 @@
         "zetacomponents/document": ">=1.0",
         "zetacomponents/search": ">=1.0",
         "twitter/bootstrap": ">=0.1",
+        "arbitracker/phpillow": ">=0.1",
         "twig/twig": "1.6.0"
     },
     "autoload": {
+        "classmap": ["src/library/arbitracker/phpillow/src/classes/"]
     },
     "config":       {
         "vendor-dir": "src/library"
