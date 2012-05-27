@@ -343,6 +343,15 @@ form.wide {
 	border: none;
 }
 
+::-webkit-input-placeholder {
+    color: #999 !important;
+}
+
+:-moz-placeholder {
+    color: #999 !important;
+}
+
+
 fieldset {
 }
 
