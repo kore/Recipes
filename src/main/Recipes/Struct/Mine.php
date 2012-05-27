@@ -45,6 +45,13 @@ class Mine extends Struct
     public $perUser = array();
 
     /**
+     * User
+     *
+     * @var array
+     */
+    public $user = array();
+
+    /**
      * Construct
      *
      * @param string $recipes

@@ -6,8 +6,8 @@
     {% include "include/recipe_list.twig" %}
 
     <h2>Andere Benutzer</h2>
-    {% for user, recipes in result.perUser %}
-        <h3>{{user}}</h3>
+    {% for userId, recipes in result.perUser %}
+        <h3>{{result.user[userId].login}}</h3>
         {% include "include/recipe_list.twig" %}
     {% endfor %}
 
