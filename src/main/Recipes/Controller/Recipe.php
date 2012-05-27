@@ -280,7 +280,7 @@ class Recipe
 
             case 'odt':
                 $converter = new \ezcDocumentDocbookToOdtConverter();
-                $converter->options->styler->addStylesheetFile( __DIR__ . '/recipe.css' );
+                $converter->options->styler->addStylesheetFile( __DIR__ . '/../../../config/recipe.css' );
                 $odt = $converter->convert( $docbook );
                 return new Struct\File( (string) $odt, 'application/vnd.oasis.opendocument.text', $filename );
 
