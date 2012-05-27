@@ -36,44 +36,44 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/user/logout$)' => array(
             'GET'  => array( $dic->controller, 'logout' ),
         ),
-        '(^/(?:recipe/overview)?$)' => array(
+        '(^/(?:recipes?/overview)?$)' => array(
             'GET'  => array( $dic->controller, 'showOverview' ),
         ),
-        '(^/recipe/mine$)' => array(
+        '(^/recipes?/mine$)' => array(
             'GET'  => array( $dic->controller, 'mine' ),
         ),
-        '(^/recipe/tag/(?P<tag>.*)$)' => array(
+        '(^/recipes?/tag/(?P<tag>.*)$)' => array(
             'GET'  => array( $dic->controller, 'tag' ),
         ),
-        '(^/recipe/tags$)' => array(
+        '(^/recipes?/tags$)' => array(
             'GET'  => array( $dic->controller, 'tags' ),
         ),
-        '(^/recipe/recipe/(?P<recipe>.*)$)' => array(
+        '(^/recipes?/recipe/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'view' ),
         ),
-        '(^/recipe/edit(?:/(?P<recipe>.*))?$)' => array(
+        '(^/recipes?/edit(?:/(?P<recipe>.*))?$)' => array(
             'GET'  => array( $dic->controller, 'edit' ),
             'POST' => array( $dic->controller, 'edit' ),
         ),
-        '(^/recipe/delete/(?P<recipe>.*)$)' => array(
+        '(^/recipes?/delete/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'delete' ),
         ),
-        '(^/recipe/ingredients/(?P<ingredient>.*)\.js$)' => array(
+        '(^/recipes?/ingredients/(?P<ingredient>.*)\.js$)' => array(
             'GET'  => array( $dic->controller, 'ingredients' ),
         ),
-        '(^/recipe/units/(?P<unit>.*)\.js$)' => array(
+        '(^/recipes?/units/(?P<unit>.*)\.js$)' => array(
             'GET'  => array( $dic->controller, 'units' ),
         ),
-        '(^/recipe/listExports/(?P<recipe>.*)$)' => array(
+        '(^/recipes?/listExports/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'listExports' ),
         ),
-        '(^/recipe/export/(?P<recipe>.*)\.(?P<format>[a-z]+)$)' => array(
+        '(^/recipes?/export/(?P<recipe>.*)\.(?P<format>[a-z]+)$)' => array(
             'GET'  => array( $dic->controller, 'export' ),
         ),
-        '(^/recipe/all$)' => array(
+        '(^/recipes?/all$)' => array(
             'GET'  => array( $dic->controller, 'all' ),
         ),
-        '(^/recipe/ingredient/(?P<ingredient>.*)$)' => array(
+        '(^/recipes?/ingredient/(?P<ingredient>.*)$)' => array(
             'GET'  => array( $dic->controller, 'ingredient' ),
         ),
     ) ),
