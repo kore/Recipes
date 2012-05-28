@@ -444,6 +444,35 @@ class Recipe implements Gateway\Recipe
     }
 
     /**
+     * Detach file from recipe
+     *
+     * @param string $recipe
+     * @param string $file
+     * @return void
+     */
+    public function detachFile( $recipe, $file )
+    {
+        try
+        {
+            $doc = new Recipe\Document();
+            $doc->fetchById( $recipe );
+
+            $this->connection->delete(
+                $this->connection->getDatabase() . $recipe . '/' . $file . '?rev=' . $doc->_rev
+            );
+        }
+        catch ( phpillowResponseNotFoundErrorException $e )
+        {
+            throw new recipeGatewayNotFoundException(
+                "The recipe '%recipe' could not be found.",
+                array(
+                    'recipe' => $recipe,
+                )
+            );
+        }
+    }
+
+    /**
      * Update stored information for the given recipe
      *
      * The array with the information to update may any number of the common

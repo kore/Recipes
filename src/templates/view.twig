@@ -35,11 +35,16 @@
 <h2>{{recipe.title}} <a class="edit" href="/recipe/edit/{{recipe.id}}">[Bearbeiten]</a></h2>
 
 {% if recipe.attachments|length() %}
+<form action="/recipe/detach/{{recipe.id}}" method="POST">
 <ul class="images">
 {% for image, data in recipe.attachments %}
-    <li><a href="/recipe/recipe/{{recipe.id}}/{{image}}"><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></a></li>
+    <li>
+        <button name="detach" value="{{image}}" class="btn btn-mini"><i class="icon-trash"></i></button>
+        <a href="/recipe/recipe/{{recipe.id}}/{{image}}"><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></a>
+    </li>
 {% endfor %}
 </ul>
+</form>
 {% endif %}
 
 <h4 class="subtitle">Für {{recipe.amount}} Personen</h4>

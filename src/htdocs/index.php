@@ -61,6 +61,9 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipes?/attach/(?P<recipe>.*)$)' => array(
             'POST' => array( $dic->controller, 'attach' ),
         ),
+        '(^/recipes?/detach/(?P<recipe>.*)$)' => array(
+            'POST' => array( $dic->controller, 'detach' ),
+        ),
         '(^/recipes?/delete/(?P<recipe>.*)$)' => array(
             'GET'  => array( $dic->controller, 'delete' ),
         ),

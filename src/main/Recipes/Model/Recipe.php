@@ -327,7 +327,7 @@ class Recipe extends Model
     }
 
     /**
-     * Attach file to page
+     * Attach file to recipe
      *
      * @param string $file
      * @param string $name
@@ -339,6 +339,20 @@ class Recipe extends Model
         // Normalized file name
         $name = preg_replace( '([^A-Za-z0-9.-]+)', '_', $name );
         $this->gateway->attachFile( $this->id, $file, $name, $mimeType );
+
+        $this->load( $this->id );
+    }
+
+    /**
+     * Detach file from recipe
+     *
+     * @param string $file
+     * @return void
+     */
+    public function detachFile( $file )
+    {
+        // Normalized file name
+        $this->gateway->detachFile( $this->id, $file );
 
         $this->load( $this->id );
     }

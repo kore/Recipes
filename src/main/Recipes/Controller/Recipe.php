@@ -348,6 +348,28 @@ class Recipe
     }
 
     /**
+     * Detach action
+     *
+     * Remove an attachment
+     *
+     * @param RMF\Request $request
+     * @return recipeViewModel
+     */
+    public function detach( RMF\Request $request )
+    {
+        $errors = array();
+        if ( !isset( $request->body['detach'] ) )
+        {
+            return $this->view( $request );
+        }
+
+        $recipe  = $this->model->load( $request->variables['recipe'] );
+        $recipe->detachFile( $request->body['detach'] );
+
+        return $this->view( $request );
+    }
+
+    /**
      * Attach action
      *
      * Add an attachment

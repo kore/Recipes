@@ -358,20 +358,6 @@ h2 a.edit {
     font-size: .6em;
 }
 
-div.annotation {
-    float: right;
-    clear: right;
-    width: 200px;
-	border: 1px solid #643525;
-
-    padding: 5px;
-    margin: 0px 0px 5px 5px;
-}
-
-div.annotation h3 {
-    margin-top: 0px;
-}
-
 ul.letters {
     list-style-type: none;
     text-align: center;
@@ -619,6 +605,15 @@ ul.images li {
     display: inline-block;
     height: 100px;
     overflow: hidden;
+}
+
+ul.images li button {
+    display: none;
+    position: absolute;
+}
+
+ul.images li:hover button {
+    display: block;
 }
 
 ul.images li img {
