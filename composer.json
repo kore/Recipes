@@ -32,6 +32,7 @@
         "zetacomponents/graph": ">=1.0",
         "zetacomponents/document": ">=1.0",
         "zetacomponents/search": ">=1.0",
+        "zetacomponents/image-conversion": ">=1.0",
         "twitter/bootstrap": ">=0.1",
         "arbitracker/phpillow": ">=0.1",
         "twig/twig": "1.6.0"

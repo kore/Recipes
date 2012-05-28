@@ -1,5 +1,5 @@
 {
-    "hash": "dd435070bc517e277b486cd2993aff06",
+    "hash": "1ca4c20f29f5b8d23e689dcce7f2f61a",
     "packages": [
         {
             "package": "Qafoo/RMF",
@@ -34,6 +34,11 @@
             "source-reference": "aac41cd6ae90da36856cc8c2c6b0123344e6252d"
         },
         {
+            "package": "zetacomponents/image-conversion",
+            "version": "dev-master",
+            "source-reference": "6146e013724a1dc31821dcda0251da433cd9ecc2"
+        },
+        {
             "package": "zetacomponents/search",
             "version": "dev-master",
             "source-reference": "6520938124e1f4d59453b17468558c7353dd6f85"
@@ -42,5 +47,9 @@
     "packages-dev": null,
     "aliases": [
 
-    ]
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "qafoo/rmf": 20
+    }
 }
