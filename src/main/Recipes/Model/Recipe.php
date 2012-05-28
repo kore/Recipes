@@ -550,7 +550,6 @@ class Recipe extends Model
      */
     public function getState()
     {
-        $this->fetchRecipeData();
         $properties = array_diff_key(
             $this->properties,
             array(
