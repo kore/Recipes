@@ -1,14 +1,10 @@
 {
-    "hash": "f23e57d53eb47e1b472eec1f42400c35",
+    "hash": "db51a0cb60fe1d2cb4537fff5d3a703c",
     "packages": [
         {
             "package": "Qafoo/RMF",
             "version": "dev-master",
             "source-reference": "f5986d29512bfb2276ffde62921efd6776b79d70"
-        },
-        {
-            "package": "Zend/Search",
-            "version": "1.9.8"
         },
         {
             "package": "arbitracker/phpillow",
