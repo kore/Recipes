@@ -419,6 +419,59 @@ class Recipe
     }
 
     /**
+     * Get attachment thumbnail
+     *
+     * @param RMF\Request $request
+     * @return recipeViewModel
+     */
+    public function thumbnail( RMF\Request $request )
+    {
+        $attachment = $this->attachment( $request );
+
+        // Store full version of image
+        $fileName = __DIR__ . '/../../../htdocs/images/recipes/full/' . $request->variables['recipe'] . '/' . $request->variables['file'];
+        if ( !is_dir( dirname( $fileName ) ) )
+        {
+            mkdir( dirname( $fileName ), 0777, true );
+        }
+        file_put_contents( $fileName, $attachment->content );
+
+        $converter = new \ezcImageConverter(
+            new \ezcImageConverterSettings(
+                array(
+                    new \ezcImageHandlerSettings(  'GD',          'ezcImageGdHandler' ),
+                    new \ezcImageHandlerSettings(  'ImageMagick', 'ezcImageImagemagickHandler' ),
+                )
+            )
+        );
+
+        $filter = array(
+            new \ezcImageFilter(
+                'scaleHeight',
+                array(
+                    'height'    => 100,
+                    'direction' => \ezcImageGeometryFilters::SCALE_DOWN,
+                )
+            )
+        );
+
+        $converter->createTransformation( 'thumbnail', $filter, array( 'image/jpeg' ) );
+
+        $thumbnail = __DIR__ . '/../../../htdocs/images/recipes/' . $request->variables['recipe'] . '/' . $request->variables['file'];
+        if ( !is_dir( dirname( $thumbnail ) ) )
+        {
+            mkdir( dirname( $thumbnail ), 0777, true );
+        }
+        $converter->transform( 'thumbnail', $fileName, $thumbnail );
+
+        return new Struct\File(
+            file_get_contents( $thumbnail ),
+            'image/jpeg',
+            $request->variables['file']
+        );
+    }
+
+    /**
      * Edit action
      *
      * Allows registered users to edit a recipe

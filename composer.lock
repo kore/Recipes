@@ -1,5 +1,5 @@
 {
-    "hash": "1ca4c20f29f5b8d23e689dcce7f2f61a",
+    "hash": "db51a0cb60fe1d2cb4537fff5d3a703c",
     "packages": [
         {
             "package": "Qafoo/RMF",
@@ -32,6 +32,11 @@
             "package": "zetacomponents/graph",
             "version": "dev-master",
             "source-reference": "aac41cd6ae90da36856cc8c2c6b0123344e6252d"
+        },
+        {
+            "package": "zetacomponents/image-analysis",
+            "version": "dev-master",
+            "source-reference": "634a30042a0a76fc509ae933fced2c30bacd38b4"
         },
         {
             "package": "zetacomponents/image-conversion",

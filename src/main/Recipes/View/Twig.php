@@ -89,7 +89,7 @@ class Twig extends \Qafoo\RMF\View
         if ( $result instanceof Struct\File )
         {
             header( 'Content-Type: ' . $result->mimeType );
-            header( 'Content-Disposition: attachment; filename="' . $result->name . '"' );
+            header( 'Content-Disposition: inline; filename="' . $result->name . '"' );
 
             echo $result->content;
             exit( 0 );

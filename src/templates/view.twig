@@ -40,7 +40,7 @@
 {% for image, data in recipe.attachments %}
     <li>
         <button name="detach" value="{{image}}" class="btn btn-mini"><i class="icon-trash"></i></button>
-        <a href="/recipe/recipe/{{recipe.id}}/{{image}}"><img src="/recipe/recipe/{{recipe.id}}/{{image}}" /></a>
+        <a href="/images/recipes/full/{{recipe.id}}/{{image}}"><img src="/images/recipes/{{recipe.id}}/{{image}}" /></a>
     </li>
 {% endfor %}
 </ul>

@@ -51,8 +51,11 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipes?/(?:recipe|view)/(?P<recipe>[^/]*)$)' => array(
             'GET'  => array( $dic->controller, 'view' ),
         ),
-        '(^/recipes?/(?:recipe|view)/(?P<recipe>[^/]*)/(?P<file>.*)$)' => array(
+        '(^/images/recipes/full/(?P<recipe>[^/]*)/(?P<file>.*)$)' => array(
             'GET'  => array( $dic->controller, 'attachment' ),
+        ),
+        '(^/images/recipes/(?P<recipe>[^/]*)/(?P<file>.*)$)' => array(
+            'GET'  => array( $dic->controller, 'thumbnail' ),
         ),
         '(^/recipes?/edit(?:/(?P<recipe>.*))?$)' => array(
             'GET'  => array( $dic->controller, 'edit' ),
