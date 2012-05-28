@@ -102,6 +102,7 @@ class Base extends DIC
                     '\\Recipes\\Struct\\Edit'       => 'edit.twig',
                     '\\Recipes\\Struct\\Export'     => 'export.twig',
                     '\\Recipes\\Struct\\Ingredient' => 'ingredient.twig',
+                    '\\Recipes\\Struct\\Search'     => 'search.twig',
                 )
             );
         };
@@ -172,6 +173,18 @@ class Base extends DIC
             return $converter;
         };
 
+        $this->searchPath = function ( $dic )
+        {
+            return $dic->srcDir . '/var/search/';
+        };
+
+        $this->searchController = function ( $dic )
+        {
+            return new Recipes\Controller\Search(
+                $dic->searchPath
+            );
+        };
+
         $this->controller = function ( $dic )
         {
             return new Recipes\Controller\Auth(
@@ -180,7 +193,8 @@ class Base extends DIC
                     $dic->recipeModel,
                     $dic->userModel,
                     $dic->twig,
-                    $dic->converter
+                    $dic->imageConverter,
+                    $dic->searchController
                 ),
                 array(
                     '(^/recipes?/export)',

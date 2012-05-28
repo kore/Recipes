@@ -554,12 +554,17 @@ class Recipe extends Model
         $properties = array_diff_key(
             $this->properties,
             array(
-                'amount'      => true,
-                'preparation' => true,
-                'cooking'     => true,
-                'ingredients' => true,
-                'user'        => true,
-                'tags'        => true,
+                'amount'       => true,
+                'preparation'  => true,
+                'cooking'      => true,
+                'user'         => true,
+                'revisions'    => true,
+                'tags'         => true,
+                'type'         => true,
+                '_rev'         => true,
+                '_id'          => true,
+                'attachments'  => true,
+                '_attachments' => true,
             )
         );
         $properties['id'] = $this->id;

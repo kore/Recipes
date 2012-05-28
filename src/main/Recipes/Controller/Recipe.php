@@ -55,17 +55,32 @@ class Recipe
     protected $twig;
 
     /**
+     * Image converter
+     *
+     * @var \ezcImageConverter
+     */
+    protected $imageConverter;
+
+    /**
+     * Search controller
+     *
+     * @var Controller\Search
+     */
+    protected $search;
+
+    /**
      * Construct from recipe model
      *
      * @param Model\Recipe $model
      * @return void
      */
-    public function __construct( Model\Recipe $model, Model\User $userModel, \Twig_Environment $twig )
+    public function __construct( Model\Recipe $model, Model\User $userModel, \Twig_Environment $twig, \ezcImageConverter $imageConverter, Search $search )
     {
         $this->model          = $model;
         $this->userModel      = $userModel;
         $this->twig           = $twig;
         $this->imageConverter = $imageConverter;
+        $this->search         = $search;
     }
 
     /**
@@ -496,6 +511,7 @@ class Recipe
                 $id = $recipe->_id;
             }
 
+            $this->search->index( $recipe );
             $recipe->storeChanges();
             $result->success = 'Your recipe has been successfully stored.';
         }
@@ -551,6 +567,34 @@ class Recipe
         }
 
         return $return;
+    }
+
+    /**
+     * Get search result
+     *
+     * @param RMF\Request $request
+     * @return recipeViewModel
+     */
+    public function search( RMF\Request $request )
+    {
+        $parameters = array(
+            'phrase' => null,
+            'count'  => 10,
+            'offset' => 0,
+        );
+
+        $parameters = array_merge( $parameters, $request->variables );
+
+        return new Struct\Search(
+            $parameters['phrase'],
+            $parameters['count'],
+            $parameters['offset'],
+            $this->search->search(
+                $parameters['phrase'],
+                $parameters['count'],
+                $parameters['offset']
+            )
+        );
     }
 }
 

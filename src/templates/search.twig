@@ -1,0 +1,17 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <h2>Suche</h2>
+
+    <h3>Suche Rezept</h3>
+    {%include "include/search_box.twig"%}
+
+    <h3>Suchergebnis für &quot;{{result.phrase}}&quot;</h3>
+
+    <ul class="search_result">
+    {% for recipe in result.result %}
+        {% include 'include/recipe_medium.twig' %}
+    {% endfor %}
+    </ul>
+
+{% endblock %}

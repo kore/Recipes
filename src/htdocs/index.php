@@ -88,6 +88,9 @@ $dispatcher = new RMF\Dispatcher\Simple(
         '(^/recipes?/ingredient/(?P<ingredient>.*)$)' => array(
             'GET'  => array( $dic->controller, 'ingredient' ),
         ),
+        '(^/recipes?/search)' => array(
+            'GET'  => array( $dic->controller, 'search' ),
+        ),
     ) ),
     $dic->view
 );
