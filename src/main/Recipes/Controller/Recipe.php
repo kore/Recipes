@@ -62,9 +62,10 @@ class Recipe
      */
     public function __construct( Model\Recipe $model, Model\User $userModel, \Twig_Environment $twig )
     {
-        $this->model     = $model;
-        $this->userModel = $userModel;
-        $this->twig      = $twig;
+        $this->model          = $model;
+        $this->userModel      = $userModel;
+        $this->twig           = $twig;
+        $this->imageConverter = $imageConverter;
     }
 
     /**
@@ -436,33 +437,12 @@ class Recipe
         }
         file_put_contents( $fileName, $attachment->content );
 
-        $converter = new \ezcImageConverter(
-            new \ezcImageConverterSettings(
-                array(
-                    new \ezcImageHandlerSettings(  'GD',          'ezcImageGdHandler' ),
-                    new \ezcImageHandlerSettings(  'ImageMagick', 'ezcImageImagemagickHandler' ),
-                )
-            )
-        );
-
-        $filter = array(
-            new \ezcImageFilter(
-                'scaleHeight',
-                array(
-                    'height'    => 100,
-                    'direction' => \ezcImageGeometryFilters::SCALE_DOWN,
-                )
-            )
-        );
-
-        $converter->createTransformation( 'thumbnail', $filter, array( 'image/jpeg' ) );
-
         $thumbnail = __DIR__ . '/../../../htdocs/images/recipes/' . $request->variables['recipe'] . '/' . $request->variables['file'];
         if ( !is_dir( dirname( $thumbnail ) ) )
         {
             mkdir( dirname( $thumbnail ), 0777, true );
         }
-        $converter->transform( 'thumbnail', $fileName, $thumbnail );
+        $this->imageConverter->transform( 'thumbnail', $fileName, $thumbnail );
 
         return new Struct\File(
             file_get_contents( $thumbnail ),

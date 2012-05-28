@@ -46,6 +46,7 @@ class Base extends DIC
         'userModel'         => true,
         'recipeGateway'     => true,
         'recipeModel'       => true,
+        'imageConverter'    => true,
         'controller'        => true,
     );
 
@@ -145,6 +146,32 @@ class Base extends DIC
             );
         };
 
+        $this->imageConverter = function( $dic )
+        {
+            $converter = new \ezcImageConverter(
+                new \ezcImageConverterSettings(
+                    array(
+                        new \ezcImageHandlerSettings(  'GD',          'ezcImageGdHandler' ),
+                        new \ezcImageHandlerSettings(  'ImageMagick', 'ezcImageImagemagickHandler' ),
+                    )
+                )
+            );
+
+            $filter = array(
+                new \ezcImageFilter(
+                    'scaleHeight',
+                    array(
+                        'height'    => 100,
+                        'direction' => \ezcImageGeometryFilters::SCALE_DOWN,
+                    )
+                )
+            );
+
+            $converter->createTransformation( 'thumbnail', $filter, array( 'image/jpeg' ) );
+
+            return $converter;
+        };
+
         $this->controller = function ( $dic )
         {
             return new Recipes\Controller\Auth(
@@ -152,7 +179,8 @@ class Base extends DIC
                 new Recipes\Controller\Recipe(
                     $dic->recipeModel,
                     $dic->userModel,
-                    $dic->twig
+                    $dic->twig,
+                    $dic->converter
                 ),
                 array(
                     '(^/recipes?/export)',
