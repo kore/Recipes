@@ -27,6 +27,9 @@ namespace Recipes;
 
 require __DIR__ . '/../../library/autoload.php';
 
+// Seat include path for Zend stuff
+set_include_path( __DIR__ . '/../../library' . PATH_SEPARATOR .  get_include_path() );
+
 spl_autoload_register(
     function ( $class )
     {

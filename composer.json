@@ -26,6 +26,17 @@
                 "reference": "origin/master"
             }
         }
+    }, {
+        "type":    "package",
+        "package": {
+            "name":    "Zend/Search",
+            "version": "1.9.8",
+            "source": {
+                "url": "http://framework.zend.com/svn/framework/standard/",
+                "type": "svn",
+                "reference": "tags/release-1.9.8/library/Zend/Search/"
+            }
+        }
     } ],
     "require":      {
         "Qafoo/RMF": "dev-master",
@@ -36,11 +47,13 @@
         "zetacomponents/image-analysis": ">=1.0",
         "twitter/bootstrap": ">=0.1",
         "arbitracker/phpillow": ">=0.1",
-        "twig/twig": "1.6.0"
+        "twig/twig": "1.6.0",
+        "Zend/Search": "1.9.8"
     },
     "autoload": {
         "classmap": [
             "src/library/arbitracker/phpillow/src/classes/",
+            "src/library/Zend/",
             "src/library/tcpdf/"
         ]
     },

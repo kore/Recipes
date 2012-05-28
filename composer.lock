@@ -1,10 +1,14 @@
 {
-    "hash": "db51a0cb60fe1d2cb4537fff5d3a703c",
+    "hash": "f23e57d53eb47e1b472eec1f42400c35",
     "packages": [
         {
             "package": "Qafoo/RMF",
             "version": "dev-master",
             "source-reference": "f5986d29512bfb2276ffde62921efd6776b79d70"
+        },
+        {
+            "package": "Zend/Search",
+            "version": "1.9.8"
         },
         {
             "package": "arbitracker/phpillow",
@@ -41,7 +45,7 @@
         {
             "package": "zetacomponents/image-conversion",
             "version": "dev-master",
-            "source-reference": "6146e013724a1dc31821dcda0251da433cd9ecc2"
+            "source-reference": "aed8cf2e3a17b049add7578fa199c02e3af903c1"
         },
         {
             "package": "zetacomponents/search",
