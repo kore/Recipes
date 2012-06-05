@@ -178,9 +178,9 @@ class Base extends DIC
             return $dic->srcDir . '/var/search/';
         };
 
-        $this->searchController = function ( $dic )
+        $this->search= function ( $dic )
         {
-            return new Recipes\Controller\Search(
+            return new Recipes\Search\Hack(
                 $dic->searchPath
             );
         };
@@ -194,7 +194,7 @@ class Base extends DIC
                     $dic->userModel,
                     $dic->twig,
                     $dic->imageConverter,
-                    $dic->searchController
+                    $dic->search
                 ),
                 array(
                     '(^/recipes?/export)',

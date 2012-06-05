@@ -20,8 +20,8 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
  */
 
-namespace Recipes\Controller;
-
+namespace Recipes\Search;
+use Recipes\Search;
 use Recipes\Struct;
 use Recipes\Model;
 use Qafoo\RMF;
@@ -36,7 +36,7 @@ use Qafoo\RMF;
  *
  * @version $Revision$
  */
-class Search
+class Hack extends Search
 {
     /**
      * Search path

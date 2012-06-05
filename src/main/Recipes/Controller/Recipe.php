@@ -22,6 +22,7 @@
 
 namespace Recipes\Controller;
 
+use Recipes\Search;
 use Recipes\Struct;
 use Recipes\Model;
 use Qafoo\RMF;
