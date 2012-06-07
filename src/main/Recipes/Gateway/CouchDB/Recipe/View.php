@@ -64,7 +64,7 @@ class View extends \phpillowFileView
             ),
             'perUser' => array(
                 'map'    => __DIR__ . '/map/recipe_per_user.js',
-                'reduce' => __DIR__ . '/reduce/sum.js',
+                'reduce' => __DIR__ . '/reduce/per_user_sum.js',
             ),
             'latest' => array(
                 'map'    => __DIR__ . '/map/recipe_latest.js',

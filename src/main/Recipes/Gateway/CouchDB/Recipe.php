@@ -165,6 +165,11 @@ class Recipe implements Gateway\Recipe
         $recipes = array();
         foreach ( $result->rows as $row )
         {
+            if ( !$row['value'] )
+            {
+                continue;
+            }
+
             $recipes[$row['key'][0]][] = $row['key'][1];
         }
 
