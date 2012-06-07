@@ -1,1 +1,4 @@
-_sum
+function( keys, values, combine )
+{
+    return sum( values );
+}
