@@ -1,10 +1,14 @@
-$( document ).ready( function()
-{
-    $( "textarea" ).elastic();
-    $( "form.protect" ).protect( 'Änderungen am Rezept werden dabei verloren gehen.' );
+/*global jQuery: false */
 
-    $( "ul.images a" ).unbind( "click" );
-    $( "ul.images a" ).colorbox( {
+jQuery( document ).ready( function()
+{
+    "use strict";
+
+    jQuery( "textarea" ).elastic();
+    jQuery( "form.protect" ).protect( 'Änderungen am Rezept werden dabei verloren gehen.' );
+
+    jQuery( "ul.images a" ).unbind( "click" );
+    jQuery( "ul.images a" ).colorbox( {
         rel: "thumbnail",
         scale: true,
         maxWidth: "80%",

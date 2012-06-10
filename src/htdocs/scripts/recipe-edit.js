@@ -1,6 +1,39 @@
+/*global jQuery: false */
+
+var itemHtml = itemHtml || "",
+    groupHtml = groupHtml || "",
+    data = data || null,
+    group = group || 0,
+    ingredients = ingredients || [];
+
+function registerAutocomplete( type, selector ) {
+    "use strict";
+
+    jQuery( selector ).autocomplete({
+        source: function( request, callback )
+            {
+                jQuery.get( "/recipe/" + type + "/" + request.term + ".js", function ( data, textStatus )
+                    {
+                        var terms = [];
+                        jQuery.each( data, function( key, value )
+                            {
+                                terms.push( key );
+                            }
+                        );
+                        callback( terms );
+                    },
+                    "json"
+                );
+            }
+        }
+    );
+}
+
 function addIngredient( targetGroup )
 {
-	var item = $(
+    "use strict";
+
+	var item = jQuery(
         itemHtml
             .replace( /%item/g, ingredients[targetGroup] )
             .replace( /%group/g, targetGroup )
@@ -15,70 +48,52 @@ function addIngredient( targetGroup )
 		item.find( 'input.unit' )
 	);
 	
-    $( "li#group_" + targetGroup + " ul" ).append( item );
+    jQuery( "li#group_" + targetGroup + " ul" ).append( item );
 
-    ++ingredients[targetGroup];
+    ingredients[targetGroup] += 1;
 }
 
 function addIngredientBlock()
 {
-    $( "ul.ingredients" ).append( groupHtml.replace( /%group/g, group ) );
+    "use strict";
+
+    jQuery( "ul.ingredients" ).append( groupHtml.replace( /%group/g, group ) );
     ingredients[group] = 0;
     addIngredient( group );
     addIngredient( group );
     addIngredient( group );
-    ++group;
+    group += 1;
 }
 
-function registerAutocomplete( type, selector ) {
-    $( selector ).autocomplete({
-        source: function( request, callback )
-            {
-                var callback = callback;
-
-                $.get( "/recipe/" + type + "/" + request.term + ".js", function ( data, textStatus )
-                    {
-                        var terms = [];
-                        $.each( data, function( key, value )
-                            {
-                                terms.push( key );
-                            }
-                        );
-                        callback( terms );
-                    },
-                    "json"
-                );
-            }
-        }
-    );
-}
-
-$( document ).ready( function()
+jQuery( document ).ready( function()
 {
-    if ( data == null )
+    "use strict";
+
+    console.log( data );
+    if ( data === null )
     {
         addIngredientBlock();
     }
     else
     {
         // Create blocks from existing data
-        $.each( data, function( title, values )
+        jQuery.each( data, function( title, values )
         {
             var currentGroup = group;
             addIngredientBlock();
-            $( "li#group_" + currentGroup + " h4 input" ).attr( "value", title );
+            jQuery( "li#group_" + currentGroup + " h4 input" ).attr( "value", title );
 
             // Fill up ingredient items with existing data
-            $.each( values, function( key, properties )
+            jQuery.each( values, function( key, properties )
             {
                 if ( key > 1 )
                 {
                     addIngredient( currentGroup );
                 }
 
-                $.each( properties, function( name, value )
+                jQuery.each( properties, function( name, value )
                 {
-                    $( "li#ingredient_" + currentGroup + "_" + key + " input[class*=\"" + name + "\"]" ).attr( "value", value ); 
+                    jQuery( "li#ingredient_" + currentGroup + "_" + key + " input[class*=\"" + name + "\"]" ).attr( "value", value ); 
                 } );
             } );
         } );
