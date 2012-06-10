@@ -1,3 +1,4 @@
+src/var/search
 src/library/*
 build
 .abc
