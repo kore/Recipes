@@ -47,6 +47,9 @@ class Base extends DIC
         'recipeGateway'     => true,
         'recipeModel'       => true,
         'imageConverter'    => true,
+        'cachePath'         => true,
+        'cache'             => true,
+        'searchPath'        => true,
         'search'            => true,
         'controller'        => true,
     );
@@ -135,9 +138,12 @@ class Base extends DIC
 
         $this->recipeGateway = function( $dic )
         {
-            return new Recipes\Gateway\CouchDB\Recipe(
-                $dic->couchdbConnection,
-                new Recipes\Gateway\CouchDB\Recipe\View()
+            return new Recipes\Gateway\Cached\Recipe(
+                $dic->cache,
+                new Recipes\Gateway\CouchDB\Recipe(
+                    $dic->couchdbConnection,
+                    new Recipes\Gateway\CouchDB\Recipe\View()
+                )
             );
         };
 
@@ -172,6 +178,21 @@ class Base extends DIC
             $converter->createTransformation( 'thumbnail', $filter, array( 'image/jpeg' ) );
 
             return $converter;
+        };
+
+        $this->cachePath = function ( $dic )
+        {
+            return $dic->srcDir . '/var/cache/';
+        };
+
+        $this->cache = function ( $dic )
+        {
+            $cache = new Recipes\Cache\Filesystem(
+                $dic->cachePath
+            );
+            $cache->addCache( 'recipes', 86400 * 30 );
+
+            return $cache;
         };
 
         $this->searchPath = function ( $dic )
