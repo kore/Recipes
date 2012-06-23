@@ -76,7 +76,7 @@ class Filesystem extends Cache
         }
 
         // Check if the cache file exists at all...
-        if ( !is_file( $path = $this->root . $name . '/' . $id . '.php' ) )
+        if ( !is_file( $path = $this->root . $cache . '/' . $id . '.php' ) )
         {
             return false;
         }
@@ -124,7 +124,7 @@ class Filesystem extends Cache
         }
 
         // Ensure cache directory exists
-        $path = $this->root . $name . '/' . $id . '.php';
+        $path = $this->root . $cache . '/' . $id . '.php';
         if ( !is_dir( $directory = dirname( $path ) ) )
         {
             mkdir( $directory, 0777, true );
@@ -156,7 +156,7 @@ class Filesystem extends Cache
         }
 
         // Check if the cache file exists, and remove it in this case
-        if ( is_file( $path = $this->root . $name . '/' . $id . '.php' ) )
+        if ( is_file( $path = $this->root . $cache . '/' . $id . '.php' ) )
         {
             unlink( $path );
         }
@@ -173,7 +173,7 @@ class Filesystem extends Cache
      */
     public function clearCache( $cache )
     {
-        if ( is_dir( $path = $this->root . $name ) )
+        if ( is_dir( $path = $this->root . $cache ) )
         {
             \ezcBaseFile::removeRecursive( $path );
         }
