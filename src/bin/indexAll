@@ -11,6 +11,6 @@ $dic->environment = 'development';
 $recipes = $dic->recipeModel->getAll();
 foreach ( $recipes as $recipe )
 {
-    $dic->searchController->index( $recipe );
+    $dic->search->index( $recipe );
 }
 
