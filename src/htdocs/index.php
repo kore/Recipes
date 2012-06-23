@@ -97,7 +97,7 @@ $dispatcher = new RMF\Dispatcher\Simple(
 
 $request = new RMF\Request\HTTP();
 $request->addHandler( 'body', new RMF\Request\PropertyHandler\PostBody() );
-$request->addHandler( 'session', new RMF\Request\PropertyHandler\Session() );
+$request->addHandler( 'session', new Request\PropertyHandler\Session() );
 
 $dispatcher->dispatch( $request );
 
