@@ -76,7 +76,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getAll()
     {
-        return $this->gateway->getAll();
+        $cacheKey = __FUNCTION__;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getAll();
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -89,7 +97,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getTags()
     {
-        return $this->gateway->getTags();
+        $cacheKey = __FUNCTION__;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getTags();
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -101,7 +117,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getLatest( $count = 10 )
     {
-        return $this->gateway->getLatest( $count );
+        $cacheKey = __FUNCTION__ . $count;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getLatest( 10 );
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -113,7 +137,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipesByUser()
     {
-        return $this->gateway->getRecipesByUser();
+        $cacheKey = __FUNCTION__;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getRecipesByUser();
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -126,7 +158,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipesByTag( $tag )
     {
-        return $this->gateway->getRecipesByTag( $tag );
+        $cacheKey = __FUNCTION__ . $tag;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getRecipesByTag();
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -167,7 +207,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipesByIngredient( $ingredient )
     {
-        return $this->gateway->getRecipesByIngredient( $ingredient );
+        $cacheKey = __FUNCTION__ . $ingredient;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getRecipesByIngredient( $ingredient );
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -192,7 +240,15 @@ class Recipe implements Gateway\Recipe
      */
     public function getRecipeData( $recipe )
     {
-        return $this->gateway->getRecipeData( $recipe );
+        $cacheKey = $recipe;
+        if ( $result = $this->cache->get( 'recipes', $cacheKey ) )
+        {
+            return $result;
+        }
+
+        $result = $this->gateway->getRecipeData( $recipe );
+        $this->cache->cache( 'recipes', $cacheKey, $result );
+        return $result;
     }
 
     /**
@@ -220,6 +276,7 @@ class Recipe implements Gateway\Recipe
      */
     public function createRecipe( $name )
     {
+        $this->cache->clearCache( 'recipes' );
         return $this->gateway->createRecipe( $name );
     }
 
@@ -234,6 +291,7 @@ class Recipe implements Gateway\Recipe
      */
     public function attachFile( $recipe, $file, $name, $mimeType )
     {
+        $this->cache->purge( 'recipes', $recipe );
         return $this->gateway->attachFile( $recipe, $file, $name, $mimeType );
     }
 
@@ -246,6 +304,7 @@ class Recipe implements Gateway\Recipe
      */
     public function detachFile( $recipe, $file )
     {
+        $this->cache->purge( 'recipes', $recipe );
         return $this->gateway->detachFile( $recipe, $file );
     }
 
@@ -261,6 +320,7 @@ class Recipe implements Gateway\Recipe
      */
     public function updateRecipeData( $recipe, $data )
     {
+        $this->cache->clearCache( 'recipes' );
         return $this->gateway->updateRecipeData( $recipe, $data );
     }
 
@@ -275,6 +335,7 @@ class Recipe implements Gateway\Recipe
      */
     public function delete( $id )
     {
+        $this->cache->clearCache( 'recipes' );
         return $this->gateway->delete( $id );
     }
 }
