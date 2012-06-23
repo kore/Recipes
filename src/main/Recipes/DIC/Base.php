@@ -47,6 +47,7 @@ class Base extends DIC
         'recipeGateway'     => true,
         'recipeModel'       => true,
         'imageConverter'    => true,
+        'search'            => true,
         'controller'        => true,
     );
 
