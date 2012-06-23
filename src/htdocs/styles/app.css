@@ -13,18 +13,35 @@ body {
     }
 }
 
-#header h1 {
-    background-image: url("/images/header.png");
-    width: 880px;
-    height: 95px;
-    background-repeat: none;
+@font-face {
+    font-family: 'Parisienne';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Parisienne'), local('Parisienne-Regular'), url('/styles/parisienne.woff') format('woff');
+}
 
-    margin-top: 0px;
-    margin-bottom: 0px;
+#header h1 {
+    background-image: url("/images/logo.png");
+    background-repeat: no-repeat;
+    width: 880px;
+    height: 85px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #header h1 span {
-    display: none;
+    display: block;
+    margin-left: 90px;
+
+    padding: 30px 10px 0px 0px;
+
+    font-family: 'Parisienne', cursive;
+    margin-left:
+    font-weight: 400;
+
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #3a1f15;
 }
 
 /**
