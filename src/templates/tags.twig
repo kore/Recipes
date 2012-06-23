@@ -7,12 +7,20 @@
     {%include "include/tag_cloud.twig"%}
 
     <h3>Alle Tags/Stichwörter</h3>
+    <ul class="letters">
+    {% for letter in range( 'a', 'z' ) %}
+        {% if result.grouped[letter] %}
+        <li><a href="#{{letter}}">{{letter|upper}}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+
     <div class="row-fluid">
         <div class="span4">
             <ul class="unstyled">
             {%for group in range( 'a', 'i' ) %}
                 {%if result.grouped[group] %}
-                <li><h4>{{group}}</h4>
+                <li><h4 class="group" id="{{group}}">{{group|upper}}</h4>
                     <ul>
                     {%for tag in result.grouped[group] %}
                         <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
@@ -27,7 +35,7 @@
             <ul class="unstyled">
             {%for group in range( 'j', 'q' ) %}
                 {%if result.grouped[group] %}
-                <li><h4>{{group}}</h4>
+                <li><h4 class="group" id="{{group}}">{{group|upper}}</h4>
                     <ul>
                     {%for tag in result.grouped[group] %}
                         <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
@@ -42,7 +50,7 @@
             <ul class="unstyled">
             {%for group in range( 'r', 'z' ) %}
                 {%if result.grouped[group] %}
-                <li><h4>{{group}}</h4>
+                <li><h4 class="group" id="{{group}}">{{group|upper}}</h4>
                     <ul>
                     {%for tag in result.grouped[group] %}
                         <li><a href="/recipe/tag/{{tag}}">{{tag}}</a></li>
