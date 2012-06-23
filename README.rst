@@ -8,16 +8,10 @@ it internally for my family to create, share and distribute recipes.
 Features
 ========
 
-- CRUD for recipes
-  - Attaching images
+- CRUD for recipes & attaching images to recipes
 - Tagging of recipes
 - Searching of recipes
-- Export of recipes
-  - ODT
-  - PDF
-  - HTML
-  - ReStructured Text
-  - Basic Docbook
+- Export of recipes (ODT, PDF, HTML, ReStructured Text, Basic Docbook)
 - All actions except export require prior authentification
 
 Requirements
