@@ -641,3 +641,10 @@ ul.pager li {
     display: inline;
 }
 
+h4.group {
+    font-family: 'Parisienne', cursive;
+    font-size: 24px;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
+
