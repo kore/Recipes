@@ -164,7 +164,7 @@ class Recipe implements Gateway\Recipe
             return $result;
         }
 
-        $result = $this->gateway->getRecipesByTag();
+        $result = $this->gateway->getRecipesByTag( $tag );
         $this->cache->cache( 'recipes', $cacheKey, $result );
         return $result;
     }
