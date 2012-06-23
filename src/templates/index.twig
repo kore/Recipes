@@ -32,9 +32,11 @@
                             <li><a href="/recipe/all">Alphabetisch</a></li>
                             {% endblock %}
                         </ul>
+                        {% block search %}
                         <form method="get" action="/recipe/search" class="navbar-search pull-left">
                             <input type="text" name="phrase" class="search-query" placeholder="Search">
                         </form>
+                        {% endblock %}
                     </div>
                     <div class="nav pull-right">
                         <ul class="nav">
