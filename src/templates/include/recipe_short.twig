@@ -1,1 +1,1 @@
-<a class="{%if recipe.data.own%}own{%endif%}" href="/recipe/recipe/{{recipe.id}}">{{recipe.title}}</a>
+<a class="{%if recipe.data.own%}own{%endif%}" href="/recipe/recipe/{{recipe.id}}">{{recipe.title}} {%if recipe._attachments %}<i class="icon-picture"></i>{% endif %}</a>
