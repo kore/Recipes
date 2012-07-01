@@ -599,38 +599,45 @@ ul.exports li {
 	margin: 0.2em 0;
 }
 
-ul.images {
-    height: 100px;
-    width: 100%;
+.carousel {
+    width: 294px;
+    height: 236px;
 
-    background-image: url("/images/film.png");
-    margin: 5px 0px 10px 0px;
-    padding: 20px 0px;
+    background-image: url("/images/polaroid.png");
 
-    list-style-type: none;
+    margin: 0px 0px 10px 10px;
+    padding: 0px;
+
+    float: right;
+}
+
+.carousel .carousel-control {
+    top: 195px;
+    height: 20px;
+    width: 20px;
+    line-height: 18px;
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+.carousel .item {
+    margin: 10px 14px 0px 10px;
+
+    vertical-align: middle;
     text-align: center;
-
-    overflow: hidden;
-    white-space: nowrap;
 }
 
-ul.images li {
-    display: inline-block;
-    height: 100px;
-    overflow: hidden;
-}
-
-ul.images li button {
+.carousel .item button {
     display: none;
     position: absolute;
 }
 
-ul.images li:hover button {
+.carousel .item:hover button {
     display: block;
 }
 
-ul.images li img {
-    height: 100px;
+.carousel .item img {
+    height: 180px;
 }
 
 /**

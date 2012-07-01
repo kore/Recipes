@@ -167,9 +167,10 @@ class Base extends DIC
 
             $filter = array(
                 new \ezcImageFilter(
-                    'scaleHeight',
+                    'scale',
                     array(
-                        'height'    => 100,
+                        'width'     => 270,
+                        'height'    => 180,
                         'direction' => \ezcImageGeometryFilters::SCALE_DOWN,
                     )
                 )
