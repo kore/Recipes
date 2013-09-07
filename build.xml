@@ -11,30 +11,35 @@
     <import file="setup/src/main/xml/base.xml" />
 
     <target name="style">
-        <copy
-            file="${basedir}/src/config/bootstrap.less"
-            tofile="${basedir}/src/library/twitter/bootstrap/less/variables.less" />
+        <property name="bootstrap.basedir" value="${basedir}/src/library/twbs/bootstrap/" />
 
-        <exec executable="make" dir="${basedir}/src/library/twitter/bootstrap/">
-            <arg value="-B" />
-            <arg value="build" />
-            <arg value="bootstrap" />
+        <copy
+            overwrite="true"
+            file="${basedir}/src/config/bootstrap.less"
+            tofile="${bootstrap.basedir}/less/variables.less" />
+
+        <exec executable="npm" dir="${bootstrap.basedir}">
+            <arg value="install" />
         </exec>
 
-        <copy todir="${basedir}/src/htdocs/styles">
-            <fileset dir="${basedir}/src/library/twitter/bootstrap/bootstrap/css">
+        <exec executable="grunt" dir="${bootstrap.basedir}">
+            <arg value="dist" />
+        </exec>
+
+        <copy todir="${basedir}/src/htdocs/styles/">
+            <fileset dir="${bootstrap.basedir}/dist/css/">
                 <include name="*.css" />
             </fileset>
         </copy>
 
-        <copy todir="${basedir}/src/htdocs/images">
-            <fileset dir="${basedir}/src/library/twitter/bootstrap/bootstrap/img">
-                <include name="*.png" />
+        <copy todir="${basedir}/src/htdocs/fonts">
+            <fileset dir="${bootstrap.basedir}/dist/fonts">
+                <include name="*" />
             </fileset>
         </copy>
 
         <copy todir="${basedir}/src/htdocs/scripts/vendor/bootstrap/">
-            <fileset dir="${basedir}/src/library/twitter/bootstrap/bootstrap/js">
+            <fileset dir="${bootstrap.basedir}/dist/js">
                 <include name="*.js" />
             </fileset>
         </copy>
