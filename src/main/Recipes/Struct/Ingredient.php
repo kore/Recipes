@@ -47,7 +47,8 @@ class Ingredient extends Struct
     /**
      * Construct
      *
-     * @param string $text
+     * @param string $ingredient
+     * @param array $recipies
      * @return void
      */
     public function __construct( $ingredient = null, array $recipies = array() )

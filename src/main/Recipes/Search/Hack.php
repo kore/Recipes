@@ -29,8 +29,8 @@ use Qafoo\RMF;
 /**
  * Search controller
  *
- * @WARNING:
- * @HACK: This is a brutal hack. Do NOT reuse it. It works, but it will get
+ * WARNING:
+ * HACK: This is a brutal hack. Do NOT reuse it. It works, but it will get
  * damn slow with more then a very few documents. (But it still works better
  * and faster then Zend_Search_Lucene).
  *
@@ -75,6 +75,8 @@ class Hack extends Search
      * Search for provided search phrase
      *
      * @param string $phrase
+     * @param int $count
+     * @param int $offset
      * @return void
      */
     public function search( $phrase, $count = 10, $offset = 0 )

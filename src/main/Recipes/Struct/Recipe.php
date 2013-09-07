@@ -41,7 +41,7 @@ class Recipe extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param Model\Recipe $recipe
      * @return void
      */
     public function __construct( Model\Recipe $recipe = null )

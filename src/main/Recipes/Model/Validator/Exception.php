@@ -33,6 +33,13 @@ namespace Recipes\Model\Validator;
  */
 class Exception extends \Exception
 {
+    /**
+     * Construct exception
+     *
+     * @param string $name
+     * @param string $expectation
+     * @return void
+     */
     public function __construct( $name, $expectation )
     {
         parent::__construct( "Validator for $name expected: $expectation." );

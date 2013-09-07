@@ -201,7 +201,7 @@ class Base extends DIC
             return $dic->srcDir . '/var/search/';
         };
 
-        $this->search= function ( $dic )
+        $this->search = function ( $dic )
         {
             return new Recipes\Search\Hack(
                 $dic->searchPath

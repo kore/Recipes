@@ -48,7 +48,8 @@ class Message extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param string $message
+     * @param string $type
      * @return void
      */
     public function __construct( $message = null, $type = "success" )

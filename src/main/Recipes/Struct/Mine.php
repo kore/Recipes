@@ -47,7 +47,8 @@ class Mine extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param array $mine
+     * @param array $perUser
      * @return void
      */
     public function __construct( array $mine = array(), array $perUser = array() )

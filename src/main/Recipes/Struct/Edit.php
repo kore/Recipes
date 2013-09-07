@@ -62,7 +62,9 @@ class Edit extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param Model\Recipe $recipe
+     * @param array $success
+     * @param array $errors
      * @return void
      */
     public function __construct( Model\Recipe $recipe = null, array $success = array(), array $errors = array() )

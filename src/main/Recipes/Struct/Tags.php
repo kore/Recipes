@@ -47,7 +47,8 @@ class Tags extends Struct
     /**
      * Construct
      *
-     * @param string $text
+     * @param array $popular
+     * @param array $grouped
      * @return void
      */
     public function __construct( array $popular = array(), array $grouped = array() )

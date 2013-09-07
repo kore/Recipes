@@ -49,6 +49,7 @@ class Twig extends \Qafoo\RMF\View
      * Construct from twig environment
      *
      * @param \Twig_Environment $twig
+     * @param array $templates
      * @return void
      */
     public function __construct( \Twig_Environment $twig, array $templates = array() )

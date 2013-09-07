@@ -58,7 +58,9 @@ class Auth
     /**
      * Construct from aggregated controller, which performs authorized actions
      *
+     * @param Model\User $user
      * @param mixed $controller
+     * @param array $unauthorized
      * @return void
      */
     public function __construct( Model\User $user, $controller, array $unauthorized = array() )
@@ -132,8 +134,9 @@ class Auth
     /**
      * Dispatch request, which requires authentification to subcontroller
      *
-     * @param RMF\Request $request
-     * @return Struct\Response
+     * @param string $method
+     * @param array $arguments
+     * @return void
      */
     public function __call( $method, array $arguments )
     {

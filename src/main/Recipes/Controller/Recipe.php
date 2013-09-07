@@ -73,6 +73,10 @@ class Recipe
      * Construct from recipe model
      *
      * @param Model\Recipe $model
+     * @param Model\User $userModel
+     * @param \Twig_Environment $twig
+     * @param \ezcImageConverter $imageConverter
+     * @param Search $search
      * @return void
      */
     public function __construct( Model\Recipe $model, Model\User $userModel, \Twig_Environment $twig, \ezcImageConverter $imageConverter, Search $search )

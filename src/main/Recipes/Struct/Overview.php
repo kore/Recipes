@@ -47,7 +47,8 @@ class Overview extends Struct
     /**
      * Construct
      *
-     * @param string $text
+     * @param array $popular
+     * @param array $latest
      * @return void
      */
     public function __construct( array $popular = array(), array $latest = array() )

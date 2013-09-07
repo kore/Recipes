@@ -43,6 +43,8 @@ abstract class Search
      * Search for provided search phrase
      *
      * @param string $phrase
+     * @param int $count
+     * @param int $offset
      * @return void
      */
     abstract public function search( $phrase, $count = 10, $offset = 0 );

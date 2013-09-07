@@ -93,6 +93,7 @@ class Recipe extends Model
      * Construct from recipe gateway
      *
      * @param Gateway\Recipe $gateway
+     * @param mixed $id
      * @return void
      */
     public function __construct( Gateway\Recipe $gateway, $id = null )
@@ -119,6 +120,7 @@ class Recipe extends Model
      *
      * Return a list of recipes with most recent changes
      *
+     * @param int $count
      * @return array
      */
     public function getLatest( $count = 10 )
@@ -163,6 +165,7 @@ class Recipe extends Model
      *
      * Return a the $count most popular tags, sorted alphabetcally.
      *
+     * @param int $count
      * @return array
      */
     public function getMostPopularTags( $count = 30 )
@@ -269,7 +272,7 @@ class Recipe extends Model
      *
      * Return recipe model
      *
-     * @param string $ingredient
+     * @param string $id
      * @return Recipe
      */
     public function load( $id )

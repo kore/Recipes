@@ -74,7 +74,8 @@ class User extends Model
     /**
      * Construct from user gateway
      *
-     * @param Gateway\User $userGateway
+     * @param Gateway\User $gateway
+     * @param mixed $id
      * @return void
      */
     public function __construct( Gateway\User $gateway, $id = null )

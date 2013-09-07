@@ -113,6 +113,7 @@ class Recipe implements Gateway\Recipe
      *
      * Return a list of recipes with most recent changes
      *
+     * @param int $count
      * @return array
      */
     public function getLatest( $count = 10 )

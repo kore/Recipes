@@ -55,7 +55,9 @@ class File extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param string $content
+     * @param string $mimeType
+     * @param string $name
      * @return void
      */
     public function __construct( $content = null, $mimeType = null, $name = null )

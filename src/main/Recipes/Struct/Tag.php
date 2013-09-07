@@ -47,7 +47,8 @@ class Tag extends Struct
     /**
      * Construct
      *
-     * @param string $text
+     * @param string $tag
+     * @param array $recipies
      * @return void
      */
     public function __construct( $tag = null, array $recipies = array() )

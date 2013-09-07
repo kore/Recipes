@@ -41,7 +41,7 @@ class Export extends Struct
     /**
      * Construct
      *
-     * @param string $recipes
+     * @param string $recipe
      * @return void
      */
     public function __construct( $recipe = null )
