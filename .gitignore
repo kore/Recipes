@@ -1,5 +1,6 @@
-src/var/search
-src/library/*
-build
-.abc
-.pear
+/src/var/search
+/src/library/*
+/build
+/.abc
+/.pear
+/composer.phar
