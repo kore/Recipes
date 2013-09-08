@@ -6,13 +6,6 @@ body {
     padding-top: 40px;
 }
 
-@media (max-width: 979px) {
-    /* Remove any padding from the body */
-    body {
-        padding-top: 0;
-    }
-}
-
 @font-face {
     font-family: 'Parisienne';
     font-style: normal;
@@ -79,7 +72,7 @@ body {
     padding-left: 0px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     ul.commands {
         width: 100%;
         float: left;
@@ -114,18 +107,18 @@ body {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
     ul.commands {
         width: 100%;
         list-style-type: none;	
-        margin-top: 10px;
+        margin: 5px 0px 1px 0px;
     }
 
     ul.commands li {
-        display: inline;
+        display: inline-block;
         background: #e1d7ce;
-        padding: 10px;
-        margin-left: 10px;
+        padding: 5px 10px;
+        margin: 5px 0px 0px 10px;
 
         box-shadow: #3a1f15 2px 2px 3px;
         -moz-box-shadow: #3a1f15 2px 2px 3px;
@@ -475,7 +468,6 @@ form.export input[type="submit"] {
 }
 
 input[type="submit"] {
-	width: 15em;
 	float: right;
 	margin: 1em 0 0 0;
 	background-color: #ffffff;
