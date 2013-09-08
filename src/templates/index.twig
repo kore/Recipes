@@ -20,52 +20,50 @@
 <body>
     <div class="container">
         <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <div class="nav">
-                        <ul class="nav">
-                            {% block navItems %}
-                            <li><a href="/recipe/edit"><i class="icon-plus-sign"></i> Neues Rezept</a></li>
-                            <li><a href="/recipe/overview">Übersicht</a></li>
-                            <li><a href="/recipe/mine">Meine Rezepte</a></li>
-                            <li><a href="/recipe/tags">Tagindex</a></li>
-                            <li><a href="/recipe/all">Alphabetisch</a></li>
-                            {% endblock %}
-                        </ul>
-                        {% block search %}
-                        <form method="get" action="/recipe/search" class="navbar-search pull-left">
-                            <input type="text" name="phrase" class="search-query" placeholder="Search">
-                        </form>
+            <div class="container">
+                <div class="nav">
+                    <ul class="navbar-nav nav">
+                        {% block navItems %}
+                        <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
+                        <li><a href="/recipe/overview">Übersicht</a></li>
+                        <li><a href="/recipe/mine">Meine Rezepte</a></li>
+                        <li><a href="/recipe/tags">Tagindex</a></li>
+                        <li><a href="/recipe/all">Alphabetisch</a></li>
                         {% endblock %}
-                    </div>
-                    <div class="nav pull-right">
-                        <ul class="nav">
-                            {% block userNav %}
-                            <li><a href="/user/logout"><i class="icon-off"></i> Abmelden</a></li>
-                            {% endblock %}
-                        </ul>
-                    </div>
+                    </ul>
+                    {% block search %}
+                    <form method="get" action="/recipe/search" class="navbar-search pull-left">
+                        <input type="text" name="phrase" class="search-query" placeholder="Search">
+                    </form>
+                    {% endblock %}
+                </div>
+                <div class="nav pull-right">
+                    <ul class="nav">
+                        {% block userNav %}
+                        <li><a href="/user/logout"><span class="glyphicon glyphicon-off"></span> Abmelden</a></li>
+                        {% endblock %}
+                    </ul>
                 </div>
             </div>
         </div>
         <div id="header" class="row">
-            <div class="span12">
+            <div class="col-md-12">
                 <a href="/">
                     <h1><span>Rezept-Manager</span></h1>
                 </a>
             </div>
         </div>
         <div class="row">
-            <div id="commands" class="span3">
+            <div id="commands" class="col-md-3">
             {% block commands %}
                 <ul class="commands">
-                    <li><a href="/recipe/edit"><i class="icon-plus-sign"></i> Neues Rezept</a></li>
-                    <li><a href="/recipe/tags"><i class="icon-tags"></i> Tagindex</a></li>
-                    <li><a href="/recipe/all"><i class="icon-list-alt"></i> Alphabetisch</a></li>
+                    <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
+                    <li><a href="/recipe/tags"><span class="glyphicon glyphicon-tags"></span> Tagindex</a></li>
+                    <li><a href="/recipe/all"><span class="glyphicon glyphicon-list-alt"></span> Alphabetisch</a></li>
                 </ul>
             {% endblock %}
             </div>
-            <div class="span9 span-content">
+            <div class="col-md-9 span-content">
                 <div id="content">
                 {% block content %}
                     <div class="alert">
@@ -77,7 +75,7 @@
         </div>
         <div class="row">
             {% block footer %}
-            <div class="span12 footer">
+            <div class="col-md-12 footer">
             </div>
             {% endblock %}
         </div>

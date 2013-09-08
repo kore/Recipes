@@ -6,8 +6,8 @@
 {% endfor %}
 </ul>
 
-<div class="row-fluid">
-    <div class="span4">
+<div class="row">
+    <div class="col-md-4">
         <ul class="unstyled">
         {% for group in range( 'a', 'i' ) %}
             {% if recipes[group] %}
@@ -22,7 +22,7 @@
         {% endfor %}
         </ul>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
         <ul class="unstyled">
         {% for group in range( 'j', 'q' ) %}
             {% if recipes[group] %}
@@ -37,7 +37,7 @@
         {% endfor %}
         </ul>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
         <ul class="unstyled">
         {% for group in range( 'r', 'z' ) %}
             {% if recipes[group] %}

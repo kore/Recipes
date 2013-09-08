@@ -5,27 +5,27 @@
 <ul class="commands">
     <li>
         <a href="/recipe/edit/{{recipe.id}}">
-            <i class="icon-edit"></i> Bearbeiten
+            <span class="glyphicon glyphicon-edit"></span> Bearbeiten
         </a>
     </li>
     <li>
         <a href="#upload" data-toggle="modal">
-            <i class="icon-picture"></i> Bild anhängen
+            <span class="glyphicon glyphicon-picture"></span> Bild anhängen
         </a>
     </li>
     <li>
         <a href="#history" data-toggle="modal">
-            <i class="icon-time"></i> Historie
+            <span class="glyphicon glyphicon-time"></span> Historie
         </a>
     </li>
     <li>
         <a onclick="return confirm( 'Do you really want to delete this recipe?' );" href="/recipe/delete/{{recipe.id}}">
-            <i class="icon-trash"></i> Löschen
+            <span class="glyphicon glyphicon-trash"></span> Löschen
         </a>
     </li>
     <li>
         <a href="/recipe/listExports/{{recipe.id}}">
-            <i class="icon-file"></i> Exportieren
+            <span class="glyphicon glyphicon-file"></span> Exportieren
         </a>
     </li>
 </ul>
@@ -40,7 +40,7 @@
     <div class="carousel-inner">
 {% for image, data in recipe.attachments %}
         <div class="item {% if loop.index0 == 0 %}active{% endif %}">
-            <button name="detach" value="{{image}}" class="btn btn-mini"><i class="icon-trash"></i></button>
+            <button name="detach" value="{{image}}" class="btn btn-mini"><span class="glyphicon glyphicon-trash"></span></button>
             <a href="/images/recipes/full/{{recipe.id}}/{{image}}"><img src="/images/recipes/{{recipe.id}}/{{image}}" /></a>
         </div>
 {% endfor %}
