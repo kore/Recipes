@@ -371,6 +371,7 @@ div.article {
 ul.cloud {
     text-align: center;
 	list-style-type: none;
+    line-height: 1.4em;
     margin: 1em auto;
     padding: 0em;
     max-width:  500px;
