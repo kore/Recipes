@@ -21,29 +21,25 @@
     <div class="container">
         <div class="navbar navbar-fixed-top">
             <div class="container">
-                <div class="nav">
-                    <ul class="navbar-nav nav">
-                        {% block navItems %}
-                        <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
-                        <li><a href="/recipe/overview">Übersicht</a></li>
-                        <li><a href="/recipe/mine">Meine Rezepte</a></li>
-                        <li><a href="/recipe/tags">Tagindex</a></li>
-                        <li><a href="/recipe/all">Alphabetisch</a></li>
-                        {% endblock %}
-                    </ul>
-                    {% block search %}
-                    <form method="get" action="/recipe/search" class="navbar-search pull-left">
-                        <input type="text" name="phrase" class="search-query" placeholder="Search">
-                    </form>
+                <ul class="navbar-nav nav">
+                    {% block navItems %}
+                    <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
+                    <li><a href="/recipe/overview">Übersicht</a></li>
+                    <li><a href="/recipe/mine">Meine Rezepte</a></li>
+                    <li><a href="/recipe/tags">Tagindex</a></li>
+                    <li><a href="/recipe/all">Alphabetisch</a></li>
                     {% endblock %}
-                </div>
-                <div class="nav pull-right">
-                    <ul class="nav">
-                        {% block userNav %}
-                        <li><a href="/user/logout"><span class="glyphicon glyphicon-off"></span> Abmelden</a></li>
-                        {% endblock %}
-                    </ul>
-                </div>
+                </ul>
+                {% block search %}
+                <form method="get" action="/recipe/search" class="navbar-search pull-left">
+                    <input type="text" name="phrase" class="search-query" placeholder="Search">
+                </form>
+                {% endblock %}
+                <ul class="nav navbar-nav navbar-right">
+                    {% block userNav %}
+                    <li><a href="/user/logout"><span class="glyphicon glyphicon-off"></span> Abmelden</a></li>
+                    {% endblock %}
+                </ul>
             </div>
         </div>
         <div id="header" class="row">
