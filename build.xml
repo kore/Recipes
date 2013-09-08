@@ -45,7 +45,7 @@
         </copy>
     </target>
 
-    <target name="recipe-deploy" extensionOf="-deploy:main~hook">
+    <target name="-recipe-deploy" extensionOf="-deploy:main~hook">
         <!-- Not using sshexec, because it does not know / handle local SSH
              configuration, and we probably cannot and do not want to duplicate
              tunnel configuration etc.
