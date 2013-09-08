@@ -89,36 +89,44 @@
     <p>{{recipe.instructions}}</p>
 {% endif %}
 
-<div class="modal" id="upload" style="display: none;">
-    <form action="/recipe/attach/{{recipe.id}}" method="POST" enctype="multipart/form-data">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3>Bild hochladen</h3>
+<div class="modal" id="upload">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/recipe/attach/{{recipe.id}}" method="POST" enctype="multipart/form-data">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h3>Bild hochladen</h3>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="image" />
+            </div>
+            <div class="modal-footer">
+                <input class="btn btn-primary" type="submit" name="attach" value="Hochladen" />
+            </div>
+            </form>
+        </div>
     </div>
-    <div class="modal-body">
-        <input type="file" name="image" />
-    </div>
-    <div class="modal-footer">
-        <input class="btn btn-primary" type="submit" name="attach" value="Hochladen" />
-    </div>
-    </form>
 </div>
 
-<div class="modal" id="history" style="display: none;">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3>Änderungen</h3>
-    </div>
-    <div class="modal-body">
-        <ul class="changes">
-        {% for revision in recipe.revisions if revision._date and revision.user %}
-            {% set user = user( revision.user ) %}
-            <li>{{user.login}} at {{revision._date|date( "d.m.Y" )}}</li>
-        {% endfor %}
-        </ul>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Schliessen</a>
+<div class="modal" id="history">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h3>Änderungen</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="changes">
+                {% for revision in recipe.revisions if revision._date and revision.user %}
+                    {% set user = user( revision.user ) %}
+                    <li>{{user.login}} at {{revision._date|date( "d.m.Y" )}}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Schliessen</a>
+            </div>
+        </div>
     </div>
 </div>
 
