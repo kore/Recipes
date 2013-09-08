@@ -16,7 +16,6 @@ body {
 #header h1 {
     background-image: url("/images/logo.png");
     background-repeat: no-repeat;
-    width: 880px;
     height: 85px;
 
     margin-top: 5px;
