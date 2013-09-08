@@ -31,8 +31,10 @@
                     {% endblock %}
                 </ul>
                 {% block search %}
-                <form method="get" action="/recipe/search" class="navbar-search pull-left">
-                    <input type="text" name="phrase" class="search-query" placeholder="Search">
+                <form method="get" action="/recipe/search" class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phrase" placeholder="Search">
+                    </div>
                 </form>
                 {% endblock %}
                 <ul class="nav navbar-nav navbar-right">
