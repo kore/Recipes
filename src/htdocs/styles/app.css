@@ -623,12 +623,15 @@ ul.exports li {
 }
 
 .carousel .carousel-control {
-    top: 195px;
+    top: 199px;
     height: 20px;
     width: 20px;
     line-height: 18px;
-    margin-top: 0px;
+    margin: 0px 5px 0px 3px;
     font-size: 30px;
+
+    background-image: none;
+    color: #000000;
 }
 
 .carousel .item {
@@ -649,6 +652,7 @@ ul.exports li {
 
 .carousel .item img {
     height: 180px;
+    margin: 0px auto;
 }
 
 /**
