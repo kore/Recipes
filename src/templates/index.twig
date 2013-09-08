@@ -19,29 +19,35 @@
 </head>
 <body>
     <div class="container">
-        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
-                <ul class="navbar-nav nav">
-                    {% block navItems %}
-                    <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
-                    <li><a href="/recipe/overview">Übersicht</a></li>
-                    <li><a href="/recipe/mine">Meine Rezepte</a></li>
-                    <li><a href="/recipe/tags">Tagindex</a></li>
-                    <li><a href="/recipe/all">Alphabetisch</a></li>
+                <button type="button" class="navbar-toggle btn btn-default" data-toggle="collapse" data-target=".main-navigation">
+                    Navigation
+                </button> 
+
+                <div class="collapse navbar-collapse main-navigation">
+                    <ul class="navbar-nav nav">
+                        {% block navItems %}
+                        <li><a href="/recipe/edit"><span class="glyphicon glyphicon-plus-sign"></span> Neues Rezept</a></li>
+                        <li><a href="/recipe/overview">Übersicht</a></li>
+                        <li><a href="/recipe/mine">Meine Rezepte</a></li>
+                        <li><a href="/recipe/tags">Tagindex</a></li>
+                        <li><a href="/recipe/all">Alphabetisch</a></li>
+                        {% endblock %}
+                    </ul>
+                    {% block search %}
+                    <form method="get" action="/recipe/search" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phrase" placeholder="Search">
+                        </div>
+                    </form>
                     {% endblock %}
-                </ul>
-                {% block search %}
-                <form method="get" action="/recipe/search" class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="phrase" placeholder="Search">
-                    </div>
-                </form>
-                {% endblock %}
-                <ul class="nav navbar-nav navbar-right">
-                    {% block userNav %}
-                    <li><a href="/user/logout"><span class="glyphicon glyphicon-off"></span> Abmelden</a></li>
-                    {% endblock %}
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% block userNav %}
+                        <li><a href="/user/logout"><span class="glyphicon glyphicon-off"></span> Abmelden</a></li>
+                        {% endblock %}
+                    </ul>
+                </div>
             </div>
         </div>
         <div id="header" class="row">
