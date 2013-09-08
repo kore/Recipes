@@ -69,6 +69,16 @@ body {
 /**
  * Commands
  */
+#commands {
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.span-content {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
 @media (min-width: 768px) {
     ul.commands {
         width: 100%;
@@ -93,7 +103,7 @@ body {
     ul.commands li a {
         display: block;
         height: 25px;
-        padding: 9px 8px 0 8px; 
+        margin: .5em 1em .0em 1em;
         color: #000000;
     }
 
