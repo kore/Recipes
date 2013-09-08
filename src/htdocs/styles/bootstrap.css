@@ -4397,7 +4397,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #3a1f15;
+  color: #643525;
   background-color: transparent;
 }
 
@@ -4435,8 +4435,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-nav > .dropdown > a:hover .caret,
 .navbar-default .navbar-nav > .dropdown > a:focus .caret {
-  border-top-color: #3a1f15;
-  border-bottom-color: #3a1f15;
+  border-top-color: #643525;
+  border-bottom-color: #643525;
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -4464,7 +4464,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #3a1f15;
+    color: #643525;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
@@ -4486,7 +4486,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-link:hover {
-  color: #3a1f15;
+  color: #643525;
 }
 
 .navbar-inverse {
