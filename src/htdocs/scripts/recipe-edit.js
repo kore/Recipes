@@ -12,10 +12,10 @@ function registerAutocomplete( type, selector ) {
     jQuery( selector ).autocomplete({
         source: function( request, callback )
             {
-                jQuery.get( "/recipe/" + type + "/" + request.term + ".js", function ( data, textStatus )
+                jQuery.get( "/recipe/" + type + "/" + request.term + ".js", function ( data )
                     {
                         var terms = [];
-                        jQuery.each( data, function( key, value )
+                        jQuery.each( data, function( key )
                             {
                                 terms.push( key );
                             }
