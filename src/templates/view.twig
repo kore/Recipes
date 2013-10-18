@@ -1,6 +1,10 @@
 {% extends "index.twig" %}
 {% set recipe = result.recipe %}
 
+{% block title %}
+{{recipe.title}} – {{parent()}}
+{%endblock %}
+
 {% block commands %}
 <ul class="commands">
     <li>
