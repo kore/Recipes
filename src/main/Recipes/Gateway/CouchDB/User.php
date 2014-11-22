@@ -104,25 +104,15 @@ class User implements Gateway\User
                 'key' => $login,
             ) );
         }
-        catch ( phpillowResponseNotFoundErrorException $e )
+        catch ( \phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeGatewayNotFoundException(
-                "The user '%user' could not be found.",
-                array(
-                    'user' => $user,
-                )
-            );
+            throw new \OutOfBoundsException("The user '$user' could not be found.");
         }
 
         // Check if we got a result at all
         if ( count( $result->rows ) !== 1 )
         {
-            throw new recipeGatewayNotFoundException(
-                "The user '%user' could not be found.",
-                array(
-                    'user' => $login,
-                )
-            );
+            throw new \OutOfBoundsException("The user '$login' could not be found.");
         }
 
         return $result->rows[0]['id'];
@@ -153,14 +143,9 @@ class User implements Gateway\User
             $doc = new User\Document();
             $doc->fetchById( $user );
         }
-        catch ( phpillowResponseNotFoundErrorException $e )
+        catch ( \phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeGatewayNotFoundException(
-                "The user '%user' could not be found.",
-                array(
-                    'user' => $user,
-                )
-            );
+            throw new \OutOfBoundsException("The user '$user' could not be found.");
         }
 
         return array(
@@ -189,13 +174,13 @@ class User implements Gateway\User
     {
         try
         {
-            $user = phpillowManager::createDocument( 'user' );
+            $user = \phpillowManager::createDocument( 'user' );
             $user->login = $name;
             $user->save();
         }
-        catch ( phpillowResponseConflictErrorException $e )
+        catch ( \phpillowResponseConflictErrorException $e )
         {
-            throw new recipeGatewayUserExistsException( $name );
+            throw new \InvalidArgumentException("User '$name' already exists.");
         }
 
         // Return generated ID
@@ -216,16 +201,11 @@ class User implements Gateway\User
     {
         try
         {
-            $doc = phpillowManager::fetchDocument( 'user', $user );
+            $doc = \phpillowManager::fetchDocument( 'user', $user );
         }
-        catch ( phpillowResponseNotFoundErrorException $e )
+        catch ( \phpillowResponseNotFoundErrorException $e )
         {
-            throw new recipeGatewayNotFoundException(
-                "The user '%user' could not be found.",
-                array(
-                    'user' => $user,
-                )
-            );
+            throw new \OutOfBoundsException("The user '$user' could not be found.");
         }
 
         // Set data, which will be validated internally, and store.
