@@ -24,8 +24,7 @@
     </div>
 {% endif %}
 
-<form class="protect" method="post" action="/recipe/edit{% if result.recipe %}/{{result.recipe.id}}{% endif %}"
-      onsubmit="return validateForm( this );">
+<form class="protect" method="post" action="/recipe/edit{% if result.recipe %}/{{result.recipe.id}}{% endif %}">
 <fieldset>
 	<legend>Edit recipe</legend>
 
