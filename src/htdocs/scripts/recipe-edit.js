@@ -29,6 +29,30 @@ function registerAutocomplete( type, selector ) {
     );
 }
 
+function confirmRemoveGroup( group )
+{
+    "use strict";
+
+    if ( confirm( 'Sicher dass diese Sektion entfernt werden soll?' ) )
+    {
+        $( 'li#group_' + group ).remove();
+    }
+
+    return false;
+}
+
+function confirmRemoveItem( group, item )
+{
+    "use strict";
+
+    if ( confirm( 'Sicher dass diese Zutat entfernt werden soll?' ) )
+    {
+        $( 'li#ingredient_' + group + '_' + item ).remove();
+    }
+
+    return false;
+}
+
 function addIngredient( targetGroup )
 {
     "use strict";
@@ -51,6 +75,8 @@ function addIngredient( targetGroup )
     jQuery( "li#group_" + targetGroup + " ul" ).append( item );
 
     ingredients[targetGroup] += 1;
+
+    return false;
 }
 
 function addIngredientBlock()
@@ -63,6 +89,8 @@ function addIngredientBlock()
     addIngredient( group );
     addIngredient( group );
     group += 1;
+
+    return false;
 }
 
 jQuery( document ).ready( function()

@@ -45,8 +45,8 @@ var data        = {% autoescape false %}{{result.ingredients}}{% endautoescape %
 var groupHtml = "<li id=\"group_%group\">\
     <h4>\
         <input type=\"text\" name=\"ingredients[%group][title]\" class=\"title\" placeholder=\"Hauptzutaten\"/>\
-        <span class=\"btn btn-sm glyphicon glyphicon-plus\" onclick=\"addIngredientBlock()\" alt=\"Weitere Sektion anlegen\" />\
-        <span class=\"btn btn-sm glyphicon glyphicon-trash\" onclick=\"confirm( 'Sicher dass diese Sektion entfernt werden soll?' ) && $( 'li#group_%group' ).remove()\" alt=\"Sektion entfernen\" />\
+        <span class=\"btn btn-sm glyphicon glyphicon-plus\" onclick=\"return addIngredientBlock();\" alt=\"Weitere Sektion anlegen\" />\
+        <span class=\"btn btn-sm glyphicon glyphicon-trash\" onclick=\"return confirmRemoveGroup( %group );\" alt=\"Sektion entfernen\" />\
     </h4>\
     <ul></ul>\
 </li>";
@@ -55,8 +55,8 @@ var itemHtml  = "<li id=\"ingredient_%group_%item\">\
     <input type=\"text\" name=\"ingredients[%group][%item][amount]\" class=\"amount number\"/>\
     <input type=\"text\" name=\"ingredients[%group][%item][unit]\" class=\"unit number\"\"/>\
     <input type=\"text\" name=\"ingredients[%group][%item][ingredient]\" class=\"ingredient\" placeholder=\"Zutat\" />\
-    <button class=\"btn btn-sm glyphicon glyphicon-plus\" onclick=\"addIngredient( %group )\" alt=\"Weitere Zutat hinzufügen\" />\
-    <button class=\"btn btn-sm glyphicon glyphicon-trash\" onclick=\"confirm( 'Sicher dass diese Zutat entfernt werden soll?' ) && $( 'li#ingredient_%group_%item' ).remove()\" alt=\"Zutat entfernen\" />\
+    <button class=\"btn btn-sm glyphicon glyphicon-plus\" onclick=\"return addIngredient( %group );\" alt=\"Weitere Zutat hinzufügen\" />\
+    <button class=\"btn btn-sm glyphicon glyphicon-trash\" onclick=\"return confirmRemoveItem( %group, %item );\" alt=\"Zutat entfernen\" />\
 </li>";
 // ]]>
 </script>
