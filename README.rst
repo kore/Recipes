@@ -32,6 +32,13 @@ There is currently no dedicated configuration file. If you want to configure
 something checkout the Dependency Injection Container at
 ``src/main/Recipes/DIC/Base.php``.
 
+Start
+=====
+
+You can use PHPs internal webserver to start the application like this::
+
+    php -S localhost:8080 -t src/htdocs/
+
 
 ..
    Local Variables:
