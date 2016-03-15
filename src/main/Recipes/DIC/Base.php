@@ -111,13 +111,41 @@ class Base extends DIC
             );
         };
 
+        $this->configuration = function( $dic )
+        {
+            $defaults = array(
+                'couchdb.host' => 'localhost',
+                'couchdb.port' => 5984,
+                'couchdb.user' => null,
+                'couchdb.pass' => null,
+                'couchdb.name' => 'recipe_core',
+            );
+
+            $configuration = $defaults;
+            $configurationFiles = array(
+                __DIR__ . '/../../../../build.properties',
+                __DIR__ . '/../../../../build.properties.local',
+            );
+            foreach ( $configurationFiles as $file )
+            {
+                if ( file_exists( $file ) )
+                {
+                    self::$configuration = array_merge( $configuration, parse_ini_file( $file ) );
+                }
+            }
+
+            return $configuration;
+        };
+
         $this->couchdbConnection = function( $dic )
         {
             \phpillowConnection::createInstance(
-                'localhost',
-                5984
+                $dic->configuration['couchdb.host'],
+                $dic->configuration['couchdb.port'],
+                $dic->configuration['couchdb.user'],
+                $dic->configuration['couchdb.pass']
             );
-            \phpillowConnection::setDatabase( 'recipe_core' );
+            \phpillowConnection::setDatabase( $dic->configuration['couchdb.name'] );
             return \phpillowConnection::getInstance();
         };
 
