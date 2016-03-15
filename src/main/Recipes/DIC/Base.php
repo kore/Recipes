@@ -130,7 +130,7 @@ class Base extends DIC
             {
                 if ( file_exists( $file ) )
                 {
-                    self::$configuration = array_merge( $configuration, parse_ini_file( $file ) );
+                    $configuration = array_merge( $configuration, @parse_ini_file( $file ) );
                 }
             }
 
