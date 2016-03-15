@@ -4,18 +4,35 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "60b6ec7cfc03a127cdf81e64975533b1",
-    "content-hash": "4438287d217b89caff4fa6e12a8e28d5",
+    "hash": "eaf6780043a82ec2bb8ddf40e4f9e094",
+    "content-hash": "e47f2af002ddb040f248ce8da97b639d",
     "packages": [
         {
-            "name": "arbitracker/phpillow",
-            "version": "0.7",
+            "name": "arbit/phpillow",
+            "version": "0.8.1",
             "source": {
-                "type": "svn",
-                "url": "svn://arbitracker.org/phpillow",
-                "reference": "releases/0.7"
+                "type": "git",
+                "url": "https://github.com/Arbitracker/PHPillow.git",
+                "reference": "b2ea93656e0f1c4b0749f5f68f1f6c1fc867e9c2"
             },
-            "type": "library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Arbitracker/PHPillow/zipball/b2ea93656e0f1c4b0749f5f68f1f6c1fc867e9c2",
+                "reference": "b2ea93656e0f1c4b0749f5f68f1f6c1fc867e9c2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/classes/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "description": "PHPillow is an object orientated wrapper for CouchDB.",
+            "time": "2014-01-30 19:48:57"
         },
         {
             "name": "qafoo/rmf",
