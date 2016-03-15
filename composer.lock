@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4fc79c22d581d4f590368a3f65e47578",
-    "content-hash": "26335a59a869f2f95386df77b765c317",
+    "hash": "60b6ec7cfc03a127cdf81e64975533b1",
+    "content-hash": "4438287d217b89caff4fa6e12a8e28d5",
     "packages": [
         {
             "name": "arbitracker/phpillow",
@@ -23,12 +23,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Qafoo/REST-Micro-Framework.git",
-                "reference": "5f43983f15a8aa12be42ad6068675d4008bfb9ed"
+                "reference": "8903937d46f7da4e12c6e34cfda1c1e2e57b3dac"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/Qafoo/REST-Micro-Framework/zipball/8903937d46f7da4e12c6e34cfda1c1e2e57b3dac",
-                "reference": "5f43983f15a8aa12be42ad6068675d4008bfb9ed",
+                "reference": "8903937d46f7da4e12c6e34cfda1c1e2e57b3dac",
                 "shasum": ""
             },
             "type": "library",
@@ -42,44 +42,58 @@
                 "source": "https://github.com/Qafoo/REST-Micro-Framework/tree/master",
                 "issues": "https://github.com/Qafoo/REST-Micro-Framework/issues"
             },
-            "time": "2012-12-07 13:33:01"
+            "time": "2014-08-21 12:00:26"
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v3.0.0",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4"
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e8a1df5f060bf7e6631554648e0abde150aedbe4",
-                "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/81df608a40bf0629a1dc08e584849bb1e43e0b7a",
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a",
                 "shasum": ""
             },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                },
-                {
                     "name": "Jacob Thornton",
                     "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
                 }
             ],
-            "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
             "homepage": "http://getbootstrap.com",
             "keywords": [
-                "bootstrap",
-                "css"
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
             ],
-            "time": "2013-08-19 21:18:20"
+            "time": "2015-11-24 19:37:05"
         },
         {
             "name": "twig/twig",
@@ -130,17 +144,20 @@
         },
         {
             "name": "zetacomponents/base",
-            "version": "1.8",
+            "version": "1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/Base.git",
-                "reference": "52ca69c1de55f3fa4f595779e5bc831da7ee176c"
+                "reference": "f20df24e8de3e48b6b69b2503f917e457281e687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/Base/zipball/52ca69c1de55f3fa4f595779e5bc831da7ee176c",
-                "reference": "52ca69c1de55f3fa4f595779e5bc831da7ee176c",
+                "url": "https://api.github.com/repos/zetacomponents/Base/zipball/f20df24e8de3e48b6b69b2503f917e457281e687",
+                "reference": "f20df24e8de3e48b6b69b2503f917e457281e687",
                 "shasum": ""
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
             },
             "type": "library",
             "autoload": {
@@ -150,7 +167,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -186,21 +203,27 @@
             ],
             "description": "The Base package provides the basic infrastructure that all packages rely on. Therefore every component relies on this package.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2009-12-21 12:14:16"
+            "time": "2014-09-19 03:28:34"
         },
         {
             "name": "zetacomponents/document",
-            "version": "1.3",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/Document.git",
-                "reference": "77c4b8556b78f73628560cd6c4cca5ee3e7b7a5e"
+                "reference": "688abfde573cf3fe0730f82538fbd7aa9fc95bc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/Document/zipball/77c4b8556b78f73628560cd6c4cca5ee3e7b7a5e",
-                "reference": "77c4b8556b78f73628560cd6c4cca5ee3e7b7a5e",
+                "url": "https://api.github.com/repos/zetacomponents/Document/zipball/688abfde573cf3fe0730f82538fbd7aa9fc95bc8",
+                "reference": "688abfde573cf3fe0730f82538fbd7aa9fc95bc8",
                 "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "*"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -210,7 +233,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -231,21 +254,27 @@
             ],
             "description": "The Document components provides a general conversion framework for different semantic document markup languages like XHTML, Docbook, RST and similar.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2009-12-21 12:23:19"
+            "time": "2013-12-19 11:40:00"
         },
         {
             "name": "zetacomponents/graph",
-            "version": "1.5",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/Graph.git",
-                "reference": "1258d156bcdb4ec061ff28a1d23eb241f4bdea8e"
+                "reference": "7efda09f967b92fe38a1fbf0c2090fc4fedb0c73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/Graph/zipball/1258d156bcdb4ec061ff28a1d23eb241f4bdea8e",
-                "reference": "1258d156bcdb4ec061ff28a1d23eb241f4bdea8e",
+                "url": "https://api.github.com/repos/zetacomponents/Graph/zipball/7efda09f967b92fe38a1fbf0c2090fc4fedb0c73",
+                "reference": "7efda09f967b92fe38a1fbf0c2090fc4fedb0c73",
                 "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "~1.8"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
             },
             "type": "library",
             "autoload": {
@@ -255,7 +284,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -300,21 +329,27 @@
             ],
             "description": "A component for creating pie charts, line graphs and other kinds of diagrams.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2009-12-21 12:26:17"
+            "time": "2014-09-19 03:28:59"
         },
         {
             "name": "zetacomponents/image-analysis",
-            "version": "1.1.3",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/ImageAnalysis.git",
-                "reference": "0486cad6effb0d1f3de5a542c72243e83cd88e4a"
+                "reference": "7d49a1975709b7bca861dce8604acf59592f7205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/ImageAnalysis/zipball/0486cad6effb0d1f3de5a542c72243e83cd88e4a",
-                "reference": "0486cad6effb0d1f3de5a542c72243e83cd88e4a",
+                "url": "https://api.github.com/repos/zetacomponents/ImageAnalysis/zipball/7d49a1975709b7bca861dce8604acf59592f7205",
+                "reference": "7d49a1975709b7bca861dce8604acf59592f7205",
                 "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "~1.8"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
             },
             "type": "library",
             "autoload": {
@@ -324,7 +359,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -360,21 +395,28 @@
             ],
             "description": "This class allows you to analyse image files in different ways. At least the MIME type of the file is returned. In some cases (JPEG, TIFF and GIF) additional information is gathered as well.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2008-05-05 07:54:24"
+            "time": "2014-09-27 19:26:09"
         },
         {
             "name": "zetacomponents/image-conversion",
-            "version": "1.3.7",
+            "version": "1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/ImageConversion.git",
-                "reference": "878511f9b85e7147d4e6abd6e13c0ae828e2848d"
+                "reference": "120feb40965eb053482bc030e107352d9bbc5f13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/ImageConversion/zipball/878511f9b85e7147d4e6abd6e13c0ae828e2848d",
-                "reference": "878511f9b85e7147d4e6abd6e13c0ae828e2848d",
+                "url": "https://api.github.com/repos/zetacomponents/ImageConversion/zipball/120feb40965eb053482bc030e107352d9bbc5f13",
+                "reference": "120feb40965eb053482bc030e107352d9bbc5f13",
                 "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "~1.8",
+                "zetacomponents/image-analysis": "~1.1"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "@dev"
             },
             "type": "library",
             "autoload": {
@@ -384,7 +426,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -420,21 +462,27 @@
             ],
             "description": "A set of classes to apply different filters on images, such as colour changes, resizing and special effects.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2009-06-22 14:58:25"
+            "time": "2014-09-27 19:26:09"
         },
         {
             "name": "zetacomponents/search",
-            "version": "1.0.8",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zetacomponents/Search.git",
-                "reference": "ed4279840ba94cc8bcd4f3fd0af17a1e7ebd440a"
+                "reference": "74e2725fcb71ea008b6ed422aa1c8f92ffe57966"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zetacomponents/Search/zipball/ed4279840ba94cc8bcd4f3fd0af17a1e7ebd440a",
-                "reference": "ed4279840ba94cc8bcd4f3fd0af17a1e7ebd440a",
+                "url": "https://api.github.com/repos/zetacomponents/Search/zipball/74e2725fcb71ea008b6ed422aa1c8f92ffe57966",
+                "reference": "74e2725fcb71ea008b6ed422aa1c8f92ffe57966",
                 "shasum": ""
+            },
+            "require": {
+                "zetacomponents/base": "~1.8"
+            },
+            "require-dev": {
+                "zetacomponents/unit-test": "*"
             },
             "type": "library",
             "autoload": {
@@ -444,7 +492,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "apache2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -471,7 +519,7 @@
             ],
             "description": "The Search component provides an interface to index and query documents with different search engine backends.",
             "homepage": "https://github.com/zetacomponents",
-            "time": "2009-11-23 13:27:40"
+            "time": "2014-09-27 19:26:09"
         }
     ],
     "packages-dev": [
@@ -528,48 +576,6 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
-        },
-        {
-            "name": "myclabs/deep-copy",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "e3abefcd7f106677fd352cd7c187d6c969aa9ddc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/e3abefcd7f106677fd352cd7c187d6c969aa9ddc",
-                "reference": "e3abefcd7f106677fd352cd7c187d6c969aa9ddc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "doctrine/collections": "1.*",
-                "phpunit/phpunit": "~4.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Create deep copies (clones) of your objects",
-            "homepage": "https://github.com/myclabs/DeepCopy",
-            "keywords": [
-                "clone",
-                "copy",
-                "duplicate",
-                "object",
-                "object graph"
-            ],
-            "time": "2015-11-07 22:20:37"
         },
         {
             "name": "pdepend/pdepend",
@@ -789,30 +795,29 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "3.3.0",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "fe33716763b604ade4cb442c0794f5bd5ad73004"
+                "reference": "eabf68b476ac7d0f73793aada060f1c1a9bf8979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/fe33716763b604ade4cb442c0794f5bd5ad73004",
-                "reference": "fe33716763b604ade4cb442c0794f5bd5ad73004",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/eabf68b476ac7d0f73793aada060f1c1a9bf8979",
+                "reference": "eabf68b476ac7d0f73793aada060f1c1a9bf8979",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6 || ^7.0",
+                "php": ">=5.3.3",
                 "phpunit/php-file-iterator": "~1.3",
                 "phpunit/php-text-template": "~1.2",
-                "phpunit/php-token-stream": "^1.4.2",
-                "sebastian/code-unit-reverse-lookup": "~1.0",
+                "phpunit/php-token-stream": "~1.3",
                 "sebastian/environment": "^1.3.2",
-                "sebastian/version": "~1.0|~2.0"
+                "sebastian/version": "~1.0"
             },
             "require-dev": {
                 "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "~4"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -822,7 +827,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -848,7 +853,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-03-03 08:49:08"
+            "time": "2015-10-06 15:47:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1030,16 +1035,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.2.12",
+            "version": "4.8.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6f0948bab32270352f97d1913d82a49338dcb0da"
+                "reference": "a1066c562c52900a142a0e2bbf0582994671385e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6f0948bab32270352f97d1913d82a49338dcb0da",
-                "reference": "6f0948bab32270352f97d1913d82a49338dcb0da",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1066c562c52900a142a0e2bbf0582994671385e",
+                "reference": "a1066c562c52900a142a0e2bbf0582994671385e",
                 "shasum": ""
             },
             "require": {
@@ -1048,21 +1053,19 @@
                 "ext-pcre": "*",
                 "ext-reflection": "*",
                 "ext-spl": "*",
-                "myclabs/deep-copy": "~1.3",
-                "php": "^5.6 || ^7.0",
+                "php": ">=5.3.3",
                 "phpspec/prophecy": "^1.3.1",
-                "phpunit/php-code-coverage": "^3.3.0",
+                "phpunit/php-code-coverage": "~2.1",
                 "phpunit/php-file-iterator": "~1.4",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": ">=1.0.6",
-                "phpunit/phpunit-mock-objects": ">=3.0.5",
+                "phpunit/phpunit-mock-objects": "~2.3",
                 "sebastian/comparator": "~1.1",
                 "sebastian/diff": "~1.2",
                 "sebastian/environment": "~1.3",
                 "sebastian/exporter": "~1.2",
                 "sebastian/global-state": "~1.0",
-                "sebastian/resource-operations": "~1.0",
-                "sebastian/version": "~1.0|~2.0",
+                "sebastian/version": "~1.0",
                 "symfony/yaml": "~2.1|~3.0"
             },
             "suggest": {
@@ -1074,7 +1077,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.2.x-dev"
+                    "dev-master": "4.8.x-dev"
                 }
             },
             "autoload": {
@@ -1100,30 +1103,30 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-03-15 05:59:58"
+            "time": "2016-03-14 06:16:08"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.0.6",
+            "version": "2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "49bc700750196c04dd6bc2c4c99cb632b893836b"
+                "reference": "ac8e7a3db35738d56ee9a76e78a4e03d97628983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/49bc700750196c04dd6bc2c4c99cb632b893836b",
-                "reference": "49bc700750196c04dd6bc2c4c99cb632b893836b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/ac8e7a3db35738d56ee9a76e78a4e03d97628983",
+                "reference": "ac8e7a3db35738d56ee9a76e78a4e03d97628983",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
-                "php": ">=5.6",
+                "php": ">=5.3.3",
                 "phpunit/php-text-template": "~1.2",
                 "sebastian/exporter": "~1.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "~4.4"
             },
             "suggest": {
                 "ext-soap": "*"
@@ -1131,7 +1134,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "2.3.x-dev"
                 }
             },
             "autoload": {
@@ -1156,52 +1159,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2015-12-08 08:47:06"
-        },
-        {
-            "name": "sebastian/code-unit-reverse-lookup",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
-                "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
-                "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
-            "description": "Looks up which function or method a line of code belongs to",
-            "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2016-02-13 06:45:14"
+            "time": "2015-10-02 06:51:40"
         },
         {
             "name": "sebastian/comparator",
@@ -1628,48 +1586,6 @@
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
             "time": "2015-11-11 19:50:13"
-        },
-        {
-            "name": "sebastian/resource-operations",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
-                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
-            "description": "Provides a list of PHP built-in functions that operate on resources",
-            "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2015-07-28 20:34:47"
         },
         {
             "name": "sebastian/version",
@@ -2216,5 +2132,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.5.9"
+    }
 }

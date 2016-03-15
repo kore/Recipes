@@ -46,6 +46,11 @@
         "sebastian/phpcpd": "@stable",
         "squizlabs/php_codesniffer": "@stable"
     },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
+    },
     "autoload": {
         "classmap": [
             "vendor/arbitracker/phpillow/src/classes/",
