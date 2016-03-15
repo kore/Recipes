@@ -5,3 +5,4 @@
 /.pear
 /composer.phar
 /recipes.dump
+/build.properties.local
