@@ -1,5 +1,5 @@
 /src/var/search
-/src/library/*
+/vendor/*
 /build
 /.abc
 /.pear

@@ -39,13 +39,17 @@
         "arbitracker/phpillow": ">=0.1",
         "twig/twig": "1.6.0"
     },
+    "require-dev": {
+        "pdepend/pdepend": "@stable",
+        "phpmd/phpmd": "@stable",
+        "phpunit/phpunit": "@stable",
+        "sebastian/phpcpd": "@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
     "autoload": {
         "classmap": [
-            "src/library/arbitracker/phpillow/src/classes/",
-            "src/library/tcpdf/"
+            "vendor/arbitracker/phpillow/src/classes/",
+            "vendor/tcpdf/"
         ]
-    },
-    "config":       {
-        "vendor-dir": "src/library"
     }
 }

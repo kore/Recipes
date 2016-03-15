@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="import-live-data">
+        <property name="import.dbname" value="http://localhost:5984/recipe_core" />
+        <property name="import.dumpfile" value="recipes.dump" />
+
+        <exec executable="ssh">
+            <arg value="nordmann" />
+            <arg value="couchdb-dump ${import.dbname} &gt; ${import.dumpfile}" />
+        </exec>
+        <exec executable="scp">
+            <arg value="nordmann:recipes/${import.dumpfile}" />
+            <arg value="${basedir}/${import.dumpfile}" />
+        </exec>
+
+        <!-- There is no generally available ant task to execute a HTTP DELETE or PUT request -->
+        <exec executable="curl" failonerror="false">
+            <arg value="-X" />
+            <arg value="DELETE" />
+            <arg value="${import.dbname}" />
+        </exec>
+        <exec executable="curl">
+            <arg value="-X" />
+            <arg value="PUT" />
+            <arg value="${import.dbname}" />
+        </exec>
+
+        <exec executable="couchdb-load">
+            <arg value="--input=${basedir}/${import.dumpfile}" />
+            <arg value="${import.dbname}" />
+        </exec>
+    </target>
+</project>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <target name="style">
+        <property name="bootstrap.basedir" value="${basedir}/src/library/twbs/bootstrap/" />
+
+        <copy
+            overwrite="true"
+            file="${basedir}/src/config/bootstrap.less"
+            tofile="${bootstrap.basedir}/less/variables.less" />
+
+        <exec executable="npm" dir="${bootstrap.basedir}">
+            <arg value="install" />
+        </exec>
+
+        <exec executable="grunt" dir="${bootstrap.basedir}">
+            <arg value="dist" />
+        </exec>
+
+        <copy todir="${basedir}/src/htdocs/styles/">
+            <fileset dir="${bootstrap.basedir}/dist/css/">
+                <include name="*.css" />
+            </fileset>
+        </copy>
+
+        <copy todir="${basedir}/src/htdocs/fonts">
+            <fileset dir="${bootstrap.basedir}/dist/fonts">
+                <include name="*" />
+            </fileset>
+        </copy>
+
+        <copy todir="${basedir}/src/htdocs/scripts/vendor/bootstrap/">
+            <fileset dir="${bootstrap.basedir}/dist/js">
+                <include name="*.js" />
+            </fileset>
+        </copy>
+    </target>
+</project>

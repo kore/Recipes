@@ -1,89 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Recipes" default="verify" basedir="./">
+<project name="Recipes" default="test" basedir="./">
     <!--
         Import project specific settings.
     -->
+    <property file="${basedir}/build.properties.local" />
     <property file="${basedir}/build.properties" />
 
     <!--
-        Import the build-commons framework.
+        Import main target defintions (extension points)
     -->
-    <import file="setup/src/main/xml/base.xml" />
+    <import optional="true" file="${basedir}/ant/main.xml" />
 
-    <target name="style">
-        <property name="bootstrap.basedir" value="${basedir}/src/library/twbs/bootstrap/" />
+    <!--
+        Enable used modules
+    -->
+    <import file="${basedir}/ant/modules/composer.xml" />
+    <import file="${basedir}/ant/modules/phpunit.xml" />
+    <import file="${basedir}/ant/modules/checkstyle.xml" />
+    <import file="${basedir}/ant/modules/pdepend.xml" />
+    <import file="${basedir}/ant/modules/phpcpd.xml" />
+    <import file="${basedir}/ant/modules/phpmd.xml" />
 
-        <copy
-            overwrite="true"
-            file="${basedir}/src/config/bootstrap.less"
-            tofile="${bootstrap.basedir}/less/variables.less" />
-
-        <exec executable="npm" dir="${bootstrap.basedir}">
-            <arg value="install" />
-        </exec>
-
-        <exec executable="grunt" dir="${bootstrap.basedir}">
-            <arg value="dist" />
-        </exec>
-
-        <copy todir="${basedir}/src/htdocs/styles/">
-            <fileset dir="${bootstrap.basedir}/dist/css/">
-                <include name="*.css" />
-            </fileset>
-        </copy>
-
-        <copy todir="${basedir}/src/htdocs/fonts">
-            <fileset dir="${bootstrap.basedir}/dist/fonts">
-                <include name="*" />
-            </fileset>
-        </copy>
-
-        <copy todir="${basedir}/src/htdocs/scripts/vendor/bootstrap/">
-            <fileset dir="${bootstrap.basedir}/dist/js">
-                <include name="*.js" />
-            </fileset>
-        </copy>
-    </target>
-
-    <target name="-recipe-deploy" extensionOf="-deploy:main~hook">
-        <!-- Not using sshexec, because it does not know / handle local SSH
-             configuration, and we probably cannot and do not want to duplicate
-             tunnel configuration etc.
-        -->
-        <exec executable="ssh">
-            <arg value="nordmann" />
-            <arg value="cd recipes &amp;&amp; git pull &amp;&amp; ant install" />
-        </exec>
-    </target>
-
-    <target name="import-live-data">
-        <property name="import.dbname" value="http://localhost:5984/recipe_core" />
-        <property name="import.dumpfile" value="recipes.dump" />
-
-        <exec executable="ssh">
-            <arg value="nordmann" />
-            <arg value="couchdb-dump ${import.dbname} &gt; ${import.dumpfile}" />
-        </exec>
-        <exec executable="scp">
-            <arg value="nordmann:recipes/${import.dumpfile}" />
-            <arg value="${basedir}/${import.dumpfile}" />
-        </exec>
-
-        <!-- There is no generally available ant task to execute a HTTP DELETE or PUT request -->
-        <exec executable="curl" failonerror="false">
-            <arg value="-X" />
-            <arg value="DELETE" />
-            <arg value="${import.dbname}" />
-        </exec>
-        <exec executable="curl">
-            <arg value="-X" />
-            <arg value="PUT" />
-            <arg value="${import.dbname}" />
-        </exec>
-
-        <exec executable="couchdb-load">
-            <arg value="--input=${basedir}/${import.dumpfile}" />
-            <arg value="${import.dbname}" />
-        </exec>
-    </target>
+    <!--
+        Enable used modules
+    -->
+    <import file="${basedir}/src/ant/deploy.xml" />
+    <import file="${basedir}/src/ant/style.xml" />
+    <import file="${basedir}/src/ant/import-live-data.xml" />
 </project>
