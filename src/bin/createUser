@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+namespace Recipes;
+
+require __DIR__ . '/../main/Recipes/bootstrap.php';
+
+$dic = new DIC\Base();
+$dic->environment = 'development';
+
+if (!isset($argv[1]) || !isset($argv[2])) {
+    echo "Usage: ", $argv[0], ' <user> <password>', PHP_EOL;
+    exit(64);
+}
+
+$user = new Model\User($dic->userGateway, $argv[1]);
+$user->auth_infos = array(
+    md5( 'arbit_' . $argv[2] ),
+    sha1( 'arbit_' . $argv[2] ),
+);
+$user->create();
+
+$recipes = $dic->recipeModel->getAll();
+foreach ( $recipes as $recipe )
+{
+    $dic->search->index( $recipe );
+}
+
