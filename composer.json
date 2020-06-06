@@ -1,5 +1,5 @@
 {
-    "name":         "Recipes",
+    "name":         "recipes",
     "description":  "Recipe management tool",
     "repositories": [ {
         "type": "vcs",
