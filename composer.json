@@ -1,5 +1,5 @@
 {
-    "name":         "recipes",
+    "name":         "kore/recipes",
     "description":  "Recipe management tool",
     "repositories": [ {
         "type": "vcs",

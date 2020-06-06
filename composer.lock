@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cafc9f56a1d3b36e5a10da32eaf1b94b",
+    "content-hash": "1d87cc14f11980c821e361c380630c7c",
     "packages": [
         {
             "name": "arbit/phpillow",
