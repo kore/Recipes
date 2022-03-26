@@ -26,7 +26,7 @@
         "zetacomponents/image-analysis": ">=1.0",
         "twbs/bootstrap": "3.*@stable",
         "arbit/phpillow": ">=0.1",
-        "twig/twig": "1.6.0"
+        "twig/twig": "1.38.0"
     },
     "require-dev": {
         "pdepend/pdepend": "@stable",
